@@ -33,6 +33,7 @@ color = Color( 0.285156, 0.285156, 0.285156, 1 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Background/Ground" index="0"]
 
+visible = false
 input_pickable = false
 collision_layer = 1
 collision_mask = 1

@@ -1,0 +1,68 @@
+[gd_scene load_steps=33 format=2]
+
+[ext_resource path="res://characters/base/idle-animations/sprite_red_rectangle_idle_00.png" type="Texture" id=1]
+[ext_resource path="res://characters/base/idle-animations/sprite_red_rectangle_idle_01.png" type="Texture" id=2]
+[ext_resource path="res://characters/base/idle-animations/sprite_red_rectangle_idle_02.png" type="Texture" id=3]
+[ext_resource path="res://characters/base/idle-animations/sprite_red_rectangle_idle_03.png" type="Texture" id=4]
+[ext_resource path="res://characters/base/idle-animations/sprite_red_rectangle_idle_04.png" type="Texture" id=5]
+[ext_resource path="res://characters/base/idle-animations/sprite_red_rectangle_idle_05.png" type="Texture" id=6]
+[ext_resource path="res://characters/base/idle-animations/sprite_red_rectangle_idle_06.png" type="Texture" id=7]
+[ext_resource path="res://characters/base/idle-animations/sprite_red_rectangle_idle_07.png" type="Texture" id=8]
+[ext_resource path="res://characters/base/idle-animations/sprite_red_rectangle_idle_08.png" type="Texture" id=9]
+[ext_resource path="res://characters/base/idle-animations/sprite_red_rectangle_idle_09.png" type="Texture" id=10]
+[ext_resource path="res://characters/base/idle-animations/sprite_red_rectangle_idle_10.png" type="Texture" id=11]
+[ext_resource path="res://characters/base/idle-animations/sprite_red_rectangle_idle_11.png" type="Texture" id=12]
+[ext_resource path="res://characters/base/idle-animations/sprite_red_rectangle_idle_12.png" type="Texture" id=13]
+[ext_resource path="res://characters/base/idle-animations/sprite_red_rectangle_idle_13.png" type="Texture" id=14]
+[ext_resource path="res://characters/base/idle-animations/sprite_red_rectangle_idle_14.png" type="Texture" id=15]
+[ext_resource path="res://characters/base/idle-animations/sprite_red_rectangle_idle_15.png" type="Texture" id=16]
+[ext_resource path="res://characters/base/idle-animations/sprite_red_rectangle_idle_16.png" type="Texture" id=17]
+[ext_resource path="res://characters/base/idle-animations/sprite_red_rectangle_idle_17.png" type="Texture" id=18]
+[ext_resource path="res://characters/base/idle-animations/sprite_red_rectangle_idle_18.png" type="Texture" id=19]
+[ext_resource path="res://characters/base/idle-animations/sprite_red_rectangle_idle_19.png" type="Texture" id=20]
+[ext_resource path="res://characters/base/idle-animations/sprite_red_rectangle_idle_20.png" type="Texture" id=21]
+[ext_resource path="res://characters/base/idle-animations/sprite_red_rectangle_idle_21.png" type="Texture" id=22]
+[ext_resource path="res://characters/base/idle-animations/sprite_red_rectangle_idle_22.png" type="Texture" id=23]
+[ext_resource path="res://characters/base/idle-animations/sprite_red_rectangle_idle_23.png" type="Texture" id=24]
+[ext_resource path="res://characters/base/idle-animations/sprite_red_rectangle_idle_24.png" type="Texture" id=25]
+[ext_resource path="res://characters/base/idle-animations/sprite_red_rectangle_idle_25.png" type="Texture" id=26]
+[ext_resource path="res://characters/base/idle-animations/sprite_red_rectangle_idle_26.png" type="Texture" id=27]
+[ext_resource path="res://characters/base/idle-animations/sprite_red_rectangle_idle_27.png" type="Texture" id=28]
+[ext_resource path="res://characters/base/idle-animations/sprite_red_rectangle_idle_28.png" type="Texture" id=29]
+[ext_resource path="res://characters/base/idle-animations/sprite_red_rectangle_idle_29.png" type="Texture" id=30]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ) ],
+"loop": true,
+"name": "idle",
+"speed": 60.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 20, 16 )
+
+[node name="Character" type="Area2D" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
+
+frames = SubResource( 1 )
+animation = "idle"
+frame = 23
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+
+shape = SubResource( 2 )
+
+
