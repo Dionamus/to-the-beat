@@ -1,4 +1,6 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://stages/base/PhysicsTestingCube.tscn" type="PackedScene" id=1]
 
 [node name="Stage" type="Node" index="0"]
 
@@ -47,5 +49,12 @@ _sections_unfolded = [ "Transform" ]
 
 build_mode = 0
 polygon = PoolVector2Array( 0, 0, 1920, 0, 1920, 200, 0, 200 )
+
+[node name="PhysicsTestingCube" parent="." index="1" instance=ExtResource( 1 )]
+
+margin_left = 964.0
+margin_top = 282.0
+margin_right = 1064.0
+margin_bottom = 382.0
 
 

@@ -31,12 +31,12 @@
 [ext_resource path="res://characters/base/idle-animations/sprite_red_rectangle_idle_28.png" type="Texture" id=29]
 [ext_resource path="res://characters/base/idle-animations/sprite_red_rectangle_idle_29.png" type="Texture" id=30]
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="SpriteFrames" id=3]
 
 animations = [ {
 "frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 30 ) ],
 "loop": true,
-"name": "idle",
+"name": "default",
 "speed": 60.0
 } ]
 
@@ -57,9 +57,10 @@ audio_bus_name = "Master"
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
 
-frames = SubResource( 1 )
-animation = "idle"
-frame = 23
+frames = SubResource( 3 )
+animation = "default"
+frame = 13
+playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
