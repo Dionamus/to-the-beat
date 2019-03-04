@@ -1,6 +1,6 @@
 [gd_scene format=2]
 
-[node name="PhysicsTestingCube" type="ColorRect" index="0"]
+[node name="PhysicsTestingCube" type="ColorRect"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -22,7 +22,7 @@ _sections_unfolded = [ "Rect" ]
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
-mode = 0
+mode = 3
 mass = 1.0
 friction = 1.0
 bounce = 0.0
