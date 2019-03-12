@@ -10,8 +10,8 @@
 ### Debug.tscn
 
 * Finish debug HUD
-  * Add framerate
-  * Add animation framerate
+  * Add frame rate
+  * Add animation frame rate
 
 ### HUD.tscn
 
