@@ -37,4 +37,4 @@ this.)
 
 ### First character
 
-* Implement combos for first character.
+* Implement combos for first character (the red rectangle).
