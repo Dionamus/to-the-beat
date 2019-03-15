@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://stages/base/Stage.gd" type="Script" id=1]
-[ext_resource path="res://characters/base/Character.tscn" type="PackedScene" id=2]
+[ext_resource path="res://stages/base/BaseBG.png" type="Texture" id=2]
+[ext_resource path="res://characters/base/Character.tscn" type="PackedScene" id=3]
 
 [node name="Stage" type="Node" index="0"]
 
@@ -22,55 +23,11 @@ wait_time = 5.0
 one_shot = true
 autostart = false
 
-[node name="Background" type="ColorRect" parent="." index="2"]
+[node name="StageBackground" type="Sprite" parent="." index="2"]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_right = 1680.0
-margin_bottom = 945.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-color = Color( 0.375977, 0.479958, 0.601563, 1 )
-_sections_unfolded = [ "Rect" ]
-
-[node name="Ground" type="ColorRect" parent="Background" index="0"]
-
-anchor_left = 0.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = -360.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-color = Color( 0.285156, 0.285156, 0.285156, 1 )
-_sections_unfolded = [ "Rect" ]
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Background/Ground" index="0"]
-
-visible = false
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
+position = Vector2( 1800, 1012 )
+texture = ExtResource( 2 )
 _sections_unfolded = [ "Transform" ]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background/Ground/StaticBody2D" index="0"]
-
-build_mode = 0
-polygon = PoolVector2Array( 0, 0, 3600, 0, 3600, 360, 0, 350 )
 
 [node name="Position0" type="Position2D" parent="." index="3"]
 
@@ -117,13 +74,13 @@ _sections_unfolded = [ "Transform" ]
 position = Vector2( 3400, 1510 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Player1" parent="." index="12" instance=ExtResource( 2 )]
+[node name="Player1" parent="." index="12" instance=ExtResource( 3 )]
 
 position = Vector2( 200, 1510 )
 scale = Vector2( 10, 10 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Player2" parent="." index="13" instance=ExtResource( 2 )]
+[node name="Player2" parent="." index="13" instance=ExtResource( 3 )]
 
 modulate = Color( 0.0583649, 0.628898, 0.878906, 1 )
 position = Vector2( 3400, 1510 )

@@ -8,7 +8,8 @@
 tempo.
   * Tie the movement to the tempo.
 * ~~Get tempo mechanic figured out.~~
-* Replace the background with an image.
+* ~~Replace the background with an image.~~
+* Add the HUD.
 
 ### Debug.tscn
 
@@ -20,11 +21,15 @@ tempo.
 ### HUD.tscn
 
 * Finish main HUD
-  * Add `Player1` HP bar.
-  * Add `Player1` wins.
-  * Add `Player2` HP bar.
-  * Add `Player2` wins.
-  * Add `RoundCounter`.
+  * ~~Add `Player1Name`~~
+  * Add `Player1HPBar`.
+    * Add art.
+  * Add `Player1Wins`.
+  * ~~Add `Player2Name`~~
+  * Add `Player2HPBar`.
+    * Add art.
+  * Add `Player2Wins`.
+  * Add `RoundTimer`.
 
 ### Character.tscn
 

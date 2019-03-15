@@ -18,7 +18,8 @@ config/icon="res://icon.png"
 window/size/width=1920
 window/size/height=1080
 window/size/fullscreen=true
-window/stretch/aspect="keep"
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 window/stretch/shrink="1"
 window/depth_prepass/disable_for_vendors="PowerVR,Mali,Adreno"
 
