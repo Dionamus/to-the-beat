@@ -1,122 +1,76 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://stages/base/Stage.gd" type="Script" id=1]
-[ext_resource path="res://stages/base/BaseBG.png" type="Texture" id=2]
+[ext_resource path="res://stages/base/basebg.png" type="Texture" id=2]
 [ext_resource path="res://characters/base/Character.tscn" type="PackedScene" id=3]
+[ext_resource path="res://interface/HUD.tscn" type="PackedScene" id=4]
 
-[node name="Stage" type="Node" index="0"]
-
+[node name="Stage" type="Node"]
 script = ExtResource( 1 )
-bpm = 120
 
-[node name="GameTimer" type="Timer" parent="." index="0"]
-
-process_mode = 1
+[node name="GameTimer" type="Timer" parent="."]
 wait_time = 90.0
 one_shot = true
-autostart = false
 
-[node name="StartTimer" type="Timer" parent="." index="1"]
-
-process_mode = 1
+[node name="StartTimer" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
-autostart = false
 
-[node name="StageBackground" type="Sprite" parent="." index="2"]
-
+[node name="StageBackground" type="Sprite" parent="."]
 position = Vector2( 1800, 1012 )
 texture = ExtResource( 2 )
-_sections_unfolded = [ "Transform" ]
 
-[node name="Position0" type="Position2D" parent="." index="3"]
-
+[node name="Position0" type="Position2D" parent="."]
 position = Vector2( 200, 1510 )
-_sections_unfolded = [ "Transform" ]
 
-[node name="Position1" type="Position2D" parent="." index="4"]
-
+[node name="Position1" type="Position2D" parent="."]
 position = Vector2( 600, 1510 )
-_sections_unfolded = [ "Transform" ]
 
-[node name="Position2" type="Position2D" parent="." index="5"]
-
+[node name="Position2" type="Position2D" parent="."]
 position = Vector2( 1000, 1510 )
-_sections_unfolded = [ "Transform" ]
 
-[node name="Position3" type="Position2D" parent="." index="6"]
-
+[node name="Position3" type="Position2D" parent="."]
 position = Vector2( 1400, 1510 )
-_sections_unfolded = [ "Transform" ]
 
-[node name="Position4" type="Position2D" parent="." index="7"]
-
+[node name="Position4" type="Position2D" parent="."]
 position = Vector2( 1800, 1510 )
-_sections_unfolded = [ "Transform" ]
 
-[node name="Position5" type="Position2D" parent="." index="8"]
-
+[node name="Position5" type="Position2D" parent="."]
 position = Vector2( 2200, 1510 )
-_sections_unfolded = [ "Transform" ]
 
-[node name="Position6" type="Position2D" parent="." index="9"]
-
+[node name="Position6" type="Position2D" parent="."]
 position = Vector2( 2600, 1510 )
-_sections_unfolded = [ "Transform" ]
 
-[node name="Position7" type="Position2D" parent="." index="10"]
-
+[node name="Position7" type="Position2D" parent="."]
 position = Vector2( 3000, 1510 )
-_sections_unfolded = [ "Transform" ]
 
-[node name="Position8" type="Position2D" parent="." index="11"]
-
+[node name="Position8" type="Position2D" parent="."]
 position = Vector2( 3400, 1510 )
-_sections_unfolded = [ "Transform" ]
 
-[node name="Player1" parent="." index="12" instance=ExtResource( 3 )]
-
+[node name="Player1" parent="." instance=ExtResource( 3 )]
 position = Vector2( 200, 1510 )
 scale = Vector2( 10, 10 )
-_sections_unfolded = [ "Transform" ]
 
-[node name="Player2" parent="." index="13" instance=ExtResource( 3 )]
-
+[node name="Player2" parent="." instance=ExtResource( 3 )]
 modulate = Color( 0.0583649, 0.628898, 0.878906, 1 )
 position = Vector2( 3400, 1510 )
 scale = Vector2( 10, 10 )
-_sections_unfolded = [ "Transform", "Visibility" ]
 player = 1
 
-[node name="Camera2D" type="Camera2D" parent="." index="14"]
-
+[node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 0, 930 )
 anchor_mode = 0
-rotating = false
 current = true
-zoom = Vector2( 1, 1 )
 limit_left = 0
 limit_top = 0
 limit_right = 3600
 limit_bottom = 2025
 limit_smoothed = true
-drag_margin_h_enabled = true
-drag_margin_v_enabled = true
 smoothing_enabled = true
 smoothing_speed = 10.0
-offset_v = 0.0
-offset_h = 0.0
-drag_margin_left = 0.2
-drag_margin_top = 0.2
-drag_margin_right = 0.2
-drag_margin_bottom = 0.2
-editor_draw_screen = true
 editor_draw_limits = true
-editor_draw_drag_margin = false
-_sections_unfolded = [ "Editor", "Limit", "Offset", "Smoothing", "Transform" ]
+
+[node name="HUD" parent="Camera2D" instance=ExtResource( 4 )]
 
 [connection signal="timeout" from="GameTimer" to="." method="_on_GameTimer_timeout"]
-
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
-
-
