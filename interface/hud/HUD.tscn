@@ -1,0 +1,131 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://interface/hud/hp_bar.png" type="Texture" id=1]
+[ext_resource path="res://interface/hud/hp_bar_fill.png" type="Texture" id=2]
+[ext_resource path="res://interface/Roboto-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://interface/hud/no_wins.png" type="Texture" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 35
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 80
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 35
+font_data = ExtResource( 3 )
+
+[node name="HUD" type="MarginContainer"]
+margin_right = 1920.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 0, 150 )
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 1900.0
+margin_bottom = 130.0
+size_flags_horizontal = 3
+
+[node name="Player1Container" type="VBoxContainer" parent="HBoxContainer"]
+margin_right = 861.0
+margin_bottom = 110.0
+size_flags_horizontal = 3
+custom_constants/separation = 2
+
+[node name="Player1HP" type="TextureProgress" parent="HBoxContainer/Player1Container"]
+margin_right = 861.0
+margin_bottom = 66.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+max_value = 200.0
+value = 200.0
+texture_under = ExtResource( 1 )
+texture_progress = ExtResource( 2 )
+nine_patch_stretch = true
+
+[node name="P1NameAndWins" type="HBoxContainer" parent="HBoxContainer/Player1Container"]
+margin_top = 68.0
+margin_right = 861.0
+margin_bottom = 110.0
+
+[node name="Player1Name" type="Label" parent="HBoxContainer/Player1Container/P1NameAndWins"]
+margin_right = 767.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "Player1"
+
+[node name="Player1Wins" type="TextureRect" parent="HBoxContainer/Player1Container/P1NameAndWins"]
+margin_left = 771.0
+margin_right = 861.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 90, 0 )
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 7
+
+[node name="GameTimerContainer" type="CenterContainer" parent="HBoxContainer"]
+margin_left = 865.0
+margin_right = 1015.0
+margin_bottom = 110.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 150, 0 )
+
+[node name="GameTimerLabel" type="Label" parent="HBoxContainer/GameTimerContainer"]
+margin_left = 30.0
+margin_top = 7.0
+margin_right = 120.0
+margin_bottom = 102.0
+custom_fonts/font = SubResource( 2 )
+text = "99"
+align = 1
+
+[node name="Player2Container" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 1019.0
+margin_right = 1880.0
+margin_bottom = 110.0
+size_flags_horizontal = 3
+
+[node name="Player2HP" type="TextureProgress" parent="HBoxContainer/Player2Container"]
+margin_right = 861.0
+margin_bottom = 64.0
+size_flags_vertical = 3
+max_value = 200.0
+value = 200.0
+rounded = true
+texture_under = ExtResource( 1 )
+texture_progress = ExtResource( 2 )
+fill_mode = 1
+nine_patch_stretch = true
+
+[node name="P2NameAndWins" type="HBoxContainer" parent="HBoxContainer/Player2Container"]
+margin_top = 68.0
+margin_right = 861.0
+margin_bottom = 110.0
+
+[node name="Player2Wins" type="TextureRect" parent="HBoxContainer/Player2Container/P2NameAndWins"]
+margin_right = 90.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 90, 0 )
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 7
+
+[node name="Player2Name" type="Label" parent="HBoxContainer/Player2Container/P2NameAndWins"]
+margin_left = 94.0
+margin_right = 861.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_fonts/font = SubResource( 3 )
+text = "Player2"
+align = 2
+

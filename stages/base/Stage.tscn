@@ -2,8 +2,8 @@
 
 [ext_resource path="res://stages/base/Stage.gd" type="Script" id=1]
 [ext_resource path="res://stages/base/basebg.png" type="Texture" id=2]
-[ext_resource path="res://characters/base/Character.tscn" type="PackedScene" id=3]
-[ext_resource path="res://interface/HUD.tscn" type="PackedScene" id=4]
+[ext_resource path="res://interface/hud/HUD.tscn" type="PackedScene" id=3]
+[ext_resource path="res://characters/base/Character.tscn" type="PackedScene" id=4]
 
 [node name="Stage" type="Node"]
 script = ExtResource( 1 )
@@ -19,6 +19,23 @@ one_shot = true
 [node name="StageBackground" type="Sprite" parent="."]
 position = Vector2( 1800, 1012 )
 texture = ExtResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 18, 925 )
+anchor_mode = 0
+current = true
+limit_left = 0
+limit_top = 0
+limit_right = 3600
+limit_bottom = 2025
+limit_smoothed = true
+smoothing_enabled = true
+smoothing_speed = 10.0
+editor_draw_limits = true
+
+[node name="HUD" parent="Camera2D" instance=ExtResource( 3 )]
+anchor_right = 1.0
+margin_bottom = 135.0
 
 [node name="Position0" type="Position2D" parent="."]
 position = Vector2( 200, 1510 )
@@ -47,30 +64,15 @@ position = Vector2( 3000, 1510 )
 [node name="Position8" type="Position2D" parent="."]
 position = Vector2( 3400, 1510 )
 
-[node name="Player1" parent="." instance=ExtResource( 3 )]
+[node name="Player1" parent="." instance=ExtResource( 4 )]
 position = Vector2( 200, 1510 )
 scale = Vector2( 10, 10 )
 
-[node name="Player2" parent="." instance=ExtResource( 3 )]
+[node name="Player2" parent="." instance=ExtResource( 4 )]
 modulate = Color( 0.0583649, 0.628898, 0.878906, 1 )
 position = Vector2( 3400, 1510 )
 scale = Vector2( 10, 10 )
 player = 1
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 0, 930 )
-anchor_mode = 0
-current = true
-limit_left = 0
-limit_top = 0
-limit_right = 3600
-limit_bottom = 2025
-limit_smoothed = true
-smoothing_enabled = true
-smoothing_speed = 10.0
-editor_draw_limits = true
-
-[node name="HUD" parent="Camera2D" instance=ExtResource( 4 )]
 
 [connection signal="timeout" from="GameTimer" to="." method="_on_GameTimer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
