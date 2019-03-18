@@ -22,6 +22,8 @@ const default_fps = 60.0
 const animation_factor = default_fps / default_bpm
 
 func _ready():
+	if player == 1:
+		$AnimatedSprite.flip_h = true
 	pass
 
 # Sets the speed of the animations by bpm.
