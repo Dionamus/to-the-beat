@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/BaseBG.png-a1034b367234b72f1bf600206369eadb.stex"
+path="res://.import/p2_one_win.png-2059d3080e4acf39a151f4615c7688f8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://stages/base/BaseBG.png"
-dest_files=[ "res://.import/BaseBG.png-a1034b367234b72f1bf600206369eadb.stex" ]
+source_file="res://interface/p2_one_win.png"
+dest_files=[ "res://.import/p2_one_win.png-2059d3080e4acf39a151f4615c7688f8.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

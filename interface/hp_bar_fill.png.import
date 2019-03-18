@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/BaseBG.png-a1034b367234b72f1bf600206369eadb.stex"
+path="res://.import/hp_bar_fill.png-a8d4a13f5183ee3d6a03d04040073572.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://stages/base/BaseBG.png"
-dest_files=[ "res://.import/BaseBG.png-a1034b367234b72f1bf600206369eadb.stex" ]
+source_file="res://interface/hp_bar_fill.png"
+dest_files=[ "res://.import/hp_bar_fill.png-a8d4a13f5183ee3d6a03d04040073572.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
