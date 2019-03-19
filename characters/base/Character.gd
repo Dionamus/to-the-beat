@@ -9,7 +9,7 @@ export (PackedScene) var Character
 
 # Signifies which player an instanced Character is.
 # 0 is player 1, 1 is player 2.
-export (int) var player = 0
+var player = 0
 
 # Standard tempo the animations are timed to in beats per minute.
 const default_bpm = 120.0
@@ -22,8 +22,6 @@ const default_fps = 60.0
 const animation_factor = default_fps / default_bpm
 
 func _ready():
-	if player == 1:
-		$AnimatedSprite.flip_h = true
 	pass
 
 # Sets the speed of the animations by bpm.

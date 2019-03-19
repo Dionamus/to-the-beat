@@ -72,7 +72,8 @@ scale = Vector2( 10, 10 )
 modulate = Color( 0.0583649, 0.628898, 0.878906, 1 )
 position = Vector2( 3400, 1510 )
 scale = Vector2( 10, 10 )
-player = 1
+
+[node name="Tween" type="Tween" parent="."]
 
 [connection signal="timeout" from="GameTimer" to="." method="_on_GameTimer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
