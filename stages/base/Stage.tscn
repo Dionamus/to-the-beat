@@ -9,12 +9,13 @@
 script = ExtResource( 1 )
 
 [node name="GameTimer" type="Timer" parent="."]
-wait_time = 90.0
+wait_time = 4096.0
 one_shot = true
 
 [node name="StartTimer" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
+autostart = true
 
 [node name="StageBackground" type="Sprite" parent="."]
 position = Vector2( 1800, 1012 )
