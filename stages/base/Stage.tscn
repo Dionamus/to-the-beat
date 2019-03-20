@@ -17,12 +17,14 @@ wait_time = 5.0
 one_shot = true
 autostart = true
 
+[node name="Tween" type="Tween" parent="."]
+
 [node name="StageBackground" type="Sprite" parent="."]
 position = Vector2( 1800, 1012 )
 texture = ExtResource( 2 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 18, 925 )
+position = Vector2( 29, 904 )
 anchor_mode = 0
 current = true
 limit_left = 0
@@ -73,8 +75,6 @@ scale = Vector2( 10, 10 )
 modulate = Color( 0.0583649, 0.628898, 0.878906, 1 )
 position = Vector2( 3400, 1510 )
 scale = Vector2( 10, 10 )
-
-[node name="Tween" type="Tween" parent="."]
 
 [connection signal="timeout" from="GameTimer" to="." method="_on_GameTimer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]

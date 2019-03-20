@@ -28,7 +28,7 @@ const default_fps = 60.0
 const default_animation_factor = default_fps / default_bpm
 
 # Used for movement on the one-dimensional grid in a stage.
-var grid_number = 0
+var grid_number
 
 # Round wins
 onready var wins = 0

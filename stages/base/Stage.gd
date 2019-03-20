@@ -13,7 +13,9 @@ onready var is_game_over = false
 
 onready var is_input_allowed = false
 
-onready var tween = get_node("Tween")
+onready var tween = $Tween
+
+onready var debug_timer = 0
 
 func _ready():
 	# Sets up Player1
@@ -43,6 +45,12 @@ func _ready():
 	pass
 
 func _process(delta):
+	# This is used for debugging input
+#	debug_timer += delta
+#	if debug_timer >= 5:
+#		breakpoint
+	
+	# Actual input
 	if !is_game_over and is_input_allowed:
 		if $Player1.grid_number != $Player2.grid_number:
 			if $Player1.position.x > $Player2.position.x and $Player2.position.x < $Player1.position.x:
@@ -65,7 +73,6 @@ func _process(delta):
 			if Input.is_action_pressed("p2_right"):
 				if $Player1.grid_number != 8 and $Player2.grid_number != $Player1.grid_number - 1:
 					set_position($Player2, $Player2.grid_number + 1)
-	pass
 
 # Sets the position of the player characters.
 func set_position(main_player, grid_number):
@@ -98,6 +105,7 @@ func set_position(main_player, grid_number):
 		$Position8.position, .2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	pass
 
+# Works
 func _on_StartTimer_timeout():
 	$Player1.show()
 	$Player1/AnimatedSprite.playing = true
