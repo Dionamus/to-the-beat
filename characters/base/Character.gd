@@ -1,21 +1,27 @@
 extends Area2D
 
-# Signals whether the player wins the round.
+# Signals whether the player wins the round (for scoring).
 signal win_round
+
+# Signals whether the player wins the round (to play a "lose round" animation).
+signal lose_round
 
 # Signals whether the player wins the game (by winning two rounds).
 signal win_game
 
+# Signals whether the player loses the game (to play a "lose game" animation).
+signal lose_game
+
 # Hitpoints of the character. Once this reaches 0, the player
-# is defeated and the opponent wins
+# is defeated and the opponent wins.
 export (int) var hitpoints = 200
 
-# The character selected 
+# The character selected.
 export (PackedScene) var Character
 
 # Signifies which player an instanced Character is.
-# 0 is player 1, 1 is player 2.
-var player_number = 0
+# 1 is player 1, 2 is player 2.
+var player_number = 1
 
 # Standard tempo the animations are timed to in beats per minute.
 const default_bpm = 120.0

@@ -24,9 +24,10 @@ position = Vector2( 1800, 1012 )
 texture = ExtResource( 2 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 29, 904 )
+position = Vector2( 80, 103 )
 anchor_mode = 0
 current = true
+zoom = Vector2( 1.75, 1.75 )
 limit_left = 0
 limit_top = 0
 limit_right = 3600
