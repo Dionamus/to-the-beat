@@ -13,6 +13,7 @@ tempo.
 * ~~Replace the background with an image.~~
 * ~~Add the HUD. It's attached to the game's camera, but the HUD
 isn't complete. See the subsection "HUD.tscn".~~
+* Get the HUD to scale correctly with the camera's zoom.
 
 ### Debug.tscn
 
