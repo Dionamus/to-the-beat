@@ -28,10 +28,6 @@ window/stretch/aspect="expand"
 window/stretch/shrink="1"
 window/depth_prepass/disable_for_vendors="PowerVR,Mali,Adreno"
 
-[editor_plugins]
-
-enabled=PoolStringArray( "godot-git-control.funabab" )
-
 [input]
 
 p1_up={
