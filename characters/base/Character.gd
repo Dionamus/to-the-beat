@@ -12,15 +12,18 @@ signal win_game
 # Signals whether the player loses the game (to play a "lose game" animation).
 signal lose_game
 
-# Hitpoints of the character. Once this reaches 0, the player
-# is defeated and the opponent wins.
-export (int) var hitpoints = 200
+# Max hitpoints of the character. Once this reaches 0, the player
+# is defeated and the opponent wins for the round.
+export (int) var max_hitpoints = 200
+
+# The character's current hitpoints.
+var hitpoints
 
 # The character selected.
 export (PackedScene) var Character
 
 # Signifies which player an instanced Character is.
-# 1 is player 1, 2 is player 2.
+# 1 is player 1, 2 is player 2. The default player should be player 1.
 var player_number = 1
 
 # Standard tempo the animations are timed to in beats per minute.
@@ -46,7 +49,10 @@ func _ready():
 func set_speed_of_animation_by_BPM(bpm):
 	var new_fps = bpm * default_animation_factor
 	$AnimatedSprite.frames.set_animation_speed("idle", new_fps)
-	pass
+
+# After the character is defeated (or a game begins), restore their HP.
+func reset_hp():
+	hitpoints = max_hitpoints
 
 #func _process(delta):
 #	pass

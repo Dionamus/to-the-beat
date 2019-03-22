@@ -7,6 +7,7 @@
 
 [node name="Stage" type="Node"]
 script = ExtResource( 1 )
+bpm = 133
 
 [node name="GameTimer" type="Timer" parent="."]
 wait_time = 4096.0
@@ -38,8 +39,6 @@ smoothing_speed = 10.0
 editor_draw_limits = true
 
 [node name="HUD" parent="Camera2D" instance=ExtResource( 3 )]
-anchor_right = 1.0
-margin_bottom = 135.0
 
 [node name="Position0" type="Position2D" parent="."]
 position = Vector2( 200, 1510 )

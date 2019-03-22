@@ -19,6 +19,7 @@ onready var debug_timer = 0
 
 func _ready():
 	# Sets up Player1
+	$Player1.reset_hp()
 	$Player1.set_speed_of_animation_by_BPM(bpm)
 	$Player1.hide()
 	$Player1.grid_number = 0
@@ -30,6 +31,7 @@ func _ready():
 	$Player1.player_number = 1
 	
 	# Sets up Player2
+	$Player1.reset_hp()
 	$Player2.set_speed_of_animation_by_BPM(bpm)
 	$Player2.hide()
 	$Player2.grid_number = 8
@@ -53,6 +55,7 @@ func _process(delta):
 			$Player1/AnimatedSprite.flip_h = false
 			$Player2/AnimatedSprite.flip_h = true
 		
+		# FIXME: Get the tempo timing to work.
 		if Input.is_action_pressed("p1_left"):
 			if $Player1.grid_number != 0 and $Player1.grid_number != $Player2.grid_number + 1:
 				$Player1.grid_number -= 1
@@ -73,10 +76,6 @@ func _process(delta):
 
 # Sets the position of the player characters.
 func set_position(main_player, grid_number):
-	# FIXME: main_player's position does not adjust to the correct position according to the 
-	# grid number (except for Player1 on grid_number 0) When Player2 is moved to
-	# the left, they occupy the same space as Player1, which is not supposed to
-	# happen in the game.
 	if grid_number == 0:
 		tween.interpolate_property(main_player, "position", main_player.position,
 		$Position0.position, .2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)

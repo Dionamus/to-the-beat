@@ -18,8 +18,8 @@ size = 35
 font_data = ExtResource( 3 )
 
 [node name="HUD" type="MarginContainer"]
-margin_right = 1920.0
-margin_bottom = 150.0
+anchor_right = 1.0
+margin_bottom = 135.0
 rect_min_size = Vector2( 0, 150 )
 custom_constants/margin_right = 20
 custom_constants/margin_top = 20
