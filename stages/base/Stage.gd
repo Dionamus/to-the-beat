@@ -17,6 +17,12 @@ onready var tween = $Tween
 
 onready var debug_timer = 0
 
+# The start frame for the tempo timing.
+onready var start_frame = 21
+
+# The end frame for the tempo timing.
+onready var end_frame = 8
+
 func _ready():
 	# Sets up Player1
 	$Player1.reset_hp()
@@ -46,8 +52,9 @@ func _ready():
 	$StartTimer.start()
 
 func _process(delta):
-	# The input
+	# Allow the input if the game is not over and input is allowed.
 	if !is_game_over and is_input_allowed:
+		# Flip the player position  when they are on the opposite sides of each other.
 		if $Player1.position.x > $Player2.position.x and $Player2.position.x < $Player1.position.x:
 			$Player1/AnimatedSprite.flip_h = true
 			$Player2/AnimatedSprite.flip_h = false
@@ -55,26 +62,32 @@ func _process(delta):
 			$Player1/AnimatedSprite.flip_h = false
 			$Player2/AnimatedSprite.flip_h = true
 		
-		# FIXME: Get the tempo timing to work.
-		if Input.is_action_pressed("p1_left"):
+		# FIXME: Flesh out the controls more.
+		if Input.is_action_just_pressed("p1_left"):
 			if $Player1.grid_number != 0 and $Player1.grid_number != $Player2.grid_number + 1:
-				$Player1.grid_number -= 1
-				set_position($Player1, $Player1.grid_number)
-		if Input.is_action_pressed("p1_right"):
+				if $Player1/AnimatedSprite.frame <= end_frame or $Player1/AnimatedSprite.frame >= start_frame:
+					$Player1.grid_number -= 1
+					set_position($Player1, $Player1.grid_number)
+		if Input.is_action_just_pressed("p1_right"):
 			#breakpoint
 			if $Player1.grid_number != 8 and $Player1.grid_number != $Player2.grid_number - 1:
-				$Player1.grid_number += 1
-				set_position($Player1, $Player1.grid_number)
-		if Input.is_action_pressed("p2_left"):
+				if $Player1/AnimatedSprite.frame <= end_frame or $Player1/AnimatedSprite.frame >= start_frame:
+					$Player1.grid_number += 1
+					set_position($Player1, $Player1.grid_number)
+		if Input.is_action_just_pressed("p2_left"):
 			if $Player2.grid_number != 0 and $Player2.grid_number != $Player2.grid_number + 1:
-				$Player2.grid_number -= 1
-				set_position($Player2, $Player2.grid_number)
-		if Input.is_action_pressed("p2_right"):
+				if $Player2/AnimatedSprite.frame <= end_frame or $Player2/AnimatedSprite.frame >= start_frame:
+					$Player2.grid_number -= 1
+					set_position($Player2, $Player2.grid_number)
+		if Input.is_action_just_pressed("p2_right"):
 			if $Player1.grid_number != 8 and $Player2.grid_number != $Player1.grid_number - 1:
-				$Player2.grid_number += 1
-				set_position($Player2, $Player2.grid_number)
+				if $Player2/AnimatedSprite.frame <= end_frame or $Player2/AnimatedSprite.frame >= start_frame:
+					$Player2.grid_number += 1
+					set_position($Player2, $Player2.grid_number)
 
 # Sets the position of the player characters.
+# main_player is the player that is being controlled, the grid number is the 
+# grid_number that the position is being set to.
 func set_position(main_player, grid_number):
 	if grid_number == 0:
 		tween.interpolate_property(main_player, "position", main_player.position,

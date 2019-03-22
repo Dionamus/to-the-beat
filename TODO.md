@@ -6,14 +6,15 @@
 
 ### Stage.tscn
 
-* Get the controls up and running in the base stage without tying it to the
-tempo.
-  * Tie the movement to the tempo.
+~~* Get the controls up and running in the base stage without tying it to the
+tempo.~~
+  ~~* Tie the movement to the tempo.~~
 * ~~Get tempo mechanic figured out.~~
 * ~~Replace the background with an image.~~
 * ~~Add the HUD. It's attached to the game's camera, but the HUD
 isn't complete. See the subsection "HUD.tscn".~~
 * Get the HUD to scale correctly with the camera's zoom.
+* Flesh out the controls.
 
 ### Debug.tscn
 
