@@ -72,8 +72,8 @@ this.)
       all of the control of the menus and pausing.)
     * Add "2-Player Simultaneous Control" setting. (Makes it to where both
       players control pausing and navigating the cursor in the menus
-      simultaneously. This does not work in the Options Menu.
-      Not recommended when having guests over with itchy button fingers/thumbs.)
+      simultaneously. This does not work in the Options Menu. Not recommended
+      when having guests over with itchy button fingers/thumbs.)
     * Add "2-Player Individual Control" setting. (Makes it to where both players
       get their own cursor for navigating menus when not in a game. They must be
       on the same UI element to confirm the selection (this does not happen in

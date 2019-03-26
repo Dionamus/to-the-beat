@@ -15,7 +15,7 @@ onready var is_input_allowed = false
 
 onready var tween = $Tween
 
-onready var debug_timer = 0
+# onready var debug_timer = 0
 
 func _ready():
 	# Sets up Player1
