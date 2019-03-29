@@ -52,10 +52,12 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "idle"
-frame = 12
+frame = 4
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource( 2 )
 
+[connection signal="lose_round" from="." to="." method="_on_Character_lose_round"]
+[connection signal="win_round" from="." to="." method="_on_Character_win_round"]
