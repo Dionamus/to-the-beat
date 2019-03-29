@@ -12,6 +12,9 @@ signal win_game
 # Signals whether the player loses the game (to play a "lose game" animation).
 signal lose_game
 
+# Signals whether the player gets hit (to play a hit animation and to do damage).
+signal hit
+
 # Max hitpoints of the character. Once this reaches 0, the player
 # is defeated and the opponent wins for the round.
 export (int) var max_hitpoints = 200
@@ -43,6 +46,7 @@ var grid_number
 onready var wins = 0
 
 func _ready():
+	hitpoints = max_hitpoints
 	pass
 
 # Sets the speed of the animations by bpm.

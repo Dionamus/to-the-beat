@@ -10,7 +10,7 @@ script = ExtResource( 1 )
 bpm = 133
 
 [node name="GameTimer" type="Timer" parent="."]
-wait_time = 4096.0
+wait_time = 99.0
 one_shot = true
 
 [node name="StartTimer" type="Timer" parent="."]
@@ -25,7 +25,7 @@ position = Vector2( 1800, 1012 )
 texture = ExtResource( 2 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 80, 103 )
+position = Vector2( 47.272, 92.9298 )
 anchor_mode = 0
 current = true
 zoom = Vector2( 1.75, 1.75 )
