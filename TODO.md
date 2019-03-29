@@ -41,9 +41,9 @@ isn't complete. See the subsection "HUD.tscn".~~
 * ~~Make the art for the win counter for 2 wins.~~
 * ~~Get the HUD to scale correctly.~~
 * Program the HUD.
-  * Interface the health of the characters
+  * ~~Interface the health of the characters.~~
   * And their wins.
-  * And the time of the game.
+  * ~~And the time of the game.~~
 
 ### Character.tscn
 
