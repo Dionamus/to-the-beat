@@ -1,13 +1,16 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://stages/base/Stage.gd" type="Script" id=1]
-[ext_resource path="res://stages/base/basebg.png" type="Texture" id=2]
-[ext_resource path="res://interface/hud/HUD.tscn" type="PackedScene" id=3]
-[ext_resource path="res://characters/base/Character.tscn" type="PackedScene" id=4]
+[ext_resource path="res://characters/control/ControlCharacter.tscn" type="PackedScene" id=2]
+[ext_resource path="res://stages/base/basebg.png" type="Texture" id=3]
+[ext_resource path="res://interface/hud/HUD.tscn" type="PackedScene" id=4]
+[ext_resource path="res://characters/base/Character.tscn" type="PackedScene" id=5]
 
 [node name="Stage" type="Node"]
 script = ExtResource( 1 )
 bpm = 133
+
+[node name="ControlCharacter" parent="." instance=ExtResource( 2 )]
 
 [node name="GameTimer" type="Timer" parent="."]
 wait_time = 99.0
@@ -21,8 +24,8 @@ autostart = true
 [node name="Tween" type="Tween" parent="."]
 
 [node name="StageBackground" type="Sprite" parent="."]
-position = Vector2( 1800, 1012 )
-texture = ExtResource( 2 )
+position = Vector2( 1825, 1012 )
+texture = ExtResource( 3 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 47.272, 92.9298 )
@@ -38,7 +41,7 @@ smoothing_enabled = true
 smoothing_speed = 10.0
 editor_draw_limits = true
 
-[node name="HUD" parent="Camera2D" instance=ExtResource( 3 )]
+[node name="HUD" parent="Camera2D" instance=ExtResource( 4 )]
 
 [node name="Position0" type="Position2D" parent="."]
 position = Vector2( 200, 1510 )
@@ -67,11 +70,11 @@ position = Vector2( 3000, 1510 )
 [node name="Position8" type="Position2D" parent="."]
 position = Vector2( 3400, 1510 )
 
-[node name="Player1" parent="." instance=ExtResource( 4 )]
+[node name="Player1" parent="." instance=ExtResource( 5 )]
 position = Vector2( 200, 1510 )
 scale = Vector2( 10, 10 )
 
-[node name="Player2" parent="." instance=ExtResource( 4 )]
+[node name="Player2" parent="." instance=ExtResource( 5 )]
 modulate = Color( 0.0583649, 0.628898, 0.878906, 1 )
 position = Vector2( 3400, 1510 )
 scale = Vector2( 10, 10 )

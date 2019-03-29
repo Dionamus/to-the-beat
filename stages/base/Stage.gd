@@ -61,8 +61,10 @@ func _process(delta):
 		else:
 			$Player1/AnimatedSprite.flip_h = false
 			$Player2/AnimatedSprite.flip_h = true
-		
+			
 		# FIXME: Flesh out the controls more.
+		# Player 1 controls
+		
 		if Input.is_action_just_pressed("p1_left"):
 			if $Player1.grid_number != 0 and $Player1.grid_number != $Player2.grid_number + 1:
 				if $Player1/AnimatedSprite.frame <= end_frame or $Player1/AnimatedSprite.frame >= start_frame:
@@ -74,6 +76,8 @@ func _process(delta):
 				if $Player1/AnimatedSprite.frame <= end_frame or $Player1/AnimatedSprite.frame >= start_frame:
 					$Player1.grid_number += 1
 					set_position($Player1, $Player1.grid_number)
+					
+		# Player 2 controls
 		if Input.is_action_just_pressed("p2_left"):
 			if $Player2.grid_number != 0 and $Player2.grid_number != $Player2.grid_number + 1:
 				if $Player2/AnimatedSprite.frame <= end_frame or $Player2/AnimatedSprite.frame >= start_frame:
