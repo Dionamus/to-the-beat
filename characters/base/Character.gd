@@ -74,7 +74,7 @@ func reset_hp():
 func take_damage(damage_done):
 	hitpoints -= damage_done
 
-# Deals damage 
+# Deals damage to an opponent character
 func deal_damage(damage_done):
 	return damage_done
 

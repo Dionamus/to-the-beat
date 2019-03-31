@@ -35,4 +35,3 @@ func _process(delta):
 	
 	p1_HP_bar.value = p1_object.hitpoints
 	p2_HP_bar.value = p2_object.hitpoints
-	pass
