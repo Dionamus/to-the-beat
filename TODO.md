@@ -28,7 +28,7 @@ isn't complete. See the subsection "HUD.tscn".~~
 * ~~Add `Player1Name`~~
 * ~~Add `Player1HPBar`.~~
 * ~~Add `Player1Wins`.~~
-* ~~Add `Player2Name`~~
+* ~~Add `Player2Name`.~~
 * ~~Add `Player2HPBar`.~~
 * ~~Add `Player2Wins`.~~
 * ~~Add `RoundTimer`.~~
@@ -63,12 +63,12 @@ this.)
 
 ### OptionsMenu.tscn (not yet added)
 
-* Add video settings
+* Add video settings.
   * Add resolution setting.
   * Add refresh rate setting.
   * Add VSync setting.
   * Add fullscreen/windowed/borderless setting.
-* Add control settings
+* Add control settings.
   * Add "Menu Control Mode" setting (in a combo box). (These settings don't
   apply in the character select screen, where the Menu Control Mode defaults to
   2-player Individual Control).
@@ -83,13 +83,13 @@ this.)
       on the same UI element to confirm the selection (this does not happen in
       the character select screen). Both players have control over pausing, but
       only the player who paused the game has control over the pause menu.).
-* Get controls working
+* Get controls working.
 
 ### CharacterSelect.tscn (not yet added)
 
-* Add character preview
-  * For player 1
-  * And player 2
+* Add character preview.
+  * For player 1.
+  * And player 2.
 * Add character roster (with only the red rectangle).
 * Get controls working for both players.
 * Make it to where after both players have selected their characters, prompt
@@ -98,9 +98,9 @@ Menu Control Mode).
 
 ### StageSelect.tscn (not yet added)
 
-* Add stage list
-* Add stage preview
-* Get controls working
+* Add stage list.
+* Add stage preview.
+* Get controls working.
 
 ### MusicSelect.tscn (not yet added)
 
