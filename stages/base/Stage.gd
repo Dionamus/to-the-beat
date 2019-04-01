@@ -4,7 +4,7 @@ extends Node
 # This is meant to be passed from the music select screen (not implmented yet).
 # The default value is 120 BPM because that's the speed the animations are
 # tied to.
-export (int) var bpm = 120.0
+export (int) var bpm = 120
 
 # Note: Do not assign the position markers to other variables. It will throw
 # errors in the debugger. -Brandon Hawkins
@@ -23,7 +23,16 @@ onready var start_frame = 21
 # The end frame for the tempo timing.
 onready var end_frame = 8
 
+# The control character is used for synchronizing the animation
+# of the characters.
+onready var tempo_control = $ControlCharacter/AnimatedSprite
+
 func _ready():
+	# Sets up the ControlCharacter for tempo timing
+	tempo_control.animation = "idle"
+	tempo_control.playing = false
+	tempo_control.frame = 0
+	
 	# Sets up Player1
 	$Player1.reset_hp()
 	$Player1.set_speed_of_animation_by_BPM(bpm)
@@ -52,6 +61,11 @@ func _ready():
 	$StartTimer.start()
 
 func _process(delta):
+	# Make sure that the frame number for the player's sprites
+	# are the same as the control sprite.
+	$Player1/AnimatedSprite.frame = tempo_control.frame
+	$Player2/AnimatedSprite.frame = tempo_control.frame
+	
 	# Allow the input if the game is not over and input is allowed.
 	if !is_game_over and is_input_allowed:
 		# Flip the player position  when they are on the opposite sides of each other.
@@ -61,31 +75,31 @@ func _process(delta):
 		else:
 			$Player1/AnimatedSprite.flip_h = false
 			$Player2/AnimatedSprite.flip_h = true
-			
+		
+		# Tempo controls
 		# FIXME: Flesh out the controls more.
 		# Player 1 controls
-		
 		if Input.is_action_just_pressed("p1_left"):
 			if $Player1.grid_number != 0 and $Player1.grid_number != $Player2.grid_number + 1:
-				if $Player1/AnimatedSprite.frame <= end_frame or $Player1/AnimatedSprite.frame >= start_frame:
+				if tempo_control.frame <= end_frame or tempo_control.frame >= start_frame:
 					$Player1.grid_number -= 1
 					set_position($Player1, $Player1.grid_number)
 		if Input.is_action_just_pressed("p1_right"):
 			#breakpoint
 			if $Player1.grid_number != 8 and $Player1.grid_number != $Player2.grid_number - 1:
-				if $Player1/AnimatedSprite.frame <= end_frame or $Player1/AnimatedSprite.frame >= start_frame:
+				if tempo_control.frame <= end_frame or tempo_control.frame >= start_frame:
 					$Player1.grid_number += 1
 					set_position($Player1, $Player1.grid_number)
 					
 		# Player 2 controls
 		if Input.is_action_just_pressed("p2_left"):
 			if $Player2.grid_number != 0 and $Player2.grid_number != $Player2.grid_number + 1:
-				if $Player2/AnimatedSprite.frame <= end_frame or $Player2/AnimatedSprite.frame >= start_frame:
+				if tempo_control.frame <= end_frame or tempo_control.frame >= start_frame:
 					$Player2.grid_number -= 1
 					set_position($Player2, $Player2.grid_number)
 		if Input.is_action_just_pressed("p2_right"):
 			if $Player1.grid_number != 8 and $Player2.grid_number != $Player1.grid_number - 1:
-				if $Player2/AnimatedSprite.frame <= end_frame or $Player2/AnimatedSprite.frame >= start_frame:
+				if tempo_control.frame <= end_frame or tempo_control.frame >= start_frame:
 					$Player2.grid_number += 1
 					set_position($Player2, $Player2.grid_number)
 
@@ -139,9 +153,11 @@ func _on_StartTimer_timeout():
 	$Player2.show()
 	$Player2/AnimatedSprite.playing = true
 	
-	$GameTimer.start()
+	tempo_control.playing = true
 	
 	is_input_allowed = true
+	
+	$GameTimer.start()
 
 func _on_GameTimer_timeout():
 	is_game_over = true

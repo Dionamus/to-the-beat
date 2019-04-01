@@ -45,7 +45,7 @@ var grid_number
 # Round wins
 onready var wins = 0
 
-# Losses
+# Round losses
 onready var losses = 0
 
 func _ready():

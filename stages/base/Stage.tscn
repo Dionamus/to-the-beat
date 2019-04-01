@@ -8,7 +8,7 @@
 
 [node name="Stage" type="Node"]
 script = ExtResource( 1 )
-bpm = 133
+bpm = 455
 
 [node name="ControlCharacter" parent="." instance=ExtResource( 2 )]
 
