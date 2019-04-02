@@ -13,17 +13,21 @@ tempo.~~
 * ~~Replace the background with an image.~~
 * ~~Add the HUD. It's attached to the game's camera, but the HUD
 isn't complete. See the subsection "HUD.tscn".~~
-* Get the HUD to scale correctly with the camera's zoom.
+* Get the HUD and debug info to scale and align correctly with the camera's zoom.
+* Get the camera to zoom in a way where it'll zoom out when the characters
+  are spaced out, and zoom in when they are close to each other.
 * Flesh out the controls.
 
-### Debug.tscn
+### Debug.tscn (COMPLETE)
 
-* Add frame rate.
-* Add animation frame rate.
-* Draw hitboxes when enabled.
-* Program the debug HUD.
+* ~~Add frame rate.~~
+* ~~Add animation frame rate.~~
+* ~~Draw hitboxes when enabled.~~ I'm considering against it.
+* ~~Program the debug HUD.~~
+  * ~~Interface the frame rate.~~
+  * ~~Interface the animation frame rate.~~
 
-### HUD.tscn
+### HUD.tscn (COMPLETE)
 
 * ~~Add `Player1Name`~~
 * ~~Add `Player1HPBar`.~~
@@ -40,9 +44,9 @@ isn't complete. See the subsection "HUD.tscn".~~
   * ~~And player 2.~~
 * ~~Make the art for the win counter for 2 wins.~~
 * ~~Get the HUD to scale correctly.~~
-* Program the HUD.
+* ~~Program the HUD.~~
   * ~~Interface the health of the characters.~~
-  * And their wins.
+  * ~~And their wins.~~
   * ~~And the time of the game.~~
 
 ### Character.tscn

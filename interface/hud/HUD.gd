@@ -16,6 +16,11 @@ onready var p2_wins = $HBoxContainer/Player2Container/P2NameAndWins/Player2Wins
 onready var timer_label = $HBoxContainer/GameTimerContainer/GameTimerLabel
 onready var timer = $"../../GameTimer"
 
+var no_wins = preload("res://interface/hud/no_wins.png")
+var p1_one_win = preload("res://interface/hud/p1_one_win.png")
+var p2_one_win = preload("res://interface/hud/p2_one_win.png")
+var two_wins = preload("res://interface/hud/two_wins.png")
+
 func _ready():
 	# Set the players' HP bar to represent their max HP.
 	p1_HP_bar.value = p1_object.max_hitpoints

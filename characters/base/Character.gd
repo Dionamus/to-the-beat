@@ -13,7 +13,7 @@ signal win_game
 signal lose_game
 
 # Signals whether the player gets hit (to play a hit animation and to do damage).
-signal is_hit
+signal is_hit(damage)
 
 # Max hitpoints of the character. Once this reaches 0, the player
 # is defeated and the opponent wins for the round.
@@ -55,9 +55,6 @@ func _process(delta):
 	if hitpoints <= 0:
 		hitpoints = 0
 		emit_signal("lose_round")
-	
-	if losses == 2:
-		#emit_signal("lose_game")
 		pass
 
 # Sets the speed of the animations by bpm.
@@ -83,3 +80,8 @@ func _on_Character_win_round():
 
 func _on_Character_lose_round():
 	losses += 1
+	# Play a lose round animation
+
+func _on_Character_lose_game():
+	# Play a lose game animation
+	pass # Replace with function body.

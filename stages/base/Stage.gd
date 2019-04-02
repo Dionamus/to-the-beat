@@ -15,6 +15,8 @@ onready var is_input_allowed = false
 
 onready var tween = $Tween
 
+onready var hud = $Camera2D/HUD
+
 # onready var debug_timer = 0
 
 # The start frame for the tempo timing.
@@ -23,12 +25,12 @@ onready var start_frame = 21
 # The end frame for the tempo timing.
 onready var end_frame = 8
 
-# The control character is used for synchronizing the animation
-# of the characters.
+# Used for synchronizing the animations of the player characters.
 onready var tempo_control = $ControlCharacter/AnimatedSprite
 
 func _ready():
 	# Sets up the ControlCharacter for tempo timing
+	$ControlCharacter.set_speed_of_animation_by_BPM(bpm)
 	tempo_control.animation = "idle"
 	tempo_control.playing = false
 	tempo_control.frame = 0
@@ -57,51 +59,57 @@ func _ready():
 	$Player2/AnimatedSprite.flip_h = true
 	$Player2.player_number = 2
 	
+	$Camera2D/Debug.hide()
+	
 	# Starts the game 
 	$StartTimer.start()
 
+func _unhandled_input(event):
+	match event.get_class():
+		"InputEventKey":
+			# Allow the input if the game is not over and input is allowed.
+			if !is_game_over and is_input_allowed:
+				# Flip the player position  when they are on the opposite sides of each other.
+				if $Player1.position.x > $Player2.position.x and $Player2.position.x < $Player1.position.x:
+					$Player1/AnimatedSprite.flip_h = true
+					$Player2/AnimatedSprite.flip_h = false
+				else:
+					$Player1/AnimatedSprite.flip_h = false
+					$Player2/AnimatedSprite.flip_h = true
+				
+				# Tempo controls
+				# FIXME: Flesh out the controls more.
+				
+				# Player 1 controls
+				if Input.is_action_just_pressed("p1_left"):
+					if $Player1.grid_number != 0 and $Player1.grid_number != $Player2.grid_number + 1:
+						if tempo_control.frame <= end_frame or tempo_control.frame >= start_frame:
+							$Player1.grid_number -= 1
+							set_position($Player1, $Player1.grid_number)
+				if Input.is_action_just_pressed("p1_right"):
+					#breakpoint
+					if $Player1.grid_number != 8 and $Player1.grid_number != $Player2.grid_number - 1:
+						if tempo_control.frame <= end_frame or tempo_control.frame >= start_frame:
+							$Player1.grid_number += 1
+							set_position($Player1, $Player1.grid_number)
+							
+				# Player 2 controls
+				if Input.is_action_just_pressed("p2_left"):
+					if $Player2.grid_number != 0 and $Player2.grid_number != $Player2.grid_number + 1:
+						if tempo_control.frame <= end_frame or tempo_control.frame >= start_frame:
+							$Player2.grid_number -= 1
+							set_position($Player2, $Player2.grid_number)
+				if Input.is_action_just_pressed("p2_right"):
+					if $Player1.grid_number != 8 and $Player2.grid_number != $Player1.grid_number - 1:
+						if tempo_control.frame <= end_frame or tempo_control.frame >= start_frame:
+							$Player2.grid_number += 1
+							set_position($Player2, $Player2.grid_number)
+
 func _process(delta):
-	# Make sure that the frame number for the player's sprites
+	# Make sure that the frame number for the players' sprites
 	# are the same as the control sprite.
 	$Player1/AnimatedSprite.frame = tempo_control.frame
 	$Player2/AnimatedSprite.frame = tempo_control.frame
-	
-	# Allow the input if the game is not over and input is allowed.
-	if !is_game_over and is_input_allowed:
-		# Flip the player position  when they are on the opposite sides of each other.
-		if $Player1.position.x > $Player2.position.x and $Player2.position.x < $Player1.position.x:
-			$Player1/AnimatedSprite.flip_h = true
-			$Player2/AnimatedSprite.flip_h = false
-		else:
-			$Player1/AnimatedSprite.flip_h = false
-			$Player2/AnimatedSprite.flip_h = true
-		
-		# Tempo controls
-		# FIXME: Flesh out the controls more.
-		# Player 1 controls
-		if Input.is_action_just_pressed("p1_left"):
-			if $Player1.grid_number != 0 and $Player1.grid_number != $Player2.grid_number + 1:
-				if tempo_control.frame <= end_frame or tempo_control.frame >= start_frame:
-					$Player1.grid_number -= 1
-					set_position($Player1, $Player1.grid_number)
-		if Input.is_action_just_pressed("p1_right"):
-			#breakpoint
-			if $Player1.grid_number != 8 and $Player1.grid_number != $Player2.grid_number - 1:
-				if tempo_control.frame <= end_frame or tempo_control.frame >= start_frame:
-					$Player1.grid_number += 1
-					set_position($Player1, $Player1.grid_number)
-					
-		# Player 2 controls
-		if Input.is_action_just_pressed("p2_left"):
-			if $Player2.grid_number != 0 and $Player2.grid_number != $Player2.grid_number + 1:
-				if tempo_control.frame <= end_frame or tempo_control.frame >= start_frame:
-					$Player2.grid_number -= 1
-					set_position($Player2, $Player2.grid_number)
-		if Input.is_action_just_pressed("p2_right"):
-			if $Player1.grid_number != 8 and $Player2.grid_number != $Player1.grid_number - 1:
-				if tempo_control.frame <= end_frame or tempo_control.frame >= start_frame:
-					$Player2.grid_number += 1
-					set_position($Player2, $Player2.grid_number)
 
 # Sets the position of the player characters.
 # main_player is the player that is being controlled, the grid number is the 
@@ -162,3 +170,15 @@ func _on_StartTimer_timeout():
 func _on_GameTimer_timeout():
 	is_game_over = true
 	is_input_allowed = false
+
+func _on_Player1_win_round():
+	if $Player1.wins == 1:
+		hud.p1_wins = hud.p1_one_win
+	if $Player1.wins == 2:
+		hud.p1_wins = hud.two_wins
+
+func _on_Player2_win_round():
+	if $Player2.wins == 1:
+		hud.p2_wins = hud.p2_one_win
+	if $Player2.wins == 2:
+		hud.p2_wins = hud.two_wins

@@ -1,45 +1,46 @@
-[gd_scene format=2]
+[gd_scene load_steps=6 format=2]
 
-[node name="Debug" type="Node" index="0"]
+[ext_resource path="res://interface/debug/Debug.gd" type="Script" id=1]
+[ext_resource path="res://interface/Roboto-Regular.ttf" type="DynamicFontData" id=2]
 
-[node name="Framerate" type="Label" parent="." index="0"]
+[sub_resource type="DynamicFont" id=1]
+size = 30
+font_data = ExtResource( 2 )
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 1046.0
-margin_right = 62.0
-margin_bottom = 1060.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-text = "FPS: 1000"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
+[sub_resource type="DynamicFont" id=2]
+size = 30
+font_data = ExtResource( 2 )
 
-[node name="AnimationFramerate" type="Label" parent="." index="1"]
+[sub_resource type="DynamicFont" id=3]
+size = 30
+font_data = ExtResource( 2 )
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 1066.0
-margin_right = 175.0
+[node name="Debug" type="Control"]
+margin_right = 1920.0
 margin_bottom = 1080.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-text = "Animation Framerate: 1000"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
+script = ExtResource( 1 )
 
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 386.0
+margin_bottom = 116.0
+
+[node name="FrameRate" type="Label" parent="VBoxContainer"]
+margin_right = 386.0
+margin_bottom = 36.0
+custom_fonts/font = SubResource( 1 )
+text = "Frame Rate: x FPS"
+
+[node name="AnimationFrameRate" type="Label" parent="VBoxContainer"]
+margin_top = 40.0
+margin_right = 386.0
+margin_bottom = 76.0
+custom_fonts/font = SubResource( 2 )
+text = "Animation Frame Rate: x FPS"
+
+[node name="Tempo" type="Label" parent="VBoxContainer"]
+margin_top = 80.0
+margin_right = 386.0
+margin_bottom = 116.0
+custom_fonts/font = SubResource( 3 )
+text = "Tempo: x BPM"
 

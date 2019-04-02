@@ -1,14 +1,14 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://stages/base/Stage.gd" type="Script" id=1]
 [ext_resource path="res://characters/control/ControlCharacter.tscn" type="PackedScene" id=2]
 [ext_resource path="res://stages/base/basebg.png" type="Texture" id=3]
 [ext_resource path="res://interface/hud/HUD.tscn" type="PackedScene" id=4]
-[ext_resource path="res://characters/base/Character.tscn" type="PackedScene" id=5]
+[ext_resource path="res://interface/debug/Debug.tscn" type="PackedScene" id=5]
+[ext_resource path="res://characters/base/Character.tscn" type="PackedScene" id=6]
 
 [node name="Stage" type="Node"]
 script = ExtResource( 1 )
-bpm = 455
 
 [node name="ControlCharacter" parent="." instance=ExtResource( 2 )]
 
@@ -43,6 +43,10 @@ editor_draw_limits = true
 
 [node name="HUD" parent="Camera2D" instance=ExtResource( 4 )]
 
+[node name="Debug" parent="Camera2D" instance=ExtResource( 5 )]
+margin_right = 0.0
+margin_bottom = 0.0
+
 [node name="Position0" type="Position2D" parent="."]
 position = Vector2( 200, 1510 )
 
@@ -70,14 +74,16 @@ position = Vector2( 3000, 1510 )
 [node name="Position8" type="Position2D" parent="."]
 position = Vector2( 3400, 1510 )
 
-[node name="Player1" parent="." instance=ExtResource( 5 )]
+[node name="Player1" parent="." instance=ExtResource( 6 )]
 position = Vector2( 200, 1510 )
 scale = Vector2( 10, 10 )
 
-[node name="Player2" parent="." instance=ExtResource( 5 )]
+[node name="Player2" parent="." instance=ExtResource( 6 )]
 modulate = Color( 0.0583649, 0.628898, 0.878906, 1 )
 position = Vector2( 3400, 1510 )
 scale = Vector2( 10, 10 )
 
 [connection signal="timeout" from="GameTimer" to="." method="_on_GameTimer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
+[connection signal="win_round" from="Player1" to="." method="_on_Player1_win_round"]
+[connection signal="win_round" from="Player2" to="." method="_on_Player2_win_round"]
