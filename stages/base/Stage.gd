@@ -36,7 +36,6 @@ func _ready():
 	tempo_control.frame = 0
 	
 	# Sets up Player1
-	$Player1.reset_hp()
 	$Player1.set_speed_of_animation_by_BPM(bpm)
 	$Player1.hide()
 	$Player1.grid_number = 0
@@ -48,7 +47,6 @@ func _ready():
 	$Player1.player_number = 1
 	
 	# Sets up Player2
-	$Player1.reset_hp()
 	$Player2.set_speed_of_animation_by_BPM(bpm)
 	$Player2.hide()
 	$Player2.grid_number = 8
@@ -110,6 +108,9 @@ func _process(delta):
 	# are the same as the control sprite.
 	$Player1/AnimatedSprite.frame = tempo_control.frame
 	$Player2/AnimatedSprite.frame = tempo_control.frame
+	
+	if not $StartTimer.is_stopped():
+		$Camera2D/StartTimerLabel.text = "Round begins in:\n" + str(int($StartTimer.time_left))
 
 # Sets the position of the player characters.
 # main_player is the player that is being controlled, the grid number is the 
@@ -164,6 +165,8 @@ func _on_StartTimer_timeout():
 	tempo_control.playing = true
 	
 	is_input_allowed = true
+	
+	$Camera2D/StartTimerLabel.hide()
 	
 	$GameTimer.start()
 

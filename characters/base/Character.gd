@@ -15,6 +15,9 @@ signal lose_game
 # Signals whether the player gets hit (to play a hit animation and to do damage).
 signal is_hit(damage)
 
+# Signals whether the player performs a hit.
+signal hits(damage)
+
 # Max hitpoints of the character. Once this reaches 0, the player
 # is defeated and the opponent wins for the round.
 export (int) var max_hitpoints = 200
@@ -27,7 +30,7 @@ export (PackedScene) var Character
 
 # Signifies which player an instanced Character is.
 # 1 is player 1, 2 is player 2. The default player should be player 1.
-var player_number = 1
+export (int) var player_number = 1
 
 # Standard tempo the animations are timed to in beats per minute.
 const default_bpm = 120.0
@@ -51,11 +54,8 @@ onready var losses = 0
 func _ready():
 	reset_hp()
 
-func _process(delta):
-	if hitpoints <= 0:
-		hitpoints = 0
-		emit_signal("lose_round")
-		pass
+#func _process(delta):
+#	pass
 
 # Sets the speed of the animations by bpm.
 func set_speed_of_animation_by_BPM(bpm):
@@ -66,22 +66,31 @@ func set_speed_of_animation_by_BPM(bpm):
 func reset_hp():
 	hitpoints = max_hitpoints
 
-# When the character gets hit, deal the amount of damage done and subtract it 
-# from their hitpoints.
-func take_damage(damage_done):
-	hitpoints -= damage_done
-
-# Deals damage to an opponent character
-func deal_damage(damage_done):
-	return damage_done
-
 func _on_Character_win_round():
 	wins += 1
+	# Play a win round animation.
 
 func _on_Character_lose_round():
 	losses += 1
-	# Play a lose round animation
+	# Play a lose round animation.
 
 func _on_Character_lose_game():
 	# Play a lose game animation
+	pass # Replace with function body.
+
+# When the character gets hit, deal the amount of damage done and subtract it 
+# from their hitpoints. If they are at or below 0 hitpoints, signal that they
+# lost the round.
+func _on_Character_is_hit(damage):
+	hitpoints -= damage
+	if hitpoints <= 0:
+		hitpoints = 0
+		emit_signal("lose_round")
+
+# When the player hits an opponent, deal the damage to the opponent.
+func _on_Character_hits(damage):
+	return damage
+
+func _on_Character_win_game():
+	# Play a victory animaiton.
 	pass # Replace with function body.
