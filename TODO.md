@@ -7,12 +7,12 @@
 ### Stage.tscn
 
 * ~~Get the controls up and running in the base stage without tying it to the
-tempo.~~
+  tempo.~~
   * ~~Tie the movement to the tempo.~~
 * ~~Get tempo mechanic figured out.~~
 * ~~Replace the background with an image.~~
 * ~~Add the HUD. It's attached to the game's camera, but the HUD
-isn't complete. See the subsection "HUD.tscn".~~
+  isn't complete. See the subsection "HUD.tscn".~~
 * Get the HUD and debug info to scale and align correctly with the camera's zoom.
 * Get the camera to zoom in a way where it'll zoom out when the characters
   are spaced out, and zoom in when they are close to each other.
@@ -54,7 +54,7 @@ isn't complete. See the subsection "HUD.tscn".~~
 
 * ~~Create sprite for player character.~~
 * ~~Make sure players don't go out of bounds on the stage.~~ (The grid prevents
-this.)
+  this.)
 * ~~Get damage to work correctly.~~
 
 ## Additional stuff
@@ -63,7 +63,16 @@ this.)
 
 * Add "Start Game" button.
 * Add "Options" button.
-* Add "Quit" button.
+* Add "Quit to Desktop" button.
+* Get controls working.
+
+### PauseMenu.tscn (not yet added)
+
+* Add "Resume Game" button
+* Add "Options" button.
+* Add "Quit to Character Select" button.
+* Add "Quit to Main Menu" button.
+* Add "Quit to Desktop" button.
 * Get controls working.
 
 ### OptionsMenu.tscn (not yet added)
@@ -98,8 +107,8 @@ this.)
 * Add character roster (with only the red rectangle).
 * Get controls working for both players.
 * Make it to where after both players have selected their characters, prompt
-the players to start the game (whoever gets to start the game depends on the
-Menu Control Mode).
+  the players to start the game (whoever gets to start the game depends on the
+  Menu Control Mode).
 
 ### StageSelect.tscn (not yet added)
 
@@ -111,8 +120,8 @@ Menu Control Mode).
 
 * Add music list (no music has been added yet).
 * Add metadata (artist, song name, album name (if any), tempo, length (not that
-it really matters since matches are 99 seconds long), places to buy/listen (e.g.
-Spotify, iTunes, Bandcamp, Deezer, Beatport, YouTube, etc.)).
+  it really matters since matches are 99 seconds long), places to buy/listen (e.g.
+  Spotify, iTunes, Bandcamp, Deezer, Beatport, YouTube, etc.)).
 * Get controls working.
 
 ### First character
