@@ -17,6 +17,7 @@ isn't complete. See the subsection "HUD.tscn".~~
 * Get the camera to zoom in a way where it'll zoom out when the characters
   are spaced out, and zoom in when they are close to each other.
 * Flesh out the controls.
+* ~~Add `StartTimerLabel` and interface it with the Stage's script.~~
 
 ### Debug.tscn (COMPLETE)
 
@@ -49,12 +50,12 @@ isn't complete. See the subsection "HUD.tscn".~~
   * ~~And their wins.~~
   * ~~And the time of the game.~~
 
-### Character.tscn
+### Character.tscn (COMPLETE?)
 
 * ~~Create sprite for player character.~~
 * ~~Make sure players don't go out of bounds on the stage.~~ (The grid prevents
 this.)
-* Get damage to work correctly.
+* ~~Get damage to work correctly.~~
 
 ## Additional stuff
 
