@@ -32,10 +32,12 @@ autostart = true
 [node name="StageBackground" type="Sprite" parent="."]
 position = Vector2( 1825, 1012 )
 texture = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 47.272, 92.9298 )
-anchor_mode = 0
 current = true
 zoom = Vector2( 1.75, 1.75 )
 limit_left = 0
@@ -45,7 +47,12 @@ limit_bottom = 2025
 limit_smoothed = true
 smoothing_enabled = true
 smoothing_speed = 10.0
+drag_margin_left = 1.0
+drag_margin_top = 1.0
+drag_margin_right = 1.0
+drag_margin_bottom = 1.0
 editor_draw_limits = true
+editor_draw_drag_margin = true
 
 [node name="HUD" parent="Camera2D" instance=ExtResource( 4 )]
 
@@ -70,30 +77,57 @@ valign = 1
 
 [node name="Position0" type="Position2D" parent="."]
 position = Vector2( 200, 1510 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Position1" type="Position2D" parent="."]
 position = Vector2( 600, 1510 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Position2" type="Position2D" parent="."]
 position = Vector2( 1000, 1510 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Position3" type="Position2D" parent="."]
 position = Vector2( 1400, 1510 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Position4" type="Position2D" parent="."]
 position = Vector2( 1800, 1510 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Position5" type="Position2D" parent="."]
 position = Vector2( 2200, 1510 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Position6" type="Position2D" parent="."]
 position = Vector2( 2600, 1510 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Position7" type="Position2D" parent="."]
 position = Vector2( 3000, 1510 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Position8" type="Position2D" parent="."]
 position = Vector2( 3400, 1510 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Player1" parent="." instance=ExtResource( 7 )]
 position = Vector2( 200, 1510 )
