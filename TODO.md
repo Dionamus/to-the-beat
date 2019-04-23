@@ -50,7 +50,7 @@
   * ~~And their wins.~~
   * ~~And the time of the game.~~
 
-### Character.tscn (COMPLETE?)
+### Character.tscn
 
 * ~~Create sprite for player character.~~
 * ~~Make sure players don't go out of bounds on the stage.~~ (The grid prevents
@@ -59,23 +59,23 @@
 
 ## Additional stuff
 
-### MainMenu.tscn (not yet added)
+### MainMenu.tscn
 
-* Add "Start Game" button.
-* Add "Options" button.
-* Add "Quit to Desktop" button.
+* ~~Add "Start Game" button.~~
+* ~~Add "Options" button.~~
+* ~~Add "Quit to Desktop" button.~~
 * Get controls working.
 
-### PauseMenu.tscn (not yet added)
+### PauseMenu.tscn
 
-* Add "Resume Game" button
-* Add "Options" button.
-* Add "Quit to Character Select" button.
-* Add "Quit to Main Menu" button.
-* Add "Quit to Desktop" button.
+* ~~Add "Resume Game" button.~~
+* ~~Add "Options" button.~~
+* ~~Add "Quit to Character Select" button.~~
+* ~~Add "Quit to Main Menu" button.~~
+* ~~Add "Quit to Desktop" button.~~
 * Get controls working.
 
-### OptionsMenu.tscn (not yet added)
+### OptionsMenu.tscn (not yet added and won't be added for the capstone) 
 
 * Add video settings.
   * Add resolution setting.
@@ -99,7 +99,7 @@
       only the player who paused the game has control over the pause menu.).
 * Get controls working.
 
-### CharacterSelect.tscn (not yet added)
+### CharacterSelect.tscn (not yet added and won't be added for the captstone)
 
 * Add character preview.
   * For player 1.
@@ -110,13 +110,13 @@
   the players to start the game (whoever gets to start the game depends on the
   Menu Control Mode).
 
-### StageSelect.tscn (not yet added)
+### StageSelect.tscn (not yet added and won't be added for the capstone)
 
 * Add stage list.
 * Add stage preview.
 * Get controls working.
 
-### MusicSelect.tscn (not yet added)
+### MusicSelect.tscn (not yet added and won't be added for the capstone)
 
 * Add music list (no music has been added yet).
 * Add metadata (artist, song name, album name (if any), tempo, length (not that
@@ -127,3 +127,7 @@
 ### First character
 
 * Implement combos for first character (the red rectangle).
+  * Light punch.
+  * Heavy punch
+  * Light kick.
+  * Heavy kick.
