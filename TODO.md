@@ -98,7 +98,7 @@
   * ~~Program it.~~
 * Get the controller controls working.
 
-### OptionsMenu.tscn (not yet added and won't be added for the capstone) 
+### OptionsMenu.tscn (not yet added and won't be added for the capstone)
 
 * Add video settings.
   * Add resolution setting.
