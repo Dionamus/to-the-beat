@@ -190,13 +190,21 @@ func _on_GameTimer_timeout():
 	is_input_allowed = false
 
 func _on_Player1_win_round():
+	$Player1.wins += 1
 	if $Player1.wins == 1:
 		hud.p1_wins = hud.p1_one_win
 	if $Player1.wins == 2:
 		hud.p1_wins = hud.two_wins
+		is_game_over = true
+		is_input_allowed = false
+		$GameTimer.stop()
 
 func _on_Player2_win_round():
+	$Player2.wins += 1
 	if $Player2.wins == 1:
 		hud.p2_wins = hud.p2_one_win
 	if $Player2.wins == 2:
 		hud.p2_wins = hud.two_wins
+		is_game_over = true
+		is_input_allowed = false
+		$GameTimer.stop()

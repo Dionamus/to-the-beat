@@ -67,12 +67,12 @@ func reset_hp():
 	hitpoints = max_hitpoints
 
 func _on_Character_win_round():
-	wins += 1
 	# Play a win round animation.
+	pass
 
 func _on_Character_lose_round():
-	losses += 1
 	# Play a lose round animation.
+	pass
 
 func _on_Character_lose_game():
 	# Play a lose game animation
