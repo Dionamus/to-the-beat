@@ -90,7 +90,15 @@ func _unhandled_input(event):
 						if tempo_control.frame <= end_frame or tempo_control.frame >= start_frame:
 							$Player1.grid_number += 1
 							set_position($Player1, $Player1.grid_number)
-							
+				if Input.is_action_just_pressed("p1_pause"):
+					breakpoint
+					if $Camera2D/PauseMenu.visible == true:
+						$Camera2D/PauseMenu.hide()
+						get_tree().paused = false
+					if $Camera2D/PauseMenu.visible == false:
+						get_tree().paused = true
+						$Camera2D/PauseMenu.show()
+					
 				# Player 2 controls
 				if Input.is_action_just_pressed("p2_left"):
 					if $Player2.grid_number != 0 and $Player2.grid_number != $Player2.grid_number + 1:
@@ -102,6 +110,13 @@ func _unhandled_input(event):
 						if tempo_control.frame <= end_frame or tempo_control.frame >= start_frame:
 							$Player2.grid_number += 1
 							set_position($Player2, $Player2.grid_number)
+				if Input.is_action_just_pressed("p2_pause"):
+					if $Camera2D/PauseMenu.visible == false:
+						get_tree().paused = true
+						$Camera2D/PauseMenu.show()
+					if $Camera2D/PauseMenu.visible == true:
+						$Camera2D/PauseMenu.hide()
+						get_tree().paused = false
 
 func _process(delta):
 	# Make sure that the frame number for the players' sprites

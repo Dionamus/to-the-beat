@@ -56,24 +56,44 @@
 * ~~Make sure players don't go out of bounds on the stage.~~ (The grid prevents
   this.)
 * ~~Get damage to work correctly.~~
+* Implement combos.
+  * Light punch.
+  * Heavy punch
+  * Light kick.
+  * Heavy kick.
 
 ## Additional stuff
 
 ### MainMenu.tscn
 
-* ~~Add "Start Game" button.~~
+* ~~Add "Start Game" button.~~ (For right now, it only loads into)
+  * ~~Program it.~~
 * ~~Add "Options" button.~~
+  * Program it.
 * ~~Add "Quit to Desktop" button.~~
+  * ~~Program it.~~
 * Get controls working.
 
 ### PauseMenu.tscn
 
 * ~~Add "Resume Game" button.~~
+  * Program it.
 * ~~Add "Options" button.~~
+  * Program it (after OptionsMenu.tscn has been made).
 * ~~Add "Quit to Character Select" button.~~
+  * Program it.
 * ~~Add "Quit to Main Menu" button.~~
+  * Program it.
 * ~~Add "Quit to Desktop" button.~~
+  * Program it.
 * Get controls working.
+
+### QuitConfirmation.tscn (COMPLETE)
+
+* ~~Add "Yes" button.~~
+  * ~~Program it.~~
+* ~~Add "No" button.~~
+  * ~~Program it.~~
 
 ### OptionsMenu.tscn (not yet added and won't be added for the capstone) 
 
@@ -99,7 +119,7 @@
       only the player who paused the game has control over the pause menu.).
 * Get controls working.
 
-### CharacterSelect.tscn (not yet added and won't be added for the captstone)
+### CharacterSelect.tscn (not yet added and won't be added for the capstone)
 
 * Add character preview.
   * For player 1.
@@ -123,11 +143,3 @@
   it really matters since matches are 99 seconds long), places to buy/listen (e.g.
   Spotify, iTunes, Bandcamp, Deezer, Beatport, YouTube, etc.)).
 * Get controls working.
-
-### First character
-
-* Implement combos for first character (the red rectangle).
-  * Light punch.
-  * Heavy punch
-  * Light kick.
-  * Heavy kick.

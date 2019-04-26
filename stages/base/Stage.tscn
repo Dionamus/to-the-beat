@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://stages/base/Stage.gd" type="Script" id=1]
 [ext_resource path="res://characters/control/ControlCharacter.tscn" type="PackedScene" id=2]
@@ -6,7 +6,8 @@
 [ext_resource path="res://interface/hud/HUD.tscn" type="PackedScene" id=4]
 [ext_resource path="res://interface/debug/Debug.tscn" type="PackedScene" id=5]
 [ext_resource path="res://interface/Roboto-Regular.ttf" type="DynamicFontData" id=6]
-[ext_resource path="res://characters/base/Character.tscn" type="PackedScene" id=7]
+[ext_resource path="res://interface/pausemenu/PauseMenu.tscn" type="PackedScene" id=7]
+[ext_resource path="res://characters/base/Character.tscn" type="PackedScene" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 70
@@ -57,8 +58,10 @@ editor_draw_drag_margin = true
 [node name="HUD" parent="Camera2D" instance=ExtResource( 4 )]
 
 [node name="Debug" parent="Camera2D" instance=ExtResource( 5 )]
-margin_right = 0.0
-margin_bottom = 0.0
+margin_left = 2900.73
+margin_top = 1665.07
+margin_right = 3286.73
+margin_bottom = 1781.07
 
 [node name="StartTimerLabel" type="Label" parent="Camera2D"]
 anchor_left = 0.5
@@ -74,6 +77,17 @@ text = "Round begins in:
 5"
 align = 1
 valign = 1
+
+[node name="PauseMenu" parent="Camera2D" instance=ExtResource( 7 )]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 509.728
+margin_top = 377.07
+margin_right = 889.728
+margin_bottom = 615.07
 
 [node name="Position0" type="Position2D" parent="."]
 position = Vector2( 200, 1510 )
@@ -129,11 +143,11 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Player1" parent="." instance=ExtResource( 7 )]
+[node name="Player1" parent="." instance=ExtResource( 8 )]
 position = Vector2( 200, 1510 )
 scale = Vector2( 10, 10 )
 
-[node name="Player2" parent="." instance=ExtResource( 7 )]
+[node name="Player2" parent="." instance=ExtResource( 8 )]
 modulate = Color( 0.0583649, 0.628898, 0.878906, 1 )
 position = Vector2( 3400, 1510 )
 scale = Vector2( 10, 10 )

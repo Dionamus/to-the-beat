@@ -4,18 +4,16 @@ extends CenterContainer
 func _ready():
 	pass # Replace with function body.
 
-func _on_ResumeGameButton_pressed():
-	hide()
-	get_tree().paused = false
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+
+func _on_StartGameButton_pressed():
+	breakpoint
+	get_tree().change_scene("res://stages/base/Stage.tscn")
 
 func _on_OptionsButton_pressed():
 	pass # Replace with function body.
-
-func _on_QuitToCharacterSelectButton_pressed():
-	pass # Replace with function body.
-
-func _on_QuitToMainMenuButton_pressed():
-	get_tree().change_scene("res://interface/mainmenu/MainMenu.tscn")
 
 func _on_QuitToDesktopButton_pressed():
 	$LabelAndButtons.visible = false

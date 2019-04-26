@@ -10,9 +10,8 @@ animations = [ {
 "speed": 60.0
 } ]
 
-[node name="ControlCharacter" index="0" instance=ExtResource( 1 )]
+[node name="ControlCharacter" instance=ExtResource( 1 )]
 
 [node name="AnimatedSprite" parent="." index="0"]
 frames = SubResource( 1 )
-frame = 27
 
