@@ -74,7 +74,9 @@ func _unhandled_input(event):
 				else:
 					$Player1/AnimatedSprite.flip_h = false
 					$Player2/AnimatedSprite.flip_h = true
-				
+					
+				if Input.is_key_pressed(KEY_P):
+					$Player1._on_Character_is_hit(20)
 				# Tempo controls
 				# FIXME: Flesh out the controls more.
 				
@@ -200,6 +202,7 @@ func _on_Player1_win_round():
 		$GameTimer.stop()
 
 func _on_Player2_win_round():
+	breakpoint
 	$Player2.wins += 1
 	if $Player2.wins == 1:
 		hud.p2_wins = hud.p2_one_win
@@ -208,3 +211,11 @@ func _on_Player2_win_round():
 		is_game_over = true
 		is_input_allowed = false
 		$GameTimer.stop()
+
+func _on_Player1_lose_round():
+	$Player1.losses += 1
+	_on_Player2_win_round()
+
+func _on_Player2_lose_round():
+	$Player2.losses += 1
+	_on_Player1_win_round()

@@ -155,5 +155,7 @@ player_number = 2
 
 [connection signal="timeout" from="GameTimer" to="." method="_on_GameTimer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
+[connection signal="lose_round" from="Player1" to="." method="_on_Player1_lose_round"]
 [connection signal="win_round" from="Player1" to="." method="_on_Player1_win_round"]
+[connection signal="lose_round" from="Player2" to="." method="_on_Player2_lose_round"]
 [connection signal="win_round" from="Player2" to="." method="_on_Player2_win_round"]
