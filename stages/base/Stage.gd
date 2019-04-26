@@ -91,7 +91,7 @@ func _unhandled_input(event):
 							$Player1.grid_number += 1
 							set_position($Player1, $Player1.grid_number)
 				if Input.is_action_just_pressed("p1_pause"):
-					breakpoint
+#					breakpoint
 					if $Camera2D/PauseMenu.visible == true:
 						$Camera2D/PauseMenu.hide()
 						get_tree().paused = false

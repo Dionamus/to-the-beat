@@ -9,7 +9,7 @@ func _ready():
 #	pass
 
 func _on_StartGameButton_pressed():
-	breakpoint
+#	breakpoint
 	get_tree().change_scene("res://stages/base/Stage.tscn")
 
 func _on_OptionsButton_pressed():
