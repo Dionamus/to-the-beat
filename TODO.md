@@ -69,24 +69,26 @@
 * ~~Add "Start Game" button.~~ (For right now, it only loads into)
   * ~~Program it.~~
 * ~~Add "Options" button.~~
-  * Program it.
+  * Program it (after OptionsMenu.tscn has been made).
 * ~~Add "Quit to Desktop" button.~~
   * ~~Program it.~~
-* Get controls working.
+* Get controller controls working.
 
 ### PauseMenu.tscn
 
 * ~~Add "Resume Game" button.~~
-  * Program it.
+  * ~~Program it.~~
 * ~~Add "Options" button.~~
   * Program it (after OptionsMenu.tscn has been made).
 * ~~Add "Quit to Character Select" button.~~
-  * Program it.
+  * Program it (after CharacterSelect.tscn has been made).
 * ~~Add "Quit to Main Menu" button.~~
   * Program it.
+  * Fix the bug that prevents the main menu buttons from working after
+    clicking this button.
 * ~~Add "Quit to Desktop" button.~~
-  * Program it.
-* Get controls working.
+  * ~~Program it.~~
+* Get the controller controls working.
 
 ### QuitConfirmation.tscn (COMPLETE)
 
@@ -94,6 +96,7 @@
   * ~~Program it.~~
 * ~~Add "No" button.~~
   * ~~Program it.~~
+* Get the controller controls working.
 
 ### OptionsMenu.tscn (not yet added and won't be added for the capstone) 
 
@@ -134,7 +137,7 @@
 
 * Add stage list.
 * Add stage preview.
-* Get controls working.
+* Get controller controls working.
 
 ### MusicSelect.tscn (not yet added and won't be added for the capstone)
 
@@ -142,4 +145,4 @@
 * Add metadata (artist, song name, album name (if any), tempo, length (not that
   it really matters since matches are 99 seconds long), places to buy/listen (e.g.
   Spotify, iTunes, Bandcamp, Deezer, Beatport, YouTube, etc.)).
-* Get controls working.
+* Get controller controls working.
