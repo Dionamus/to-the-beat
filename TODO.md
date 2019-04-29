@@ -91,6 +91,13 @@
   * ~~Program it.~~
 * Get the controller controls working.
 
+### WinMenu.tscn
+
+* Add win label.
+* Add rematch label.
+* Add character select label.
+* Add quit to desktop button.
+
 ### QuitConfirmation.tscn (COMPLETE)
 
 * ~~Add "Yes" button.~~
