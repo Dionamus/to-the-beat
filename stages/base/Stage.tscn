@@ -1,17 +1,20 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://stages/base/Stage.gd" type="Script" id=1]
 [ext_resource path="res://characters/control/ControlCharacter.tscn" type="PackedScene" id=2]
 [ext_resource path="res://stages/base/basebg.png" type="Texture" id=3]
-[ext_resource path="res://interface/hud/HUD.tscn" type="PackedScene" id=4]
-[ext_resource path="res://interface/debug/Debug.tscn" type="PackedScene" id=5]
-[ext_resource path="res://interface/Roboto-Regular.ttf" type="DynamicFontData" id=6]
-[ext_resource path="res://interface/pausemenu/PauseMenu.tscn" type="PackedScene" id=7]
-[ext_resource path="res://characters/base/Character.tscn" type="PackedScene" id=8]
+[ext_resource path="res://stages/FollowCamera.tscn" type="PackedScene" id=4]
+[ext_resource path="res://characters/base/Character.tscn" type="PackedScene" id=5]
+[ext_resource path="res://music/kick_test.ogg" type="AudioStream" id=6]
+[ext_resource path="res://interface/hud/HUD.tscn" type="PackedScene" id=7]
+[ext_resource path="res://interface/debug/Debug.tscn" type="PackedScene" id=8]
+[ext_resource path="res://interface/Roboto-Regular.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://interface/pausemenu/PauseMenu.tscn" type="PackedScene" id=10]
+[ext_resource path="res://interface/winmenu/WinMenu.tscn" type="PackedScene" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 size = 70
-font_data = ExtResource( 6 )
+font_data = ExtResource( 9 )
 
 [node name="Stage" type="Node"]
 script = ExtResource( 1 )
@@ -28,66 +31,36 @@ wait_time = 5.0
 one_shot = true
 autostart = true
 
+[node name="PostWinTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+
 [node name="Tween" type="Tween" parent="."]
 
 [node name="StageBackground" type="Sprite" parent="."]
-position = Vector2( 1825, 1012 )
+position = Vector2( 1800, 1013 )
 texture = ExtResource( 3 )
-__meta__ = {
-"_edit_lock_": true
-}
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 47.272, 92.9298 )
-current = true
-zoom = Vector2( 1.75, 1.75 )
+[node name="FollowCamera" parent="." instance=ExtResource( 4 )]
 limit_left = 0
 limit_top = 0
 limit_right = 3600
 limit_bottom = 2025
-limit_smoothed = true
-smoothing_enabled = true
-smoothing_speed = 10.0
 drag_margin_left = 1.0
 drag_margin_top = 1.0
 drag_margin_right = 1.0
 drag_margin_bottom = 1.0
-editor_draw_limits = true
-editor_draw_drag_margin = true
+editor_draw_screen = false
 
-[node name="HUD" parent="Camera2D" instance=ExtResource( 4 )]
+[node name="Player1" parent="FollowCamera" instance=ExtResource( 5 )]
+position = Vector2( 200, 1510 )
+scale = Vector2( 10, 10 )
 
-[node name="Debug" parent="Camera2D" instance=ExtResource( 5 )]
-margin_left = 2900.73
-margin_top = 1665.07
-margin_right = 3286.73
-margin_bottom = 1781.07
-
-[node name="StartTimerLabel" type="Label" parent="Camera2D"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = 1401.8
-margin_top = 815.808
-margin_right = 1441.8
-margin_bottom = 898.808
-custom_fonts/font = SubResource( 1 )
-text = "Round begins in:
-5"
-align = 1
-valign = 1
-
-[node name="PauseMenu" parent="Camera2D" instance=ExtResource( 7 )]
-visible = false
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = 509.728
-margin_top = 377.07
-margin_right = 889.728
-margin_bottom = 615.07
+[node name="Player2" parent="FollowCamera" instance=ExtResource( 5 )]
+modulate = Color( 0.0583649, 0.628898, 0.878906, 1 )
+position = Vector2( 3400, 1510 )
+scale = Vector2( 10, 10 )
+player_number = 2
 
 [node name="Position0" type="Position2D" parent="."]
 position = Vector2( 200, 1510 )
@@ -143,19 +116,56 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Player1" parent="." instance=ExtResource( 8 )]
-position = Vector2( 200, 1510 )
-scale = Vector2( 10, 10 )
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
 
-[node name="Player2" parent="." instance=ExtResource( 8 )]
-modulate = Color( 0.0583649, 0.628898, 0.878906, 1 )
-position = Vector2( 3400, 1510 )
-scale = Vector2( 10, 10 )
-player_number = 2
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource( 7 )]
+
+[node name="Debug" parent="CanvasLayer" instance=ExtResource( 8 )]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -386.0
+margin_top = -116.0
+margin_right = 0.0
+margin_bottom = 0.0
+
+[node name="StartTimerLabel" type="Label" parent="CanvasLayer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -257.0
+margin_top = -84.5
+margin_right = 257.0
+margin_bottom = 84.5
+custom_fonts/font = SubResource( 1 )
+text = "Round begins in:
+5"
+align = 1
+valign = 1
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource( 10 )]
+visible = false
+
+[node name="WinMenu" parent="CanvasLayer" instance=ExtResource( 11 )]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -960.0
+margin_top = -540.0
+margin_right = 960.0
+margin_bottom = 540.0
 
 [connection signal="timeout" from="GameTimer" to="." method="_on_GameTimer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
-[connection signal="lose_round" from="Player1" to="." method="_on_Player1_lose_round"]
-[connection signal="win_round" from="Player1" to="." method="_on_Player1_win_round"]
-[connection signal="lose_round" from="Player2" to="." method="_on_Player2_lose_round"]
-[connection signal="win_round" from="Player2" to="." method="_on_Player2_win_round"]
+[connection signal="timeout" from="PostWinTimer" to="." method="_on_PostWinTimer_timeout"]
+[connection signal="lose_round" from="FollowCamera/Player1" to="." method="_on_Player1_lose_round"]
+[connection signal="win_round" from="FollowCamera/Player1" to="." method="_on_Player1_win_round"]
+[connection signal="lose_round" from="FollowCamera/Player2" to="." method="_on_Player2_lose_round"]
+[connection signal="win_round" from="FollowCamera/Player2" to="." method="_on_Player2_win_round"]

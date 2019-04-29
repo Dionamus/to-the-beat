@@ -1,8 +1,5 @@
 extends VBoxContainer
 
-onready var tempo_timer = $"../../ControlCharacter/AnimatedSprite"
-onready var stage = $"../.."
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -18,8 +15,5 @@ func _unhandled_input(event):
 					hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	$FrameRate.text = "Frame Rate: " + str(Engine.get_frames_per_second()) + " FPS"
-	$AnimationFrameRate.text = "Animation Frame Rate: " + str(tempo_timer.frames.get_animation_speed("idle")) + " FPS"
-	$Tempo.text = "Tempo " + str(stage.bpm) + " BPM"
-	pass
+#func _process(delta):
+#	pass

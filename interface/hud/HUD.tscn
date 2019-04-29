@@ -1,22 +1,21 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://interface/hud/HUD.gd" type="Script" id=1]
-[ext_resource path="res://interface/hud/hp_bar.png" type="Texture" id=2]
-[ext_resource path="res://interface/hud/hp_bar_fill.png" type="Texture" id=3]
-[ext_resource path="res://interface/Roboto-Regular.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://interface/hud/no_wins.png" type="Texture" id=5]
+[ext_resource path="res://interface/hud/hp_bar.png" type="Texture" id=1]
+[ext_resource path="res://interface/hud/hp_bar_fill.png" type="Texture" id=2]
+[ext_resource path="res://interface/Roboto-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://interface/hud/no_wins.png" type="Texture" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 35
-font_data = ExtResource( 4 )
+font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 80
-font_data = ExtResource( 4 )
+font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 35
-font_data = ExtResource( 4 )
+font_data = ExtResource( 3 )
 
 [node name="HUD" type="MarginContainer"]
 anchor_right = 1.0
@@ -28,7 +27,6 @@ custom_constants/margin_right = 20
 custom_constants/margin_top = 20
 custom_constants/margin_left = 20
 custom_constants/margin_bottom = 20
-script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -53,8 +51,8 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 max_value = 200.0
 value = 200.0
-texture_under = ExtResource( 2 )
-texture_progress = ExtResource( 3 )
+texture_under = ExtResource( 1 )
+texture_progress = ExtResource( 2 )
 nine_patch_stretch = true
 
 [node name="P1NameAndWins" type="HBoxContainer" parent="HBoxContainer/Player1Container"]
@@ -74,7 +72,7 @@ margin_left = 771.0
 margin_right = 861.0
 margin_bottom = 42.0
 rect_min_size = Vector2( 90, 0 )
-texture = ExtResource( 5 )
+texture = ExtResource( 4 )
 expand = true
 stretch_mode = 7
 
@@ -108,8 +106,8 @@ size_flags_vertical = 3
 max_value = 200.0
 value = 200.0
 rounded = true
-texture_under = ExtResource( 2 )
-texture_progress = ExtResource( 3 )
+texture_under = ExtResource( 1 )
+texture_progress = ExtResource( 2 )
 fill_mode = 1
 nine_patch_stretch = true
 
@@ -122,7 +120,7 @@ margin_bottom = 110.0
 margin_right = 90.0
 margin_bottom = 42.0
 rect_min_size = Vector2( 90, 0 )
-texture = ExtResource( 5 )
+texture = ExtResource( 4 )
 expand = true
 stretch_mode = 7
 

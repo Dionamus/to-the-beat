@@ -51,6 +51,8 @@ onready var wins = 0
 # Round losses
 onready var losses = 0
 
+onready var is_blocking = false
+
 func _ready():
 	reset_hp()
 

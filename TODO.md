@@ -4,7 +4,7 @@
 
 * Make a proper icon that is not the default icon that comes with a new Godot project.
 
-### Stage.tscn
+### Stage.tscn (COMPLETE (for the capstone))
 
 * ~~Get the controls up and running in the base stage without tying it to the
   tempo.~~
@@ -12,12 +12,13 @@
 * ~~Get tempo mechanic figured out.~~
 * ~~Replace the background with an image.~~
 * ~~Add the HUD. It's attached to the game's camera, but the HUD
-  isn't complete. See the subsection "HUD.tscn".~~
-* Get the HUD and debug info to scale and align correctly with the camera's zoom.
-* Get the camera to zoom in a way where it'll zoom out when the characters
-  are spaced out, and zoom in when they are close to each other.
-* Flesh out the controls.
+  isn't complete. See the subsection "HUD.tscn".~~ Used a `CanvasLayer` for the HUD.
+* ~~Get the HUD and debug info to scale and align correctly with the camera's zoom.~~
+* ~~Get the camera to zoom in a way where it'll zoom out when the characters
+  are spaced out, and zoom in when they are close to each other.~~
+* ~~Flesh out the controls.~~ Used a hacky implementation in the place of animations and hitboxes.
 * ~~Add `StartTimerLabel` and interface it with the Stage's script.~~
+* ~~Add `PostWinTimer` and interafaces it with the Stage's script.~~
 
 ### Debug.tscn (COMPLETE)
 
@@ -50,17 +51,17 @@
   * ~~And their wins.~~
   * ~~And the time of the game.~~
 
-### Character.tscn
+### Character.tscn (COMPLETE (for the capstone))
 
 * ~~Create sprite for player character.~~
 * ~~Make sure players don't go out of bounds on the stage.~~ (The grid prevents
   this.)
 * ~~Get damage to work correctly.~~
-* Implement combos.
-  * Light punch.
-  * Heavy punch
-  * Light kick.
-  * Heavy kick.
+* ~~Implement combos.~~
+  * ~~Light punch.~~
+  * ~~Heavy punch.~~
+  * ~~Light kick.~~
+  * ~~Heavy kick.~~
 
 ## Additional stuff
 
@@ -83,7 +84,7 @@
 * ~~Add "Quit to Character Select" button.~~
   * Program it (after CharacterSelect.tscn has been made).
 * ~~Add "Quit to Main Menu" button.~~
-  * Program it.
+  * ~~Program it.~~
   * Fix the bug that prevents the main menu buttons from working after
     clicking this button.
 * ~~Add "Quit to Desktop" button.~~
