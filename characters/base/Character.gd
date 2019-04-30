@@ -45,19 +45,17 @@ const default_animation_factor = default_fps / default_bpm
 # Used for movement on the one-dimensional grid in a stage.
 var grid_number
 
-# Round wins
+# Round wins.
 onready var wins = 0
 
-# Round losses
+# Round losses.
 onready var losses = 0
 
+# Prevents an opponent from doing damage when true.
 onready var is_blocking = false
 
 func _ready():
 	reset_hp()
-
-#func _process(delta):
-#	pass
 
 # Sets the speed of the animations by bpm.
 func set_speed_of_animation_by_BPM(bpm):
@@ -68,17 +66,25 @@ func set_speed_of_animation_by_BPM(bpm):
 func reset_hp():
 	hitpoints = max_hitpoints
 
+# Not implemented in this scene.
 func _on_Character_win_round():
 	# Play a win round animation.
 	pass
 
+# Not implemented in this scene.
 func _on_Character_lose_round():
 	# Play a lose round animation.
 	pass
 
+# Not implemented in this scene.
 func _on_Character_lose_game():
 	# Play a lose game animation
-	pass # Replace with function body.
+	pass
+
+# Not implemented in this scene.
+func _on_Character_win_game():
+	# Play a victory animaiton.
+	pass
 
 # When the character gets hit, deal the amount of damage done and subtract it 
 # from their hitpoints. If they are at or below 0 hitpoints, signal that they
@@ -92,7 +98,3 @@ func _on_Character_is_hit(damage):
 # When the player hits an opponent, deal the damage to the opponent.
 func _on_Character_hits(damage):
 	return damage
-
-func _on_Character_win_game():
-	# Play a victory animaiton.
-	pass # Replace with function body.

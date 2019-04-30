@@ -13,7 +13,3 @@ func _unhandled_input(event):
 					show()
 				elif visible:
 					hide()
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
