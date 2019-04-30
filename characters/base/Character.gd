@@ -83,7 +83,7 @@ func _on_Character_lose_game():
 
 # Not implemented in this scene.
 func _on_Character_win_game():
-	# Play a victory animaiton.
+	# Play a victory animation.
 	pass
 
 # When the character gets hit, deal the amount of damage done and subtract it 
