@@ -78,7 +78,6 @@ margin_left = 560.0
 margin_top = 483.0
 margin_right = 1360.0
 margin_bottom = 597.0
-
 [connection signal="pressed" from="LabelAndButtons/StartGameButton" to="." method="_on_StartGameButton_pressed"]
 [connection signal="pressed" from="LabelAndButtons/OptionsButton" to="." method="_on_OptionsButton_pressed"]
 [connection signal="pressed" from="LabelAndButtons/QuitToDesktopButton" to="." method="_on_QuitToDesktopButton_pressed"]
