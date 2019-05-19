@@ -92,7 +92,7 @@ func _unhandled_input(event):
 	if !is_game_over and is_input_allowed:
 		# Flip the player position  when they are on the opposite sides of each other.
 		# They currently cant't do this as they cannot jump over each other.
-		if $FollowCamera/Player1.position.x > $FollowCamera/Player2.position.x and $FollowCamera/Player2.position.x < $FollowCamera/Player1.position.x:
+		if $FollowCamera/Player1.position.x > $FollowCamera/Player2.position.x:
 			$FollowCamera/Player1/AnimatedSprite.flip_h = true
 			$FollowCamera/Player2/AnimatedSprite.flip_h = false
 		else:
@@ -114,44 +114,51 @@ func _unhandled_input(event):
 		
 		# Player 1 controls
 		if Input.is_action_just_pressed("p1_left"):
-			if $FollowCamera/Player1.grid_number != 0 and $FollowCamera/Player1.grid_number != $FollowCamera/Player2.grid_number + 1:
-				if tempo_control.frame <= end_frame or tempo_control.frame >= start_frame:
-					$FollowCamera/Player1.grid_number -= 1
-					set_position($FollowCamera/Player1, $FollowCamera/Player1.grid_number)
+			if $FollowCamera/Player1.grid_number != 0\
+					and $FollowCamera/Player1.grid_number != $FollowCamera/Player2.grid_number + 1:
+						if tempo_control.frame <= end_frame or tempo_control.frame >= start_frame:
+							$FollowCamera/Player1.grid_number -= 1
+							set_position($FollowCamera/Player1, $FollowCamera/Player1.grid_number)
 		if Input.is_action_just_pressed("p1_right"):
-			if $FollowCamera/Player1.grid_number != 8 and $FollowCamera/Player1.grid_number != $FollowCamera/Player2.grid_number - 1:
-				if tempo_control.frame <= end_frame or tempo_control.frame >= start_frame:
-					$FollowCamera/Player1.grid_number += 1
-					set_position($FollowCamera/Player1, $FollowCamera/Player1.grid_number)
+			if $FollowCamera/Player1.grid_number != 8\
+					and $FollowCamera/Player1.grid_number != $FollowCamera/Player2.grid_number - 1:
+						if tempo_control.frame <= end_frame or tempo_control.frame >= start_frame:
+							$FollowCamera/Player1.grid_number += 1
+							set_position($FollowCamera/Player1, $FollowCamera/Player1.grid_number)
 		if Input.is_action_just_pressed("p1_front_punch"):
-			if $FollowCamera/Player1.grid_number == $FollowCamera/Player2.grid_number - 1 or $FollowCamera/Player1.grid_number == $FollowCamera/Player2.grid_number + 1:
-				if tempo_control.frame <= end_frame or tempo_control.frame >= start_frame:
-					if not $FollowCamera/Player2.is_blocking:
-						$FollowCamera/Player2._on_Character_is_hit(10)
+			if $FollowCamera/Player1.grid_number == $FollowCamera/Player2.grid_number - 1\
+					or $FollowCamera/Player1.grid_number == $FollowCamera/Player2.grid_number + 1:
+						if tempo_control.frame <= end_frame or tempo_control.frame >= start_frame:
+							if not $FollowCamera/Player2.is_blocking:
+								$FollowCamera/Player2._on_Character_is_hit(10)
 			else:
 				# This will change in a future update
 				return
 		if Input.is_action_just_pressed("p1_back_punch"):
-			if $FollowCamera/Player1.grid_number == $FollowCamera/Player2.grid_number - 1 or $FollowCamera/Player1.grid_number == $FollowCamera/Player2.grid_number + 1:
-				if tempo_control.frame <= end_frame or tempo_control.frame >= start_frame:
-					if not $FollowCamera/Player2.is_blocking:
-						$FollowCamera/Player2._on_Character_is_hit(20)
+			if $FollowCamera/Player1.grid_number == $FollowCamera/Player2.grid_number - 1\
+					or $FollowCamera/Player1.grid_number == $FollowCamera/Player2.grid_number + 1:
+						if tempo_control.frame <= end_frame or tempo_control.frame >= start_frame:
+							if not $FollowCamera/Player2.is_blocking:
+								$FollowCamera/Player2._on_Character_is_hit(20)
 			else:
 				# This will change in a future update
 				return
 		if Input.is_action_just_pressed("p1_front_kick"):
-			if $FollowCamera/Player1.grid_number == $FollowCamera/Player2.grid_number - 1 or $FollowCamera/Player1.grid_number == $FollowCamera/Player2.grid_number + 1:
-				if tempo_control.frame <= end_frame or tempo_control.frame >= start_frame:
-					if not $FollowCamera/Player2.is_blocking:
-						$FollowCamera/Player2._on_Character_is_hit(10)
+			if $FollowCamera/Player1.grid_number == $FollowCamera/Player2.grid_number - 1\
+					or $FollowCamera/Player1.grid_number == $FollowCamera/Player2.grid_number + 1:
+						if tempo_control.frame <= end_frame or tempo_control.frame >= start_frame:
+							if not $FollowCamera/Player2.is_blocking:
+								$FollowCamera/Player2._on_Character_is_hit(10)
 			else:
 				# This will change in a future update
 				return
 		if Input.is_action_just_pressed("p1_rear_kick"):
-			if $FollowCamera/Player1.grid_number == $FollowCamera/Player2.grid_number - 1 or $FollowCamera/Player1.grid_number == $FollowCamera/Player2.grid_number + 1:
-				if tempo_control.frame <= end_frame or tempo_control.frame >= start_frame:
-					if not $FollowCamera/Player2.is_blocking:
-						$FollowCamera/Player2._on_Character_is_hit(10)
+			if $FollowCamera/Player1.grid_number == $FollowCamera/Player2.grid_number - 1\
+					or $FollowCamera/Player1.grid_number == $FollowCamera/Player2.grid_number + 1:
+						if tempo_control.frame <= end_frame\
+								or tempo_control.frame >= start_frame:
+									if not $FollowCamera/Player2.is_blocking:
+										$FollowCamera/Player2._on_Character_is_hit(10)
 			else:
 				# This will change in a future update
 				return
@@ -169,44 +176,50 @@ func _unhandled_input(event):
 			
 		# Player 2 controls
 		if Input.is_action_just_pressed("p2_left"):
-			if $FollowCamera/Player2.grid_number != 0 and $FollowCamera/Player2.grid_number != $FollowCamera/Player1.grid_number + 1:
-				if tempo_control.frame <= end_frame or tempo_control.frame >= start_frame:
-					$FollowCamera/Player2.grid_number -= 1
-					set_position($FollowCamera/Player2, $FollowCamera/Player2.grid_number)
+			if $FollowCamera/Player2.grid_number != 0\
+					and $FollowCamera/Player2.grid_number != $FollowCamera/Player1.grid_number + 1:
+						if tempo_control.frame <= end_frame or tempo_control.frame >= start_frame:
+							$FollowCamera/Player2.grid_number -= 1
+							set_position($FollowCamera/Player2, $FollowCamera/Player2.grid_number)
 		if Input.is_action_just_pressed("p2_right"):
-			if $FollowCamera/Player2.grid_number != 8 and $FollowCamera/Player2.grid_number != $FollowCamera/Player1.grid_number - 1:
-				if tempo_control.frame <= end_frame or tempo_control.frame >= start_frame:
-					$FollowCamera/Player2.grid_number += 1
-					set_position($FollowCamera/Player2, $FollowCamera/Player2.grid_number)
+			if $FollowCamera/Player2.grid_number != 8\
+					and $FollowCamera/Player2.grid_number != $FollowCamera/Player1.grid_number - 1:
+						if tempo_control.frame <= end_frame or tempo_control.frame >= start_frame:
+							$FollowCamera/Player2.grid_number += 1
+							set_position($FollowCamera/Player2, $FollowCamera/Player2.grid_number)
 		if Input.is_action_just_pressed("p2_front_punch"):
-			if $FollowCamera/Player2.grid_number == $FollowCamera/Player1.grid_number - 1 or $FollowCamera/Player2.grid_number == $FollowCamera/Player1.grid_number + 1:
-				if tempo_control.frame <= end_frame or tempo_control.frame >= start_frame:
-					if not $FollowCamera/Player1.is_blocking:
-						$FollowCamera/Player1._on_Character_is_hit(10)
+			if $FollowCamera/Player2.grid_number == $FollowCamera/Player1.grid_number - 1\
+					or $FollowCamera/Player2.grid_number == $FollowCamera/Player1.grid_number + 1:
+						if tempo_control.frame <= end_frame or tempo_control.frame >= start_frame:
+							if not $FollowCamera/Player1.is_blocking:
+								$FollowCamera/Player1._on_Character_is_hit(10)
 			else:
 				# This will change in a future update
 				return
 		if Input.is_action_just_pressed("p2_back_punch"):
-			if $FollowCamera/Player2.grid_number == $FollowCamera/Player1.grid_number - 1 or $FollowCamera/Player2.grid_number == $FollowCamera/Player1.grid_number + 1:
-				if tempo_control.frame <= end_frame or tempo_control.frame >= start_frame:
-					if not $FollowCamera/Player1.is_blocking:
-						$FollowCamera/Player1._on_Character_is_hit(20)
+			if $FollowCamera/Player2.grid_number == $FollowCamera/Player1.grid_number - 1\
+					or $FollowCamera/Player2.grid_number == $FollowCamera/Player1.grid_number + 1:
+						if tempo_control.frame <= end_frame or tempo_control.frame >= start_frame:
+							if not $FollowCamera/Player1.is_blocking:
+								$FollowCamera/Player1._on_Character_is_hit(20)
 			else:
 				# This will change in a future update
 				return
 		if Input.is_action_just_pressed("p2_front_kick"):
-			if $FollowCamera/Player2.grid_number == $FollowCamera/Player1.grid_number - 1 or $FollowCamera/Player2.grid_number == $FollowCamera/Player1.grid_number + 1:
-				if tempo_control.frame <= end_frame or tempo_control.frame >= start_frame:
-					if not $FollowCamera/Player1.is_blocking:
-						$FollowCamera/Player1._on_Character_is_hit(10)
+			if $FollowCamera/Player2.grid_number == $FollowCamera/Player1.grid_number - 1\
+					or $FollowCamera/Player2.grid_number == $FollowCamera/Player1.grid_number + 1:
+						if tempo_control.frame <= end_frame or tempo_control.frame >= start_frame:
+							if not $FollowCamera/Player1.is_blocking:
+								$FollowCamera/Player1._on_Character_is_hit(10)
 			else:
 				# This will change in a future update
 				return
 		if Input.is_action_just_pressed("p2_rear_kick"):
-			if $FollowCamera/Player2.grid_number == $FollowCamera/Player1.grid_number - 1 or $FollowCamera/Player2.grid_number == $FollowCamera/Player1.grid_number + 1:
-				if tempo_control.frame <= end_frame or tempo_control.frame >= start_frame:
-					if not $FollowCamera/Player1.is_blocking:
-						$FollowCamera/Player1._on_Character_is_hit(20)
+			if $FollowCamera/Player2.grid_number == $FollowCamera/Player1.grid_number - 1\
+					or $FollowCamera/Player2.grid_number == $FollowCamera/Player1.grid_number + 1:
+						if tempo_control.frame <= end_frame or tempo_control.frame >= start_frame:
+							if not $FollowCamera/Player1.is_blocking:
+								$FollowCamera/Player1._on_Character_is_hit(20)
 			else:
 				# This will change in a future update
 				return
@@ -231,11 +244,13 @@ func _process(delta):
 	# Show the time remaining for the first round to start at the beginning of
 	# a game.
 	if not $StartTimer.is_stopped():
-		$CanvasLayer/StartTimerLabel.text = "Round begins in:\n" + str(int($StartTimer.time_left))
+		$CanvasLayer/StartTimerLabel.text = "Round begins in:\n"\
+		+ str(int($StartTimer.time_left))
 	
 	# Show the time remaining for the next round to start after a round ends.
 	if not $PostWinTimer.is_stopped():
-		$CanvasLayer/StartTimerLabel.text = "Round begins in:\n" + str(int($PostWinTimer.time_left))
+		$CanvasLayer/StartTimerLabel.text = "Round begins in:\n"\
+		+ str(int($PostWinTimer.time_left))
 	
 	# This if statement is to prevent a bug where the timer would be set to 0
 	# at the beginning of the game if we were to use the timer's time_left
@@ -248,8 +263,10 @@ func _process(delta):
 	p2_HP_bar.value = $FollowCamera/Player2.hitpoints
 	
 	# Update the debug information's frame rate, animation frame rate, and tempo.
-	$CanvasLayer/Debug/FrameRate.text = "Frame Rate: " + str(Engine.get_frames_per_second()) + " FPS"
-	$CanvasLayer/Debug/AnimationFrameRate.text = "Animation Frame Rate: " + str(tempo_control.frames.get_animation_speed("idle")) + " FPS"
+	$CanvasLayer/Debug/FrameRate.text = "Frame Rate: "\
+		+ str(Engine.get_frames_per_second()) + " FPS"
+	$CanvasLayer/Debug/AnimationFrameRate.text = "Animation Frame Rate: "\
+		+ str(tempo_control.frames.get_animation_speed("idle")) + " FPS"
 	$CanvasLayer/Debug/Tempo.text = "Tempo " + str(bpm) + " BPM"
 
 # Sets the position of the player characters.
