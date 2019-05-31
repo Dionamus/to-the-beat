@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <title>TODO.md</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+        <link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        
+        <script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+    </head>
+    <body>
+        <h1 id="todomd"><a href="http://TODO.md">TODO.md</a></h1>
+<h2 id="base-stuff">Base stuff</h2>
+<ul>
+<li>Make a proper icon that is not the default icon that comes with a new Godot project.</li>
+</ul>
+<h3 id="stagetscn-complete-for-the-capstone">Stage.tscn (COMPLETE (for the capstone))</h3>
+<ul>
+<li><s>Get the controls up and running in the base stage without tying it to the
+tempo.</s>
+<ul>
+<li><s>Tie the movement to the tempo.</s></li>
+</ul>
+</li>
+<li><s>Get tempo mechanic figured out.</s></li>
+<li><s>Replace the background with an image.</s></li>
+<li><s>Add the HUD. It's attached to the game's camera, but the HUD
+isn't complete. See the subsection &quot;HUD.tscn&quot;.</s> Used a <code>CanvasLayer</code> for the HUD.</li>
+<li><s>Get the HUD and debug info to scale and align correctly with the camera's zoom.</s></li>
+<li><s>Get the camera to zoom in a way where it'll zoom out when the characters
+are spaced out, and zoom in when they are close to each other.</s></li>
+<li><s>Flesh out the controls.</s> Used a hacky implementation in the place of animations and hitboxes.</li>
+<li><s>Add <code>StartTimerLabel</code> and interface it with the Stage's script.</s></li>
+<li><s>Add <code>PostWinTimer</code> and interafaces it with the Stage's script.</s></li>
+</ul>
+<h3 id="debugtscn-complete">Debug.tscn (COMPLETE)</h3>
+<ul>
+<li><s>Add frame rate.</s></li>
+<li><s>Add animation frame rate.</s></li>
+<li><s>Draw hitboxes when enabled.</s> I'm considering against it.</li>
+<li><s>Program the debug HUD.</s>
+<ul>
+<li><s>Interface the frame rate.</s></li>
+<li><s>Interface the animation frame rate.</s></li>
+</ul>
+</li>
+</ul>
+<h3 id="hudtscn-complete">HUD.tscn (COMPLETE)</h3>
+<ul>
+<li><s>Add <code>Player1Name</code></s></li>
+<li><s>Add <code>Player1HPBar</code>.</s></li>
+<li><s>Add <code>Player1Wins</code>.</s></li>
+<li><s>Add <code>Player2Name</code>.</s></li>
+<li><s>Add <code>Player2HPBar</code>.</s></li>
+<li><s>Add <code>Player2Wins</code>.</s></li>
+<li><s>Add <code>RoundTimer</code>.</s></li>
+<li><s>Make the art for the HP bar background.</s></li>
+<li><s>Make the art for the HP bar fill.</s></li>
+<li><s>Make the art for the win counter for 0 wins.</s></li>
+<li><s>Make the art for the win counter for 1 win.</s>
+<ul>
+<li><s>For player 1.</s></li>
+<li><s>And player 2.</s></li>
+</ul>
+</li>
+<li><s>Make the art for the win counter for 2 wins.</s></li>
+<li><s>Get the HUD to scale correctly.</s></li>
+<li><s>Program the HUD.</s>
+<ul>
+<li><s>Interface the health of the characters.</s></li>
+<li><s>And their wins.</s></li>
+<li><s>And the time of the game.</s></li>
+</ul>
+</li>
+</ul>
+<h3 id="charactertscn-complete-for-the-capstone">Character.tscn (COMPLETE (for the capstone))</h3>
+<ul>
+<li><s>Create sprite for player character.</s></li>
+<li><s>Make sure players don't go out of bounds on the stage.</s> (The grid prevents
+this.)</li>
+<li><s>Get damage to work correctly.</s></li>
+<li><s>Implement combos.</s>
+<ul>
+<li><s>Light punch.</s></li>
+<li><s>Heavy punch.</s></li>
+<li><s>Light kick.</s></li>
+<li><s>Heavy kick.</s></li>
+</ul>
+</li>
+</ul>
+<h2 id="additional-stuff">Additional stuff</h2>
+<h3 id="mainmenutscn">MainMenu.tscn</h3>
+<ul>
+<li><s>Add &quot;Start Game&quot; button.</s> (For right now, it only loads into)
+<ul>
+<li><s>Program it.</s></li>
+</ul>
+</li>
+<li><s>Add &quot;Options&quot; button.</s>
+<ul>
+<li>Program it (after OptionsMenu.tscn has been made).</li>
+</ul>
+</li>
+<li><s>Add &quot;Quit to Desktop&quot; button.</s>
+<ul>
+<li><s>Program it.</s></li>
+</ul>
+</li>
+<li>Get controller controls working.</li>
+</ul>
+<h3 id="pausemenutscn">PauseMenu.tscn</h3>
+<ul>
+<li><s>Add &quot;Resume Game&quot; button.</s>
+<ul>
+<li><s>Program it.</s></li>
+</ul>
+</li>
+<li><s>Add &quot;Options&quot; button.</s>
+<ul>
+<li>Program it (after OptionsMenu.tscn has been made).</li>
+</ul>
+</li>
+<li><s>Add &quot;Quit to Character Select&quot; button.</s>
+<ul>
+<li>Program it (after CharacterSelect.tscn has been made).</li>
+</ul>
+</li>
+<li><s>Add &quot;Quit to Main Menu&quot; button.</s>
+<ul>
+<li><s>Program it.</s></li>
+<li>Fix the bug that prevents the main menu buttons from working after
+clicking this button.</li>
+</ul>
+</li>
+<li><s>Add &quot;Quit to Desktop&quot; button.</s>
+<ul>
+<li><s>Program it.</s></li>
+</ul>
+</li>
+<li>Get the controller controls working.</li>
+</ul>
+<h3 id="winmenutscn">WinMenu.tscn</h3>
+<ul>
+<li><s>Add win label.</s></li>
+<li><s>Add rematch label.</s></li>
+<li><s>Add character select label.</s></li>
+<li><s>Add quit to desktop button.</s></li>
+<li>Get the controller controls working.</li>
+</ul>
+<h3 id="quitconfirmationtscn">QuitConfirmation.tscn</h3>
+<ul>
+<li><s>Add &quot;Yes&quot; button.</s>
+<ul>
+<li><s>Program it.</s></li>
+</ul>
+</li>
+<li><s>Add &quot;No&quot; button.</s>
+<ul>
+<li><s>Program it.</s></li>
+</ul>
+</li>
+<li>Get the controller controls working.</li>
+</ul>
+<h3 id="optionsmenutscn-not-yet-added">OptionsMenu.tscn (not yet added)</h3>
+<ul>
+<li>Add video settings.
+<ul>
+<li>Add resolution setting.</li>
+<li>Add refresh rate setting.</li>
+<li>Add VSync setting.</li>
+<li>Add fullscreen/windowed/borderless setting.</li>
+</ul>
+</li>
+<li>Add control settings.
+<ul>
+<li>Add &quot;Menu Control Mode&quot; setting (in a combo box). (These settings don't
+apply in the character select screen, where the Menu Control Mode defaults to
+2-player Individual Control).
+<ul>
+<li>Add &quot;Player 1 Exclusive Control&quot; setting. (Makes it to where player 1 has
+all of the control of the menus and pausing.)</li>
+<li>Add &quot;2-Player Simultaneous Control&quot; setting. (Makes it to where both
+players control pausing and navigating the cursor in the menus
+simultaneously. This does not work in the Options Menu. Not recommended
+when having guests over with itchy button fingers/thumbs.)</li>
+<li>Add &quot;2-Player Individual Control&quot; setting. (Makes it to where both players
+get their own cursor for navigating menus when not in a game. They must be
+on the same UI element to confirm the selection (this does not happen in
+the character select screen). Both players have control over pausing, but
+only the player who paused the game has control over the pause menu.).</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Get controls working.</li>
+</ul>
+<h3 id="characterselecttscn-not-yet-added">CharacterSelect.tscn (not yet added)</h3>
+<ul>
+<li>Add character preview.
+<ul>
+<li>For player 1.</li>
+<li>And player 2.</li>
+</ul>
+</li>
+<li>Add character roster (with only the red rectangle).</li>
+<li>Get controls working for both players.</li>
+<li>Make it to where after both players have selected their characters, prompt
+the players to start the game (whoever gets to start the game depends on the
+Menu Control Mode).</li>
+</ul>
+<h3 id="stageselecttscn-not-yet-added">StageSelect.tscn (not yet added)</h3>
+<ul>
+<li>Add stage list.</li>
+<li>Add stage preview.</li>
+<li>Get controller controls working.</li>
+</ul>
+<h3 id="musicselecttscn-not-yet-added">MusicSelect.tscn (not yet added)</h3>
+<ul>
+<li>Add music list (no music has been added yet).</li>
+<li>Add metadata (artist, song name, album name (if any), tempo, length (not that
+it really matters since matches are 99 seconds long), places to buy/listen (e.g.
+Spotify, iTunes, Bandcamp, Deezer, Beatport, YouTube, etc.)).</li>
+<li>Get controller controls working.</li>
+</ul>
+
+    </body>
+    </html>

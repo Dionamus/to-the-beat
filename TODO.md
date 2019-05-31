@@ -93,12 +93,13 @@
 
 ### WinMenu.tscn
 
-* Add win label.
-* Add rematch label.
-* Add character select label.
-* Add quit to desktop button.
+* ~~Add win label.~~
+* ~~Add rematch label.~~
+* ~~Add character select label.~~
+* ~~Add quit to desktop button.~~
+* Get the controller controls working.
 
-### QuitConfirmation.tscn (COMPLETE)
+### QuitConfirmation.tscn
 
 * ~~Add "Yes" button.~~
   * ~~Program it.~~
@@ -106,7 +107,7 @@
   * ~~Program it.~~
 * Get the controller controls working.
 
-### OptionsMenu.tscn (not yet added and won't be added for the capstone)
+### OptionsMenu.tscn (not yet added)
 
 * Add video settings.
   * Add resolution setting.
@@ -130,7 +131,7 @@
       only the player who paused the game has control over the pause menu.).
 * Get controls working.
 
-### CharacterSelect.tscn (not yet added and won't be added for the capstone)
+### CharacterSelect.tscn (not yet added)
 
 * Add character preview.
   * For player 1.
@@ -141,13 +142,13 @@
   the players to start the game (whoever gets to start the game depends on the
   Menu Control Mode).
 
-### StageSelect.tscn (not yet added and won't be added for the capstone)
+### StageSelect.tscn (not yet added)
 
 * Add stage list.
 * Add stage preview.
 * Get controller controls working.
 
-### MusicSelect.tscn (not yet added and won't be added for the capstone)
+### MusicSelect.tscn (not yet added)
 
 * Add music list (no music has been added yet).
 * Add metadata (artist, song name, album name (if any), tempo, length (not that
