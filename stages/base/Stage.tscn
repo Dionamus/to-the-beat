@@ -42,6 +42,7 @@ position = Vector2( 1800, 1013 )
 texture = ExtResource( 3 )
 
 [node name="FollowCamera" parent="." instance=ExtResource( 4 )]
+editor/display_folded = true
 limit_left = 0
 limit_top = 0
 limit_right = 3600
@@ -161,7 +162,6 @@ margin_left = -960.0
 margin_top = -540.0
 margin_right = 960.0
 margin_bottom = 540.0
-
 [connection signal="timeout" from="GameTimer" to="." method="_on_GameTimer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
 [connection signal="timeout" from="PostWinTimer" to="." method="_on_PostWinTimer_timeout"]

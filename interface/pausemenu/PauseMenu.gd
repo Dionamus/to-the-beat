@@ -17,11 +17,6 @@ func _on_OptionsButton_pressed():
 func _on_QuitToCharacterSelectButton_pressed():
 	pass # Replace with function body.
 
-# Quit to the main menu when QuitToMainMenuButton is pressed.
-# BUG: Disables MainMenu.tscn's script when pressed.
-func _on_QuitToMainMenuButton_pressed():
-	get_tree().change_scene("res://interface/mainmenu/MainMenu.tscn")
-
 # Hides the pause menu and asks if the user wants to quit to the desktop.
 func _on_QuitToDesktopButton_pressed():
 	$LabelAndButtons.visible = false

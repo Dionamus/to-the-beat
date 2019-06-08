@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://interface/pausemenu/PauseMenu.gd" type="Script" id=1]
 [ext_resource path="res://interface/Roboto-Bold.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://interface/quitconfirmation/QuitConfirmation.tscn" type="PackedScene" id=3]
+[ext_resource path="res://interface/quittomainmenubutton/QuitToMainMenuButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://interface/quitconfirmation/QuitConfirmation.tscn" type="PackedScene" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 44
@@ -55,12 +56,9 @@ margin_bottom = 176.0
 custom_fonts/font = SubResource( 2 )
 text = "Quit to Character Select"
 
-[node name="QuitToMainMenuButton" type="Button" parent="LabelAndButtons"]
+[node name="QuitToMainMenuButton" parent="LabelAndButtons" instance=ExtResource( 3 )]
 margin_top = 118.0
-margin_right = 380.0
 margin_bottom = 176.0
-custom_fonts/font = SubResource( 2 )
-text = "Quit to Main Menu"
 
 [node name="QuitToDesktopButton" type="Button" parent="LabelAndButtons"]
 margin_top = 180.0
@@ -69,7 +67,7 @@ margin_bottom = 238.0
 custom_fonts/font = SubResource( 2 )
 text = "Quit to Desktop"
 
-[node name="QuitConfirmation" parent="." instance=ExtResource( 3 )]
+[node name="QuitConfirmation" parent="." instance=ExtResource( 4 )]
 visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -77,10 +75,8 @@ margin_left = 560.0
 margin_top = 483.0
 margin_right = 1360.0
 margin_bottom = 597.0
-
 [connection signal="pressed" from="LabelAndButtons/ResumeGameButton" to="." method="_on_ResumeGameButton_pressed"]
 [connection signal="pressed" from="LabelAndButtons/OptionsButton" to="." method="_on_OptionsButton_pressed"]
 [connection signal="pressed" from="LabelAndButtons/QuitToCharacterSelectButton" to="." method="_on_QuitToCharacterSelectButton_pressed"]
-[connection signal="pressed" from="LabelAndButtons/QuitToMainMenuButton" to="." method="_on_QuitToMainMenuButton_pressed"]
 [connection signal="pressed" from="LabelAndButtons/QuitToDesktopButton" to="." method="_on_QuitToDesktopButton_pressed"]
 [connection signal="no_quit" from="QuitConfirmation" to="." method="_on_QuitConfirmation_no_quit"]
