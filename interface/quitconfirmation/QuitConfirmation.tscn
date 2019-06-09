@@ -37,6 +37,7 @@ custom_constants/separation = 1
 [node name="YesButton" type="Button" parent="LabelAndButtons/YesNoButtonContainer"]
 margin_right = 399.0
 margin_bottom = 58.0
+focus_neighbour_right = NodePath("../NoButton")
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 2 )
 text = "Yes"
@@ -45,6 +46,7 @@ text = "Yes"
 margin_left = 400.0
 margin_right = 800.0
 margin_bottom = 58.0
+focus_neighbour_left = NodePath("../YesButton")
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 2 )
 text = "No"

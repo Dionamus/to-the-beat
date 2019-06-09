@@ -21,9 +21,11 @@ func _on_QuitToCharacterSelectButton_pressed():
 func _on_QuitToDesktopButton_pressed():
 	$LabelAndButtons.visible = false
 	$QuitConfirmation.visible = true
+	$QuitConfirmation/LabelAndButtons/YesNoButtonContainer/YesButton.grab_focus()
 
 # If NoButton is pressed, QuitConfirmation disappears and PauseMenu's
 # label and buttons reappear.
 func _on_QuitConfirmation_no_quit():
 	$QuitConfirmation.visible = false
 	$LabelAndButtons.visible = true
+	$LabelAndButtons/ResumeGameButton.grab_focus()

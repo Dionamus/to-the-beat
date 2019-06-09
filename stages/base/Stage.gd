@@ -177,10 +177,12 @@ func _unhandled_input(event):
 		if Input.is_action_just_pressed("p1_pause"):
 			if $CanvasLayer/PauseMenu.visible:
 				$CanvasLayer/PauseMenu.hide()
+				$CanvasLayer/PauseMenu.release_focus()
 				get_tree().paused = false
 			else:
 				get_tree().paused = true
 				$CanvasLayer/PauseMenu.show()
+				$CanvasLayer/PauseMenu/LabelAndButtons/QuitToMainMenuButton.grab_focus()
 		
 		# Player 2 controls
 		if Input.is_action_just_pressed("p2_left"):
@@ -236,12 +238,14 @@ func _unhandled_input(event):
 		if Input.is_action_just_released("p2_block"):
 			player2.is_blocking = false
 		if Input.is_action_just_pressed("p2_pause"):
-			if not $CanvasLayer/PauseMenu.visible:
+			if $CanvasLayer/PauseMenu.visible:
+				$CanvasLayer/PauseMenu.hide()
+				$CanvasLayer/PauseMenu.release_focus()
+				get_tree().paused = false
+			else:
 				get_tree().paused = true
 				$CanvasLayer/PauseMenu.show()
-			else:
-				$CanvasLayer/PauseMenu.hide()
-				get_tree().paused = false
+				$CanvasLayer/PauseMenu/LabelAndButtons/QuitToMainMenuButton.grab_focus()
 
 func _process(delta):
 	# Make sure that the frame number for the players' sprites
@@ -281,42 +285,11 @@ func _process(delta):
 # main_player is the player that is being controlled, the grid number is the 
 # grid_number that the position is being set to.
 func set_position(main_player, grid_number):
-	if grid_number == 0:
-		tween.interpolate_property(main_player, "position", main_player.position,
-		$Position0.position, .2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-		tween.start()
-	elif grid_number == 1:
-		tween.interpolate_property(main_player, "position", main_player.position,
-		$Position1.position, .2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-		tween.start()
-	elif grid_number == 2:
-		tween.interpolate_property(main_player, "position", main_player.position,
-		$Position2.position, .2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-		tween.start()
-	elif grid_number == 3:
-		tween.interpolate_property(main_player, "position", main_player.position,
-		$Position3.position, .2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-		tween.start()
-	elif grid_number == 4:
-		tween.interpolate_property(main_player, "position", main_player.position,
-		$Position4.position, .2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-		tween.start()
-	elif grid_number == 5:
-		tween.interpolate_property(main_player, "position", main_player.position,
-		$Position5.position, .2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-		tween.start()
-	elif grid_number == 6:
-		tween.interpolate_property(main_player, "position", main_player.position,
-		$Position6.position, .2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-		tween.start()
-	elif grid_number == 7:
-		tween.interpolate_property(main_player, "position", main_player.position,
-		$Position7.position, .2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-		tween.start()
-	elif grid_number == 8:
-		tween.interpolate_property(main_player, "position", main_player.position,
-		$Position8.position, .2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-		tween.start()
+	tween.interpolate_property(main_player, "position", main_player.position,
+			get_node("Position" + str(grid_number)).position, .2,
+			Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.start()
+
 
 # When the StartTimer times out, show the Character classes, play their sprites,
 # allow input, play the music, then start the game timer.
@@ -355,35 +328,36 @@ func _on_GameTimer_timeout():
 		$CanvasLayer/WinLabel.text = "Tie! No one wins!"
 
 # When player 1 wins a round, increment their wins. If they have 1 win,
-# show that they have won a round, pause the game timer and input, and begin
-# a countdown for the next round. If they have two wins, show that they have
-# won two rounds, set is_game_over to true and is_input_allowed to false,
-# stop the game timer and show the win menu with the lable showing that player
-# 1 has won the round.
+# show that they have won a round, pause the game timer and input, reset their
+# HP, and begin a countdown for the next round. If they have two wins, show
+# that they have won two rounds, set is_game_over to true and is_input_allowed
+# to false, stop the game timer and show the win menu with the lable showing
+# that player 1 has won the round.
 func _on_Player1_win_round():
 	player1.wins += 1
 	if player1.wins == 1:
-		print("Player 1 has one win.")
 		p1_wins.texture = p1_one_win
 		$GameTimer.paused = true
 		is_input_allowed = false
 		$CanvasLayer/StartTimerLabel.show()
+		player1.reset_hp()
+		player2.reset_hp()
 		$PostWinTimer.start()
 	elif player1.wins == 2:
-		print("Player 1 has two wins.")
 		p1_wins.texture = two_wins
 		is_game_over = true
 		is_input_allowed = false
 		$GameTimer.stop()
 		$CanvasLayer/WinMenu.show()
+		$CanvasLayer/WinMenu/WinLabelAndButtons/QuitToMainMenuButton.grab_focus()
 		win_round_label.text = "Player 1 wins!"
 
 # When player 2 wins a round, increment their wins. If they have 1 win,
-# show that they have won a round, pause the game timer and input, and begin
-# a countdown for the next round. If they have two wins, show that they have
-# won two rounds, set is_game_over to true and is_input_allowed to false,
-# stop the game timer and show the win menu with the lable showing that player
-# 2 has won the round.
+# show that they have won a round, pause the game timer and input, reset their
+# HP, and begin a countdown for the next round. If they have two wins, show
+# that they have won two rounds, set is_game_over to true and is_input_allowed
+# to false, stop the game timer and show the win menu with the lable showing
+# that player 2 has won the round.
 func _on_Player2_win_round():
 	player2.wins += 1
 	if player2.wins == 1:
@@ -392,6 +366,8 @@ func _on_Player2_win_round():
 		$GameTimer.paused = true
 		is_input_allowed = false
 		$CanvasLayer/StartTimerLabel.show()
+		player1.reset_hp()
+		player2.reset_hp()
 		$PostWinTimer.start()
 	elif player2.wins == 2:
 		print("Player 2 has two wins.")
@@ -400,6 +376,7 @@ func _on_Player2_win_round():
 		is_input_allowed = false
 		$GameTimer.stop()
 		$CanvasLayer/WinMenu.show()
+		$CanvasLayer/WinMenu/WinLabelAndButtons/QuitToMainMenuButton.grab_focus()
 		win_round_label.text = "Player 2 wins!"
 
 # When player 1 loses a round, increment their losses and call the method
@@ -417,7 +394,7 @@ func _on_Player2_lose_round():
 # When the post-win timer times out, if the neither of the players haven't won a
 # game yet, unpause the game timer, hide the start timer label (which is used
 # for showing the time remaining before a new round starts with the post-win
-# timer), enable input, and reset the players' hitpoints.
+# timer), enable input, and reset the players' hitpoints (.
 func _on_PostWinTimer_timeout():
 	if player1.wins != 2 or player2.wins != 2:
 		$GameTimer.paused = false

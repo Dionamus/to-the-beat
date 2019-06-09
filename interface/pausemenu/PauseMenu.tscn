@@ -37,6 +37,7 @@ valign = 1
 margin_top = 56.0
 margin_right = 380.0
 margin_bottom = 114.0
+focus_neighbour_bottom = NodePath("../QuitToMainMenuButton")
 custom_fonts/font = SubResource( 2 )
 text = "Resume Game"
 
@@ -59,11 +60,14 @@ text = "Quit to Character Select"
 [node name="QuitToMainMenuButton" parent="LabelAndButtons" instance=ExtResource( 3 )]
 margin_top = 118.0
 margin_bottom = 176.0
+focus_neighbour_top = NodePath("../ResumeGameButton")
+focus_neighbour_bottom = NodePath("../QuitToDesktopButton")
 
 [node name="QuitToDesktopButton" type="Button" parent="LabelAndButtons"]
 margin_top = 180.0
 margin_right = 380.0
 margin_bottom = 238.0
+focus_neighbour_top = NodePath("../QuitToMainMenuButton")
 custom_fonts/font = SubResource( 2 )
 text = "Quit to Desktop"
 

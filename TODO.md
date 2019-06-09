@@ -4,7 +4,7 @@
 
 * Make a proper icon that is not the default icon that comes with a new Godot project.
 
-### Stage.tscn (COMPLETE (for the capstone))
+### Stage.tscn
 
 * ~~Get the controls up and running in the base stage without tying it to the
   tempo.~~
@@ -19,6 +19,7 @@
 * ~~Flesh out the controls.~~ Used a hacky implementation in the place of animations and hitboxes.
 * ~~Add `StartTimerLabel` and interface it with the Stage's script.~~
 * ~~Add `PostWinTimer` and interafaces it with the Stage's script.~~
+* Fix the 4-button, 2-hit round win exploit (it previously was a game win exploit).
 
 ### Debug.tscn (COMPLETE)
 
@@ -73,7 +74,8 @@
   * Program it (after OptionsMenu.tscn has been made).
 * ~~Add "Quit to Desktop" button.~~
   * ~~Program it.~~
-* Get controller controls working.
+* ~~Get controller controls working.~~
+* Style it.
 
 ### PauseMenu.tscn
 
@@ -89,15 +91,22 @@
     clicking this button.
 * ~~Add "Quit to Desktop" button.~~
   * ~~Program it.~~
-* Get the controller controls working.
+* ~~Get the controller controls working.~~
+* Style it.
 
 ### WinMenu.tscn
 
 * ~~Add win label.~~
-* ~~Add rematch label.~~
-* ~~Add character select label.~~
+* ~~Add rematch button.~~
+  * Program it.
+* ~~Add character select button.~~
+  * Program it.
+* ~~Add quit to main menu button.~~
+  * ~~Program it.~~
 * ~~Add quit to desktop button.~~
-* Get the controller controls working.
+  * ~~Program it.~~
+* ~~Get the controller controls working.~~\
+* Style it.
 
 ### QuitConfirmation.tscn
 
@@ -105,7 +114,8 @@
   * ~~Program it.~~
 * ~~Add "No" button.~~
   * ~~Program it.~~
-* Get the controller controls working.
+* ~~Get the controller controls working.~~
+* Style it.
 
 ### OptionsMenu.tscn (not yet added)
 
@@ -130,6 +140,7 @@
       the character select screen). Both players have control over pausing, but
       only the player who paused the game has control over the pause menu.).
 * Get controls working.
+* Style it.
 
 ### CharacterSelect.tscn (not yet added)
 
@@ -141,12 +152,14 @@
 * Make it to where after both players have selected their characters, prompt
   the players to start the game (whoever gets to start the game depends on the
   Menu Control Mode).
+* Style it.
 
 ### StageSelect.tscn (not yet added)
 
 * Add stage list.
 * Add stage preview.
 * Get controller controls working.
+* Style it.
 
 ### MusicSelect.tscn (not yet added)
 
@@ -155,3 +168,4 @@
   it really matters since matches are 99 seconds long), places to buy/listen (e.g.
   Spotify, iTunes, Bandcamp, Deezer, Beatport, YouTube, etc.)).
 * Get controller controls working.
+* Style it.
