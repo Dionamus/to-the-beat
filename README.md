@@ -1,6 +1,6 @@
 # to-the-beat
 
-A fighting game with tempo-based movement.
+A fighting game with tempo-based input.
 
 ---
 
