@@ -123,50 +123,55 @@ func _unhandled_input(event):
 		# Player 1 controls
 		if Input.is_action_just_pressed("p1_left"):
 			if player1.grid_number != 0\
-					and player1.grid_number != player2.grid_number + 1:
-						if tempo_control.frame <= end_frame or tempo_control.frame >= start_frame:
-							player1.grid_number -= 1
-							set_position(player1, player1.grid_number)
+			and player1.grid_number != player2.grid_number + 1:
+				if tempo_control.frame <= end_frame\
+				or tempo_control.frame >= start_frame:
+					player1.grid_number -= 1
+					set_position(player1, player1.grid_number)
 		if Input.is_action_just_pressed("p1_right"):
 			if player1.grid_number != 8\
-					and player1.grid_number != player2.grid_number - 1:
-						if tempo_control.frame <= end_frame or tempo_control.frame >= start_frame:
-							player1.grid_number += 1
-							set_position(player1, player1.grid_number)
+			and player1.grid_number != player2.grid_number - 1:
+				if tempo_control.frame <= end_frame\
+				or tempo_control.frame >= start_frame:
+					player1.grid_number += 1
+					set_position(player1, player1.grid_number)
 		if Input.is_action_just_pressed("p1_front_punch"):
 			if player1.grid_number == player2.grid_number - 1\
-					or $FollowCamera/Player1.grid_number == player2.grid_number + 1:
-						if tempo_control.frame <= end_frame or tempo_control.frame >= start_frame:
-							if not player2.is_blocking:
-								player2._on_Character_is_hit(10)
+			or $FollowCamera/Player1.grid_number == player2.grid_number + 1:
+				if tempo_control.frame <= end_frame\
+				or tempo_control.frame >= start_frame:
+					if not player2.is_blocking:
+						player2._on_Character_is_hit(10)
 			else:
 				# This will change in a future update
 				return
 		if Input.is_action_just_pressed("p1_back_punch"):
 			if player1.grid_number == player2.grid_number - 1\
-					or player1.grid_number == player2.grid_number + 1:
-						if tempo_control.frame <= end_frame or tempo_control.frame >= start_frame:
-							if not player2.is_blocking:
-								player2._on_Character_is_hit(20)
+			or player1.grid_number == player2.grid_number + 1:
+				if tempo_control.frame <= end_frame\
+				or tempo_control.frame >= start_frame:
+					if not player2.is_blocking:
+						player2._on_Character_is_hit(20)
 			else:
 				# This will change in a future update
 				return
 		if Input.is_action_just_pressed("p1_front_kick"):
 			if player1.grid_number == player2.grid_number - 1\
-					or player1.grid_number == player2.grid_number + 1:
-						if tempo_control.frame <= end_frame or tempo_control.frame >= start_frame:
-							if not player2.is_blocking:
-								player2._on_Character_is_hit(10)
+			or player1.grid_number == player2.grid_number + 1:
+				if tempo_control.frame <= end_frame\
+				or tempo_control.frame >= start_frame:
+					if not player2.is_blocking:
+						player2._on_Character_is_hit(10)
 			else:
 				# This will change in a future update
 				return
 		if Input.is_action_just_pressed("p1_rear_kick"):
 			if player1.grid_number == player2.grid_number - 1\
-					or player1.grid_number == player2.grid_number + 1:
-						if tempo_control.frame <= end_frame\
-								or tempo_control.frame >= start_frame:
-									if not player2.is_blocking:
-										player2._on_Character_is_hit(10)
+			or player1.grid_number == player2.grid_number + 1:
+				if tempo_control.frame <= end_frame\
+				or tempo_control.frame >= start_frame:
+					if not player2.is_blocking:
+						player2._on_Character_is_hit(10)
 			else:
 				# This will change in a future update
 				return
@@ -187,49 +192,55 @@ func _unhandled_input(event):
 		# Player 2 controls
 		if Input.is_action_just_pressed("p2_left"):
 			if player2.grid_number != 0\
-					and player2.grid_number != player1.grid_number + 1:
-						if tempo_control.frame <= end_frame or tempo_control.frame >= start_frame:
-							player2.grid_number -= 1
-							set_position(player2, player2.grid_number)
+			and player2.grid_number != player1.grid_number + 1:
+				if tempo_control.frame <= end_frame\
+				or tempo_control.frame >= start_frame:
+					player2.grid_number -= 1
+					set_position(player2, player2.grid_number)
 		if Input.is_action_just_pressed("p2_right"):
 			if player2.grid_number != 8\
-					and player2.grid_number != player1.grid_number - 1:
-						if tempo_control.frame <= end_frame or tempo_control.frame >= start_frame:
-							player2.grid_number += 1
-							set_position(player2, player2.grid_number)
+			and player2.grid_number != player1.grid_number - 1:
+				if tempo_control.frame <= end_frame\
+				or tempo_control.frame >= start_frame:
+					player2.grid_number += 1
+					set_position(player2, player2.grid_number)
 		if Input.is_action_just_pressed("p2_front_punch"):
 			if player2.grid_number == player1.grid_number - 1\
-					or player2.grid_number == player1.grid_number + 1:
-						if tempo_control.frame <= end_frame or tempo_control.frame >= start_frame:
-							if not player1.is_blocking:
-								player1._on_Character_is_hit(10)
+			or player2.grid_number == player1.grid_number + 1:
+				if tempo_control.frame <= end_frame\
+				or tempo_control.frame >= start_frame:
+					if not player1.is_blocking:
+						player1._on_Character_is_hit(10)
 			else:
 				# This will change in a future update
 				return
 		if Input.is_action_just_pressed("p2_back_punch"):
 			if player2.grid_number == player1.grid_number - 1\
-					or player2.grid_number == player1.grid_number + 1:
-						if tempo_control.frame <= end_frame or tempo_control.frame >= start_frame:
-							if not player1.is_blocking:
-								player1._on_Character_is_hit(20)
+			or player2.grid_number == player1.grid_number + 1:
+				if tempo_control.frame <= end_frame\
+				or tempo_control.frame >= start_frame:
+					if not player1.is_blocking:
+						player1._on_Character_is_hit(20)
 			else:
 				# This will change in a future update
 				return
 		if Input.is_action_just_pressed("p2_front_kick"):
 			if player2.grid_number == player1.grid_number - 1\
-					or player2.grid_number == player1.grid_number + 1:
-						if tempo_control.frame <= end_frame or tempo_control.frame >= start_frame:
-							if not player1.is_blocking:
-								player1._on_Character_is_hit(10)
+			or player2.grid_number == player1.grid_number + 1:
+				if tempo_control.frame <= end_frame\
+				or tempo_control.frame >= start_frame:
+					if not player1.is_blocking:
+						player1._on_Character_is_hit(10)
 			else:
 				# This will change in a future update
 				return
 		if Input.is_action_just_pressed("p2_rear_kick"):
 			if player2.grid_number == player1.grid_number - 1\
-					or player2.grid_number == player1.grid_number + 1:
-						if tempo_control.frame <= end_frame or tempo_control.frame >= start_frame:
-							if not player1.is_blocking:
-								player1._on_Character_is_hit(20)
+			or player2.grid_number == player1.grid_number + 1:
+				if tempo_control.frame <= end_frame\
+				or tempo_control.frame >= start_frame:
+					if not player1.is_blocking:
+						player1._on_Character_is_hit(20)
 			else:
 				# This will change in a future update
 				return
