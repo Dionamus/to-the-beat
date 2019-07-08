@@ -19,7 +19,7 @@
 * ~~Flesh out the controls.~~ Used a hacky implementation in the place of animations and hitboxes.
 * ~~Add `StartTimerLabel` and interface it with the Stage's script.~~
 * ~~Add `PostWinTimer` and interafaces it with the Stage's script.~~
-* Fix the 4-button, 2-hit round win exploit (it previously was a game win exploit).
+* ~~Fix the 4-button, 2-hit round win exploit (it previously was a game win exploit).~~
 
 ### Debug.tscn (COMPLETE)
 
