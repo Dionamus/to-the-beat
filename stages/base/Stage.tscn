@@ -42,7 +42,6 @@ position = Vector2( 1800, 1013 )
 texture = ExtResource( 3 )
 
 [node name="FollowCamera" parent="." instance=ExtResource( 4 )]
-editor/display_folded = true
 limit_left = 0
 limit_top = 0
 limit_right = 3600
@@ -62,6 +61,7 @@ modulate = Color( 0.0583649, 0.628898, 0.878906, 1 )
 position = Vector2( 3400, 1510 )
 scale = Vector2( 10, 10 )
 player_number = 2
+grid_number = 8
 
 [node name="Position0" type="Position2D" parent="."]
 position = Vector2( 200, 1510 )

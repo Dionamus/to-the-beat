@@ -7,24 +7,24 @@ func _ready():
 # When the "Start Game" button is pressed, change the scene to the main stage.
 # In a future update, this will be replaced by the character select
 # screen.
-func _on_StartGameButton_pressed():
+func _on_StartGameButton_pressed() -> void:
 #	breakpoint
 	get_tree().change_scene("res://stages/base/Stage.tscn")
 
-# When the "Options" button is pressed
-func _on_OptionsButton_pressed():
+# When the "Options" button is pressed, open the options menu.
+func _on_OptionsButton_pressed() -> void:
 	pass # Replace with function body.
 
 # When the "Quit to Desktop" button is pressed, hide the main menu and 
 # show the quit confirmation.
-func _on_QuitToDesktopButton_pressed():
+func _on_QuitToDesktopButton_pressed() -> void:
 	$LabelAndButtons.visible = false
 	$QuitConfirmation.visible = true
 	$QuitConfirmation/LabelAndButtons/YesNoButtonContainer/YesButton.grab_focus()
 
 # When the "No" button is pressed in the quit confirmation, hide the quit
 # confirmation and show the main menu.
-func _on_QuitConfirmation_no_quit():
+func _on_QuitConfirmation_no_quit() -> void:
 	$QuitConfirmation.visible = false
 	$LabelAndButtons.visible = true
 	$LabelAndButtons/StartGameButton.grab_focus()
