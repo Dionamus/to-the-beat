@@ -68,7 +68,7 @@
 
 ### MainMenu.tscn
 
-* ~~Add "Start Game" button.~~ (For right now, it only loads into)
+* ~~Add "Start Game" button.~~ (For right now, it only loads into a match.)
   * ~~Program it.~~
 * ~~Add "Options" button.~~
   * Program it (after OptionsMenu.tscn has been made).
@@ -87,8 +87,8 @@
   * Program it (after CharacterSelect.tscn has been made).
 * ~~Add "Quit to Main Menu" button.~~
   * ~~Program it.~~
-  * Fix the bug that prevents the main menu buttons from working after
-    clicking this button.
+  * ~~Fix the bug that prevents the main menu buttons from working after
+    clicking this button.~~
 * ~~Add "Quit to Desktop" button.~~
   * ~~Program it.~~
 * ~~Get the controller controls working.~~
@@ -98,7 +98,7 @@
 
 * ~~Add win label.~~
 * ~~Add rematch button.~~
-  * Program it.
+  * ~~Program it.~~
 * ~~Add character select button.~~
   * Program it.
 * ~~Add quit to main menu button.~~

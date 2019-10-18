@@ -150,7 +150,7 @@ func _unhandled_input(event):
 						player1.is_allowed_input = false
 			else:
 				# This will change in a future update
-				return
+				pass
 		if Input.is_action_just_pressed("p1_back_punch"):
 			if player1.grid_number == player2.grid_number - 1\
 			or player1.grid_number == player2.grid_number + 1:
@@ -162,7 +162,7 @@ func _unhandled_input(event):
 						player1.is_allowed_input = false
 			else:
 				# This will change in a future update
-				return
+				pass
 		if Input.is_action_just_pressed("p1_front_kick"):
 			if player1.grid_number == player2.grid_number - 1\
 			or player1.grid_number == player2.grid_number + 1:
@@ -174,7 +174,7 @@ func _unhandled_input(event):
 						player1.is_allowed_input = false
 			else:
 				# This will change in a future update
-				return
+				pass
 		if Input.is_action_just_pressed("p1_rear_kick"):
 			if player1.grid_number == player2.grid_number - 1\
 			or player1.grid_number == player2.grid_number + 1:
@@ -186,7 +186,7 @@ func _unhandled_input(event):
 						player1.is_allowed_input = false
 			else:
 				# This will change in a future update
-				return
+				pass
 		if Input.is_action_pressed("p1_block"):
 			player1.is_blocking = true
 		if Input.is_action_just_released("p1_block"):
@@ -231,7 +231,7 @@ func _unhandled_input(event):
 						player2.is_allowed_input = false
 			else:
 				# This will change in a future update
-				return
+				pass
 		if Input.is_action_just_pressed("p2_back_punch"):
 			if player2.grid_number == player1.grid_number - 1\
 			or player2.grid_number == player1.grid_number + 1:
@@ -243,7 +243,7 @@ func _unhandled_input(event):
 						player2.is_allowed_input = false
 			else:
 				# This will change in a future update
-				return
+				pass
 		if Input.is_action_just_pressed("p2_front_kick"):
 			if player2.grid_number == player1.grid_number - 1\
 			or player2.grid_number == player1.grid_number + 1:
@@ -255,7 +255,7 @@ func _unhandled_input(event):
 						player2.is_allowed_input = false
 			else:
 				# This will change in a future update
-				return
+				pass
 		if Input.is_action_just_pressed("p2_rear_kick"):
 			if player2.grid_number == player1.grid_number - 1\
 			or player2.grid_number == player1.grid_number + 1:
@@ -267,7 +267,7 @@ func _unhandled_input(event):
 						player2.is_allowed_input = false
 			else:
 				# This will change in a future update
-				return
+				pass
 		if Input.is_action_pressed("p2_block"):
 			player2.is_blocking = true
 		if Input.is_action_just_released("p2_block"):
