@@ -39,7 +39,7 @@ focus_neighbour_bottom = NodePath("../QuitToDesktopButton")
 custom_fonts/font = SubResource( 2 )
 text = "Start Game"
 
-[node name="OptionsButton" type="Button" parent="LabelAndButtons"]
+[node name="SettingsButton" type="Button" parent="LabelAndButtons"]
 visible = false
 margin_top = 118.0
 margin_right = 321.0
@@ -64,6 +64,6 @@ margin_top = 483.0
 margin_right = 1360.0
 margin_bottom = 597.0
 [connection signal="pressed" from="LabelAndButtons/StartGameButton" to="." method="_on_StartGameButton_pressed"]
-[connection signal="pressed" from="LabelAndButtons/OptionsButton" to="." method="_on_OptionsButton_pressed"]
+[connection signal="pressed" from="LabelAndButtons/SettingsButton" to="." method="_on_SettingsButton_pressed"]
 [connection signal="pressed" from="LabelAndButtons/QuitToDesktopButton" to="." method="_on_QuitToDesktopButton_pressed"]
 [connection signal="no_quit" from="QuitConfirmation" to="." method="_on_QuitConfirmation_no_quit"]

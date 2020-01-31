@@ -1,0 +1,1064 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://interface/settingsmenu/SettingsMenu.gd" type="Script" id=1]
+[ext_resource path="res://interface/Roboto-Bold.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 44
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 40
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 30
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 30
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 30
+font_data = ExtResource( 2 )
+
+[node name="SettingsMenu" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 50
+custom_constants/margin_top = 50
+custom_constants/margin_left = 50
+custom_constants/margin_bottom = 50
+script = ExtResource( 1 )
+
+[node name="Settings" type="VBoxContainer" parent="."]
+margin_left = 50.0
+margin_top = 50.0
+margin_right = 1870.0
+margin_bottom = 1030.0
+
+[node name="SettingsLabel" type="Label" parent="Settings"]
+margin_right = 1820.0
+margin_bottom = 52.0
+custom_fonts/font = SubResource( 1 )
+text = "Settings"
+align = 1
+valign = 1
+
+[node name="SettingsCategories" type="TabContainer" parent="Settings"]
+margin_top = 56.0
+margin_right = 1820.0
+margin_bottom = 150.0
+custom_fonts/font = SubResource( 2 )
+
+[node name="Video" type="Tabs" parent="Settings/SettingsCategories"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 66.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="Audio" type="Tabs" parent="Settings/SettingsCategories"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 66.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="Controls" type="Tabs" parent="Settings/SettingsCategories"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 66.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="Panel" type="Panel" parent="Settings"]
+margin_top = 154.0
+margin_right = 1820.0
+margin_bottom = 980.0
+size_flags_vertical = 3
+
+[node name="VideoSettings" type="ScrollContainer" parent="Settings/Panel"]
+editor/display_folded = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Settings/Panel/VideoSettings"]
+margin_right = 1820.0
+margin_bottom = 826.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 0
+
+[node name="Resolution" type="HBoxContainer" parent="Settings/Panel/VideoSettings/HBoxContainer"]
+margin_right = 1820.0
+margin_bottom = 52.0
+
+[node name="Label" type="Label" parent="Settings/Panel/VideoSettings/HBoxContainer/Resolution"]
+margin_right = 908.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "Resolution"
+valign = 1
+
+[node name="ResolutionOptions" type="OptionButton" parent="Settings/Panel/VideoSettings/HBoxContainer/Resolution"]
+margin_left = 912.0
+margin_right = 1820.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 3 )
+text = "Native Resolution"
+align = 2
+items = [ "Native Resolution", null, false, 0, null, "1920x1080", null, false, 1, null, "1280x720", null, false, 2, null ]
+selected = 0
+
+[node name="FramerateLimit" type="HBoxContainer" parent="Settings/Panel/VideoSettings/HBoxContainer"]
+margin_top = 52.0
+margin_right = 1820.0
+margin_bottom = 104.0
+
+[node name="Label" type="Label" parent="Settings/Panel/VideoSettings/HBoxContainer/FramerateLimit"]
+margin_right = 908.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "Framerate Limit"
+valign = 1
+
+[node name="FramerateOptions" type="OptionButton" parent="Settings/Panel/VideoSettings/HBoxContainer/FramerateLimit"]
+margin_left = 912.0
+margin_right = 1820.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 3 )
+text = "None"
+align = 2
+items = [ "None", null, false, 0, null, "30", null, false, 1, null, "60", null, false, 2, null, "120", null, false, 3, null, "144", null, false, 4, null, "200", null, false, 5, null, "240", null, false, 6, null ]
+selected = 0
+
+[node name="Vsync" type="HBoxContainer" parent="Settings/Panel/VideoSettings/HBoxContainer"]
+margin_top = 104.0
+margin_right = 1820.0
+margin_bottom = 156.0
+
+[node name="Label" type="Label" parent="Settings/Panel/VideoSettings/HBoxContainer/Vsync"]
+margin_right = 1680.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "Vsync"
+valign = 1
+
+[node name="VsyncCheckBox" type="CheckBox" parent="Settings/Panel/VideoSettings/HBoxContainer/Vsync"]
+margin_left = 1684.0
+margin_right = 1820.0
+margin_bottom = 52.0
+custom_fonts/font = SubResource( 4 )
+pressed = true
+text = "Enabled"
+
+[node name="Fullscreen" type="HBoxContainer" parent="Settings/Panel/VideoSettings/HBoxContainer"]
+margin_top = 156.0
+margin_right = 1820.0
+margin_bottom = 208.0
+
+[node name="Label" type="Label" parent="Settings/Panel/VideoSettings/HBoxContainer/Fullscreen"]
+margin_right = 1680.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "Fullscreen"
+valign = 1
+
+[node name="FullscreenCheckbox" type="CheckBox" parent="Settings/Panel/VideoSettings/HBoxContainer/Fullscreen"]
+margin_left = 1684.0
+margin_right = 1820.0
+margin_bottom = 52.0
+custom_fonts/font = SubResource( 4 )
+pressed = true
+text = "Enabled"
+
+[node name="Borderless" type="HBoxContainer" parent="Settings/Panel/VideoSettings/HBoxContainer"]
+margin_top = 208.0
+margin_right = 1820.0
+margin_bottom = 260.0
+
+[node name="Label" type="Label" parent="Settings/Panel/VideoSettings/HBoxContainer/Borderless"]
+margin_right = 1680.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "Borderless"
+valign = 1
+
+[node name="BorderlessCheckBox" type="CheckBox" parent="Settings/Panel/VideoSettings/HBoxContainer/Borderless"]
+margin_left = 1684.0
+margin_right = 1820.0
+margin_bottom = 52.0
+custom_fonts/font = SubResource( 4 )
+pressed = true
+text = "Enabled"
+
+[node name="AudioSettings" type="ScrollContainer" parent="Settings/Panel"]
+editor/display_folded = true
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Settings/Panel/AudioSettings"]
+margin_right = 1820.0
+margin_bottom = 826.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 0
+
+[node name="VolumeLabel" type="Label" parent="Settings/Panel/AudioSettings/HBoxContainer"]
+margin_right = 1820.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "Volume"
+align = 1
+valign = 1
+
+[node name="MasterVolume" type="HBoxContainer" parent="Settings/Panel/AudioSettings/HBoxContainer"]
+margin_top = 52.0
+margin_right = 1820.0
+margin_bottom = 104.0
+
+[node name="Label" type="Label" parent="Settings/Panel/AudioSettings/HBoxContainer/MasterVolume"]
+margin_right = 908.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "Master"
+valign = 1
+
+[node name="MasterSlider" type="HSlider" parent="Settings/Panel/AudioSettings/HBoxContainer/MasterVolume"]
+margin_left = 912.0
+margin_right = 1820.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+min_value = -60.0
+max_value = 0.0
+tick_count = 100
+ticks_on_borders = true
+
+[node name="MusicVolume" type="HBoxContainer" parent="Settings/Panel/AudioSettings/HBoxContainer"]
+margin_top = 104.0
+margin_right = 1820.0
+margin_bottom = 156.0
+
+[node name="Label" type="Label" parent="Settings/Panel/AudioSettings/HBoxContainer/MusicVolume"]
+margin_right = 908.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "Music"
+valign = 1
+
+[node name="MusicSlider" type="HSlider" parent="Settings/Panel/AudioSettings/HBoxContainer/MusicVolume"]
+margin_left = 912.0
+margin_right = 1820.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+min_value = -60.0
+max_value = 0.0
+tick_count = 100
+ticks_on_borders = true
+
+[node name="SoundEffectsVolume" type="HBoxContainer" parent="Settings/Panel/AudioSettings/HBoxContainer"]
+margin_top = 156.0
+margin_right = 1820.0
+margin_bottom = 208.0
+
+[node name="Label" type="Label" parent="Settings/Panel/AudioSettings/HBoxContainer/SoundEffectsVolume"]
+margin_right = 908.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "Sound Effects"
+valign = 1
+
+[node name="SfxSlider" type="HSlider" parent="Settings/Panel/AudioSettings/HBoxContainer/SoundEffectsVolume"]
+margin_left = 912.0
+margin_right = 1820.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+min_value = -60.0
+max_value = 0.0
+tick_count = 100
+ticks_on_borders = true
+
+[node name="MenuSounds" type="HBoxContainer" parent="Settings/Panel/AudioSettings/HBoxContainer"]
+margin_top = 208.0
+margin_right = 1820.0
+margin_bottom = 260.0
+
+[node name="Label" type="Label" parent="Settings/Panel/AudioSettings/HBoxContainer/MenuSounds"]
+margin_right = 908.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "Menu Sounds"
+valign = 1
+
+[node name="MenuSlider" type="HSlider" parent="Settings/Panel/AudioSettings/HBoxContainer/MenuSounds"]
+margin_left = 912.0
+margin_right = 1820.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+min_value = -60.0
+max_value = 0.0
+tick_count = 100
+ticks_on_borders = true
+
+[node name="ControlSettings" type="ScrollContainer" parent="Settings/Panel"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Settings/Panel/ControlSettings"]
+margin_right = 1820.0
+margin_bottom = 684.0
+size_flags_horizontal = 3
+custom_constants/separation = 0
+
+[node name="ControlMode" type="HBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer"]
+margin_right = 1820.0
+margin_bottom = 52.0
+
+[node name="Label" type="Label" parent="Settings/Panel/ControlSettings/HBoxContainer/ControlMode"]
+margin_right = 908.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "Control Mode"
+valign = 1
+
+[node name="OptionButton" type="OptionButton" parent="Settings/Panel/ControlSettings/HBoxContainer/ControlMode"]
+margin_left = 912.0
+margin_right = 1820.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 3 )
+text = "Player 1 Exclusive Control"
+align = 2
+items = [ "Player 1 Exclusive Control", null, false, 0, null, "2-Player Simultaneous Control", null, false, 1, null, "2-Player Individual Control", null, false, 2, null ]
+selected = 0
+
+[node name="BindingsLabel" type="Label" parent="Settings/Panel/ControlSettings/HBoxContainer"]
+margin_top = 52.0
+margin_right = 1820.0
+margin_bottom = 104.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "Bindings"
+align = 1
+valign = 1
+
+[node name="PlayerTabs" type="TabContainer" parent="Settings/Panel/ControlSettings/HBoxContainer"]
+margin_top = 104.0
+margin_right = 1820.0
+margin_bottom = 198.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 2 )
+tab_align = 0
+
+[node name="Keyboard" type="Tabs" parent="Settings/Panel/ControlSettings/HBoxContainer/PlayerTabs"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 66.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="Player 1 Controller" type="Tabs" parent="Settings/Panel/ControlSettings/HBoxContainer/PlayerTabs"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 66.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="Player 2 Controller" type="Tabs" parent="Settings/Panel/ControlSettings/HBoxContainer/PlayerTabs"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 66.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="KBControls" type="VBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer"]
+editor/display_folded = true
+margin_top = 198.0
+margin_right = 1820.0
+margin_bottom = 708.0
+custom_constants/separation = 0
+
+[node name="ResetToDefault" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls"]
+margin_right = 1820.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 5 )
+custom_constants/hseparation = 0
+text = "Reset to Default"
+
+[node name="Up" type="HBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls"]
+margin_top = 42.0
+margin_right = 1820.0
+margin_bottom = 94.0
+
+[node name="Label" type="Label" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls/Up"]
+margin_right = 908.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "Up"
+valign = 1
+
+[node name="KBUpButton" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls/Up"]
+margin_left = 912.0
+margin_right = 1820.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 5 )
+text = "Up Arrow"
+
+[node name="Down" type="HBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls"]
+margin_top = 94.0
+margin_right = 1820.0
+margin_bottom = 146.0
+
+[node name="Label" type="Label" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls/Down"]
+margin_right = 908.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "Down"
+valign = 1
+
+[node name="KBDownButton" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls/Down"]
+margin_left = 912.0
+margin_right = 1820.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 5 )
+text = "Down Arrow"
+
+[node name="Left" type="HBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls"]
+margin_top = 146.0
+margin_right = 1820.0
+margin_bottom = 198.0
+
+[node name="Label" type="Label" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls/Left"]
+margin_right = 908.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "Left"
+valign = 1
+
+[node name="KBLeftButton" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls/Left"]
+margin_left = 912.0
+margin_right = 1820.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 5 )
+text = "Left Arrow"
+
+[node name="Right" type="HBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls"]
+margin_top = 198.0
+margin_right = 1820.0
+margin_bottom = 250.0
+
+[node name="Label" type="Label" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls/Right"]
+margin_right = 908.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "Right"
+valign = 1
+
+[node name="KBRightButton" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls/Right"]
+margin_left = 912.0
+margin_right = 1820.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 5 )
+text = "Right Arrow"
+
+[node name="LightPunch" type="HBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls"]
+margin_top = 250.0
+margin_right = 1820.0
+margin_bottom = 302.0
+
+[node name="Label" type="Label" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls/LightPunch"]
+margin_right = 908.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "Light Punch"
+valign = 1
+
+[node name="KBLPButton" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls/LightPunch"]
+margin_left = 912.0
+margin_right = 1820.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 5 )
+text = "Q"
+
+[node name="HeavyPunch" type="HBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls"]
+margin_top = 302.0
+margin_right = 1820.0
+margin_bottom = 354.0
+
+[node name="Label" type="Label" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls/HeavyPunch"]
+margin_right = 908.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "Heavy Punch"
+valign = 1
+
+[node name="KBHPButton" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls/HeavyPunch"]
+margin_left = 912.0
+margin_right = 1820.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 5 )
+text = "W"
+
+[node name="LightKick" type="HBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls"]
+margin_top = 354.0
+margin_right = 1820.0
+margin_bottom = 406.0
+
+[node name="Label" type="Label" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls/LightKick"]
+margin_right = 908.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "Light Kick"
+valign = 1
+
+[node name="KBLKButton" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls/LightKick"]
+margin_left = 912.0
+margin_right = 1820.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 5 )
+text = "E"
+
+[node name="HeavyKick" type="HBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls"]
+margin_top = 406.0
+margin_right = 1820.0
+margin_bottom = 458.0
+
+[node name="Label" type="Label" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls/HeavyKick"]
+margin_right = 908.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "Heavy Kick"
+valign = 1
+
+[node name="KBHKButton" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls/HeavyKick"]
+margin_left = 912.0
+margin_right = 1820.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 5 )
+text = "R"
+
+[node name="Block" type="HBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls"]
+margin_top = 458.0
+margin_right = 1820.0
+margin_bottom = 510.0
+
+[node name="Label" type="Label" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls/Block"]
+margin_right = 908.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "Block"
+valign = 1
+
+[node name="KBBlockButton" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls/Block"]
+margin_left = 912.0
+margin_right = 1820.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 5 )
+text = "Shift"
+
+[node name="P1ControllerControls" type="VBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer"]
+editor/display_folded = true
+visible = false
+margin_top = 198.0
+margin_right = 1820.0
+margin_bottom = 708.0
+custom_constants/separation = 0
+
+[node name="ResetToDefault" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls"]
+margin_right = 1820.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 5 )
+custom_constants/hseparation = 0
+text = "Reset to Default"
+
+[node name="Up" type="HBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls"]
+margin_top = 42.0
+margin_right = 1820.0
+margin_bottom = 94.0
+
+[node name="Label" type="Label" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls/Up"]
+margin_right = 908.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "Up"
+valign = 1
+
+[node name="P1UpButton" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls/Up"]
+margin_left = 912.0
+margin_right = 1820.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 5 )
+text = "D-Pad Up"
+
+[node name="Down" type="HBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls"]
+margin_top = 94.0
+margin_right = 1820.0
+margin_bottom = 146.0
+
+[node name="Label" type="Label" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls/Down"]
+margin_right = 908.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "Down"
+valign = 1
+
+[node name="P1DownButton" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls/Down"]
+margin_left = 912.0
+margin_right = 1820.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 5 )
+text = "D-Pad Down"
+
+[node name="Left" type="HBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls"]
+margin_top = 146.0
+margin_right = 1820.0
+margin_bottom = 198.0
+
+[node name="Label" type="Label" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls/Left"]
+margin_right = 908.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "Left"
+valign = 1
+
+[node name="P1LeftButton" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls/Left"]
+margin_left = 912.0
+margin_right = 1820.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 5 )
+text = "D-Pad Left"
+
+[node name="Right" type="HBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls"]
+margin_top = 198.0
+margin_right = 1820.0
+margin_bottom = 250.0
+
+[node name="Label" type="Label" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls/Right"]
+margin_right = 908.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "Right"
+valign = 1
+
+[node name="P1RightButton" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls/Right"]
+margin_left = 912.0
+margin_right = 1820.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 5 )
+text = "D-Pad Right"
+
+[node name="LightPunch" type="HBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls"]
+margin_top = 250.0
+margin_right = 1820.0
+margin_bottom = 302.0
+
+[node name="Label" type="Label" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls/LightPunch"]
+margin_right = 908.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "Light Punch"
+valign = 1
+
+[node name="P1LPButton" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls/LightPunch"]
+margin_left = 912.0
+margin_right = 1820.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 5 )
+text = "X/Square"
+
+[node name="HeavyPunch" type="HBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls"]
+margin_top = 302.0
+margin_right = 1820.0
+margin_bottom = 354.0
+
+[node name="Label" type="Label" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls/HeavyPunch"]
+margin_right = 908.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "Heavy Punch"
+valign = 1
+
+[node name="P1HPButton" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls/HeavyPunch"]
+margin_left = 912.0
+margin_right = 1820.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 5 )
+text = "Y/Triangle"
+
+[node name="LightKick" type="HBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls"]
+margin_top = 354.0
+margin_right = 1820.0
+margin_bottom = 406.0
+
+[node name="Label" type="Label" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls/LightKick"]
+margin_right = 908.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "Light Kick"
+valign = 1
+
+[node name="P1LKButton" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls/LightKick"]
+margin_left = 912.0
+margin_right = 1820.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 5 )
+text = "A/X"
+
+[node name="HeavyKick" type="HBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls"]
+margin_top = 406.0
+margin_right = 1820.0
+margin_bottom = 458.0
+
+[node name="Label" type="Label" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls/HeavyKick"]
+margin_right = 908.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "Heavy Kick"
+valign = 1
+
+[node name="P1HKButton" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls/HeavyKick"]
+margin_left = 912.0
+margin_right = 1820.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 5 )
+text = "B/Circle"
+
+[node name="Block" type="HBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls"]
+margin_top = 458.0
+margin_right = 1820.0
+margin_bottom = 510.0
+
+[node name="Label" type="Label" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls/Block"]
+margin_right = 908.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "Block"
+valign = 1
+
+[node name="P1BlockButton" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls/Block"]
+margin_left = 912.0
+margin_right = 1820.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 5 )
+text = "Right Trigger/R2"
+
+[node name="P2ControllerControls" type="VBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer"]
+editor/display_folded = true
+visible = false
+margin_top = 198.0
+margin_right = 1820.0
+margin_bottom = 708.0
+custom_constants/separation = 0
+
+[node name="ResetToDefault" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls"]
+margin_right = 1820.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 5 )
+custom_constants/hseparation = 0
+text = "Reset to Default"
+
+[node name="Up" type="HBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls"]
+margin_top = 42.0
+margin_right = 1820.0
+margin_bottom = 94.0
+
+[node name="Label" type="Label" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls/Up"]
+margin_right = 908.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "Up"
+valign = 1
+
+[node name="P2UpButton" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls/Up"]
+margin_left = 912.0
+margin_right = 1820.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 5 )
+text = "D-Pad Up"
+
+[node name="Down" type="HBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls"]
+margin_top = 94.0
+margin_right = 1820.0
+margin_bottom = 146.0
+
+[node name="Label" type="Label" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls/Down"]
+margin_right = 908.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "Down"
+valign = 1
+
+[node name="P2DownButton" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls/Down"]
+margin_left = 912.0
+margin_right = 1820.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 5 )
+text = "D-Pad Down"
+
+[node name="Left" type="HBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls"]
+margin_top = 146.0
+margin_right = 1820.0
+margin_bottom = 198.0
+
+[node name="Label" type="Label" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls/Left"]
+margin_right = 908.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "Left"
+valign = 1
+
+[node name="P2LeftButton" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls/Left"]
+margin_left = 912.0
+margin_right = 1820.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 5 )
+text = "D-Pad Left"
+
+[node name="Right" type="HBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls"]
+margin_top = 198.0
+margin_right = 1820.0
+margin_bottom = 250.0
+
+[node name="Label" type="Label" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls/Right"]
+margin_right = 908.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "Right"
+valign = 1
+
+[node name="P2RightButton" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls/Right"]
+margin_left = 912.0
+margin_right = 1820.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 5 )
+text = "D-Pad Right"
+
+[node name="LightPunch" type="HBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls"]
+margin_top = 250.0
+margin_right = 1820.0
+margin_bottom = 302.0
+
+[node name="Label" type="Label" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls/LightPunch"]
+margin_right = 908.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "Light Punch"
+valign = 1
+
+[node name="P2LPButton" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls/LightPunch"]
+margin_left = 912.0
+margin_right = 1820.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 5 )
+text = "X/Square"
+
+[node name="HeavyPunch" type="HBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls"]
+margin_top = 302.0
+margin_right = 1820.0
+margin_bottom = 354.0
+
+[node name="Label" type="Label" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls/HeavyPunch"]
+margin_right = 908.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "Heavy Punch"
+valign = 1
+
+[node name="P2HPButton" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls/HeavyPunch"]
+margin_left = 912.0
+margin_right = 1820.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 5 )
+text = "Y/Triangle"
+
+[node name="LightKick" type="HBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls"]
+margin_top = 354.0
+margin_right = 1820.0
+margin_bottom = 406.0
+
+[node name="Label" type="Label" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls/LightKick"]
+margin_right = 908.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "Light Kick"
+valign = 1
+
+[node name="P2LKButton" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls/LightKick"]
+margin_left = 912.0
+margin_right = 1820.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 5 )
+text = "A/X"
+
+[node name="HeavyKick" type="HBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls"]
+margin_top = 406.0
+margin_right = 1820.0
+margin_bottom = 458.0
+
+[node name="Label" type="Label" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls/HeavyKick"]
+margin_right = 908.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "Heavy Kick"
+valign = 1
+
+[node name="P2HKButton" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls/HeavyKick"]
+margin_left = 912.0
+margin_right = 1820.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 5 )
+text = "B/Circle"
+
+[node name="Block" type="HBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls"]
+margin_top = 458.0
+margin_right = 1820.0
+margin_bottom = 510.0
+
+[node name="Label" type="Label" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls/Block"]
+margin_right = 908.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "Block"
+valign = 1
+
+[node name="P2BlockButton" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls/Block"]
+margin_left = 912.0
+margin_right = 1820.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 5 )
+text = "Right Trigger/R2"
+[connection signal="tab_changed" from="Settings/SettingsCategories" to="." method="_on_SettingsCategories_tab_changed"]
+[connection signal="item_selected" from="Settings/Panel/VideoSettings/HBoxContainer/Resolution/ResolutionOptions" to="." method="_on_ResolutionOptions_item_selected"]
+[connection signal="item_selected" from="Settings/Panel/VideoSettings/HBoxContainer/FramerateLimit/FramerateOptions" to="." method="_on_FramerateOptions_item_selected"]
+[connection signal="toggled" from="Settings/Panel/VideoSettings/HBoxContainer/Vsync/VsyncCheckBox" to="." method="_on_VsyncCheckBox_toggled"]
+[connection signal="toggled" from="Settings/Panel/VideoSettings/HBoxContainer/Fullscreen/FullscreenCheckbox" to="." method="_on_FullscreenCheckbox_toggled"]
+[connection signal="toggled" from="Settings/Panel/VideoSettings/HBoxContainer/Borderless/BorderlessCheckBox" to="." method="_on_BorderlessCheckBox_toggled"]
+[connection signal="value_changed" from="Settings/Panel/AudioSettings/HBoxContainer/MasterVolume/MasterSlider" to="." method="_on_MasterSlider_value_changed"]
+[connection signal="value_changed" from="Settings/Panel/AudioSettings/HBoxContainer/MusicVolume/MusicSlider" to="." method="_on_MusicSlider_value_changed"]
+[connection signal="value_changed" from="Settings/Panel/AudioSettings/HBoxContainer/SoundEffectsVolume/SfxSlider" to="." method="_on_SfxSlider_value_changed"]
+[connection signal="value_changed" from="Settings/Panel/AudioSettings/HBoxContainer/MenuSounds/MenuSlider" to="." method="_on_MenuSlider_value_changed"]
+[connection signal="tab_changed" from="Settings/Panel/ControlSettings/HBoxContainer/PlayerTabs" to="." method="_on_PlayerTabs_tab_changed"]
