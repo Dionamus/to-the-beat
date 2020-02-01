@@ -33,6 +33,9 @@ custom_constants/margin_top = 50
 custom_constants/margin_left = 50
 custom_constants/margin_bottom = 50
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Settings" type="VBoxContainer" parent="."]
 margin_left = 50.0
@@ -87,7 +90,6 @@ margin_bottom = 980.0
 size_flags_vertical = 3
 
 [node name="VideoSettings" type="ScrollContainer" parent="Settings/Panel"]
-editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
@@ -211,7 +213,6 @@ pressed = true
 text = "Enabled"
 
 [node name="AudioSettings" type="ScrollContainer" parent="Settings/Panel"]
-editor/display_folded = true
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -409,7 +410,6 @@ margin_right = -4.0
 margin_bottom = -4.0
 
 [node name="KBControls" type="VBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer"]
-editor/display_folded = true
 margin_top = 198.0
 margin_right = 1820.0
 margin_bottom = 708.0
@@ -623,7 +623,6 @@ custom_fonts/font = SubResource( 5 )
 text = "Shift"
 
 [node name="P1ControllerControls" type="VBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer"]
-editor/display_folded = true
 visible = false
 margin_top = 198.0
 margin_right = 1820.0
@@ -838,7 +837,6 @@ custom_fonts/font = SubResource( 5 )
 text = "Right Trigger/R2"
 
 [node name="P2ControllerControls" type="VBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer"]
-editor/display_folded = true
 visible = false
 margin_top = 198.0
 margin_right = 1820.0

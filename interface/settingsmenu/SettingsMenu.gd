@@ -14,7 +14,7 @@ func _ready():
 	$Settings/Panel/ControlSettings/HBoxContainer/PlayerTabs.current_tab = 0
 	$Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls.hide()
 	$Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls.hide()
-	$Settings/Panel/ControlSettings/HBoxContainer/KeyboardControls.show()
+	$Settings/Panel/ControlSettings/HBoxContainer/KBControls.show()
 
 # Switches tabs.
 func _on_SettingsCategories_tab_changed(tab):

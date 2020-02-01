@@ -246,6 +246,5 @@ quality/reflections/texture_array_reflections=false
 quality/reflections/high_quality_ggx=false
 quality/subsurface_scattering/quality=0
 quality/subsurface_scattering/weight_samples=false
-quality/voxel_cone_tracing/high_quality=false
 quality/depth/hdr=false
 environment/default_environment="res://default_env.tres"
