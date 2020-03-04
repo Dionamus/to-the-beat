@@ -335,6 +335,9 @@ ticks_on_borders = true
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="HBoxContainer" type="VBoxContainer" parent="Settings/Panel/ControlSettings"]
 margin_right = 1820.0
@@ -437,7 +440,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Up"
 valign = 1
 
-[node name="KBUpButton" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls/Up"]
+[node name="Button" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls/Up"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
@@ -459,7 +462,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Down"
 valign = 1
 
-[node name="KBDownButton" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls/Down"]
+[node name="Button" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls/Down"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
@@ -481,7 +484,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Left"
 valign = 1
 
-[node name="KBLeftButton" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls/Left"]
+[node name="Button" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls/Left"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
@@ -503,7 +506,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Right"
 valign = 1
 
-[node name="KBRightButton" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls/Right"]
+[node name="Button" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls/Right"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
@@ -525,7 +528,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Light Punch"
 valign = 1
 
-[node name="KBLPButton" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls/LightPunch"]
+[node name="Button" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls/LightPunch"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
@@ -547,7 +550,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Heavy Punch"
 valign = 1
 
-[node name="KBHPButton" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls/HeavyPunch"]
+[node name="Button" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls/HeavyPunch"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
@@ -569,7 +572,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Light Kick"
 valign = 1
 
-[node name="KBLKButton" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls/LightKick"]
+[node name="Button" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls/LightKick"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
@@ -591,7 +594,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Heavy Kick"
 valign = 1
 
-[node name="KBHKButton" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls/HeavyKick"]
+[node name="Button" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls/HeavyKick"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
@@ -613,7 +616,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Block"
 valign = 1
 
-[node name="KBBlockButton" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls/Block"]
+[node name="Button" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls/Block"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
@@ -651,7 +654,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Up"
 valign = 1
 
-[node name="P1UpButton" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls/Up"]
+[node name="Button" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls/Up"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
@@ -673,7 +676,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Down"
 valign = 1
 
-[node name="P1DownButton" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls/Down"]
+[node name="Button" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls/Down"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
@@ -695,7 +698,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Left"
 valign = 1
 
-[node name="P1LeftButton" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls/Left"]
+[node name="Button" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls/Left"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
@@ -717,7 +720,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Right"
 valign = 1
 
-[node name="P1RightButton" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls/Right"]
+[node name="Button" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls/Right"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
@@ -739,7 +742,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Light Punch"
 valign = 1
 
-[node name="P1LPButton" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls/LightPunch"]
+[node name="Button" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls/LightPunch"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
@@ -761,7 +764,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Heavy Punch"
 valign = 1
 
-[node name="P1HPButton" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls/HeavyPunch"]
+[node name="Button" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls/HeavyPunch"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
@@ -783,7 +786,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Light Kick"
 valign = 1
 
-[node name="P1LKButton" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls/LightKick"]
+[node name="Button" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls/LightKick"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
@@ -805,7 +808,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Heavy Kick"
 valign = 1
 
-[node name="P1HKButton" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls/HeavyKick"]
+[node name="Button" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls/HeavyKick"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
@@ -827,7 +830,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Block"
 valign = 1
 
-[node name="P1BlockButton" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls/Block"]
+[node name="Button" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls/Block"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
@@ -865,7 +868,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Up"
 valign = 1
 
-[node name="P2UpButton" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls/Up"]
+[node name="Button" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls/Up"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
@@ -887,7 +890,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Down"
 valign = 1
 
-[node name="P2DownButton" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls/Down"]
+[node name="Button" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls/Down"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
@@ -909,7 +912,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Left"
 valign = 1
 
-[node name="P2LeftButton" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls/Left"]
+[node name="Button" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls/Left"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
@@ -931,7 +934,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Right"
 valign = 1
 
-[node name="P2RightButton" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls/Right"]
+[node name="Button" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls/Right"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
@@ -953,7 +956,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Light Punch"
 valign = 1
 
-[node name="P2LPButton" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls/LightPunch"]
+[node name="Button" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls/LightPunch"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
@@ -975,7 +978,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Heavy Punch"
 valign = 1
 
-[node name="P2HPButton" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls/HeavyPunch"]
+[node name="Button" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls/HeavyPunch"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
@@ -997,7 +1000,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Light Kick"
 valign = 1
 
-[node name="P2LKButton" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls/LightKick"]
+[node name="Button" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls/LightKick"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
@@ -1019,7 +1022,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Heavy Kick"
 valign = 1
 
-[node name="P2HKButton" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls/HeavyKick"]
+[node name="Button" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls/HeavyKick"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
@@ -1041,7 +1044,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Block"
 valign = 1
 
-[node name="P2BlockButton" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls/Block"]
+[node name="Button" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls/Block"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0

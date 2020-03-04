@@ -123,6 +123,7 @@ rect_min_size = Vector2( 90, 0 )
 texture = ExtResource( 4 )
 expand = true
 stretch_mode = 7
+flip_h = true
 
 [node name="Player2Name" type="Label" parent="HBoxContainer/Player2Container/P2NameAndWins"]
 margin_left = 94.0
@@ -133,4 +134,3 @@ size_flags_vertical = 7
 custom_fonts/font = SubResource( 3 )
 text = "Player2"
 align = 2
-

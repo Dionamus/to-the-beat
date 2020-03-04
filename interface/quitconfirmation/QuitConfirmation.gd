@@ -2,10 +2,6 @@ extends CenterContainer
 
 signal no_quit
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
 # Quit the game when YesButton is pressed.
 func _on_YesButton_pressed() -> void:
 	get_tree().quit()

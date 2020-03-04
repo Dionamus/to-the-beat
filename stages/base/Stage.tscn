@@ -38,19 +38,11 @@ one_shot = true
 [node name="Tween" type="Tween" parent="."]
 
 [node name="StageBackground" type="Sprite" parent="."]
-position = Vector2( 1800, 1013 )
 texture = ExtResource( 3 )
+centered = false
 
 [node name="FollowCamera" parent="." instance=ExtResource( 4 )]
-limit_left = 0
-limit_top = 0
-limit_right = 3600
-limit_bottom = 2025
-drag_margin_left = 1.0
-drag_margin_top = 1.0
-drag_margin_right = 1.0
-drag_margin_bottom = 1.0
-editor_draw_screen = false
+editor_draw_limits = true
 
 [node name="Player1" parent="FollowCamera" instance=ExtResource( 5 )]
 position = Vector2( 200, 1510 )
@@ -149,6 +141,9 @@ text = "Round begins in:
 5"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource( 10 )]
 visible = false

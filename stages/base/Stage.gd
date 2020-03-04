@@ -11,8 +11,7 @@ export (int) var bpm = 120
 
 # Preload images for the win counters.
 onready var no_wins = preload("res://interface/hud/no_wins.png")
-onready var p1_one_win = preload("res://interface/hud/p1_one_win.png")
-onready var p2_one_win = preload("res://interface/hud/p2_one_win.png")
+onready var one_win = preload("res://interface/hud/one_win.png")
 onready var two_wins = preload("res://interface/hud/two_wins.png")
 
 # HUD variables
@@ -94,7 +93,7 @@ func _ready():
 	# Starts the game.
 	$StartTimer.start()
 
-func _unhandled_input(event):
+func _unhandled_input(_event):
 	# Allow the input if the game is not over and input is allowed.
 	if !is_game_over and is_input_allowed:
 		# Flip the player position  when they are on the opposite sides of each 
@@ -191,15 +190,6 @@ func _unhandled_input(event):
 			player1.is_blocking = true
 		if Input.is_action_just_released("p1_block"):
 			player1.is_blocking = false
-		if Input.is_action_just_pressed("p1_pause"):
-			if $CanvasLayer/PauseMenu.visible:
-				$CanvasLayer/PauseMenu.hide()
-				$CanvasLayer/PauseMenu.release_focus()
-				get_tree().paused = false
-			else:
-				get_tree().paused = true
-				$CanvasLayer/PauseMenu.show()
-				$CanvasLayer/PauseMenu/LabelAndButtons/QuitToMainMenuButton.grab_focus()
 		
 		# Player 2 controls
 		if Input.is_action_just_pressed("p2_left"):
@@ -272,17 +262,8 @@ func _unhandled_input(event):
 			player2.is_blocking = true
 		if Input.is_action_just_released("p2_block"):
 			player2.is_blocking = false
-		if Input.is_action_just_pressed("p2_pause"):
-			if $CanvasLayer/PauseMenu.visible:
-				$CanvasLayer/PauseMenu.hide()
-				$CanvasLayer/PauseMenu.release_focus()
-				get_tree().paused = false
-			else:
-				get_tree().paused = true
-				$CanvasLayer/PauseMenu.show()
-				$CanvasLayer/PauseMenu/LabelAndButtons/QuitToMainMenuButton.grab_focus()
 
-func _process(delta):
+func _process(_delta):
 	# Make sure that the frame number for the players' sprites
 	# are the same as the control sprite.
 	player1_anim.frame = tempo_control.frame
@@ -358,13 +339,13 @@ func _on_GameTimer_timeout():
 	is_input_allowed = false
 	if player1.hitpoints > player2.hitpoints:
 		$CanvasLayer/WinMenu.show()
-		$CanvasLayer/WinLabel.text = "Player 1 wins the game!"
+		win_round_label.text = "Player 1 wins the game!"
 	elif player2.hitpoints > player1.hitpoints:
 		$CanvasLayer/WinMenu.show()
-		$CanvasLayer/WinLabel.text = "Player 2 wins the game!"
+		win_round_label.text = "Player 2 wins the game!"
 	else:
 		$CanvasLayer/WinMenu.show()
-		$CanvasLayer/WinLabel.text = "Tie! No one wins!"
+		win_round_label.text = "Tie! No one wins!"
 
 # When player 1 wins a round, increment their wins. If they have 1 win,
 # show that they have won a round, pause the game timer and input, reset their
@@ -375,7 +356,7 @@ func _on_GameTimer_timeout():
 func _on_Player1_win_round():
 	player1.wins += 1
 	if player1.wins == 1:
-		p1_wins.texture = p1_one_win
+		p1_wins.texture = one_win
 		$GameTimer.paused = true
 		is_input_allowed = false
 		$CanvasLayer/StartTimerLabel.show()
@@ -401,7 +382,7 @@ func _on_Player2_win_round():
 	player2.wins += 1
 	if player2.wins == 1:
 		print("Player 2 has one win.")
-		p2_wins.texture = p2_one_win
+		p2_wins.texture = one_win
 		$GameTimer.paused = true
 		is_input_allowed = false
 		$CanvasLayer/StartTimerLabel.show()

@@ -15,15 +15,19 @@ _global_script_class_icons={
 
 [application]
 
-config/name="To The Beat"
+config/name="To the Beat"
 run/main_scene="res://interface/mainmenu/MainMenu.tscn"
 config/use_custom_user_dir=true
-config/project_settings_override="user://override.cfg"
+config/custom_user_dir_name="To the Beat"
 config/icon="res://icon.png"
 
 [audio]
 
 mix_rate=48000
+
+[autoload]
+
+Settings="*res://Settings.gd"
 
 [debug]
 

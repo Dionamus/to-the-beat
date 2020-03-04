@@ -19,6 +19,9 @@ font_data = ExtResource( 2 )
 margin_right = 386.0
 margin_bottom = 116.0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="FrameRate" type="Label" parent="."]
 margin_right = 386.0
@@ -39,4 +42,3 @@ margin_right = 386.0
 margin_bottom = 116.0
 custom_fonts/font = SubResource( 3 )
 text = "Tempo: x BPM"
-
