@@ -2,6 +2,7 @@ extends Node
 
 const CONFIG_SAVE_PATH = "res://config.cfg"
 const DEFAULT_CONFIG_SAVE_PATH = "res://default.cfg"
+enum {PLAYER_1_EXCLUSIVE, TWO_PLAYER_SIMULTANEOUS, TWO_PLAYER_INDIVIDUAL}
 
 var config_file = ConfigFile.new()
 var default_config_file = ConfigFile.new()
@@ -51,7 +52,7 @@ var default_settings = {
 		"p2_block": InputMap.get_action_list("p2_block"),
 	},
 	"other": {
-		"control_mode": "Player 1 Exclusive Control"
+		"control_mode": PLAYER_1_EXCLUSIVE,
 	}
 }
 
@@ -101,7 +102,7 @@ var settings = {
 		"p2_block": InputMap.get_action_list("p2_block"),
 	},
 	"other": {
-		"control_mode": "Player 1 Exclusive Control"
+		"control_mode": PLAYER_1_EXCLUSIVE,
 	}
 }
 
@@ -114,11 +115,8 @@ func first_time_setup():
 	for section in default_settings.keys():
 		for key in default_settings[section]:
 			config_file.set_value(section, key, default_settings[section][key])
-			default_config_file.set_value(section, key, default_settings[section][key])
-	
 	config_file.save(CONFIG_SAVE_PATH)
-	default_config_file.save(DEFAULT_CONFIG_SAVE_PATH)
-	
+
 func save_settings():
 	for section in settings.keys():
 		for key in settings[section]:
@@ -134,25 +132,27 @@ func load_settings():
 		OK:
 			for section in settings.keys():
 				for key in settings[section]:
+					# Add new entry if it doesn't exist.
 					if !config_file.has_section_key(section, key):
 						config_file.set_value(section, key, default_settings[section][key])
+						config_file.save(CONFIG_SAVE_PATH)
 					settings[section][key] = config_file.get_value(section, key)
 			
 			set_video_setting()
 			set_audio_settings()
 			set_controls()
-		# Any other error
+		# Any other error.
 		_:
 			print("An error ocurred, please send the followimg error code to support: " + str(error))
 
 func set_video_setting():
-	# Parse the resolution string
+	# Parse the resolution string.
 	var resolution = settings["video"]["resolution"]
-	# Native resolution
+	# Native resolution.
 	if resolution == "Native Resolution":
 		OS.window_size = OS.get_screen_size(0)
 		get_tree().get_root().size = OS.get_screen_size(0)
-	# Any other resolution (formatted as <width>x<height>)
+	# Any other resolution (formatted as <width>x<height>).
 	else:
 		var resolution_regex = RegEx.new()
 		resolution_regex.compile("^(\\d+)x(\\d+)$")
@@ -169,22 +169,130 @@ func set_video_setting():
 		else:
 			OS.window_size = OS.get_screen_size(0)
 			get_tree().get_root().size = OS.get_screen_size(0)
-			resolution = "Native Resolution"
+			resolution = default_settings["video"]["resolution"]
 			settings["video"]["resolution"] = resolution
-			settings["video"]["resolution_box"] = 0
+			settings["video"]["resolution_box"] = default_settings["video"]["resolution_box"]
+			config_file.set_value("video", "resolution", resolution)
+			config_file.set_value("video", "resolution_box", default_settings["video"]["resolution_box"])
+			config_file.save(CONFIG_SAVE_PATH)
 	
-	# Set up everything else.
-	Engine.target_fps = settings["video"]["framerate_limit"]
-	OS.vsync_enabled = settings["video"]["vsync"]
-	OS.window_fullscreen = settings["video"]["fullscreen"]
-	OS.window_borderless = settings["video"]["borderless"]
+	# Set up framerate.
+	var framerate = settings["video"]["framerate_limit"]
+	# Validate the config. Set back to default if not valid.
+	if !(framerate is int) or framerate < 0:
+		framerate = default_settings["video"]["framerate"]
+		Engine.target_fps = framerate
+		settings["video"]["framerate"] = framerate
+		settings["video"]["framerate_box"] = default_settings["video"]["framerate_box"]
+		config_file.set_value("video", "framerate", framerate)
+		config_file.set_value("video", "framerate_box", default_settings["video"]["framerate_box"])
+		config_file.save(CONFIG_SAVE_PATH)
+	else:
+		Engine.target_fps = framerate
+	
+	# Set up vsync.
+	var vsync = settings["video"]["vsync"]
+	# Validate the config. Set back to default if not valid.
+	if !(vsync is bool):
+		vsync = default_settings["video"]["vsync"]
+		OS.vsync_enabled = vsync
+		settings["video"]["vsync"] = vsync
+		config_file.set_value("video", "vsync", vsync)
+		config_file.save(CONFIG_SAVE_PATH)
+	else:
+		OS.vsync_enabled = vsync
+	
+	# Set up fullscreen.
+	var fullscreen = settings["video"]["fullscreen"]
+	# Validate the config. Set back to default if not valid.
+	if !(fullscreen is bool):
+		fullscreen = default_settings["video"]["fullscreen"]
+		OS.window_fullscreen = fullscreen
+		settings["video"]["fullscreen"] = fullscreen
+		config_file.set_value("video", "fullscreen", fullscreen)
+		config_file.save(CONFIG_SAVE_PATH)
+	else:
+		OS.window_fullscreen = vsync
+	
+	# Set up borderless.
+	var borderless = settings["video"]["borderless"]
+	# Validate the config. Set back to default if not valid.
+	if !(borderless is bool):
+		borderless = default_settings["video"]["borderless"]
+		OS.window_borderless = borderless
+		settings["video"]["borderless"] = borderless
+		config_file.set_value("video", "borderless", borderless)
+		config_file.save(CONFIG_SAVE_PATH)
+	else:
+		OS.window_borderless = borderless
 
 func set_audio_settings():
-	AudioServer.set_bus_volume_db(0, settings["audio"]["master"])
-	AudioServer.set_bus_volume_db(1, settings["audio"]["music"])
-	AudioServer.set_bus_volume_db(2, settings["audio"]["sfx"])
-	AudioServer.set_bus_volume_db(3, settings["audio"]["menu_sfx"])
+	# Set up the master volume.
+	var master_volume = settings["audio"]["master"]
+	# Validate the config. Set back to default if not valid.
+	if !(master_volume is float):
+		master_volume = default_settings["audio"]["master"]
+		AudioServer.set_bus_volume_db(0, master_volume)
+		settings["audio"]["master"] = master_volume
+		config_file.set_value("audio", "master", master_volume)
+		config_file.save(CONFIG_SAVE_PATH)
+	else:
+		AudioServer.set_bus_volume_db(0, settings["audio"]["master"])
+	
+	# Set up the music volume.
+	var music_volume = settings["audio"]["music"]
+	# Validate the config. Set back to default if not valid.
+	if !(music_volume is float):
+		music_volume = default_settings["audio"]["music"]
+		AudioServer.set_bus_volume_db(1, music_volume)
+		settings["audio"]["music"] = music_volume
+		config_file.set_value("audio", "music", music_volume)
+		config_file.save(CONFIG_SAVE_PATH)
+	else:
+		AudioServer.set_bus_volume_db(1, settings["audio"]["music"])
+	
+	# Set up the sound effects volume.
+	var sfx_volume = settings["audio"]["sfx"]
+	# Validate the config. Set back to default if not valid.
+	if !(sfx_volume is float):
+		sfx_volume = default_settings["audio"]["sfx"]
+		AudioServer.set_bus_volume_db(2, sfx_volume)
+		settings["audio"]["sfx"] = sfx_volume
+		config_file.set_value("audio", "sfx", sfx_volume)
+		config_file.save(CONFIG_SAVE_PATH)
+	else:
+		AudioServer.set_bus_volume_db(2, settings["audio"]["sfx"])
+	
+	# Set up the menu sound effects volume.
+	var menu_sfx_volume = settings["audio"]["menu_sfx"]
+	# Validate the config. Set back to default if not valid.
+	if !(menu_sfx_volume is float):
+		menu_sfx_volume = default_settings["audio"]["menu_sfx"]
+		AudioServer.set_bus_volume_db(3, menu_sfx_volume)
+		settings["audio"]["menu_sfx"] = menu_sfx_volume
+		config_file.set_value("audio", "menu_sfx", menu_sfx_volume)
+		config_file.save(CONFIG_SAVE_PATH)
+	else:
+		AudioServer.set_bus_volume_db(3, settings["audio"]["menu_sfx"])
 
+# Set up the controls and validate the config.
 func set_controls():
 	for input in settings["input"].keys():
-		ProjectSettings.set_setting("input/" + input, settings["input"][input])
+		# Check the input is an InputEventAction. Otherwise, revert to default.
+		if !(settings["input"][input] is InputEventAction):
+			settings["input"][input] = default_settings["input"][input]
+			ProjectSettings.set_setting("input/" + input, default_settings["input"][input])
+			config_file.set_value("input", input, default_settings["input"][input])
+			config_file.save(CONFIG_SAVE_PATH)
+		# Check if the keyboard bindings are InputEventKeys, and if they have 
+		# only one binding. Otherwise, revert to default
+		elif input.match("kb_*") and (settings["input"][input].size() != 1 or\
+			(!(settings["input"][input][0] is InputEventKey)\
+			and settings["input"][input].size() == 1)):
+				settings["input"][input] = default_settings["input"][input]
+				ProjectSettings.set_setting("input/" + input, default_settings["input"][input])
+				config_file.set_value("input", input, default_settings["input"][input])
+				config_file.save(CONFIG_SAVE_PATH)
+		# No problems.
+		else:
+			ProjectSettings.set_setting("input/" + input, settings["input"][input])

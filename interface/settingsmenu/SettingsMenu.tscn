@@ -90,10 +90,14 @@ margin_bottom = 980.0
 size_flags_vertical = 3
 
 [node name="VideoSettings" type="ScrollContainer" parent="Settings/Panel"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="HBoxContainer" type="VBoxContainer" parent="Settings/Panel/VideoSettings"]
 margin_right = 1820.0
@@ -332,7 +336,6 @@ tick_count = 100
 ticks_on_borders = true
 
 [node name="ControlSettings" type="ScrollContainer" parent="Settings/Panel"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -341,7 +344,7 @@ __meta__ = {
 
 [node name="HBoxContainer" type="VBoxContainer" parent="Settings/Panel/ControlSettings"]
 margin_right = 1820.0
-margin_bottom = 684.0
+margin_bottom = 708.0
 size_flags_horizontal = 3
 custom_constants/separation = 0
 
@@ -1062,4 +1065,5 @@ text = "Right Trigger/R2"
 [connection signal="value_changed" from="Settings/Panel/AudioSettings/HBoxContainer/MusicVolume/MusicSlider" to="." method="_on_MusicSlider_value_changed"]
 [connection signal="value_changed" from="Settings/Panel/AudioSettings/HBoxContainer/SoundEffectsVolume/SfxSlider" to="." method="_on_SfxSlider_value_changed"]
 [connection signal="value_changed" from="Settings/Panel/AudioSettings/HBoxContainer/MenuSounds/MenuSlider" to="." method="_on_MenuSlider_value_changed"]
+[connection signal="item_selected" from="Settings/Panel/ControlSettings/HBoxContainer/ControlMode/OptionButton" to="." method="_on_ControlMode_OptionButton_item_selected"]
 [connection signal="tab_changed" from="Settings/Panel/ControlSettings/HBoxContainer/PlayerTabs" to="." method="_on_PlayerTabs_tab_changed"]

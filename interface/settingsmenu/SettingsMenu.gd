@@ -56,10 +56,44 @@ func _ready():
 	p2_controller_controls.hide()
 	keyboard_controls.show()
 	
-	# Ready the settings with their respective values from the config.
+	# Now, you must be asking yourself: "Why is the code below even here? It's
+	# not even doing anything meaningful for the user!" Well, right now, it's
+	# to help me figure out how I (Brandon/Dionamus) should implement changing
+	# the player input bindings in the settings menu and changing which player
+	# is using keyboard controls.
+	#
+	# Thankfully, the code you see here will be gone one day.
+	print(InputMap.get_action_list("kb_up")[0].as_text())
+	print(InputMap.get_action_list("p1_up")[0].get_class())
+	print(InputMap.get_action_list("p1_up").size())
+	var i = 0
+	while i <= InputMap.get_action_list("p1_up").size() - 1:
+		if InputMap.get_action_list("p1_up")[i].get_class() == InputMap.get_action_list("kb_up")[0].get_class()\
+		and InputMap.get_action_list("p1_up")[i].scancode == InputMap.get_action_list("kb_up")[0].scancode:
+			print("Objects match.") # At least the class and scancode do.
+			break
+	var j = 0
+	while j <= InputMap.get_action_list("p1_up").size() - 1:
+		if InputMap.get_action_list("p1_up")[j].get_class() == "InputEventKey":
+			print(InputMap.get_action_list("p1_up")[j])
+			print(InputMap.get_action_list("p1_up").size())
+			break
+	
+	# Ready the settings with their respective values from the config (or
+	# whatever was setup by the config).
 	resolution.selected = Settings.settings["video"]["resolution_box"]
-	framerate.selected = Settings.settings["video"]["framerate_box"]
-	vsync.pressed = Settings.settings["video"]["vsync"]
+	framerate.selected = Settings.settings["video"]["framerate_limit_box"]
+	vsync.pressed = OS.vsync_enabled
+	fullscreen.pressed = OS.window_fullscreen
+	borderless.pressed = OS.window_borderless
+	master_volume = AudioServer.get_bus_volume_db(0)
+	music_volume = AudioServer.get_bus_volume_db(1)
+	sfx_volume = AudioServer.get_bus_volume_db(2)
+	menu_volume = AudioServer.get_bus_volume_db(3)
+	control_mode = Settings.settings["other"]["control_mode"]
+	
+	# Set the text for the keyboard controls.
+	kb_up.text = InputMap.get_action_list("kb_up")[0].as_text()
 
 # Switches tabs.
 func _on_SettingsCategories_tab_changed(tab):
@@ -167,3 +201,8 @@ func _on_PlayerTabs_tab_changed(tab):
 			keyboard_controls.hide()
 			p1_controller_controls.hide()
 			p2_controller_controls.show()
+
+func _on_ControlMode_OptionButton_item_selected(_id):
+	# Since this mechanic hasn't actually beeen implemented, the only thing
+	# that can be done is to change the config.
+	Settings.settings["other"]["control_mode"] = control_mode.selected
