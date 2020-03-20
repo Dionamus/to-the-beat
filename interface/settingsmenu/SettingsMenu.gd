@@ -97,38 +97,7 @@ func _ready():
 	menu_volume = AudioServer.get_bus_volume_db(3)
 	control_mode = Settings.settings["other"]["control_mode"]
 	
-	# Set the text for the keyboard controls.
-	var k = 0
-	for input in inputs:
-		get_node("Settings/Panel/ControlSettings/HBoxContainer/KBControls/"
-		+ input + "/Button").text = InputMap.get_action_list("kb_" + inputs_snake[k])[0].as_text()
-		k += 1
-	k = 0
-	
-	# Set the text for player 1's controls
-	var l = 0
-	for input in inputs:
-		while l <= InputMap.get_action_list("p1_" + inputs_snake[k]).size() - 1:
-			if InputMap.get_action_list("p1_" + inputs_snake[k])[l].get_class() == "InputEventJoypadButton":
-				get_node("Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls/"
-					+ input + "/Button").text = Input.get_joy_button_string(
-					InputMap.get_action_list("p1_" + inputs_snake[k])[l].button_index)
-			l += 1
-		l = 0
-		k += 1
-	k = 0
-	
-	# Set the text for player 2's controls
-	for input in inputs:
-		while l <= InputMap.get_action_list("p2_" + inputs_snake[k]).size() - 1:
-			if InputMap.get_action_list("p2_" + inputs_snake[k])[l].get_class() == "InputEventJoypadButton":
-				get_node("Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls/"
-					+ input + "/Button").text = Input.get_joy_button_string(
-					InputMap.get_action_list("p2_" + inputs_snake[k])[l].button_index)
-			l += 1
-		l = 0
-		k += 1
-	k = 0
+	mark_bindings()
 
 # Switches tabs.
 func _on_SettingsCategories_tab_changed(tab):
@@ -145,6 +114,12 @@ func _on_SettingsCategories_tab_changed(tab):
 			$Settings/Panel/VideoSettings.hide()
 			$Settings/Panel/AudioSettings.hide()
 			$Settings/Panel/ControlSettings.show()
+
+func _on_Video_ResetToDefault_pressed():
+	Settings.settings["video"]["resolution"] = Settings.default_settings["video"]["resolution"]
+	Settings.settings["video"]["resolution_box"] = Settings.default_settings["video"]["resolution_box"]
+	Settings.save_settings()
+	resolution.selected = Settings.default_settings["video"]["resolution_box"]
 
 # Switches resolution.
 func _on_ResolutionOptions_item_selected(ID):
@@ -198,6 +173,17 @@ func _on_BorderlessCheckBox_toggled(button_pressed):
 		OS.window_borderless = false
 	Settings.save_settings()
 
+func _on_Audio_ResetToDefault_pressed():
+	Settings.settings["audio"]["master"] = Settings.default_settings["audio"]["master"]
+	Settings.settings["audio"]["music"] = Settings.default_settings["audio"]["music"]
+	Settings.settings["audio"]["sfx"] = Settings.default_settings["audio"]["sfx"]
+	Settings.settings["audio"]["menu_sfx"] = Settings.default_settings["audio"]["menu_sfx"]
+	Settings.save_settings()
+	AudioServer.set_bus_volume_db(0, Settings.default_settings["audio"]["master"])
+	AudioServer.set_bus_volume_db(1, Settings.default_settings["audio"]["music"])
+	AudioServer.set_bus_volume_db(2, Settings.default_settings["audio"]["sfx"])
+	AudioServer.set_bus_volume_db(3, Settings.default_settings["audio"]["menu_sfx"])
+
 # Changes the master volume.
 func _on_MasterSlider_value_changed(value):
 	AudioServer.set_bus_volume_db(0, value)
@@ -241,3 +227,73 @@ func _on_ControlMode_OptionButton_item_selected(_id):
 	# Since this mechanic hasn't actually beeen implemented, the only thing
 	# that can be done is to change the config.
 	Settings.settings["other"]["control_mode"] = control_mode.selected
+
+func mark_bindings(device = null):
+	var k = 0
+	
+	
+	if device == null or device == "kb":
+		# Set the text for the keyboard controls.
+		for input in inputs:
+			get_node("Settings/Panel/ControlSettings/HBoxContainer/KBControls/"
+			+ input + "/Button").text = InputMap.get_action_list("kb_" + inputs_snake[k])[0].as_text()
+			k += 1
+		k = 0
+	
+	var l = 0
+	if device == null or device == "p1":
+		# Set the text for player 1's controls
+		for input in inputs:
+			while l <= InputMap.get_action_list("p1_" + inputs_snake[k]).size() - 1:
+				if InputMap.get_action_list("p1_" + inputs_snake[k])[l].get_class() == "InputEventJoypadButton":
+					get_node("Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls/"
+						+ input + "/Button").text = Input.get_joy_button_string(
+						InputMap.get_action_list("p1_" + inputs_snake[k])[l].button_index)
+				l += 1
+			l = 0
+			k += 1
+		k = 0
+	
+	if device == null or device == "p2":
+		# Set the text for player 2's controls
+		for input in inputs:
+			while l <= InputMap.get_action_list("p2_" + inputs_snake[k]).size() - 1:
+				if InputMap.get_action_list("p2_" + inputs_snake[k])[l].get_class() == "InputEventJoypadButton":
+					get_node("Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls/"
+						+ input + "/Button").text = Input.get_joy_button_string(
+						InputMap.get_action_list("p2_" + inputs_snake[k])[l].button_index)
+				l += 1
+			l = 0
+			k += 1
+		k = 0
+
+func _on_ResetAllBindingsToDefault_pressed():
+	for input in Settings.settings["input"].keys():
+		Settings.settings["input"][input] = Settings.default_settings["input"][input]
+		ProjectSettings.set("input/" + input, Settings.default_settings["input"][input])
+	
+	mark_bindings()
+
+func _on_KB_ResetToDefault_pressed():
+	for input in Settings.settings["input"].keys():
+		if input.match("kb_*"):
+			Settings.settings["input"][input] = Settings.default_settings["input"][input]
+			ProjectSettings.set("input/" + input, Settings.default_settings["input"][input])
+	
+	mark_bindings("kb")
+
+func _on_P1_ResetToDefault_pressed():
+	for input in Settings.settings["input"].keys():
+		if input.match("p1_*"):
+			Settings.settings["input"][input] = Settings.default_settings["input"][input]
+			ProjectSettings.set("input/" + input, Settings.default_settings["input"][input])
+	
+	mark_bindings("p1")
+
+func _on_P2_ResetToDefault_pressed():
+	for input in Settings.settings["input"].keys():
+		if input.match("p2_*"):
+			Settings.settings["input"][input] = Settings.default_settings["input"][input]
+			ProjectSettings.set("input/" + input, Settings.default_settings["input"][input])
+	
+	mark_bindings("p2")

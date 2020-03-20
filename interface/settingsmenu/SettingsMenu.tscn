@@ -11,15 +11,15 @@ font_data = ExtResource( 2 )
 size = 40
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=5]
-size = 30
-font_data = ExtResource( 2 )
-
 [sub_resource type="DynamicFont" id=3]
 size = 30
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=4]
+size = 30
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=5]
 size = 30
 font_data = ExtResource( 2 )
 
@@ -70,7 +70,7 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
-margin_top = 66.0
+margin_top = 58.0
 margin_right = -4.0
 margin_bottom = -4.0
 
@@ -79,7 +79,7 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
-margin_top = 66.0
+margin_top = 58.0
 margin_right = -4.0
 margin_bottom = -4.0
 
@@ -90,6 +90,7 @@ margin_bottom = 980.0
 size_flags_vertical = 3
 
 [node name="VideoSettings" type="ScrollContainer" parent="Settings/Panel"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
@@ -105,18 +106,9 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 0
 
-[node name="ResetToDefault" type="Button" parent="Settings/Panel/VideoSettings/HBoxContainer"]
-margin_right = 1820.0
-margin_bottom = 42.0
-size_flags_horizontal = 3
-custom_fonts/font = SubResource( 5 )
-custom_constants/hseparation = 0
-text = "Reset to Default"
-
 [node name="Resolution" type="HBoxContainer" parent="Settings/Panel/VideoSettings/HBoxContainer"]
-margin_top = 42.0
 margin_right = 1820.0
-margin_bottom = 94.0
+margin_bottom = 52.0
 
 [node name="Label" type="Label" parent="Settings/Panel/VideoSettings/HBoxContainer/Resolution"]
 margin_right = 908.0
@@ -138,9 +130,9 @@ items = [ "Native Resolution", null, false, 0, null, "1920x1080", null, false, 1
 selected = 0
 
 [node name="FramerateLimit" type="HBoxContainer" parent="Settings/Panel/VideoSettings/HBoxContainer"]
-margin_top = 94.0
+margin_top = 52.0
 margin_right = 1820.0
-margin_bottom = 146.0
+margin_bottom = 104.0
 
 [node name="Label" type="Label" parent="Settings/Panel/VideoSettings/HBoxContainer/FramerateLimit"]
 margin_right = 908.0
@@ -162,9 +154,9 @@ items = [ "None", null, false, 0, null, "30", null, false, 1, null, "60", null, 
 selected = 0
 
 [node name="Vsync" type="HBoxContainer" parent="Settings/Panel/VideoSettings/HBoxContainer"]
-margin_top = 146.0
+margin_top = 104.0
 margin_right = 1820.0
-margin_bottom = 198.0
+margin_bottom = 156.0
 
 [node name="Label" type="Label" parent="Settings/Panel/VideoSettings/HBoxContainer/Vsync"]
 margin_right = 1680.0
@@ -183,9 +175,9 @@ pressed = true
 text = "Enabled"
 
 [node name="Fullscreen" type="HBoxContainer" parent="Settings/Panel/VideoSettings/HBoxContainer"]
-margin_top = 198.0
+margin_top = 156.0
 margin_right = 1820.0
-margin_bottom = 250.0
+margin_bottom = 208.0
 
 [node name="Label" type="Label" parent="Settings/Panel/VideoSettings/HBoxContainer/Fullscreen"]
 margin_right = 1680.0
@@ -204,9 +196,9 @@ pressed = true
 text = "Enabled"
 
 [node name="Borderless" type="HBoxContainer" parent="Settings/Panel/VideoSettings/HBoxContainer"]
-margin_top = 250.0
+margin_top = 208.0
 margin_right = 1820.0
-margin_bottom = 302.0
+margin_bottom = 260.0
 
 [node name="Label" type="Label" parent="Settings/Panel/VideoSettings/HBoxContainer/Borderless"]
 margin_right = 1680.0
@@ -224,6 +216,18 @@ custom_fonts/font = SubResource( 4 )
 pressed = true
 text = "Enabled"
 
+[node name="ResetToDefault" type="Button" parent="Settings/Panel/VideoSettings/HBoxContainer"]
+margin_top = 260.0
+margin_right = 1820.0
+margin_bottom = 302.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 5 )
+custom_constants/hseparation = 0
+text = "Reset to Default"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="AudioSettings" type="ScrollContainer" parent="Settings/Panel"]
 visible = false
 anchor_right = 1.0
@@ -238,18 +242,9 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 0
 
-[node name="ResetToDefault" type="Button" parent="Settings/Panel/AudioSettings/HBoxContainer"]
-margin_right = 1820.0
-margin_bottom = 42.0
-size_flags_horizontal = 3
-custom_fonts/font = SubResource( 5 )
-custom_constants/hseparation = 0
-text = "Reset to Default"
-
 [node name="VolumeLabel" type="Label" parent="Settings/Panel/AudioSettings/HBoxContainer"]
-margin_top = 42.0
 margin_right = 1820.0
-margin_bottom = 94.0
+margin_bottom = 52.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 1 )
 text = "Volume"
@@ -257,9 +252,9 @@ align = 1
 valign = 1
 
 [node name="MasterVolume" type="HBoxContainer" parent="Settings/Panel/AudioSettings/HBoxContainer"]
-margin_top = 94.0
+margin_top = 52.0
 margin_right = 1820.0
-margin_bottom = 146.0
+margin_bottom = 104.0
 
 [node name="Label" type="Label" parent="Settings/Panel/AudioSettings/HBoxContainer/MasterVolume"]
 margin_right = 908.0
@@ -281,9 +276,9 @@ tick_count = 100
 ticks_on_borders = true
 
 [node name="MusicVolume" type="HBoxContainer" parent="Settings/Panel/AudioSettings/HBoxContainer"]
-margin_top = 146.0
+margin_top = 104.0
 margin_right = 1820.0
-margin_bottom = 198.0
+margin_bottom = 156.0
 
 [node name="Label" type="Label" parent="Settings/Panel/AudioSettings/HBoxContainer/MusicVolume"]
 margin_right = 908.0
@@ -305,9 +300,9 @@ tick_count = 100
 ticks_on_borders = true
 
 [node name="SoundEffectsVolume" type="HBoxContainer" parent="Settings/Panel/AudioSettings/HBoxContainer"]
-margin_top = 198.0
+margin_top = 156.0
 margin_right = 1820.0
-margin_bottom = 250.0
+margin_bottom = 208.0
 
 [node name="Label" type="Label" parent="Settings/Panel/AudioSettings/HBoxContainer/SoundEffectsVolume"]
 margin_right = 908.0
@@ -329,9 +324,9 @@ tick_count = 100
 ticks_on_borders = true
 
 [node name="MenuSounds" type="HBoxContainer" parent="Settings/Panel/AudioSettings/HBoxContainer"]
-margin_top = 250.0
+margin_top = 208.0
 margin_right = 1820.0
-margin_bottom = 302.0
+margin_bottom = 260.0
 
 [node name="Label" type="Label" parent="Settings/Panel/AudioSettings/HBoxContainer/MenuSounds"]
 margin_right = 908.0
@@ -352,8 +347,16 @@ max_value = 0.0
 tick_count = 100
 ticks_on_borders = true
 
+[node name="ResetToDefault" type="Button" parent="Settings/Panel/AudioSettings/HBoxContainer"]
+margin_top = 260.0
+margin_right = 1820.0
+margin_bottom = 302.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 5 )
+custom_constants/hseparation = 0
+text = "Reset to Default"
+
 [node name="ControlSettings" type="ScrollContainer" parent="Settings/Panel"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -362,7 +365,7 @@ __meta__ = {
 
 [node name="HBoxContainer" type="VBoxContainer" parent="Settings/Panel/ControlSettings"]
 margin_right = 1820.0
-margin_bottom = 684.0
+margin_bottom = 750.0
 size_flags_horizontal = 3
 custom_constants/separation = 0
 
@@ -399,10 +402,20 @@ text = "Bindings"
 align = 1
 valign = 1
 
-[node name="PlayerTabs" type="TabContainer" parent="Settings/Panel/ControlSettings/HBoxContainer"]
+[node name="ResetAllBindingsToDefault" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer"]
 margin_top = 104.0
 margin_right = 1820.0
-margin_bottom = 198.0
+margin_bottom = 146.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 5 )
+custom_constants/hseparation = 0
+text = "Reset All Bindings to Default"
+
+[node name="PlayerTabs" type="TabContainer" parent="Settings/Panel/ControlSettings/HBoxContainer"]
+margin_top = 146.0
+margin_right = 1820.0
+margin_bottom = 240.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 2 )
 tab_align = 0
@@ -434,24 +447,14 @@ margin_right = -4.0
 margin_bottom = -4.0
 
 [node name="KBControls" type="VBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer"]
-margin_top = 198.0
+margin_top = 240.0
 margin_right = 1820.0
-margin_bottom = 708.0
+margin_bottom = 750.0
 custom_constants/separation = 0
 
-[node name="ResetToDefault" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls"]
-margin_right = 1820.0
-margin_bottom = 42.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
-custom_constants/hseparation = 0
-text = "Reset to Default"
-
 [node name="Up" type="HBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls"]
-margin_top = 42.0
 margin_right = 1820.0
-margin_bottom = 94.0
+margin_bottom = 52.0
 
 [node name="Label" type="Label" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls/Up"]
 margin_right = 908.0
@@ -471,9 +474,9 @@ custom_fonts/font = SubResource( 5 )
 text = "Up Arrow"
 
 [node name="Down" type="HBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls"]
-margin_top = 94.0
+margin_top = 52.0
 margin_right = 1820.0
-margin_bottom = 146.0
+margin_bottom = 104.0
 
 [node name="Label" type="Label" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls/Down"]
 margin_right = 908.0
@@ -493,9 +496,9 @@ custom_fonts/font = SubResource( 5 )
 text = "Down Arrow"
 
 [node name="Left" type="HBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls"]
-margin_top = 146.0
+margin_top = 104.0
 margin_right = 1820.0
-margin_bottom = 198.0
+margin_bottom = 156.0
 
 [node name="Label" type="Label" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls/Left"]
 margin_right = 908.0
@@ -515,9 +518,9 @@ custom_fonts/font = SubResource( 5 )
 text = "Left Arrow"
 
 [node name="Right" type="HBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls"]
-margin_top = 198.0
+margin_top = 156.0
 margin_right = 1820.0
-margin_bottom = 250.0
+margin_bottom = 208.0
 
 [node name="Label" type="Label" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls/Right"]
 margin_right = 908.0
@@ -537,9 +540,9 @@ custom_fonts/font = SubResource( 5 )
 text = "Right Arrow"
 
 [node name="LightPunch" type="HBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls"]
-margin_top = 250.0
+margin_top = 208.0
 margin_right = 1820.0
-margin_bottom = 302.0
+margin_bottom = 260.0
 
 [node name="Label" type="Label" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls/LightPunch"]
 margin_right = 908.0
@@ -559,9 +562,9 @@ custom_fonts/font = SubResource( 5 )
 text = "Q"
 
 [node name="HeavyPunch" type="HBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls"]
-margin_top = 302.0
+margin_top = 260.0
 margin_right = 1820.0
-margin_bottom = 354.0
+margin_bottom = 312.0
 
 [node name="Label" type="Label" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls/HeavyPunch"]
 margin_right = 908.0
@@ -581,9 +584,9 @@ custom_fonts/font = SubResource( 5 )
 text = "W"
 
 [node name="LightKick" type="HBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls"]
-margin_top = 354.0
+margin_top = 312.0
 margin_right = 1820.0
-margin_bottom = 406.0
+margin_bottom = 364.0
 
 [node name="Label" type="Label" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls/LightKick"]
 margin_right = 908.0
@@ -603,9 +606,9 @@ custom_fonts/font = SubResource( 5 )
 text = "E"
 
 [node name="HeavyKick" type="HBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls"]
-margin_top = 406.0
+margin_top = 364.0
 margin_right = 1820.0
-margin_bottom = 458.0
+margin_bottom = 416.0
 
 [node name="Label" type="Label" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls/HeavyKick"]
 margin_right = 908.0
@@ -625,9 +628,9 @@ custom_fonts/font = SubResource( 5 )
 text = "R"
 
 [node name="Block" type="HBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls"]
-margin_top = 458.0
+margin_top = 416.0
 margin_right = 1820.0
-margin_bottom = 510.0
+margin_bottom = 468.0
 
 [node name="Label" type="Label" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls/Block"]
 margin_right = 908.0
@@ -646,26 +649,26 @@ size_flags_vertical = 3
 custom_fonts/font = SubResource( 5 )
 text = "Shift"
 
-[node name="P1ControllerControls" type="VBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer"]
-visible = false
-margin_top = 198.0
+[node name="ResetToDefault" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls"]
+margin_top = 468.0
 margin_right = 1820.0
-margin_bottom = 708.0
-custom_constants/separation = 0
-
-[node name="ResetToDefault" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls"]
-margin_right = 1820.0
-margin_bottom = 42.0
+margin_bottom = 510.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 5 )
 custom_constants/hseparation = 0
 text = "Reset to Default"
 
-[node name="Up" type="HBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls"]
-margin_top = 42.0
+[node name="P1ControllerControls" type="VBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer"]
+visible = false
+margin_top = 240.0
 margin_right = 1820.0
-margin_bottom = 94.0
+margin_bottom = 750.0
+custom_constants/separation = 0
+
+[node name="Up" type="HBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls"]
+margin_right = 1820.0
+margin_bottom = 52.0
 
 [node name="Label" type="Label" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls/Up"]
 margin_right = 908.0
@@ -685,9 +688,9 @@ custom_fonts/font = SubResource( 5 )
 text = "D-Pad Up"
 
 [node name="Down" type="HBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls"]
-margin_top = 94.0
+margin_top = 52.0
 margin_right = 1820.0
-margin_bottom = 146.0
+margin_bottom = 104.0
 
 [node name="Label" type="Label" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls/Down"]
 margin_right = 908.0
@@ -707,9 +710,9 @@ custom_fonts/font = SubResource( 5 )
 text = "D-Pad Down"
 
 [node name="Left" type="HBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls"]
-margin_top = 146.0
+margin_top = 104.0
 margin_right = 1820.0
-margin_bottom = 198.0
+margin_bottom = 156.0
 
 [node name="Label" type="Label" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls/Left"]
 margin_right = 908.0
@@ -729,9 +732,9 @@ custom_fonts/font = SubResource( 5 )
 text = "D-Pad Left"
 
 [node name="Right" type="HBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls"]
-margin_top = 198.0
+margin_top = 156.0
 margin_right = 1820.0
-margin_bottom = 250.0
+margin_bottom = 208.0
 
 [node name="Label" type="Label" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls/Right"]
 margin_right = 908.0
@@ -751,9 +754,9 @@ custom_fonts/font = SubResource( 5 )
 text = "D-Pad Right"
 
 [node name="LightPunch" type="HBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls"]
-margin_top = 250.0
+margin_top = 208.0
 margin_right = 1820.0
-margin_bottom = 302.0
+margin_bottom = 260.0
 
 [node name="Label" type="Label" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls/LightPunch"]
 margin_right = 908.0
@@ -773,9 +776,9 @@ custom_fonts/font = SubResource( 5 )
 text = "X/Square"
 
 [node name="HeavyPunch" type="HBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls"]
-margin_top = 302.0
+margin_top = 260.0
 margin_right = 1820.0
-margin_bottom = 354.0
+margin_bottom = 312.0
 
 [node name="Label" type="Label" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls/HeavyPunch"]
 margin_right = 908.0
@@ -795,9 +798,9 @@ custom_fonts/font = SubResource( 5 )
 text = "Y/Triangle"
 
 [node name="LightKick" type="HBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls"]
-margin_top = 354.0
+margin_top = 312.0
 margin_right = 1820.0
-margin_bottom = 406.0
+margin_bottom = 364.0
 
 [node name="Label" type="Label" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls/LightKick"]
 margin_right = 908.0
@@ -817,9 +820,9 @@ custom_fonts/font = SubResource( 5 )
 text = "A/X"
 
 [node name="HeavyKick" type="HBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls"]
-margin_top = 406.0
+margin_top = 364.0
 margin_right = 1820.0
-margin_bottom = 458.0
+margin_bottom = 416.0
 
 [node name="Label" type="Label" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls/HeavyKick"]
 margin_right = 908.0
@@ -839,9 +842,9 @@ custom_fonts/font = SubResource( 5 )
 text = "B/Circle"
 
 [node name="Block" type="HBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls"]
-margin_top = 458.0
+margin_top = 416.0
 margin_right = 1820.0
-margin_bottom = 510.0
+margin_bottom = 468.0
 
 [node name="Label" type="Label" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls/Block"]
 margin_right = 908.0
@@ -860,26 +863,26 @@ size_flags_vertical = 3
 custom_fonts/font = SubResource( 5 )
 text = "Right Trigger/R2"
 
-[node name="P2ControllerControls" type="VBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer"]
-visible = false
-margin_top = 198.0
+[node name="ResetToDefault" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls"]
+margin_top = 468.0
 margin_right = 1820.0
-margin_bottom = 708.0
-custom_constants/separation = 0
-
-[node name="ResetToDefault" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls"]
-margin_right = 1820.0
-margin_bottom = 42.0
+margin_bottom = 510.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 5 )
 custom_constants/hseparation = 0
 text = "Reset to Default"
 
-[node name="Up" type="HBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls"]
-margin_top = 42.0
+[node name="P2ControllerControls" type="VBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer"]
+visible = false
+margin_top = 240.0
 margin_right = 1820.0
-margin_bottom = 94.0
+margin_bottom = 750.0
+custom_constants/separation = 0
+
+[node name="Up" type="HBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls"]
+margin_right = 1820.0
+margin_bottom = 52.0
 
 [node name="Label" type="Label" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls/Up"]
 margin_right = 908.0
@@ -899,9 +902,9 @@ custom_fonts/font = SubResource( 5 )
 text = "D-Pad Up"
 
 [node name="Down" type="HBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls"]
-margin_top = 94.0
+margin_top = 52.0
 margin_right = 1820.0
-margin_bottom = 146.0
+margin_bottom = 104.0
 
 [node name="Label" type="Label" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls/Down"]
 margin_right = 908.0
@@ -921,9 +924,9 @@ custom_fonts/font = SubResource( 5 )
 text = "D-Pad Down"
 
 [node name="Left" type="HBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls"]
-margin_top = 146.0
+margin_top = 104.0
 margin_right = 1820.0
-margin_bottom = 198.0
+margin_bottom = 156.0
 
 [node name="Label" type="Label" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls/Left"]
 margin_right = 908.0
@@ -943,9 +946,9 @@ custom_fonts/font = SubResource( 5 )
 text = "D-Pad Left"
 
 [node name="Right" type="HBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls"]
-margin_top = 198.0
+margin_top = 156.0
 margin_right = 1820.0
-margin_bottom = 250.0
+margin_bottom = 208.0
 
 [node name="Label" type="Label" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls/Right"]
 margin_right = 908.0
@@ -965,9 +968,9 @@ custom_fonts/font = SubResource( 5 )
 text = "D-Pad Right"
 
 [node name="LightPunch" type="HBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls"]
-margin_top = 250.0
+margin_top = 208.0
 margin_right = 1820.0
-margin_bottom = 302.0
+margin_bottom = 260.0
 
 [node name="Label" type="Label" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls/LightPunch"]
 margin_right = 908.0
@@ -987,9 +990,9 @@ custom_fonts/font = SubResource( 5 )
 text = "X/Square"
 
 [node name="HeavyPunch" type="HBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls"]
-margin_top = 302.0
+margin_top = 260.0
 margin_right = 1820.0
-margin_bottom = 354.0
+margin_bottom = 312.0
 
 [node name="Label" type="Label" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls/HeavyPunch"]
 margin_right = 908.0
@@ -1009,9 +1012,9 @@ custom_fonts/font = SubResource( 5 )
 text = "Y/Triangle"
 
 [node name="LightKick" type="HBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls"]
-margin_top = 354.0
+margin_top = 312.0
 margin_right = 1820.0
-margin_bottom = 406.0
+margin_bottom = 364.0
 
 [node name="Label" type="Label" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls/LightKick"]
 margin_right = 908.0
@@ -1031,9 +1034,9 @@ custom_fonts/font = SubResource( 5 )
 text = "A/X"
 
 [node name="HeavyKick" type="HBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls"]
-margin_top = 406.0
+margin_top = 364.0
 margin_right = 1820.0
-margin_bottom = 458.0
+margin_bottom = 416.0
 
 [node name="Label" type="Label" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls/HeavyKick"]
 margin_right = 908.0
@@ -1053,9 +1056,9 @@ custom_fonts/font = SubResource( 5 )
 text = "B/Circle"
 
 [node name="Block" type="HBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls"]
-margin_top = 458.0
+margin_top = 416.0
 margin_right = 1820.0
-margin_bottom = 510.0
+margin_bottom = 468.0
 
 [node name="Label" type="Label" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls/Block"]
 margin_right = 908.0
@@ -1073,15 +1076,31 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 5 )
 text = "Right Trigger/R2"
+
+[node name="ResetToDefault" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls"]
+margin_top = 468.0
+margin_right = 1820.0
+margin_bottom = 510.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 5 )
+custom_constants/hseparation = 0
+text = "Reset to Default"
 [connection signal="tab_changed" from="Settings/SettingsCategories" to="." method="_on_SettingsCategories_tab_changed"]
 [connection signal="item_selected" from="Settings/Panel/VideoSettings/HBoxContainer/Resolution/ResolutionOptions" to="." method="_on_ResolutionOptions_item_selected"]
 [connection signal="item_selected" from="Settings/Panel/VideoSettings/HBoxContainer/FramerateLimit/FramerateOptions" to="." method="_on_FramerateOptions_item_selected"]
 [connection signal="toggled" from="Settings/Panel/VideoSettings/HBoxContainer/Vsync/VsyncCheckBox" to="." method="_on_VsyncCheckBox_toggled"]
 [connection signal="toggled" from="Settings/Panel/VideoSettings/HBoxContainer/Fullscreen/FullscreenCheckbox" to="." method="_on_FullscreenCheckbox_toggled"]
 [connection signal="toggled" from="Settings/Panel/VideoSettings/HBoxContainer/Borderless/BorderlessCheckBox" to="." method="_on_BorderlessCheckBox_toggled"]
+[connection signal="pressed" from="Settings/Panel/VideoSettings/HBoxContainer/ResetToDefault" to="." method="_on_Video_ResetToDefault_pressed"]
 [connection signal="value_changed" from="Settings/Panel/AudioSettings/HBoxContainer/MasterVolume/MasterSlider" to="." method="_on_MasterSlider_value_changed"]
 [connection signal="value_changed" from="Settings/Panel/AudioSettings/HBoxContainer/MusicVolume/MusicSlider" to="." method="_on_MusicSlider_value_changed"]
 [connection signal="value_changed" from="Settings/Panel/AudioSettings/HBoxContainer/SoundEffectsVolume/SfxSlider" to="." method="_on_SfxSlider_value_changed"]
 [connection signal="value_changed" from="Settings/Panel/AudioSettings/HBoxContainer/MenuSounds/MenuSlider" to="." method="_on_MenuSlider_value_changed"]
+[connection signal="pressed" from="Settings/Panel/AudioSettings/HBoxContainer/ResetToDefault" to="." method="_on_Audio_ResetToDefault_pressed"]
 [connection signal="item_selected" from="Settings/Panel/ControlSettings/HBoxContainer/ControlMode/OptionButton" to="." method="_on_ControlMode_OptionButton_item_selected"]
+[connection signal="pressed" from="Settings/Panel/ControlSettings/HBoxContainer/ResetAllBindingsToDefault" to="." method="_on_ResetAllBindingsToDefault_pressed"]
 [connection signal="tab_changed" from="Settings/Panel/ControlSettings/HBoxContainer/PlayerTabs" to="." method="_on_PlayerTabs_tab_changed"]
+[connection signal="pressed" from="Settings/Panel/ControlSettings/HBoxContainer/KBControls/ResetToDefault" to="." method="_on_KB_ResetToDefault_pressed"]
+[connection signal="pressed" from="Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls/ResetToDefault" to="." method="_on_P1_ResetToDefault_pressed"]
+[connection signal="pressed" from="Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls/ResetToDefault" to="." method="_on_P2_ResetToDefault_pressed"]
