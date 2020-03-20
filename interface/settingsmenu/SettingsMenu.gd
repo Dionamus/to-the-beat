@@ -41,6 +41,11 @@ onready var p2_heavy_punch = $Settings/Panel/ControlSettings/HBoxContainer/P2Con
 onready var p2_light_kick = $Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls/LightKick/Button
 onready var p2_heavy_kick = $Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls/HeavyKick/Button
 onready var p2_block = $Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls/Block/Button
+onready var inputs = ["Up", "Down", "Left", "Right", "LightPunch", "HeavyPunch",
+"LightKick", "HeavyKick", "Block"]
+# The inputs in snake case
+onready var inputs_snake = ["up", "down", "left", "right", "light_punch",
+"heavy_punch", "light_kick", "heavy_kick", "block"]
 
 # Set up settings menu.
 func _ready():
@@ -93,7 +98,24 @@ func _ready():
 	control_mode = Settings.settings["other"]["control_mode"]
 	
 	# Set the text for the keyboard controls.
-	kb_up.text = InputMap.get_action_list("kb_up")[0].as_text()
+	var k = 0
+	for kb_input in inputs:
+		get_node("Settings/Panel/ControlSettings/HBoxContainer/KBControls/"
+		+ kb_input + "/Button").text = InputMap.get_action_list("kb_" + inputs_snake[k])[0].as_text()
+		k += 1
+	k = 0
+	
+	# Set the text for player 1's controls
+	var l = 0
+	for p1_input in inputs:
+		while l <= InputMap.get_action_list("p1_" + inputs_snake[k]).size() - 1:
+			if InputMap.get_action_list("p1_" + inputs_snake[k])[l].get_class() == "InputEventJoypadButton":
+				get_node("Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls/"
+					+ p1_input + "/Button").text = Input.get_joy_button_string(
+					InputMap.get_action_list("p1_" + inputs_snake[k])[l].button_index)
+			l += 1
+		l = 0
+		k += 1
 
 # Switches tabs.
 func _on_SettingsCategories_tab_changed(tab):

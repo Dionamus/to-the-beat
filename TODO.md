@@ -117,18 +117,20 @@
 * ~~Get the controller controls working.~~
 * Style it.
 
-### OptionsMenu.tscn
+### SettingsMenu.tscn
 
-* Add video settings.
-  * Add resolution setting.
-  * Add refresh rate setting.
-  * Add Vsync setting.
-  * Add fullscreen setting.
-  * Add borderless setting.
-* Add audio settings.
-  * Add music slider.
-  * Add sound effects slider.
-  * Add menu sounds slider.
+* ~~Add video settings.~~
+  * ~~Add resolution setting.~~
+  * ~~Add refresh rate setting.~~
+  * ~~Add Vsync setting.~~
+  * ~~Add fullscreen setting.~~
+  * ~~Add borderless setting.~~
+  * ~~Get it working.~~
+* ~~Add audio settings.~~
+  * ~~Add music slider.~~
+  * ~~Add sound effects slider.~~
+  * ~~Add menu sounds slider.~~
+  * ~~Get it working.~~
 * Add control settings.
   * Add "Menu Control Mode" setting (in an options button). (These settings don't
   apply in the character select screen, where the Menu Control Mode defaults to
@@ -145,6 +147,8 @@
       the character select screen). Both players have control over pausing, but
       only the player who paused the game has control over the pause menu.).
   * Add bindings list.
+    * ~~Add labels and buttons.~~
+    * Get the remapping functionality working.
 * Get controls working.
 * Style it.
 
