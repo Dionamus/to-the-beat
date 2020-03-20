@@ -115,12 +115,6 @@ func _on_SettingsCategories_tab_changed(tab):
 			$Settings/Panel/AudioSettings.hide()
 			$Settings/Panel/ControlSettings.show()
 
-func _on_Video_ResetToDefault_pressed():
-	Settings.settings["video"]["resolution"] = Settings.default_settings["video"]["resolution"]
-	Settings.settings["video"]["resolution_box"] = Settings.default_settings["video"]["resolution_box"]
-	Settings.save_settings()
-	resolution.selected = Settings.default_settings["video"]["resolution_box"]
-
 # Switches resolution.
 func _on_ResolutionOptions_item_selected(ID):
 	# Native Resolution
@@ -173,16 +167,26 @@ func _on_BorderlessCheckBox_toggled(button_pressed):
 		OS.window_borderless = false
 	Settings.save_settings()
 
-func _on_Audio_ResetToDefault_pressed():
-	Settings.settings["audio"]["master"] = Settings.default_settings["audio"]["master"]
-	Settings.settings["audio"]["music"] = Settings.default_settings["audio"]["music"]
-	Settings.settings["audio"]["sfx"] = Settings.default_settings["audio"]["sfx"]
-	Settings.settings["audio"]["menu_sfx"] = Settings.default_settings["audio"]["menu_sfx"]
+func _on_Video_ResetToDefault_pressed():
+	for video_setting in Settings.settings["video"].keys():
+		Settings.settings["video"][video_setting] = Settings.default_settings["video"][video_setting]
 	Settings.save_settings()
-	AudioServer.set_bus_volume_db(0, Settings.default_settings["audio"]["master"])
-	AudioServer.set_bus_volume_db(1, Settings.default_settings["audio"]["music"])
-	AudioServer.set_bus_volume_db(2, Settings.default_settings["audio"]["sfx"])
-	AudioServer.set_bus_volume_db(3, Settings.default_settings["audio"]["menu_sfx"])
+	
+	OS.window_size = OS.get_screen_size(0)
+	get_tree().get_root().size = OS.get_screen_size(0)
+	resolution.selected = Settings.default_settings["video"]["resolution_box"]
+	
+	Engine.target_fps = Settings.default_settings["video"]["framerate_limit"]
+	framerate.selected = Settings.default_settings["video"]["framerate_limit_box"]
+	
+	vsync.pressed = Settings.default_settings["video"]["vsync"]
+	OS.vsync_enabled = Settings.default_settings["video"]["vsync"]
+	
+	fullscreen.pressed = Settings.default_settings["video"]["fullscreen"]
+	OS.window_fullscreen = Settings.default_settings["video"]["fullscreen"]
+	
+	borderless.pressed = Settings.default_settings["video"]["borderless"]
+	OS.window_borderless = Settings.default_settings["video"]["borderless"]
 
 # Changes the master volume.
 func _on_MasterSlider_value_changed(value):
@@ -203,6 +207,19 @@ func _on_SfxSlider_value_changed(value):
 func _on_MenuSlider_value_changed(value):
 	AudioServer.set_bus_volume_db(3, value)
 	Settings.save_settings()
+
+func _on_Audio_ResetToDefault_pressed():
+	var bus = 0
+	for audio_setting in Settings.settings["audio"].keys():
+		Settings.settings["audio"][audio_setting] = Settings.default_settings["audio"][audio_setting]
+		AudioServer.set_bus_volume_db(bus, Settings.default_settings["audio"][audio_setting])
+		bus += 1
+	Settings.save_settings()
+	
+	master_volume = AudioServer.get_bus_volume_db(0)
+	music_volume = AudioServer.get_bus_volume_db(1)
+	sfx_volume = AudioServer.get_bus_volume_db(2)
+	menu_volume = AudioServer.get_bus_volume_db(3)
 
 # Changes the binding categories for keyboard/controller players.
 func _on_PlayerTabs_tab_changed(tab):
@@ -227,10 +244,10 @@ func _on_ControlMode_OptionButton_item_selected(_id):
 	# Since this mechanic hasn't actually beeen implemented, the only thing
 	# that can be done is to change the config.
 	Settings.settings["other"]["control_mode"] = control_mode.selected
+	Settings.save_settings()
 
 func mark_bindings(device = null):
 	var k = 0
-	
 	
 	if device == null or device == "kb":
 		# Set the text for the keyboard controls.
@@ -271,6 +288,7 @@ func _on_ResetAllBindingsToDefault_pressed():
 	for input in Settings.settings["input"].keys():
 		Settings.settings["input"][input] = Settings.default_settings["input"][input]
 		ProjectSettings.set("input/" + input, Settings.default_settings["input"][input])
+	Settings.save_settings()
 	
 	mark_bindings()
 
@@ -279,6 +297,7 @@ func _on_KB_ResetToDefault_pressed():
 		if input.match("kb_*"):
 			Settings.settings["input"][input] = Settings.default_settings["input"][input]
 			ProjectSettings.set("input/" + input, Settings.default_settings["input"][input])
+	Settings.save_settings()
 	
 	mark_bindings("kb")
 
@@ -287,6 +306,7 @@ func _on_P1_ResetToDefault_pressed():
 		if input.match("p1_*"):
 			Settings.settings["input"][input] = Settings.default_settings["input"][input]
 			ProjectSettings.set("input/" + input, Settings.default_settings["input"][input])
+	Settings.save_settings()
 	
 	mark_bindings("p1")
 
@@ -295,5 +315,6 @@ func _on_P2_ResetToDefault_pressed():
 		if input.match("p2_*"):
 			Settings.settings["input"][input] = Settings.default_settings["input"][input]
 			ProjectSettings.set("input/" + input, Settings.default_settings["input"][input])
+	Settings.save_settings()
 	
 	mark_bindings("p2")

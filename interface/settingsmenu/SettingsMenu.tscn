@@ -90,7 +90,6 @@ margin_bottom = 980.0
 size_flags_vertical = 3
 
 [node name="VideoSettings" type="ScrollContainer" parent="Settings/Panel"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
@@ -357,6 +356,7 @@ custom_constants/hseparation = 0
 text = "Reset to Default"
 
 [node name="ControlSettings" type="ScrollContainer" parent="Settings/Panel"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -365,7 +365,7 @@ __meta__ = {
 
 [node name="HBoxContainer" type="VBoxContainer" parent="Settings/Panel/ControlSettings"]
 margin_right = 1820.0
-margin_bottom = 750.0
+margin_bottom = 726.0
 size_flags_horizontal = 3
 custom_constants/separation = 0
 
