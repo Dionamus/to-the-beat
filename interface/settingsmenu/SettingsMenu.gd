@@ -99,23 +99,36 @@ func _ready():
 	
 	# Set the text for the keyboard controls.
 	var k = 0
-	for kb_input in inputs:
+	for input in inputs:
 		get_node("Settings/Panel/ControlSettings/HBoxContainer/KBControls/"
-		+ kb_input + "/Button").text = InputMap.get_action_list("kb_" + inputs_snake[k])[0].as_text()
+		+ input + "/Button").text = InputMap.get_action_list("kb_" + inputs_snake[k])[0].as_text()
 		k += 1
 	k = 0
 	
 	# Set the text for player 1's controls
 	var l = 0
-	for p1_input in inputs:
+	for input in inputs:
 		while l <= InputMap.get_action_list("p1_" + inputs_snake[k]).size() - 1:
 			if InputMap.get_action_list("p1_" + inputs_snake[k])[l].get_class() == "InputEventJoypadButton":
 				get_node("Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls/"
-					+ p1_input + "/Button").text = Input.get_joy_button_string(
+					+ input + "/Button").text = Input.get_joy_button_string(
 					InputMap.get_action_list("p1_" + inputs_snake[k])[l].button_index)
 			l += 1
 		l = 0
 		k += 1
+	k = 0
+	
+	# Set the text for player 2's controls
+	for input in inputs:
+		while l <= InputMap.get_action_list("p2_" + inputs_snake[k]).size() - 1:
+			if InputMap.get_action_list("p2_" + inputs_snake[k])[l].get_class() == "InputEventJoypadButton":
+				get_node("Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls/"
+					+ input + "/Button").text = Input.get_joy_button_string(
+					InputMap.get_action_list("p2_" + inputs_snake[k])[l].button_index)
+			l += 1
+		l = 0
+		k += 1
+	k = 0
 
 # Switches tabs.
 func _on_SettingsCategories_tab_changed(tab):

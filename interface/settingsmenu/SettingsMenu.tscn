@@ -11,15 +11,15 @@ font_data = ExtResource( 2 )
 size = 40
 font_data = ExtResource( 2 )
 
+[sub_resource type="DynamicFont" id=5]
+size = 30
+font_data = ExtResource( 2 )
+
 [sub_resource type="DynamicFont" id=3]
 size = 30
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=4]
-size = 30
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=5]
 size = 30
 font_data = ExtResource( 2 )
 
@@ -90,7 +90,6 @@ margin_bottom = 980.0
 size_flags_vertical = 3
 
 [node name="VideoSettings" type="ScrollContainer" parent="Settings/Panel"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
@@ -106,9 +105,18 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 0
 
-[node name="Resolution" type="HBoxContainer" parent="Settings/Panel/VideoSettings/HBoxContainer"]
+[node name="ResetToDefault" type="Button" parent="Settings/Panel/VideoSettings/HBoxContainer"]
 margin_right = 1820.0
-margin_bottom = 52.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 5 )
+custom_constants/hseparation = 0
+text = "Reset to Default"
+
+[node name="Resolution" type="HBoxContainer" parent="Settings/Panel/VideoSettings/HBoxContainer"]
+margin_top = 42.0
+margin_right = 1820.0
+margin_bottom = 94.0
 
 [node name="Label" type="Label" parent="Settings/Panel/VideoSettings/HBoxContainer/Resolution"]
 margin_right = 908.0
@@ -130,9 +138,9 @@ items = [ "Native Resolution", null, false, 0, null, "1920x1080", null, false, 1
 selected = 0
 
 [node name="FramerateLimit" type="HBoxContainer" parent="Settings/Panel/VideoSettings/HBoxContainer"]
-margin_top = 52.0
+margin_top = 94.0
 margin_right = 1820.0
-margin_bottom = 104.0
+margin_bottom = 146.0
 
 [node name="Label" type="Label" parent="Settings/Panel/VideoSettings/HBoxContainer/FramerateLimit"]
 margin_right = 908.0
@@ -154,9 +162,9 @@ items = [ "None", null, false, 0, null, "30", null, false, 1, null, "60", null, 
 selected = 0
 
 [node name="Vsync" type="HBoxContainer" parent="Settings/Panel/VideoSettings/HBoxContainer"]
-margin_top = 104.0
+margin_top = 146.0
 margin_right = 1820.0
-margin_bottom = 156.0
+margin_bottom = 198.0
 
 [node name="Label" type="Label" parent="Settings/Panel/VideoSettings/HBoxContainer/Vsync"]
 margin_right = 1680.0
@@ -175,9 +183,9 @@ pressed = true
 text = "Enabled"
 
 [node name="Fullscreen" type="HBoxContainer" parent="Settings/Panel/VideoSettings/HBoxContainer"]
-margin_top = 156.0
+margin_top = 198.0
 margin_right = 1820.0
-margin_bottom = 208.0
+margin_bottom = 250.0
 
 [node name="Label" type="Label" parent="Settings/Panel/VideoSettings/HBoxContainer/Fullscreen"]
 margin_right = 1680.0
@@ -196,9 +204,9 @@ pressed = true
 text = "Enabled"
 
 [node name="Borderless" type="HBoxContainer" parent="Settings/Panel/VideoSettings/HBoxContainer"]
-margin_top = 208.0
+margin_top = 250.0
 margin_right = 1820.0
-margin_bottom = 260.0
+margin_bottom = 302.0
 
 [node name="Label" type="Label" parent="Settings/Panel/VideoSettings/HBoxContainer/Borderless"]
 margin_right = 1680.0
@@ -230,9 +238,18 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 0
 
-[node name="VolumeLabel" type="Label" parent="Settings/Panel/AudioSettings/HBoxContainer"]
+[node name="ResetToDefault" type="Button" parent="Settings/Panel/AudioSettings/HBoxContainer"]
 margin_right = 1820.0
-margin_bottom = 52.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 5 )
+custom_constants/hseparation = 0
+text = "Reset to Default"
+
+[node name="VolumeLabel" type="Label" parent="Settings/Panel/AudioSettings/HBoxContainer"]
+margin_top = 42.0
+margin_right = 1820.0
+margin_bottom = 94.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 1 )
 text = "Volume"
@@ -240,9 +257,9 @@ align = 1
 valign = 1
 
 [node name="MasterVolume" type="HBoxContainer" parent="Settings/Panel/AudioSettings/HBoxContainer"]
-margin_top = 52.0
+margin_top = 94.0
 margin_right = 1820.0
-margin_bottom = 104.0
+margin_bottom = 146.0
 
 [node name="Label" type="Label" parent="Settings/Panel/AudioSettings/HBoxContainer/MasterVolume"]
 margin_right = 908.0
@@ -264,9 +281,9 @@ tick_count = 100
 ticks_on_borders = true
 
 [node name="MusicVolume" type="HBoxContainer" parent="Settings/Panel/AudioSettings/HBoxContainer"]
-margin_top = 104.0
+margin_top = 146.0
 margin_right = 1820.0
-margin_bottom = 156.0
+margin_bottom = 198.0
 
 [node name="Label" type="Label" parent="Settings/Panel/AudioSettings/HBoxContainer/MusicVolume"]
 margin_right = 908.0
@@ -288,9 +305,9 @@ tick_count = 100
 ticks_on_borders = true
 
 [node name="SoundEffectsVolume" type="HBoxContainer" parent="Settings/Panel/AudioSettings/HBoxContainer"]
-margin_top = 156.0
+margin_top = 198.0
 margin_right = 1820.0
-margin_bottom = 208.0
+margin_bottom = 250.0
 
 [node name="Label" type="Label" parent="Settings/Panel/AudioSettings/HBoxContainer/SoundEffectsVolume"]
 margin_right = 908.0
@@ -312,9 +329,9 @@ tick_count = 100
 ticks_on_borders = true
 
 [node name="MenuSounds" type="HBoxContainer" parent="Settings/Panel/AudioSettings/HBoxContainer"]
-margin_top = 208.0
+margin_top = 250.0
 margin_right = 1820.0
-margin_bottom = 260.0
+margin_bottom = 302.0
 
 [node name="Label" type="Label" parent="Settings/Panel/AudioSettings/HBoxContainer/MenuSounds"]
 margin_right = 908.0
@@ -336,6 +353,7 @@ tick_count = 100
 ticks_on_borders = true
 
 [node name="ControlSettings" type="ScrollContainer" parent="Settings/Panel"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -344,7 +362,7 @@ __meta__ = {
 
 [node name="HBoxContainer" type="VBoxContainer" parent="Settings/Panel/ControlSettings"]
 margin_right = 1820.0
-margin_bottom = 708.0
+margin_bottom = 684.0
 size_flags_horizontal = 3
 custom_constants/separation = 0
 
