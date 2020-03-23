@@ -125,16 +125,17 @@
   * ~~Add Vsync setting.~~
   * ~~Add fullscreen setting.~~
   * ~~Add borderless setting.~~
-  * ~~Get it working.~~
+  * ~~Get them working.~~
 * ~~Add audio settings.~~
   * ~~Add music slider.~~
   * ~~Add sound effects slider.~~
   * ~~Add menu sounds slider.~~
-  * ~~Get it working.~~
+  * ~~Get them working.~~
 * Add control settings.
   * Add "Menu Control Mode" setting (in an options button). (These settings don't
   apply in the character select screen, where the Menu Control Mode defaults to
   2-player Individual Control).
+    * ~~Add label and options box.~~
     * Add "Player 1 Exclusive Control" setting. (Makes it to where player 1 has
       all of the control of the menus and pausing.)
     * Add "2-Player Simultaneous Control" setting. (Makes it to where both
@@ -147,10 +148,16 @@
       the character select screen). Both players have control over pausing, but
       only the player who paused the game has control over the pause menu.).
   * Add bindings list.
-    * ~~Add labels and buttons.~~
-    * Get the remapping functionality working.
+    * ~~Add lables and buttons.~~
+    * ~~Have the buttons get their text from the InputMap.~~
+    * Get the rebinding functionality working.
 * Get controls working.
 * Style it.
+
+### ControlSwap.tscn (not yet added)
+
+* Add the UI.
+* Add the functionality.
 
 ### CharacterSelect.tscn (not yet added)
 
