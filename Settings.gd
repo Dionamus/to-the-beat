@@ -1,11 +1,9 @@
 extends Node
 
 const CONFIG_SAVE_PATH = "res://config.cfg"
-const DEFAULT_CONFIG_SAVE_PATH = "res://default.cfg"
 enum {PLAYER_1_EXCLUSIVE, TWO_PLAYER_SIMULTANEOUS, TWO_PLAYER_INDIVIDUAL}
 
 var config_file = ConfigFile.new()
-var default_config_file = ConfigFile.new()
 var default_settings = {
 	"video": {
 		"resolution": "Native Resolution",

@@ -344,11 +344,12 @@ __meta__ = {
 
 [node name="HBoxContainer" type="VBoxContainer" parent="Settings/Panel/ControlSettings"]
 margin_right = 1820.0
-margin_bottom = 708.0
+margin_bottom = 656.0
 size_flags_horizontal = 3
 custom_constants/separation = 0
 
 [node name="ControlMode" type="HBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer"]
+visible = false
 margin_right = 1820.0
 margin_bottom = 52.0
 
@@ -372,9 +373,8 @@ items = [ "Player 1 Exclusive Control", null, false, 0, null, "2-Player Simultan
 selected = 0
 
 [node name="BindingsLabel" type="Label" parent="Settings/Panel/ControlSettings/HBoxContainer"]
-margin_top = 52.0
 margin_right = 1820.0
-margin_bottom = 104.0
+margin_bottom = 52.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 1 )
 text = "Bindings"
@@ -382,9 +382,9 @@ align = 1
 valign = 1
 
 [node name="PlayerTabs" type="TabContainer" parent="Settings/Panel/ControlSettings/HBoxContainer"]
-margin_top = 104.0
+margin_top = 52.0
 margin_right = 1820.0
-margin_bottom = 198.0
+margin_bottom = 146.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 2 )
 tab_align = 0
@@ -416,9 +416,9 @@ margin_right = -4.0
 margin_bottom = -4.0
 
 [node name="KBControls" type="VBoxContainer" parent="Settings/Panel/ControlSettings/HBoxContainer"]
-margin_top = 198.0
+margin_top = 146.0
 margin_right = 1820.0
-margin_bottom = 708.0
+margin_bottom = 656.0
 custom_constants/separation = 0
 
 [node name="ResetToDefault" type="Button" parent="Settings/Panel/ControlSettings/HBoxContainer/KBControls"]
