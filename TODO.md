@@ -136,17 +136,18 @@
   apply in the character select screen, where the Menu Control Mode defaults to
   2-player Individual Control).
     * ~~Add label and options box.~~
-    * Add "Player 1 Exclusive Control" setting. (Makes it to where player 1 has
-      all of the control of the menus and pausing.)
-    * Add "2-Player Simultaneous Control" setting. (Makes it to where both
+    * ~~Add "Player 1 Exclusive Control" setting. (Makes it to where player 1 has
+      all of the control of the menus and pausing.)~~
+    * ~~Add "2-Player Simultaneous Control" setting. (Makes it to where both
       players control pausing and navigating the cursor in the menus
-      simultaneously. This does not work in the Options Menu. Not recommended
-      when having guests over with itchy button fingers/thumbs.)
+      simultaneously. Not recommended
+      when having guests over with itchy button fingers/thumbs.)~~
     * Add "2-Player Individual Control" setting. (Makes it to where both players
       get their own cursor for navigating menus when not in a game. They must be
       on the same UI element to confirm the selection (this does not happen in
       the character select screen). Both players have control over pausing, but
       only the player who paused the game has control over the pause menu.).
+    * Add the character select screen as an exception to the control mode.
   * Add bindings list.
     * ~~Add lables and buttons.~~
     * ~~Have the buttons get their text from the InputMap.~~

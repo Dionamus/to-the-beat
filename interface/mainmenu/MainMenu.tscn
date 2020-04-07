@@ -38,6 +38,7 @@ valign = 1
 margin_top = 56.0
 margin_right = 321.0
 margin_bottom = 114.0
+focus_neighbour_top = NodePath("../QuitToDesktopButton")
 focus_neighbour_bottom = NodePath("../QuitToDesktopButton")
 custom_fonts/font = SubResource( 2 )
 text = "Start Game"
