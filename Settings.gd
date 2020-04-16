@@ -304,6 +304,7 @@ func set_controls():
 			or (!(settings["input"][input][0] is InputEventKey)\
 			and settings["input"][input].size() == 1)):
 				settings["input"][input] = default_settings["input"][input]
+		
 		# Apply changes if any.
 		ProjectSettings.set_setting("input/" + input, settings["input"][input])
 		config_file.set_value("input", input, settings["input"][input])

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://interface/settingsmenu/SettingsMenu.gd" type="Script" id=1]
 [ext_resource path="res://interface/Roboto-Bold.ttf" type="DynamicFontData" id=2]
@@ -7,22 +7,18 @@
 size = 44
 font_data = ExtResource( 2 )
 
-[sub_resource type="StyleBoxFlat" id=6]
-bg_color = Color( 0.128906, 0.128906, 0.128906, 1 )
-
-[sub_resource type="DynamicFont" id=2]
-size = 40
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=3]
-size = 30
-font_data = ExtResource( 2 )
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.129412, 0.129412, 0.129412, 1 )
 
 [sub_resource type="DynamicFont" id=4]
 size = 30
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=5]
+size = 30
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=6]
 size = 30
 font_data = ExtResource( 2 )
 
@@ -54,45 +50,44 @@ text = "Settings"
 align = 1
 valign = 1
 
-[node name="SettingsCategories" type="TabContainer" parent="Settings"]
+[node name="Panel" type="Panel" parent="Settings"]
 margin_top = 56.0
 margin_right = 1820.0
 margin_bottom = 980.0
+size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_styles/panel = SubResource( 6 )
-custom_fonts/font = SubResource( 2 )
+custom_styles/panel = SubResource( 7 )
 
-[node name="Video" type="Tabs" parent="Settings/SettingsCategories"]
-visible = false
+[node name="ScrollContainer" type="ScrollContainer" parent="Settings/Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 58.0
-
-[node name="VideoSettings" type="ScrollContainer" parent="Settings/SettingsCategories/Video"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -4.0
-margin_top = 40.0
-margin_right = -4.0
-margin_bottom = 40.0
+margin_bottom = 1733.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="VBoxContainer" parent="Settings/SettingsCategories/Video/VideoSettings"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings/Panel/ScrollContainer"]
 margin_right = 1820.0
-margin_bottom = 866.0
+margin_bottom = 2616.0
 size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_constants/separation = 0
 
-[node name="Resolution" type="HBoxContainer" parent="Settings/SettingsCategories/Video/VideoSettings/HBoxContainer"]
+[node name="VideoLabel" type="Label" parent="Settings/Panel/ScrollContainer/VBoxContainer"]
 margin_right = 1820.0
 margin_bottom = 52.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "Video"
+align = 1
+valign = 1
 
-[node name="Label" type="Label" parent="Settings/SettingsCategories/Video/VideoSettings/HBoxContainer/Resolution"]
+[node name="Resolution" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer"]
+margin_top = 56.0
+margin_right = 1820.0
+margin_bottom = 108.0
+
+[node name="Label" type="Label" parent="Settings/Panel/ScrollContainer/VBoxContainer/Resolution"]
 margin_right = 908.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
@@ -100,25 +95,25 @@ custom_fonts/font = SubResource( 1 )
 text = "Resolution"
 valign = 1
 
-[node name="ResolutionOptions" type="OptionButton" parent="Settings/SettingsCategories/Video/VideoSettings/HBoxContainer/Resolution"]
+[node name="ResolutionOptions" type="OptionButton" parent="Settings/Panel/ScrollContainer/VBoxContainer/Resolution"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
 focus_neighbour_top = NodePath("../../../..")
 focus_neighbour_bottom = NodePath("../../FramerateLimit/FramerateOptions")
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "Native Resolution"
 align = 2
 items = [ "Native Resolution", null, false, 0, null, "1920x1080", null, false, 1, null, "1280x720", null, false, 2, null ]
 selected = 0
 
-[node name="FramerateLimit" type="HBoxContainer" parent="Settings/SettingsCategories/Video/VideoSettings/HBoxContainer"]
-margin_top = 52.0
+[node name="FramerateLimit" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer"]
+margin_top = 112.0
 margin_right = 1820.0
-margin_bottom = 104.0
+margin_bottom = 164.0
 
-[node name="Label" type="Label" parent="Settings/SettingsCategories/Video/VideoSettings/HBoxContainer/FramerateLimit"]
+[node name="Label" type="Label" parent="Settings/Panel/ScrollContainer/VBoxContainer/FramerateLimit"]
 margin_right = 908.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
@@ -126,25 +121,25 @@ custom_fonts/font = SubResource( 1 )
 text = "Framerate Limit"
 valign = 1
 
-[node name="FramerateOptions" type="OptionButton" parent="Settings/SettingsCategories/Video/VideoSettings/HBoxContainer/FramerateLimit"]
+[node name="FramerateOptions" type="OptionButton" parent="Settings/Panel/ScrollContainer/VBoxContainer/FramerateLimit"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
 focus_neighbour_top = NodePath("../../Resolution/ResolutionOptions")
 focus_neighbour_bottom = NodePath("../../Vsync/VsyncCheckBox")
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "None"
 align = 2
 items = [ "None", null, false, 0, null, "30", null, false, 1, null, "60", null, false, 2, null, "120", null, false, 3, null, "144", null, false, 4, null, "200", null, false, 5, null, "240", null, false, 6, null ]
 selected = 0
 
-[node name="Vsync" type="HBoxContainer" parent="Settings/SettingsCategories/Video/VideoSettings/HBoxContainer"]
-margin_top = 104.0
+[node name="Vsync" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer"]
+margin_top = 168.0
 margin_right = 1820.0
-margin_bottom = 156.0
+margin_bottom = 220.0
 
-[node name="Label" type="Label" parent="Settings/SettingsCategories/Video/VideoSettings/HBoxContainer/Vsync"]
+[node name="Label" type="Label" parent="Settings/Panel/ScrollContainer/VBoxContainer/Vsync"]
 margin_right = 1680.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
@@ -152,22 +147,22 @@ custom_fonts/font = SubResource( 1 )
 text = "Vsync"
 valign = 1
 
-[node name="VsyncCheckBox" type="CheckBox" parent="Settings/SettingsCategories/Video/VideoSettings/HBoxContainer/Vsync"]
+[node name="VsyncCheckBox" type="CheckBox" parent="Settings/Panel/ScrollContainer/VBoxContainer/Vsync"]
 margin_left = 1684.0
 margin_right = 1820.0
 margin_bottom = 52.0
 focus_neighbour_top = NodePath("../../FramerateLimit/FramerateOptions")
 focus_neighbour_bottom = NodePath("../../Fullscreen/FullscreenCheckbox")
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 pressed = true
 text = "Enabled"
 
-[node name="Fullscreen" type="HBoxContainer" parent="Settings/SettingsCategories/Video/VideoSettings/HBoxContainer"]
-margin_top = 156.0
+[node name="Fullscreen" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer"]
+margin_top = 224.0
 margin_right = 1820.0
-margin_bottom = 208.0
+margin_bottom = 276.0
 
-[node name="Label" type="Label" parent="Settings/SettingsCategories/Video/VideoSettings/HBoxContainer/Fullscreen"]
+[node name="Label" type="Label" parent="Settings/Panel/ScrollContainer/VBoxContainer/Fullscreen"]
 margin_right = 1680.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
@@ -175,22 +170,22 @@ custom_fonts/font = SubResource( 1 )
 text = "Fullscreen"
 valign = 1
 
-[node name="FullscreenCheckbox" type="CheckBox" parent="Settings/SettingsCategories/Video/VideoSettings/HBoxContainer/Fullscreen"]
+[node name="FullscreenCheckbox" type="CheckBox" parent="Settings/Panel/ScrollContainer/VBoxContainer/Fullscreen"]
 margin_left = 1684.0
 margin_right = 1820.0
 margin_bottom = 52.0
 focus_neighbour_top = NodePath("../../Vsync/VsyncCheckBox")
 focus_neighbour_bottom = NodePath("../../Borderless/BorderlessCheckBox")
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 pressed = true
 text = "Enabled"
 
-[node name="Borderless" type="HBoxContainer" parent="Settings/SettingsCategories/Video/VideoSettings/HBoxContainer"]
-margin_top = 208.0
+[node name="Borderless" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer"]
+margin_top = 280.0
 margin_right = 1820.0
-margin_bottom = 260.0
+margin_bottom = 332.0
 
-[node name="Label" type="Label" parent="Settings/SettingsCategories/Video/VideoSettings/HBoxContainer/Borderless"]
+[node name="Label" type="Label" parent="Settings/Panel/ScrollContainer/VBoxContainer/Borderless"]
 margin_right = 1680.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
@@ -198,68 +193,46 @@ custom_fonts/font = SubResource( 1 )
 text = "Borderless"
 valign = 1
 
-[node name="BorderlessCheckBox" type="CheckBox" parent="Settings/SettingsCategories/Video/VideoSettings/HBoxContainer/Borderless"]
+[node name="BorderlessCheckBox" type="CheckBox" parent="Settings/Panel/ScrollContainer/VBoxContainer/Borderless"]
 margin_left = 1684.0
 margin_right = 1820.0
 margin_bottom = 52.0
 focus_neighbour_top = NodePath("../../Fullscreen/FullscreenCheckbox")
 focus_neighbour_bottom = NodePath("../../ResetToDefault")
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 pressed = true
 text = "Enabled"
 
-[node name="ResetToDefault" type="Button" parent="Settings/SettingsCategories/Video/VideoSettings/HBoxContainer"]
-margin_top = 260.0
+[node name="VideoResetToDefault" type="Button" parent="Settings/Panel/ScrollContainer/VBoxContainer"]
+margin_top = 336.0
 margin_right = 1820.0
-margin_bottom = 302.0
+margin_bottom = 378.0
 focus_neighbour_top = NodePath("../Borderless/BorderlessCheckBox")
 focus_neighbour_bottom = NodePath("../../..")
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 custom_constants/hseparation = 0
 text = "Reset to Default"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Audio" type="Tabs" parent="Settings/SettingsCategories"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = 58.0
-
-[node name="AudioSettings" type="ScrollContainer" parent="Settings/SettingsCategories/Audio"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -4.0
-margin_top = 40.0
-margin_right = -4.0
-margin_bottom = 40.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="HBoxContainer" type="VBoxContainer" parent="Settings/SettingsCategories/Audio/AudioSettings"]
+[node name="AudioLabel" type="Label" parent="Settings/Panel/ScrollContainer/VBoxContainer"]
+margin_top = 382.0
 margin_right = 1820.0
-margin_bottom = 866.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_constants/separation = 0
-
-[node name="VolumeLabel" type="Label" parent="Settings/SettingsCategories/Audio/AudioSettings/HBoxContainer"]
-margin_right = 1820.0
-margin_bottom = 52.0
+margin_bottom = 434.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 1 )
-text = "Volume"
+text = "Audio"
 align = 1
 valign = 1
 
-[node name="MasterVolume" type="HBoxContainer" parent="Settings/SettingsCategories/Audio/AudioSettings/HBoxContainer"]
-margin_top = 52.0
+[node name="MasterVolume" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer"]
+margin_top = 438.0
 margin_right = 1820.0
-margin_bottom = 104.0
+margin_bottom = 490.0
 
-[node name="Label" type="Label" parent="Settings/SettingsCategories/Audio/AudioSettings/HBoxContainer/MasterVolume"]
+[node name="Label" type="Label" parent="Settings/Panel/ScrollContainer/VBoxContainer/MasterVolume"]
 margin_right = 908.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
@@ -267,7 +240,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Master"
 valign = 1
 
-[node name="MasterSlider" type="HSlider" parent="Settings/SettingsCategories/Audio/AudioSettings/HBoxContainer/MasterVolume"]
+[node name="MasterSlider" type="HSlider" parent="Settings/Panel/ScrollContainer/VBoxContainer/MasterVolume"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
@@ -280,12 +253,12 @@ max_value = 0.0
 tick_count = 100
 ticks_on_borders = true
 
-[node name="MusicVolume" type="HBoxContainer" parent="Settings/SettingsCategories/Audio/AudioSettings/HBoxContainer"]
-margin_top = 104.0
+[node name="MusicVolume" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer"]
+margin_top = 494.0
 margin_right = 1820.0
-margin_bottom = 156.0
+margin_bottom = 546.0
 
-[node name="Label" type="Label" parent="Settings/SettingsCategories/Audio/AudioSettings/HBoxContainer/MusicVolume"]
+[node name="Label" type="Label" parent="Settings/Panel/ScrollContainer/VBoxContainer/MusicVolume"]
 margin_right = 908.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
@@ -293,7 +266,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Music"
 valign = 1
 
-[node name="MusicSlider" type="HSlider" parent="Settings/SettingsCategories/Audio/AudioSettings/HBoxContainer/MusicVolume"]
+[node name="MusicSlider" type="HSlider" parent="Settings/Panel/ScrollContainer/VBoxContainer/MusicVolume"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
@@ -306,12 +279,12 @@ max_value = 0.0
 tick_count = 100
 ticks_on_borders = true
 
-[node name="SoundEffectsVolume" type="HBoxContainer" parent="Settings/SettingsCategories/Audio/AudioSettings/HBoxContainer"]
-margin_top = 156.0
+[node name="SoundEffectsVolume" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer"]
+margin_top = 550.0
 margin_right = 1820.0
-margin_bottom = 208.0
+margin_bottom = 602.0
 
-[node name="Label" type="Label" parent="Settings/SettingsCategories/Audio/AudioSettings/HBoxContainer/SoundEffectsVolume"]
+[node name="Label" type="Label" parent="Settings/Panel/ScrollContainer/VBoxContainer/SoundEffectsVolume"]
 margin_right = 908.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
@@ -319,7 +292,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Sound Effects"
 valign = 1
 
-[node name="SfxSlider" type="HSlider" parent="Settings/SettingsCategories/Audio/AudioSettings/HBoxContainer/SoundEffectsVolume"]
+[node name="SfxSlider" type="HSlider" parent="Settings/Panel/ScrollContainer/VBoxContainer/SoundEffectsVolume"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
@@ -332,12 +305,12 @@ max_value = 0.0
 tick_count = 100
 ticks_on_borders = true
 
-[node name="MenuSounds" type="HBoxContainer" parent="Settings/SettingsCategories/Audio/AudioSettings/HBoxContainer"]
-margin_top = 208.0
+[node name="MenuSounds" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer"]
+margin_top = 606.0
 margin_right = 1820.0
-margin_bottom = 260.0
+margin_bottom = 658.0
 
-[node name="Label" type="Label" parent="Settings/SettingsCategories/Audio/AudioSettings/HBoxContainer/MenuSounds"]
+[node name="Label" type="Label" parent="Settings/Panel/ScrollContainer/VBoxContainer/MenuSounds"]
 margin_right = 908.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
@@ -345,7 +318,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Menu Sounds"
 valign = 1
 
-[node name="MenuSlider" type="HSlider" parent="Settings/SettingsCategories/Audio/AudioSettings/HBoxContainer/MenuSounds"]
+[node name="MenuSlider" type="HSlider" parent="Settings/Panel/ScrollContainer/VBoxContainer/MenuSounds"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
@@ -358,44 +331,33 @@ max_value = 0.0
 tick_count = 100
 ticks_on_borders = true
 
-[node name="ResetToDefault" type="Button" parent="Settings/SettingsCategories/Audio/AudioSettings/HBoxContainer"]
-margin_top = 260.0
+[node name="AudioResetToDefault" type="Button" parent="Settings/Panel/ScrollContainer/VBoxContainer"]
+margin_top = 662.0
 margin_right = 1820.0
-margin_bottom = 302.0
+margin_bottom = 704.0
 focus_neighbour_top = NodePath("../MenuSounds/MenuSlider")
 focus_neighbour_bottom = NodePath("../../..")
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 custom_constants/hseparation = 0
 text = "Reset to Default"
 
-[node name="Controls" type="Tabs" parent="Settings/SettingsCategories"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = 58.0
-
-[node name="ControlSettings" type="ScrollContainer" parent="Settings/SettingsCategories/Controls"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -4.0
-margin_top = 40.0
-margin_right = -4.0
-margin_bottom = 40.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HBoxContainer" type="VBoxContainer" parent="Settings/SettingsCategories/Controls/ControlSettings"]
+[node name="ControlsLabel" type="Label" parent="Settings/Panel/ScrollContainer/VBoxContainer"]
+margin_top = 708.0
 margin_right = 1820.0
-margin_bottom = 198.0
+margin_bottom = 760.0
 size_flags_horizontal = 3
-custom_constants/separation = 0
+custom_fonts/font = SubResource( 1 )
+text = "Controls"
+align = 1
+valign = 1
 
-[node name="ControlMode" type="HBoxContainer" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer"]
+[node name="ControlMode" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer"]
+margin_top = 764.0
 margin_right = 1820.0
-margin_bottom = 52.0
+margin_bottom = 816.0
 
-[node name="Label" type="Label" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/ControlMode"]
+[node name="Label" type="Label" parent="Settings/Panel/ScrollContainer/VBoxContainer/ControlMode"]
 margin_right = 908.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
@@ -403,61 +365,64 @@ custom_fonts/font = SubResource( 1 )
 text = "Control Mode"
 valign = 1
 
-[node name="OptionButton" type="OptionButton" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/ControlMode"]
+[node name="OptionButton" type="OptionButton" parent="Settings/Panel/ScrollContainer/VBoxContainer/ControlMode"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
 focus_neighbour_top = NodePath("../../../../../SettingsCategories")
 focus_neighbour_bottom = NodePath("../../PlayerTabs")
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "Player 1 Exclusive Control"
 align = 2
 items = [ "Player 1 Exclusive Control", null, false, 0, null, "2-Player Simultaneous Control", null, false, 1, null ]
 selected = 0
 
-[node name="BindingsLabel" type="Label" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer"]
-margin_top = 52.0
+[node name="BindingsLabel" type="Label" parent="Settings/Panel/ScrollContainer/VBoxContainer"]
+margin_top = 820.0
 margin_right = 1820.0
-margin_bottom = 104.0
+margin_bottom = 872.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 1 )
 text = "Bindings"
 align = 1
 valign = 1
 
-[node name="PlayerTabs" type="TabContainer" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer"]
-margin_top = 104.0
+[node name="ResetAllBindingsToDefault" type="Button" parent="Settings/Panel/ScrollContainer/VBoxContainer"]
+margin_top = 876.0
 margin_right = 1820.0
-margin_bottom = 198.0
+margin_bottom = 918.0
+focus_neighbour_top = NodePath("../Block/Button")
+focus_neighbour_bottom = NodePath("../../../../../SettingsCategories")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 2 )
-tab_align = 0
+custom_fonts/font = SubResource( 6 )
+custom_constants/hseparation = 0
+text = "Reset all to Default"
 
-[node name="Keyboard" type="Tabs" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 66.0
-margin_right = -4.0
-margin_bottom = -4.0
-
-[node name="KBControls" type="VBoxContainer" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Keyboard"]
-margin_left = -4.0
-margin_top = 28.0
-margin_right = 1816.0
-margin_bottom = 538.0
+[node name="KBControls" type="VBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer"]
+margin_top = 922.0
+margin_right = 1820.0
+margin_bottom = 1484.0
 custom_constants/separation = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Up" type="HBoxContainer" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Keyboard/KBControls"]
+[node name="KeyboardLabel" type="Label" parent="Settings/Panel/ScrollContainer/VBoxContainer/KBControls"]
 margin_right = 1820.0
 margin_bottom = 52.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "Keyboard"
+valign = 1
 
-[node name="Label" type="Label" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Keyboard/KBControls/Up"]
+[node name="Up" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer/KBControls"]
+margin_top = 52.0
+margin_right = 1820.0
+margin_bottom = 104.0
+
+[node name="Label" type="Label" parent="Settings/Panel/ScrollContainer/VBoxContainer/KBControls/Up"]
 margin_right = 908.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
@@ -465,7 +430,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Up"
 valign = 1
 
-[node name="Button" type="Button" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Keyboard/KBControls/Up"]
+[node name="Button" type="Button" parent="Settings/Panel/ScrollContainer/VBoxContainer/KBControls/Up"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
@@ -473,15 +438,15 @@ focus_neighbour_top = NodePath("../../../PlayerTabs")
 focus_neighbour_bottom = NodePath("../../Down/Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = "Up Arrow"
 
-[node name="Down" type="HBoxContainer" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Keyboard/KBControls"]
-margin_top = 52.0
+[node name="Down" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer/KBControls"]
+margin_top = 104.0
 margin_right = 1820.0
-margin_bottom = 104.0
+margin_bottom = 156.0
 
-[node name="Label" type="Label" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Keyboard/KBControls/Down"]
+[node name="Label" type="Label" parent="Settings/Panel/ScrollContainer/VBoxContainer/KBControls/Down"]
 margin_right = 908.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
@@ -489,7 +454,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Down"
 valign = 1
 
-[node name="Button" type="Button" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Keyboard/KBControls/Down"]
+[node name="Button" type="Button" parent="Settings/Panel/ScrollContainer/VBoxContainer/KBControls/Down"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
@@ -497,15 +462,15 @@ focus_neighbour_top = NodePath("../../Up/Button")
 focus_neighbour_bottom = NodePath("../../Left/Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = "Down Arrow"
 
-[node name="Left" type="HBoxContainer" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Keyboard/KBControls"]
-margin_top = 104.0
+[node name="Left" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer/KBControls"]
+margin_top = 156.0
 margin_right = 1820.0
-margin_bottom = 156.0
+margin_bottom = 208.0
 
-[node name="Label" type="Label" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Keyboard/KBControls/Left"]
+[node name="Label" type="Label" parent="Settings/Panel/ScrollContainer/VBoxContainer/KBControls/Left"]
 margin_right = 908.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
@@ -513,7 +478,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Left"
 valign = 1
 
-[node name="Button" type="Button" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Keyboard/KBControls/Left"]
+[node name="Button" type="Button" parent="Settings/Panel/ScrollContainer/VBoxContainer/KBControls/Left"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
@@ -521,15 +486,15 @@ focus_neighbour_top = NodePath("../../Down/Button")
 focus_neighbour_bottom = NodePath("../../Right/Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = "Left Arrow"
 
-[node name="Right" type="HBoxContainer" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Keyboard/KBControls"]
-margin_top = 156.0
+[node name="Right" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer/KBControls"]
+margin_top = 208.0
 margin_right = 1820.0
-margin_bottom = 208.0
+margin_bottom = 260.0
 
-[node name="Label" type="Label" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Keyboard/KBControls/Right"]
+[node name="Label" type="Label" parent="Settings/Panel/ScrollContainer/VBoxContainer/KBControls/Right"]
 margin_right = 908.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
@@ -537,7 +502,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Right"
 valign = 1
 
-[node name="Button" type="Button" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Keyboard/KBControls/Right"]
+[node name="Button" type="Button" parent="Settings/Panel/ScrollContainer/VBoxContainer/KBControls/Right"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
@@ -545,15 +510,15 @@ focus_neighbour_top = NodePath("../../Left/Button")
 focus_neighbour_bottom = NodePath("../../LightPunch/Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = "Right Arrow"
 
-[node name="LightPunch" type="HBoxContainer" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Keyboard/KBControls"]
-margin_top = 208.0
+[node name="LightPunch" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer/KBControls"]
+margin_top = 260.0
 margin_right = 1820.0
-margin_bottom = 260.0
+margin_bottom = 312.0
 
-[node name="Label" type="Label" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Keyboard/KBControls/LightPunch"]
+[node name="Label" type="Label" parent="Settings/Panel/ScrollContainer/VBoxContainer/KBControls/LightPunch"]
 margin_right = 908.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
@@ -561,7 +526,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Light Punch"
 valign = 1
 
-[node name="Button" type="Button" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Keyboard/KBControls/LightPunch"]
+[node name="Button" type="Button" parent="Settings/Panel/ScrollContainer/VBoxContainer/KBControls/LightPunch"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
@@ -569,15 +534,15 @@ focus_neighbour_top = NodePath("../../Right/Button")
 focus_neighbour_bottom = NodePath("../../HeavyPunch/Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = "Q"
 
-[node name="HeavyPunch" type="HBoxContainer" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Keyboard/KBControls"]
-margin_top = 260.0
+[node name="HeavyPunch" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer/KBControls"]
+margin_top = 312.0
 margin_right = 1820.0
-margin_bottom = 312.0
+margin_bottom = 364.0
 
-[node name="Label" type="Label" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Keyboard/KBControls/HeavyPunch"]
+[node name="Label" type="Label" parent="Settings/Panel/ScrollContainer/VBoxContainer/KBControls/HeavyPunch"]
 margin_right = 908.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
@@ -585,7 +550,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Heavy Punch"
 valign = 1
 
-[node name="Button" type="Button" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Keyboard/KBControls/HeavyPunch"]
+[node name="Button" type="Button" parent="Settings/Panel/ScrollContainer/VBoxContainer/KBControls/HeavyPunch"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
@@ -593,15 +558,15 @@ focus_neighbour_top = NodePath("../../LightPunch/Button")
 focus_neighbour_bottom = NodePath("../../LightKick/Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = "W"
 
-[node name="LightKick" type="HBoxContainer" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Keyboard/KBControls"]
-margin_top = 312.0
+[node name="LightKick" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer/KBControls"]
+margin_top = 364.0
 margin_right = 1820.0
-margin_bottom = 364.0
+margin_bottom = 416.0
 
-[node name="Label" type="Label" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Keyboard/KBControls/LightKick"]
+[node name="Label" type="Label" parent="Settings/Panel/ScrollContainer/VBoxContainer/KBControls/LightKick"]
 margin_right = 908.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
@@ -609,7 +574,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Light Kick"
 valign = 1
 
-[node name="Button" type="Button" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Keyboard/KBControls/LightKick"]
+[node name="Button" type="Button" parent="Settings/Panel/ScrollContainer/VBoxContainer/KBControls/LightKick"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
@@ -617,15 +582,15 @@ focus_neighbour_top = NodePath("../../HeavyPunch/Button")
 focus_neighbour_bottom = NodePath("../../HeavyKick/Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = "E"
 
-[node name="HeavyKick" type="HBoxContainer" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Keyboard/KBControls"]
-margin_top = 364.0
+[node name="HeavyKick" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer/KBControls"]
+margin_top = 416.0
 margin_right = 1820.0
-margin_bottom = 416.0
+margin_bottom = 468.0
 
-[node name="Label" type="Label" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Keyboard/KBControls/HeavyKick"]
+[node name="Label" type="Label" parent="Settings/Panel/ScrollContainer/VBoxContainer/KBControls/HeavyKick"]
 margin_right = 908.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
@@ -633,7 +598,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Heavy Kick"
 valign = 1
 
-[node name="Button" type="Button" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Keyboard/KBControls/HeavyKick"]
+[node name="Button" type="Button" parent="Settings/Panel/ScrollContainer/VBoxContainer/KBControls/HeavyKick"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
@@ -641,15 +606,15 @@ focus_neighbour_top = NodePath("../../LightKick/Button")
 focus_neighbour_bottom = NodePath("../../Block/Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = "R"
 
-[node name="Block" type="HBoxContainer" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Keyboard/KBControls"]
-margin_top = 416.0
+[node name="Block" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer/KBControls"]
+margin_top = 468.0
 margin_right = 1820.0
-margin_bottom = 468.0
+margin_bottom = 520.0
 
-[node name="Label" type="Label" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Keyboard/KBControls/Block"]
+[node name="Label" type="Label" parent="Settings/Panel/ScrollContainer/VBoxContainer/KBControls/Block"]
 margin_right = 908.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
@@ -657,7 +622,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Block"
 valign = 1
 
-[node name="Button" type="Button" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Keyboard/KBControls/Block"]
+[node name="Button" type="Button" parent="Settings/Panel/ScrollContainer/VBoxContainer/KBControls/Block"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
@@ -665,42 +630,44 @@ focus_neighbour_top = NodePath("../../HeavyKick/Button")
 focus_neighbour_bottom = NodePath("../../ResetToDefault")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = "Shift"
 
-[node name="ResetToDefault" type="Button" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Keyboard/KBControls"]
-margin_top = 468.0
+[node name="ResetToDefault" type="Button" parent="Settings/Panel/ScrollContainer/VBoxContainer/KBControls"]
+margin_top = 520.0
 margin_right = 1820.0
-margin_bottom = 510.0
+margin_bottom = 562.0
 focus_neighbour_top = NodePath("../Block/Button")
 focus_neighbour_bottom = NodePath("../../../../../SettingsCategories")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 custom_constants/hseparation = 0
 text = "Reset to Default"
 
-[node name="Player 1 Controller" type="Tabs" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 66.0
-margin_right = -4.0
-margin_bottom = -4.0
-
-[node name="P1ControllerControls" type="VBoxContainer" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 1 Controller"]
-margin_left = -4.0
-margin_top = 28.0
-margin_right = 1816.0
-margin_bottom = 538.0
+[node name="P1ControllerControls" type="VBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer"]
+margin_top = 1488.0
+margin_right = 1820.0
+margin_bottom = 2050.0
 custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Up" type="HBoxContainer" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 1 Controller/P1ControllerControls"]
+[node name="P1ControllerLabel" type="Label" parent="Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls"]
 margin_right = 1820.0
 margin_bottom = 52.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "Player 1 Controller"
+valign = 1
 
-[node name="Label" type="Label" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 1 Controller/P1ControllerControls/Up"]
+[node name="Up" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls"]
+margin_top = 52.0
+margin_right = 1820.0
+margin_bottom = 104.0
+
+[node name="Label" type="Label" parent="Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls/Up"]
 margin_right = 908.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
@@ -708,7 +675,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Up"
 valign = 1
 
-[node name="Button" type="Button" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 1 Controller/P1ControllerControls/Up"]
+[node name="Button" type="Button" parent="Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls/Up"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
@@ -716,15 +683,15 @@ focus_neighbour_top = NodePath("../../../../../../SettingsCategories")
 focus_neighbour_bottom = NodePath("../../Down/Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = "D-Pad Up"
 
-[node name="Down" type="HBoxContainer" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 1 Controller/P1ControllerControls"]
-margin_top = 52.0
+[node name="Down" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls"]
+margin_top = 104.0
 margin_right = 1820.0
-margin_bottom = 104.0
+margin_bottom = 156.0
 
-[node name="Label" type="Label" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 1 Controller/P1ControllerControls/Down"]
+[node name="Label" type="Label" parent="Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls/Down"]
 margin_right = 908.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
@@ -732,7 +699,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Down"
 valign = 1
 
-[node name="Button" type="Button" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 1 Controller/P1ControllerControls/Down"]
+[node name="Button" type="Button" parent="Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls/Down"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
@@ -740,15 +707,15 @@ focus_neighbour_top = NodePath("../../Up/Button")
 focus_neighbour_bottom = NodePath("../../Left/Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = "D-Pad Down"
 
-[node name="Left" type="HBoxContainer" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 1 Controller/P1ControllerControls"]
-margin_top = 104.0
+[node name="Left" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls"]
+margin_top = 156.0
 margin_right = 1820.0
-margin_bottom = 156.0
+margin_bottom = 208.0
 
-[node name="Label" type="Label" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 1 Controller/P1ControllerControls/Left"]
+[node name="Label" type="Label" parent="Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls/Left"]
 margin_right = 908.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
@@ -756,7 +723,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Left"
 valign = 1
 
-[node name="Button" type="Button" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 1 Controller/P1ControllerControls/Left"]
+[node name="Button" type="Button" parent="Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls/Left"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
@@ -764,15 +731,15 @@ focus_neighbour_top = NodePath("../../Down/Button")
 focus_neighbour_bottom = NodePath("../../Right/Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = "D-Pad Left"
 
-[node name="Right" type="HBoxContainer" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 1 Controller/P1ControllerControls"]
-margin_top = 156.0
+[node name="Right" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls"]
+margin_top = 208.0
 margin_right = 1820.0
-margin_bottom = 208.0
+margin_bottom = 260.0
 
-[node name="Label" type="Label" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 1 Controller/P1ControllerControls/Right"]
+[node name="Label" type="Label" parent="Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls/Right"]
 margin_right = 908.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
@@ -780,7 +747,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Right"
 valign = 1
 
-[node name="Button" type="Button" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 1 Controller/P1ControllerControls/Right"]
+[node name="Button" type="Button" parent="Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls/Right"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
@@ -788,15 +755,15 @@ focus_neighbour_top = NodePath("../../Left/Button")
 focus_neighbour_bottom = NodePath("../../LightPunch/Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = "D-Pad Right"
 
-[node name="LightPunch" type="HBoxContainer" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 1 Controller/P1ControllerControls"]
-margin_top = 208.0
+[node name="LightPunch" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls"]
+margin_top = 260.0
 margin_right = 1820.0
-margin_bottom = 260.0
+margin_bottom = 312.0
 
-[node name="Label" type="Label" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 1 Controller/P1ControllerControls/LightPunch"]
+[node name="Label" type="Label" parent="Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls/LightPunch"]
 margin_right = 908.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
@@ -804,7 +771,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Light Punch"
 valign = 1
 
-[node name="Button" type="Button" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 1 Controller/P1ControllerControls/LightPunch"]
+[node name="Button" type="Button" parent="Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls/LightPunch"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
@@ -812,15 +779,15 @@ focus_neighbour_top = NodePath("../../Right/Button")
 focus_neighbour_bottom = NodePath("../../HeavyPunch/Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = "X/Square"
 
-[node name="HeavyPunch" type="HBoxContainer" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 1 Controller/P1ControllerControls"]
-margin_top = 260.0
+[node name="HeavyPunch" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls"]
+margin_top = 312.0
 margin_right = 1820.0
-margin_bottom = 312.0
+margin_bottom = 364.0
 
-[node name="Label" type="Label" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 1 Controller/P1ControllerControls/HeavyPunch"]
+[node name="Label" type="Label" parent="Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls/HeavyPunch"]
 margin_right = 908.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
@@ -828,7 +795,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Heavy Punch"
 valign = 1
 
-[node name="Button" type="Button" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 1 Controller/P1ControllerControls/HeavyPunch"]
+[node name="Button" type="Button" parent="Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls/HeavyPunch"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
@@ -836,15 +803,15 @@ focus_neighbour_top = NodePath("../../LightPunch/Button")
 focus_neighbour_bottom = NodePath("../../LightKick/Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = "Y/Triangle"
 
-[node name="LightKick" type="HBoxContainer" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 1 Controller/P1ControllerControls"]
-margin_top = 312.0
+[node name="LightKick" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls"]
+margin_top = 364.0
 margin_right = 1820.0
-margin_bottom = 364.0
+margin_bottom = 416.0
 
-[node name="Label" type="Label" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 1 Controller/P1ControllerControls/LightKick"]
+[node name="Label" type="Label" parent="Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls/LightKick"]
 margin_right = 908.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
@@ -852,7 +819,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Light Kick"
 valign = 1
 
-[node name="Button" type="Button" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 1 Controller/P1ControllerControls/LightKick"]
+[node name="Button" type="Button" parent="Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls/LightKick"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
@@ -860,15 +827,15 @@ focus_neighbour_top = NodePath("../../HeavyPunch/Button")
 focus_neighbour_bottom = NodePath("../../HeavyKick/Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = "A/X"
 
-[node name="HeavyKick" type="HBoxContainer" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 1 Controller/P1ControllerControls"]
-margin_top = 364.0
+[node name="HeavyKick" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls"]
+margin_top = 416.0
 margin_right = 1820.0
-margin_bottom = 416.0
+margin_bottom = 468.0
 
-[node name="Label" type="Label" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 1 Controller/P1ControllerControls/HeavyKick"]
+[node name="Label" type="Label" parent="Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls/HeavyKick"]
 margin_right = 908.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
@@ -876,7 +843,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Heavy Kick"
 valign = 1
 
-[node name="Button" type="Button" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 1 Controller/P1ControllerControls/HeavyKick"]
+[node name="Button" type="Button" parent="Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls/HeavyKick"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
@@ -884,15 +851,15 @@ focus_neighbour_top = NodePath("../../LightKick/Button")
 focus_neighbour_bottom = NodePath("../../Block/Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = "B/Circle"
 
-[node name="Block" type="HBoxContainer" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 1 Controller/P1ControllerControls"]
-margin_top = 416.0
+[node name="Block" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls"]
+margin_top = 468.0
 margin_right = 1820.0
-margin_bottom = 468.0
+margin_bottom = 520.0
 
-[node name="Label" type="Label" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 1 Controller/P1ControllerControls/Block"]
+[node name="Label" type="Label" parent="Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls/Block"]
 margin_right = 908.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
@@ -900,7 +867,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Block"
 valign = 1
 
-[node name="Button" type="Button" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 1 Controller/P1ControllerControls/Block"]
+[node name="Button" type="Button" parent="Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls/Block"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
@@ -908,42 +875,44 @@ focus_neighbour_top = NodePath("../../../KBControls/HeavyKick/Button")
 focus_neighbour_bottom = NodePath("../../ResetToDefault")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = "Right Trigger/R2"
 
-[node name="ResetToDefault" type="Button" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 1 Controller/P1ControllerControls"]
-margin_top = 468.0
+[node name="ResetToDefault" type="Button" parent="Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls"]
+margin_top = 520.0
 margin_right = 1820.0
-margin_bottom = 510.0
+margin_bottom = 562.0
 focus_neighbour_top = NodePath("../Block/Button")
 focus_neighbour_bottom = NodePath("../../../../../SettingsCategories")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 custom_constants/hseparation = 0
 text = "Reset to Default"
 
-[node name="Player 2 Controller" type="Tabs" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 66.0
-margin_right = -4.0
-margin_bottom = -4.0
-
-[node name="P2ControllerControls" type="VBoxContainer" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 2 Controller"]
-margin_left = -4.0
-margin_top = 28.0
-margin_right = 1816.0
-margin_bottom = 538.0
+[node name="P2ControllerControls" type="VBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer"]
+margin_top = 2054.0
+margin_right = 1820.0
+margin_bottom = 2616.0
 custom_constants/separation = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Up" type="HBoxContainer" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 2 Controller/P2ControllerControls"]
+[node name="P2ControllerLabel" type="Label" parent="Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls"]
 margin_right = 1820.0
 margin_bottom = 52.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "Player 2 Controller"
+valign = 1
 
-[node name="Label" type="Label" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 2 Controller/P2ControllerControls/Up"]
+[node name="Up" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls"]
+margin_top = 52.0
+margin_right = 1820.0
+margin_bottom = 104.0
+
+[node name="Label" type="Label" parent="Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls/Up"]
 margin_right = 908.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
@@ -951,7 +920,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Up"
 valign = 1
 
-[node name="Button" type="Button" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 2 Controller/P2ControllerControls/Up"]
+[node name="Button" type="Button" parent="Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls/Up"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
@@ -959,15 +928,15 @@ focus_neighbour_top = NodePath("../../../PlayerTabs")
 focus_neighbour_bottom = NodePath("../../Down/Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = "D-Pad Up"
 
-[node name="Down" type="HBoxContainer" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 2 Controller/P2ControllerControls"]
-margin_top = 52.0
+[node name="Down" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls"]
+margin_top = 104.0
 margin_right = 1820.0
-margin_bottom = 104.0
+margin_bottom = 156.0
 
-[node name="Label" type="Label" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 2 Controller/P2ControllerControls/Down"]
+[node name="Label" type="Label" parent="Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls/Down"]
 margin_right = 908.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
@@ -975,7 +944,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Down"
 valign = 1
 
-[node name="Button" type="Button" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 2 Controller/P2ControllerControls/Down"]
+[node name="Button" type="Button" parent="Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls/Down"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
@@ -983,15 +952,15 @@ focus_neighbour_top = NodePath("../../Up/Button")
 focus_neighbour_bottom = NodePath("../../Left/Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = "D-Pad Down"
 
-[node name="Left" type="HBoxContainer" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 2 Controller/P2ControllerControls"]
-margin_top = 104.0
+[node name="Left" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls"]
+margin_top = 156.0
 margin_right = 1820.0
-margin_bottom = 156.0
+margin_bottom = 208.0
 
-[node name="Label" type="Label" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 2 Controller/P2ControllerControls/Left"]
+[node name="Label" type="Label" parent="Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls/Left"]
 margin_right = 908.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
@@ -999,7 +968,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Left"
 valign = 1
 
-[node name="Button" type="Button" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 2 Controller/P2ControllerControls/Left"]
+[node name="Button" type="Button" parent="Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls/Left"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
@@ -1007,15 +976,15 @@ focus_neighbour_top = NodePath("../../Down/Button")
 focus_neighbour_bottom = NodePath("../../Right/Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = "D-Pad Left"
 
-[node name="Right" type="HBoxContainer" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 2 Controller/P2ControllerControls"]
-margin_top = 156.0
+[node name="Right" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls"]
+margin_top = 208.0
 margin_right = 1820.0
-margin_bottom = 208.0
+margin_bottom = 260.0
 
-[node name="Label" type="Label" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 2 Controller/P2ControllerControls/Right"]
+[node name="Label" type="Label" parent="Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls/Right"]
 margin_right = 908.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
@@ -1023,7 +992,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Right"
 valign = 1
 
-[node name="Button" type="Button" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 2 Controller/P2ControllerControls/Right"]
+[node name="Button" type="Button" parent="Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls/Right"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
@@ -1031,15 +1000,15 @@ focus_neighbour_top = NodePath("../../Left/Button")
 focus_neighbour_bottom = NodePath("../../LightPunch/Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = "D-Pad Right"
 
-[node name="LightPunch" type="HBoxContainer" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 2 Controller/P2ControllerControls"]
-margin_top = 208.0
+[node name="LightPunch" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls"]
+margin_top = 260.0
 margin_right = 1820.0
-margin_bottom = 260.0
+margin_bottom = 312.0
 
-[node name="Label" type="Label" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 2 Controller/P2ControllerControls/LightPunch"]
+[node name="Label" type="Label" parent="Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls/LightPunch"]
 margin_right = 908.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
@@ -1047,7 +1016,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Light Punch"
 valign = 1
 
-[node name="Button" type="Button" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 2 Controller/P2ControllerControls/LightPunch"]
+[node name="Button" type="Button" parent="Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls/LightPunch"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
@@ -1055,15 +1024,15 @@ focus_neighbour_top = NodePath("../../Right/Button")
 focus_neighbour_bottom = NodePath("../../HeavyPunch/Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = "X/Square"
 
-[node name="HeavyPunch" type="HBoxContainer" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 2 Controller/P2ControllerControls"]
-margin_top = 260.0
+[node name="HeavyPunch" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls"]
+margin_top = 312.0
 margin_right = 1820.0
-margin_bottom = 312.0
+margin_bottom = 364.0
 
-[node name="Label" type="Label" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 2 Controller/P2ControllerControls/HeavyPunch"]
+[node name="Label" type="Label" parent="Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls/HeavyPunch"]
 margin_right = 908.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
@@ -1071,7 +1040,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Heavy Punch"
 valign = 1
 
-[node name="Button" type="Button" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 2 Controller/P2ControllerControls/HeavyPunch"]
+[node name="Button" type="Button" parent="Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls/HeavyPunch"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
@@ -1079,15 +1048,15 @@ focus_neighbour_top = NodePath("../../LightPunch/Button")
 focus_neighbour_bottom = NodePath("../../LightKick/Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = "Y/Triangle"
 
-[node name="LightKick" type="HBoxContainer" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 2 Controller/P2ControllerControls"]
-margin_top = 312.0
+[node name="LightKick" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls"]
+margin_top = 364.0
 margin_right = 1820.0
-margin_bottom = 364.0
+margin_bottom = 416.0
 
-[node name="Label" type="Label" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 2 Controller/P2ControllerControls/LightKick"]
+[node name="Label" type="Label" parent="Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls/LightKick"]
 margin_right = 908.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
@@ -1095,7 +1064,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Light Kick"
 valign = 1
 
-[node name="Button" type="Button" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 2 Controller/P2ControllerControls/LightKick"]
+[node name="Button" type="Button" parent="Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls/LightKick"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
@@ -1103,15 +1072,15 @@ focus_neighbour_top = NodePath("../../HeavyPunch/Button")
 focus_neighbour_bottom = NodePath("../../HeavyKick/Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = "A/X"
 
-[node name="HeavyKick" type="HBoxContainer" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 2 Controller/P2ControllerControls"]
-margin_top = 364.0
+[node name="HeavyKick" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls"]
+margin_top = 416.0
 margin_right = 1820.0
-margin_bottom = 416.0
+margin_bottom = 468.0
 
-[node name="Label" type="Label" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 2 Controller/P2ControllerControls/HeavyKick"]
+[node name="Label" type="Label" parent="Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls/HeavyKick"]
 margin_right = 908.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
@@ -1119,7 +1088,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Heavy Kick"
 valign = 1
 
-[node name="Button" type="Button" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 2 Controller/P2ControllerControls/HeavyKick"]
+[node name="Button" type="Button" parent="Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls/HeavyKick"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
@@ -1127,15 +1096,15 @@ focus_neighbour_top = NodePath("../../LightKick/Button")
 focus_neighbour_bottom = NodePath("../../Block/Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = "B/Circle"
 
-[node name="Block" type="HBoxContainer" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 2 Controller/P2ControllerControls"]
-margin_top = 416.0
+[node name="Block" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls"]
+margin_top = 468.0
 margin_right = 1820.0
-margin_bottom = 468.0
+margin_bottom = 520.0
 
-[node name="Label" type="Label" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 2 Controller/P2ControllerControls/Block"]
+[node name="Label" type="Label" parent="Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls/Block"]
 margin_right = 908.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
@@ -1143,7 +1112,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Block"
 valign = 1
 
-[node name="Button" type="Button" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 2 Controller/P2ControllerControls/Block"]
+[node name="Button" type="Button" parent="Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls/Block"]
 margin_left = 912.0
 margin_right = 1820.0
 margin_bottom = 52.0
@@ -1151,33 +1120,34 @@ focus_neighbour_top = NodePath("../../HeavyKick/Button")
 focus_neighbour_bottom = NodePath("../../ResetToDefault")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 text = "Right Trigger/R2"
 
-[node name="ResetToDefault" type="Button" parent="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 2 Controller/P2ControllerControls"]
-margin_top = 468.0
+[node name="ResetToDefault" type="Button" parent="Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls"]
+margin_top = 520.0
 margin_right = 1820.0
-margin_bottom = 510.0
+margin_bottom = 562.0
 focus_neighbour_top = NodePath("../Block/Button")
 focus_neighbour_bottom = NodePath("../../../../../SettingsCategories")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 custom_constants/hseparation = 0
 text = "Reset to Default"
-[connection signal="tab_changed" from="Settings/SettingsCategories" to="." method="_on_SettingsCategories_tab_changed"]
-[connection signal="item_selected" from="Settings/SettingsCategories/Video/VideoSettings/HBoxContainer/Resolution/ResolutionOptions" to="." method="_on_ResolutionOptions_item_selected"]
-[connection signal="item_selected" from="Settings/SettingsCategories/Video/VideoSettings/HBoxContainer/FramerateLimit/FramerateOptions" to="." method="_on_FramerateOptions_item_selected"]
-[connection signal="toggled" from="Settings/SettingsCategories/Video/VideoSettings/HBoxContainer/Vsync/VsyncCheckBox" to="." method="_on_VsyncCheckBox_toggled"]
-[connection signal="toggled" from="Settings/SettingsCategories/Video/VideoSettings/HBoxContainer/Fullscreen/FullscreenCheckbox" to="." method="_on_FullscreenCheckbox_toggled"]
-[connection signal="toggled" from="Settings/SettingsCategories/Video/VideoSettings/HBoxContainer/Borderless/BorderlessCheckBox" to="." method="_on_BorderlessCheckBox_toggled"]
-[connection signal="pressed" from="Settings/SettingsCategories/Video/VideoSettings/HBoxContainer/ResetToDefault" to="." method="_on_Video_ResetToDefault_pressed"]
-[connection signal="value_changed" from="Settings/SettingsCategories/Audio/AudioSettings/HBoxContainer/MasterVolume/MasterSlider" to="." method="_on_MasterSlider_value_changed"]
-[connection signal="value_changed" from="Settings/SettingsCategories/Audio/AudioSettings/HBoxContainer/MusicVolume/MusicSlider" to="." method="_on_MusicSlider_value_changed"]
-[connection signal="value_changed" from="Settings/SettingsCategories/Audio/AudioSettings/HBoxContainer/SoundEffectsVolume/SfxSlider" to="." method="_on_SfxSlider_value_changed"]
-[connection signal="value_changed" from="Settings/SettingsCategories/Audio/AudioSettings/HBoxContainer/MenuSounds/MenuSlider" to="." method="_on_MenuSlider_value_changed"]
-[connection signal="pressed" from="Settings/SettingsCategories/Audio/AudioSettings/HBoxContainer/ResetToDefault" to="." method="_on_Audio_ResetToDefault_pressed"]
-[connection signal="item_selected" from="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/ControlMode/OptionButton" to="." method="_on_ControlMode_OptionButton_item_selected"]
-[connection signal="pressed" from="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Keyboard/KBControls/ResetToDefault" to="." method="_on_KB_ResetToDefault_pressed"]
-[connection signal="pressed" from="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 1 Controller/P1ControllerControls/ResetToDefault" to="." method="_on_P1_ResetToDefault_pressed"]
-[connection signal="pressed" from="Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 2 Controller/P2ControllerControls/ResetToDefault" to="." method="_on_P2_ResetToDefault_pressed"]
+[connection signal="item_selected" from="Settings/Panel/ScrollContainer/VBoxContainer/Resolution/ResolutionOptions" to="." method="_on_ResolutionOptions_item_selected"]
+[connection signal="item_selected" from="Settings/Panel/ScrollContainer/VBoxContainer/FramerateLimit/FramerateOptions" to="." method="_on_FramerateOptions_item_selected"]
+[connection signal="toggled" from="Settings/Panel/ScrollContainer/VBoxContainer/Vsync/VsyncCheckBox" to="." method="_on_VsyncCheckBox_toggled"]
+[connection signal="toggled" from="Settings/Panel/ScrollContainer/VBoxContainer/Fullscreen/FullscreenCheckbox" to="." method="_on_FullscreenCheckbox_toggled"]
+[connection signal="toggled" from="Settings/Panel/ScrollContainer/VBoxContainer/Borderless/BorderlessCheckBox" to="." method="_on_BorderlessCheckBox_toggled"]
+[connection signal="pressed" from="Settings/Panel/ScrollContainer/VBoxContainer/VideoResetToDefault" to="." method="_on_Video_ResetToDefault_pressed"]
+[connection signal="value_changed" from="Settings/Panel/ScrollContainer/VBoxContainer/MasterVolume/MasterSlider" to="." method="_on_MasterSlider_value_changed"]
+[connection signal="value_changed" from="Settings/Panel/ScrollContainer/VBoxContainer/MusicVolume/MusicSlider" to="." method="_on_MusicSlider_value_changed"]
+[connection signal="value_changed" from="Settings/Panel/ScrollContainer/VBoxContainer/SoundEffectsVolume/SfxSlider" to="." method="_on_SfxSlider_value_changed"]
+[connection signal="value_changed" from="Settings/Panel/ScrollContainer/VBoxContainer/MenuSounds/MenuSlider" to="." method="_on_MenuSlider_value_changed"]
+[connection signal="pressed" from="Settings/Panel/ScrollContainer/VBoxContainer/AudioResetToDefault" to="." method="_on_Audio_ResetToDefault_pressed"]
+[connection signal="item_selected" from="Settings/Panel/ScrollContainer/VBoxContainer/ControlMode/OptionButton" to="." method="_on_ControlMode_OptionButton_item_selected"]
+[connection signal="pressed" from="Settings/Panel/ScrollContainer/VBoxContainer/ResetAllBindingsToDefault" to="." method="_on_ResetAllBindingsToDefault_pressed"]
+[connection signal="pressed" from="Settings/Panel/ScrollContainer/VBoxContainer/KBControls/Up/Button" to="." method="_on_KB_Up_Button_pressed"]
+[connection signal="pressed" from="Settings/Panel/ScrollContainer/VBoxContainer/KBControls/ResetToDefault" to="." method="_on_KB_ResetToDefault_pressed"]
+[connection signal="pressed" from="Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls/ResetToDefault" to="." method="_on_P1_ResetToDefault_pressed"]
+[connection signal="pressed" from="Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls/ResetToDefault" to="." method="_on_P2_ResetToDefault_pressed"]

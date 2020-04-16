@@ -105,7 +105,7 @@
   * ~~Program it.~~
 * ~~Add quit to desktop button.~~
   * ~~Program it.~~
-* ~~Get the controller controls working.~~\
+* ~~Get the controller controls working.~~
 * Style it.
 
 ### QuitConfirmation.tscn
@@ -127,6 +127,7 @@
   * ~~Add borderless setting.~~
   * ~~Get them working.~~
 * ~~Add audio settings.~~
+  * ~~Add master slider.~~
   * ~~Add music slider.~~
   * ~~Add sound effects slider.~~
   * ~~Add menu sounds slider.~~

@@ -1,46 +1,46 @@
 extends MarginContainer
 
 # Shortening node paths to variables.
-onready var resolution = $Settings/SettingsCategories/Video/VideoSettings/HBoxContainer/Resolution/ResolutionOptions
-onready var framerate = $Settings/SettingsCategories/Video/VideoSettings/HBoxContainer/FramerateLimit/FramerateOptions
-onready var vsync = $Settings/SettingsCategories/Video/VideoSettings/HBoxContainer/Vsync/VsyncCheckBox
-onready var fullscreen = $Settings/SettingsCategories/Video/VideoSettings/HBoxContainer/Fullscreen/FullscreenCheckbox
-onready var borderless = $Settings/SettingsCategories/Video/VideoSettings/HBoxContainer/Borderless/BorderlessCheckBox
-onready var master_volume = $Settings/SettingsCategories/Audio/AudioSettings/HBoxContainer/MasterVolume/MasterSlider
-onready var music_volume = $Settings/SettingsCategories/Audio/AudioSettings/HBoxContainer/MusicVolume/MusicSlider
-onready var sfx_volume = $Settings/SettingsCategories/Audio/AudioSettings/HBoxContainer/SoundEffectsVolume/SfxSlider
-onready var menu_volume = $Settings/SettingsCategories/Audio/AudioSettings/HBoxContainer/MenuSounds/MenuSlider
-onready var control_mode = $Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/ControlMode/OptionButton
-onready var keyboard_controls = $Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Keyboard/KBControls
-onready var kb_up = $Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Keyboard/KBControls/Up/Button
-onready var kb_down = $Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Keyboard/KBControls/Down/Button
-onready var kb_left = $Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Keyboard/KBControls/Left/Button
-onready var kb_right = $Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Keyboard/KBControls/Right/Button
-onready var kb_light_punch = $Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Keyboard/KBControls/LightPunch/Button
-onready var kb_heavy_punch = $Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Keyboard/KBControls/HeavyPunch/Button
-onready var kb_light_kick = $Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Keyboard/KBControls/LightKick/Button
-onready var kb_heavy_kick = $Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Keyboard/KBControls/HeavyKick/Button
-onready var kb_block = $Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Keyboard/KBControls/Block/Button
-onready var p1_controller_controls = $"Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 1 Controller/P1ControllerControls"
-onready var p1_up = $"Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 1 Controller/P1ControllerControls/Up/Button"
-onready var p1_down = $"Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 1 Controller/P1ControllerControls/Down/Button"
-onready var p1_left = $"Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 1 Controller/P1ControllerControls/Left/Button"
-onready var p1_right = $"Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 1 Controller/P1ControllerControls/Up/Button"
-onready var p1_light_punch = $"Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 1 Controller/P1ControllerControls/LightPunch/Button"
-onready var p1_heavy_punch = $"Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 1 Controller/P1ControllerControls/HeavyPunch/Button"
-onready var p1_light_kick = $"Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 1 Controller/P1ControllerControls/LightKick/Button"
-onready var p1_heavy_kick = $"Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 1 Controller/P1ControllerControls/HeavyKick/Button"
-onready var p1_block = $"Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 1 Controller/P1ControllerControls/Block/Button"
-onready var p2_controller_controls = $"Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 2 Controller/P2ControllerControls"
-onready var p2_up = $"Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 2 Controller/P2ControllerControls/Up/Button"
-onready var p2_down = $"Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 2 Controller/P2ControllerControls/Down/Button"
-onready var p2_left = $"Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 2 Controller/P2ControllerControls/Left/Button"
-onready var p2_right = $"Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 2 Controller/P2ControllerControls/Right/Button"
-onready var p2_light_punch = $"Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 2 Controller/P2ControllerControls/LightPunch/Button"
-onready var p2_heavy_punch = $"Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 2 Controller/P2ControllerControls/HeavyPunch/Button"
-onready var p2_light_kick = $"Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 2 Controller/P2ControllerControls/LightKick/Button"
-onready var p2_heavy_kick = $"Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 2 Controller/P2ControllerControls/HeavyKick/Button"
-onready var p2_block = $"Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 2 Controller/P2ControllerControls/Block/Button"
+onready var resolution = $Settings/Panel/ScrollContainer/VBoxContainer/Resolution/ResolutionOptions
+onready var framerate = $Settings/Panel/ScrollContainer/VBoxContainer/FramerateLimit/FramerateOptions
+onready var vsync = $Settings/Panel/ScrollContainer/VBoxContainer/Vsync/VsyncCheckBox
+onready var fullscreen = $Settings/Panel/ScrollContainer/VBoxContainer/Fullscreen/FullscreenCheckbox
+onready var borderless = $Settings/Panel/ScrollContainer/VBoxContainer/Borderless/BorderlessCheckBox
+onready var master_volume = $Settings/Panel/ScrollContainer/VBoxContainer/MasterVolume/MasterSlider
+onready var music_volume = $Settings/Panel/ScrollContainer/VBoxContainer/MusicVolume/MusicSlider
+onready var sfx_volume = $Settings/Panel/ScrollContainer/VBoxContainer/SoundEffectsVolume/SfxSlider
+onready var menu_volume = $Settings/Panel/ScrollContainer/VBoxContainer/MenuSounds/MenuSlider
+onready var control_mode = $Settings/Panel/ScrollContainer/VBoxContainer/ControlMode/OptionButton
+onready var keyboard_controls = $Settings/Panel/ScrollContainer/VBoxContainer/KBControls
+onready var kb_up = $Settings/Panel/ScrollContainer/VBoxContainer/KBControls/Up/Button
+onready var kb_down = $Settings/Panel/ScrollContainer/VBoxContainer/KBControls/Down/Button
+onready var kb_left = $Settings/Panel/ScrollContainer/VBoxContainer/KBControls/Left/Button
+onready var kb_right = $Settings/Panel/ScrollContainer/VBoxContainer/KBControls/Right/Button
+onready var kb_light_punch = $Settings/Panel/ScrollContainer/VBoxContainer/KBControls/LightPunch/Button
+onready var kb_heavy_punch = $Settings/Panel/ScrollContainer/VBoxContainer/KBControls/HeavyPunch/Button
+onready var kb_light_kick = $Settings/Panel/ScrollContainer/VBoxContainer/KBControls/LightKick/Button
+onready var kb_heavy_kick = $Settings/Panel/ScrollContainer/VBoxContainer/KBControls/HeavyKick/Button
+onready var kb_block = $Settings/Panel/ScrollContainer/VBoxContainer/KBControls/Block/Button
+onready var p1_controller_controls = $Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls
+onready var p1_up = $Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls/Up/Button
+onready var p1_down = $Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls/Down/Button
+onready var p1_left = $Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls/Left/Button
+onready var p1_right = $Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls/Up/Button
+onready var p1_light_punch = $Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls/LightPunch/Button
+onready var p1_heavy_punch = $Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls/HeavyPunch/Button
+onready var p1_light_kick = $Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls/LightKick/Button
+onready var p1_heavy_kick = $Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls/HeavyKick/Button
+onready var p1_block = $Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls/Block/Button
+onready var p2_controller_controls = $Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls
+onready var p2_up = $Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls/Up/Button
+onready var p2_down = $Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls/Down/Button
+onready var p2_left = $Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls/Left/Button
+onready var p2_right = $Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls/Right/Button
+onready var p2_light_punch = $Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls/LightPunch/Button
+onready var p2_heavy_punch = $Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls/HeavyPunch/Button
+onready var p2_light_kick = $Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls/LightKick/Button
+onready var p2_heavy_kick = $Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls/HeavyKick/Button
+onready var p2_block = $Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls/Block/Button
 onready var inputs = ["Up", "Down", "Left", "Right", "LightPunch", "HeavyPunch",
 "LightKick", "HeavyKick", "Block"]
 # The inputs in snake case
@@ -49,14 +49,6 @@ onready var inputs_snake = ["up", "down", "left", "right", "light_punch",
 
 # Set up settings menu.
 func _ready():
-	# Set up the tabs for the settings categories
-	$Settings/SettingsCategories.current_tab = 0
-	
-	# Set up the tabs for the control settings.
-	$Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs.current_tab = 0
-	
-	resolution.grab_focus()
-	
 	# Now, you must be asking yourself: "Why is the code below even here? It's
 	# not even doing anything meaningful for the user!" Well, right now, it's
 	# to help me figure out how I (Brandon/Dionamus) should implement changing
@@ -94,24 +86,11 @@ func _ready():
 	control_mode.selected = Settings.settings["other"]["control_mode"]
 	
 	mark_bindings()
+	
+	resolution.grab_focus()
 
-# Switches focus neighbors depending on which tab has been switched to.
-func _on_SettingsCategories_tab_changed(tab):
-	match tab:
-		0:
-			$Settings/SettingsCategories.focus_neighbour_top = "Settings/Panel/VideoSettings/HBoxContainer/ResetToDefault"
-			$Settings/SettingsCategories.focus_neighbour_bottom = "Settings/Panel/VideoSettings/HBoxContainer/Resolution/ResolutionOptions"
-		1:
-			$Settings/SettingsCategories.focus_neighbour_top = "Settings/Panel/AudioSettings/HBoxContainer/ResetToDefault"
-			$Settings/SettingsCategories.focus_neighbour_bottom = "Settings/Panel/AudioSettings/HBoxContainer/MasterVolume/MasterSlider"
-		2:
-			if keyboard_controls.visible:
-				$Settings/SettingsCategories.focus_neighbour_top = "Settings/Panel/ControlSettings/HBoxContainer/KBControls/ResetToDefault"
-			if p1_controller_controls.visible:
-				$Settings/SettingsCategories.focus_neighbour_top = "Settings/Panel/ControlSettings/HBoxContainer/P1ControllerControls/ResetToDefault"
-			if p2_controller_controls.visible:
-				$Settings/SettingsCategories.focus_neighbour_top = "Settings/Panel/ControlSettings/HBoxContainer/P2ControllerControls/ResetToDefault"
-			$Settings/SettingsCategories.focus_neighbour_bottom = "Settings/Panel/ControlSettings/HBoxContainer/ControlMode/OptionButton"
+func _input(event):
+	pass
 
 # Switches resolution.
 func _on_ResolutionOptions_item_selected(ID):
@@ -231,7 +210,7 @@ func mark_bindings(device = null):
 	if device == null or device == "kb":
 		# Set the text for the keyboard controls.
 		for input in inputs:
-			get_node("Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Keyboard/KBControls/"
+			get_node("Settings/Panel/ScrollContainer/VBoxContainer/KBControls/"
 			+ input + "/Button").text = InputMap.get_action_list("kb_" + inputs_snake[k])[0].as_text()
 			k += 1
 		k = 0
@@ -242,7 +221,7 @@ func mark_bindings(device = null):
 		for input in inputs:
 			while l <= InputMap.get_action_list("p1_" + inputs_snake[k]).size() - 1:
 				if InputMap.get_action_list("p1_" + inputs_snake[k])[l].get_class() == "InputEventJoypadButton":
-					get_node("Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 1 Controller/P1ControllerControls/"
+					get_node("Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls/"
 						+ input + "/Button").text = Input.get_joy_button_string(
 						InputMap.get_action_list("p1_" + inputs_snake[k])[l].button_index)
 				l += 1
@@ -255,7 +234,7 @@ func mark_bindings(device = null):
 		for input in inputs:
 			while l <= InputMap.get_action_list("p2_" + inputs_snake[k]).size() - 1:
 				if InputMap.get_action_list("p2_" + inputs_snake[k])[l].get_class() == "InputEventJoypadButton":
-					get_node("Settings/SettingsCategories/Controls/ControlSettings/HBoxContainer/PlayerTabs/Player 2 Controller/P2ControllerControls/"
+					get_node("Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls/"
 						+ input + "/Button").text = Input.get_joy_button_string(
 						InputMap.get_action_list("p2_" + inputs_snake[k])[l].button_index)
 				l += 1
@@ -297,3 +276,6 @@ func _on_P2_ResetToDefault_pressed():
 	Settings.save_settings()
 	
 	mark_bindings("p2")
+
+func _on_KB_Up_Button_pressed():
+	pass # Replace with function body.

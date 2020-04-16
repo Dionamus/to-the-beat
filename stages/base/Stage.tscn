@@ -18,6 +18,7 @@ font_data = ExtResource( 9 )
 
 [node name="Stage" type="Node"]
 script = ExtResource( 1 )
+bpm = 128
 
 [node name="ControlCharacter" parent="." instance=ExtResource( 2 )]
 player_number = 0
