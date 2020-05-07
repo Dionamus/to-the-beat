@@ -47,6 +47,10 @@ onready var inputs = ["Up", "Down", "Left", "Right", "LightPunch", "HeavyPunch",
 onready var inputs_snake = ["up", "down", "left", "right", "light_punch",
 "heavy_punch", "light_kick", "heavy_kick", "block"]
 
+# For changing bindings.
+onready var can_change_key = false
+onready var action_string = ""
+
 # Set up settings menu.
 func _ready():
 	# Now, you must be asking yourself: "Why is the code below even here? It's
@@ -103,13 +107,20 @@ func _on_ResolutionOptions_item_selected(ID):
 		var resolution_regex = RegEx.new()
 		resolution_regex.compile("^(\\d+)x(\\d+)$")
 		var result = resolution_regex.search(resolution.get_item_text(ID))
-		var resolution_width = OS.get_screen_size()
-		var resolution_height = OS.get_screen_size()
-		if result:
-			resolution_width = result.strings[1]
-			resolution_height = result.strings[2]
-			OS.window_size = Vector2(resolution_width, resolution_height)
-			get_tree().get_root().size = Vector2(resolution_width, resolution_height)
+		var resolution_width = OS.get_screen_size(0).x
+		var resolution_height = OS.get_screen_size(0).y
+		if result\
+			and result.strings[1] <= resolution_width\
+			and result.strings[2] <= resolution_height:
+					resolution_width = result.strings[1]
+					resolution_height = result.strings[2]
+					OS.window_size = Vector2(resolution_width, resolution_height)
+					get_tree().get_root().size = Vector2(resolution_width, resolution_height)
+		else:
+			OS.window_size = OS.get_screen_size(0)
+			get_tree().get_root().size = OS.get_screen_size(0)
+			ID = 0
+			resolution.selected = ID
 	
 	Settings.settings["video"]["resolution"] = resolution.get_item_text(ID)
 	Settings.settings["video"]["resolution_box"] = ID
@@ -278,4 +289,5 @@ func _on_P2_ResetToDefault_pressed():
 	mark_bindings("p2")
 
 func _on_KB_Up_Button_pressed():
-	pass # Replace with function body.
+	action_string = "kb_up"
+	kb_up.text = "Press a key to rebind..."
