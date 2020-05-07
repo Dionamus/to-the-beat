@@ -41,14 +41,20 @@ one_shot = true
 texture = ExtResource( 3 )
 centered = false
 
-[node name="FollowCamera" parent="." instance=ExtResource( 4 )]
+[node name="PlayersAndCam" type="Node" parent="."]
+
+[node name="FollowCamera" parent="PlayersAndCam" instance=ExtResource( 4 )]
+limit_left = 0
+limit_top = 0
+limit_right = 3600
+limit_bottom = 2025
 editor_draw_limits = true
 
-[node name="Player1" parent="FollowCamera" instance=ExtResource( 5 )]
+[node name="Player1" parent="PlayersAndCam" instance=ExtResource( 5 )]
 position = Vector2( 200, 1510 )
 scale = Vector2( 10, 10 )
 
-[node name="Player2" parent="FollowCamera" instance=ExtResource( 5 )]
+[node name="Player2" parent="PlayersAndCam" instance=ExtResource( 5 )]
 modulate = Color( 0.0583649, 0.628898, 0.878906, 1 )
 position = Vector2( 3400, 1510 )
 scale = Vector2( 10, 10 )
@@ -161,7 +167,7 @@ margin_bottom = 540.0
 [connection signal="timeout" from="GameTimer" to="." method="_on_GameTimer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
 [connection signal="timeout" from="PostWinTimer" to="." method="_on_PostWinTimer_timeout"]
-[connection signal="lose_round" from="FollowCamera/Player1" to="." method="_on_Player1_lose_round"]
-[connection signal="win_round" from="FollowCamera/Player1" to="." method="_on_Player1_win_round"]
-[connection signal="lose_round" from="FollowCamera/Player2" to="." method="_on_Player2_lose_round"]
-[connection signal="win_round" from="FollowCamera/Player2" to="." method="_on_Player2_win_round"]
+[connection signal="lose_round" from="PlayersAndCam/Player1" to="." method="_on_Player1_lose_round"]
+[connection signal="win_round" from="PlayersAndCam/Player1" to="." method="_on_Player1_win_round"]
+[connection signal="lose_round" from="PlayersAndCam/Player2" to="." method="_on_Player2_lose_round"]
+[connection signal="win_round" from="PlayersAndCam/Player2" to="." method="_on_Player2_win_round"]
