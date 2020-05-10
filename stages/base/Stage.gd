@@ -42,11 +42,11 @@ onready var end_frame = 8
 onready var tempo_control = $ControlCharacter/AnimatedSprite
 
 # Player variables
-onready var player1 = $FollowCamera/Player1
-onready var player1_anim = $FollowCamera/Player1/AnimatedSprite
+onready var player1 = $PlayersAndCam/Player1
+onready var player1_anim = $PlayersAndCam/Player1/AnimatedSprite
 
-onready var player2 = $FollowCamera/Player2
-onready var player2_anim = $FollowCamera/Player2/AnimatedSprite
+onready var player2 = $PlayersAndCam/Player2
+onready var player2_anim = $PlayersAndCam/Player2/AnimatedSprite
 
 func _ready():
 	# Set up the HUD.
@@ -140,7 +140,7 @@ func _unhandled_input(_event):
 					player1.is_allowed_input = false
 		if Input.is_action_just_pressed("p1_front_punch"):
 			if player1.grid_number == player2.grid_number - 1\
-			or $FollowCamera/Player1.grid_number == player2.grid_number + 1:
+			or player1.grid_number == player2.grid_number + 1:
 				if (tempo_control.frame <= end_frame\
 				or tempo_control.frame >= start_frame)\
 				and player1.is_allowed_input:
