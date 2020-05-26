@@ -50,6 +50,7 @@ onready var inputs_snake = ["up", "down", "left", "right", "light_punch",
 # For changing bindings.
 onready var can_change_key = false
 onready var action_string = ""
+onready var button_to_change = null
 
 # Set up settings menu.
 func _ready():
@@ -94,7 +95,113 @@ func _ready():
 	resolution.grab_focus()
 
 func _input(event):
-	pass
+	# Take input for changing bindings.
+	if can_change_key:
+		# For the keyboard.
+		if action_string.match("kb_*"):
+			if event is InputEventKey:
+				# Cancel the rebind.
+				if event.scancode == KEY_ESCAPE:
+					mark_bindings("kb")
+					action_string = ""
+					can_change_key = false
+				
+				# Go through with the rebind if the key is not F11 or F12.
+				elif event.scancode != KEY_F11 or event.scancode != KEY_F12:
+					# Delete the previous binding
+					if !InputMap.get_action_list(action_string).empty():
+						InputMap.action_erase_event(action_string,
+							InputMap.get_action_list(action_string)[0])
+					
+					# Check if the new binding was assigned elsewhere.
+					for i in inputs_snake:
+						if InputMap.action_has_event("kb_" + i, event):
+							InputMap.action_erase_event("kb_" + i, event)
+					
+					# Add the new binding.
+					InputMap.action_add_event(action_string, event)
+					
+					mark_bindings("kb")
+					button_to_change = null
+					action_string = ""
+					can_change_key = false
+		
+		# For Player 1.
+		if action_string.match("p1_*"):
+			# Cancel the rebind from the keyboard.
+			if event is InputEventKey:
+				if event.scancode == KEY_ESCAPE:
+					for action in range(0, InputMap.get_action_list(action_string).size() - 1):
+						if InputMap.get_action_list(action_string)[action] is InputEventJoypadButton:
+							button_to_change.text = InputMap.get_action_list(action_string)[action].as_text()
+					button_to_change = null
+					action_string = ""
+					can_change_key = false
+			
+			if event is InputEventJoypadButton:
+				if event.device == 0:
+					# Cancel the rebind from P1's controller
+					if event.button_index == JOY_START:
+						for action in range(0, InputMap.get_action_list(action_string).size() - 1):
+							if InputMap.get_action_list(action_string)[action] is InputEventJoypadButton:
+								button_to_change.text = InputMap.get_action_list(action_string)[action].as_text()
+						button_to_change = null
+						action_string = ""
+						can_change_key = false
+					
+					# Go through with the rebind.
+					
+					# Delete the previous binding.
+					if !InputMap.get_action_list(action_string).empty():
+						for i in range(0, InputMap.get_action_list(action_string).size() - 1):
+							if InputMap.get_action_list(action_string)[i] is InputEventJoypadButton:
+								InputMap.action_erase_event(action_string, InputMap.get_action_list(action_string)[i])
+					
+					# Check if the new binding was assigned elsewhere.
+					for i in inputs_snake:
+						if InputMap.action_has_event("p1_" + i, event):
+							InputMap.action_erase_event("p1_" + i, event)
+					
+					# Add the new binding.
+					InputMap.action_add_event(action_string, event)
+					
+					mark_bindings("p1")
+					button_to_change = null
+					action_string = ""
+					can_change_key = false
+					
+		# For Player 2.
+		if action_string.match("p2_*"):
+			# Cancel the rebind.
+			if event.scancode == KEY_ESCAPE or event.button_index == JOY_START:
+				for action in range(0, InputMap.get_action_list(action_string).size() - 1):
+					if InputMap.get_action_list(action_string)[action] is InputEventJoypadButton:
+						button_to_change.text = InputMap.get_action_list(action_string)[action].as_text()
+				button_to_change = null
+				action_string = ""
+				can_change_key = false
+			
+			# Go through with the rebind.
+			if event is InputEventJoypadButton:
+				if event.device == 1:
+					# Delete the previous binding.
+					if !InputMap.get_action_list(action_string).empty():
+						for i in range(0, InputMap.get_action_list(action_string).size() - 1):
+							if InputMap.get_action_list(action_string)[i] is InputEventJoypadButton:
+								InputMap.action_erase_event(action_string, InputMap.get_action_list(action_string)[i])
+					
+					# Check if the new binding was assigned elsewhere.
+					for i in inputs_snake:
+						if InputMap.action_has_event("p2_" + i, event):
+							InputMap.action_erase_event("p2_" + i, event)
+					
+					# Add the new binding.
+					InputMap.action_add_event(action_string, event)
+					
+					mark_bindings("p2")
+					button_to_change = null
+					action_string = ""
+					can_change_key = false
 
 # Switches resolution.
 func _on_ResolutionOptions_item_selected(ID):
@@ -155,6 +262,7 @@ func _on_BorderlessCheckBox_toggled(button_pressed):
 		OS.window_borderless = false
 	Settings.save_settings()
 
+# Resets video settings to their default settings.
 func _on_Video_ResetToDefault_pressed():
 	for video_setting in Settings.settings["video"].keys():
 		Settings.settings["video"][video_setting] = Settings.default_settings["video"][video_setting]
@@ -215,14 +323,19 @@ func _on_ControlMode_OptionButton_item_selected(ID):
 	Settings.save_settings()
 	Settings.set_control_mode()
 
+# Mark the text of the binding buttons with the bindings they have.
 func mark_bindings(device = null):
 	var k = 0
 	
 	if device == null or device == "kb":
 		# Set the text for the keyboard controls.
 		for input in inputs:
-			get_node("Settings/Panel/ScrollContainer/VBoxContainer/KBControls/"
-			+ input + "/Button").text = InputMap.get_action_list("kb_" + inputs_snake[k])[0].as_text()
+			if !InputMap.get_action_list("kb_" + inputs_snake[k]).empty():
+				get_node("Settings/Panel/ScrollContainer/VBoxContainer/KBControls/"
+				+ input + "/Button").text = InputMap.get_action_list("kb_" + inputs_snake[k])[0].as_text()
+			else:
+				get_node("Settings/Panel/ScrollContainer/VBoxContainer/KBControls/"
+				+ input + "/Button").text = "No binding."
 			k += 1
 		k = 0
 	
@@ -235,6 +348,10 @@ func mark_bindings(device = null):
 					get_node("Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls/"
 						+ input + "/Button").text = Input.get_joy_button_string(
 						InputMap.get_action_list("p1_" + inputs_snake[k])[l].button_index)
+					l = InputMap.get_action_list("p1_" + inputs_snake[k]).size() - 1
+				else:
+					get_node("Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls/"
+						+ input + "/Button").text = "No binding."
 				l += 1
 			l = 0
 			k += 1
@@ -248,11 +365,16 @@ func mark_bindings(device = null):
 					get_node("Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls/"
 						+ input + "/Button").text = Input.get_joy_button_string(
 						InputMap.get_action_list("p2_" + inputs_snake[k])[l].button_index)
+					l = InputMap.get_action_list("p2_" + inputs_snake[k]).size() - 1
+				else:
+					get_node("Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls/"
+						+ input + "/Button").text = "No binding."
 				l += 1
 			l = 0
 			k += 1
 		k = 0
 
+# Reset all bindings to their default settings.
 func _on_ResetAllBindingsToDefault_pressed():
 	for input in Settings.settings["input"].keys():
 		Settings.settings["input"][input] = Settings.default_settings["input"][input]
@@ -261,6 +383,7 @@ func _on_ResetAllBindingsToDefault_pressed():
 	
 	mark_bindings()
 
+# Reset default keyboard bindings to their default settings.
 func _on_KB_ResetToDefault_pressed():
 	for input in Settings.settings["input"].keys():
 		if input.match("kb_*"):
@@ -270,6 +393,7 @@ func _on_KB_ResetToDefault_pressed():
 	
 	mark_bindings("kb")
 
+# Reset Player 1's bindings back to their default settings.
 func _on_P1_ResetToDefault_pressed():
 	for input in Settings.settings["input"].keys():
 		if input.match("p1_*"):
@@ -279,6 +403,7 @@ func _on_P1_ResetToDefault_pressed():
 	
 	mark_bindings("p1")
 
+# Reset Player 2's bindings back to their default settings.
 func _on_P2_ResetToDefault_pressed():
 	for input in Settings.settings["input"].keys():
 		if input.match("p2_*"):
@@ -288,6 +413,165 @@ func _on_P2_ResetToDefault_pressed():
 	
 	mark_bindings("p2")
 
+# Ready the KB Up button for changing it's binding.
 func _on_KB_Up_Button_pressed():
 	action_string = "kb_up"
 	kb_up.text = "Press a key to rebind..."
+	button_to_change = kb_up
+	can_change_key = true
+
+func _on_KB_Down_Button_pressed():
+	action_string = "kb_down"
+	kb_down.text = "Press a key to rebind..."
+	button_to_change = kb_down
+	can_change_key = true
+
+func _on_KB_Left_Button_pressed():
+	action_string = "kb_right"
+	kb_left.text = "Press a key to rebind..."
+	button_to_change = kb_down
+	can_change_key = true
+
+func _on_KB_Right_Button_pressed():
+	action_string = "kb_Right"
+	kb_right.text = "Press a key to rebind..."
+	button_to_change = kb_right
+	can_change_key = true
+
+func _on_KB_LightPunch_Button_pressed():
+	action_string = "kb_light_punch"
+	kb_light_punch.text = "Press a key to rebind..."
+	button_to_change = kb_light_punch
+	can_change_key = true
+
+func _on_KB_HeavyPunch_Button_pressed():
+	action_string = "kb_heavy_punch"
+	kb_heavy_punch.text = "Press a key to rebind..."
+	button_to_change = kb_heavy_punch
+	can_change_key = true
+
+func _on_KB_LightKick_Button_pressed():
+	action_string = "kb_light_kick"
+	kb_light_kick.text = "Press a key to rebind..."
+	button_to_change = kb_light_kick
+	can_change_key = true
+
+func _on_KB_HeavyKick_Button_pressed():
+	action_string = "kb_heavy_kick"
+	kb_heavy_punch.text = "Press a key to rebind..."
+	button_to_change = kb_heavy_kick
+	can_change_key = true
+
+func _on_KB_Block_Button_pressed():
+	action_string = "kb_block"
+	kb_block.text = "Press a key to rebind..."
+	button_to_change = kb_block
+	can_change_key = true
+
+func _on_P1_Up_Button_pressed():
+	action_string = "p1_up"
+	p1_up.text = "Press a key to rebind..."
+	button_to_change = p1_up
+	can_change_key = true
+
+func _on_P1_Down_Button_pressed():
+	action_string = "p1_down"
+	p1_down.text = "Press a key to rebind..."
+	button_to_change = p1_down
+	can_change_key = true
+
+func _on_P1_Left_Button_pressed():
+	action_string = "p1_left"
+	p1_left.text = "Press a key to rebind..."
+	button_to_change = p1_left
+	can_change_key = true
+
+func _on_P1_Right_Button_pressed():
+	action_string = "p1_right"
+	p1_right.text = "Press a key to rebind..."
+	button_to_change = p1_right
+	can_change_key = true
+
+func _on_P1_LightPunch_Button_pressed():
+	action_string = "p1_light_punch"
+	p1_light_punch.text = "Press a key to rebind..."
+	button_to_change = p1_light_punch
+	can_change_key = true
+
+func _on_P1_HeavyPunch_Button_pressed():
+	action_string = "p1_heavy_punch"
+	p1_heavy_punch.text = "Press a key to rebind..."
+	button_to_change = p1_heavy_punch
+	can_change_key = true
+
+func _on_P1_LightKick_Button_pressed():
+	action_string = "p1_light_kick"
+	p1_light_kick.text = "Press a key to rebind..."
+	button_to_change = p1_light_kick
+	can_change_key = true
+
+func _on_P1_HeavyKick_Button_pressed():
+	action_string = "p1_heavy_kick"
+	p1_heavy_kick.text = "Press a key to rebind..."
+	button_to_change = p1_heavy_kick
+	can_change_key = true
+
+func _on_P1_Block_Button_pressed():
+	action_string = "p1_block"
+	p1_block.text = "Press a key to rebind..."
+	button_to_change = p1_block
+	can_change_key = true
+
+func _on_P2_Up_Button_pressed():
+	action_string = "p2_up"
+	p2_up.text = "Press a key to rebind..."
+	button_to_change = p2_up
+	can_change_key = true
+
+func _on_P2_Down_Button_pressed():
+	action_string = "p2_down"
+	p2_down.text = "Press a key to rebind..."
+	button_to_change = p2_down
+	can_change_key = true
+
+func _on_P2_Left_Button_pressed():
+	action_string = "p2_left"
+	p2_left.text = "Press a key to rebind..."
+	button_to_change = p2_left
+	can_change_key = true
+
+func _on_P2_Right_Button_pressed():
+	action_string = "p2_right"
+	p2_right.text = "Press a key to rebind..."
+	button_to_change = p2_right
+	can_change_key = true
+
+func _on_P2_LightPunch_Button_pressed():
+	action_string = "p2_light_punch"
+	p2_light_punch.text = "Press a key to rebind..."
+	button_to_change = p2_light_punch
+	can_change_key = true
+
+func _on_P2_HeavyPunch_Button_pressed():
+	action_string = "p2_heavy_punch"
+	p2_heavy_punch.text = "Press a key to rebind..."
+	button_to_change = p2_heavy_punch
+	can_change_key = true
+
+func _on_P2_LightKick_Button_pressed():
+	action_string = "p2_light_kick"
+	p2_light_kick.text = "Press a key to rebind..."
+	button_to_change = p2_light_kick
+	can_change_key = true
+
+func _on_P2_HeavyKick_Button_pressed():
+	action_string = "p2_heavy_kick"
+	p2_heavy_kick.text = "Press a key to rebind..."
+	button_to_change = p2_heavy_kick
+	can_change_key = true
+
+func _on_P2_Block_Button_pressed():
+	action_string = "p2_block"
+	p2_block.text = "Press a key to rebind..."
+	button_to_change = p2_block
+	can_change_key = true

@@ -6,6 +6,9 @@ export var debug_mode = false
 
 onready var camera_rect := Rect2()
 onready var viewport_rect := Rect2()
+
+# The siblings are part of the parent object of this class. This is to fix a
+# bug that broke the camera after updating the engine to 3.2.1.
 onready var sibling_count = 0
 onready var siblings = []
 
@@ -47,21 +50,26 @@ func _draw():
 	draw_rect(camera_rect, Color("#FFFFFF"), false)
 	draw_circle(calculate_center(camera_rect), 5, Color("#FFFFFF"))
 
+# Sets the sibling count.
 func set_sibling_count():
 	for index in get_parent().get_children():
 		if index.name != name:
 			sibling_count += 1
 
+# Returns the sibling count.
 func get_sibling_count():
 	return sibling_count
 
+# Sets the siblings.
 func set_siblings():
 	for index in get_parent().get_children():
 		if index.name != name:
 			siblings.append(index)
 
+# Returns the list of siblings as an array.
 func get_siblings():
 	return siblings
 
+# Returns a sibling by it's index.
 func get_sibling(idx):
 	return siblings[idx]
