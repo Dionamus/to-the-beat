@@ -63,14 +63,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+follow_focus = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Settings/Panel/ScrollContainer"]
 margin_right = 1808.0
-margin_bottom = 2616.0
+margin_bottom = 2540.0
 size_flags_horizontal = 3
+custom_constants/separation = 0
 
 [node name="VideoLabel" type="Label" parent="Settings/Panel/ScrollContainer/VBoxContainer"]
 margin_right = 1808.0
@@ -82,9 +84,9 @@ align = 1
 valign = 1
 
 [node name="Resolution" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer"]
-margin_top = 56.0
+margin_top = 52.0
 margin_right = 1808.0
-margin_bottom = 108.0
+margin_bottom = 104.0
 
 [node name="Label" type="Label" parent="Settings/Panel/ScrollContainer/VBoxContainer/Resolution"]
 margin_right = 902.0
@@ -108,9 +110,9 @@ items = [ "Native Resolution", null, false, 0, null, "1920x1080", null, false, 1
 selected = 0
 
 [node name="FramerateLimit" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer"]
-margin_top = 112.0
+margin_top = 104.0
 margin_right = 1808.0
-margin_bottom = 164.0
+margin_bottom = 156.0
 
 [node name="Label" type="Label" parent="Settings/Panel/ScrollContainer/VBoxContainer/FramerateLimit"]
 margin_right = 902.0
@@ -134,9 +136,9 @@ items = [ "None", null, false, 0, null, "30", null, false, 1, null, "60", null, 
 selected = 0
 
 [node name="Vsync" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer"]
-margin_top = 168.0
+margin_top = 156.0
 margin_right = 1808.0
-margin_bottom = 220.0
+margin_bottom = 208.0
 
 [node name="Label" type="Label" parent="Settings/Panel/ScrollContainer/VBoxContainer/Vsync"]
 margin_right = 1668.0
@@ -157,9 +159,9 @@ pressed = true
 text = "Enabled"
 
 [node name="Fullscreen" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer"]
-margin_top = 224.0
+margin_top = 208.0
 margin_right = 1808.0
-margin_bottom = 276.0
+margin_bottom = 260.0
 
 [node name="Label" type="Label" parent="Settings/Panel/ScrollContainer/VBoxContainer/Fullscreen"]
 margin_right = 1668.0
@@ -180,9 +182,9 @@ pressed = true
 text = "Enabled"
 
 [node name="Borderless" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer"]
-margin_top = 280.0
+margin_top = 260.0
 margin_right = 1808.0
-margin_bottom = 332.0
+margin_bottom = 312.0
 
 [node name="Label" type="Label" parent="Settings/Panel/ScrollContainer/VBoxContainer/Borderless"]
 margin_right = 1668.0
@@ -197,17 +199,17 @@ margin_left = 1672.0
 margin_right = 1808.0
 margin_bottom = 52.0
 focus_neighbour_top = NodePath("../../Fullscreen/FullscreenCheckbox")
-focus_neighbour_bottom = NodePath("../../ResetToDefault")
+focus_neighbour_bottom = NodePath("../../VideoResetToDefault")
 custom_fonts/font = SubResource( 4 )
 pressed = true
 text = "Enabled"
 
 [node name="VideoResetToDefault" type="Button" parent="Settings/Panel/ScrollContainer/VBoxContainer"]
-margin_top = 336.0
+margin_top = 312.0
 margin_right = 1808.0
-margin_bottom = 378.0
+margin_bottom = 354.0
 focus_neighbour_top = NodePath("../Borderless/BorderlessCheckBox")
-focus_neighbour_bottom = NodePath("../../..")
+focus_neighbour_bottom = NodePath("../MasterVolume/MasterSlider")
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 5 )
 custom_constants/hseparation = 0
@@ -217,9 +219,9 @@ __meta__ = {
 }
 
 [node name="AudioLabel" type="Label" parent="Settings/Panel/ScrollContainer/VBoxContainer"]
-margin_top = 382.0
+margin_top = 354.0
 margin_right = 1808.0
-margin_bottom = 434.0
+margin_bottom = 406.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 1 )
 text = "Audio"
@@ -227,9 +229,9 @@ align = 1
 valign = 1
 
 [node name="MasterVolume" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer"]
-margin_top = 438.0
+margin_top = 406.0
 margin_right = 1808.0
-margin_bottom = 490.0
+margin_bottom = 458.0
 
 [node name="Label" type="Label" parent="Settings/Panel/ScrollContainer/VBoxContainer/MasterVolume"]
 margin_right = 902.0
@@ -243,7 +245,7 @@ valign = 1
 margin_left = 906.0
 margin_right = 1808.0
 margin_bottom = 52.0
-focus_neighbour_top = NodePath("../../../..")
+focus_neighbour_top = NodePath("../../VideoResetToDefault")
 focus_neighbour_bottom = NodePath("../../MusicVolume/MusicSlider")
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -253,9 +255,9 @@ tick_count = 100
 ticks_on_borders = true
 
 [node name="MusicVolume" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer"]
-margin_top = 494.0
+margin_top = 458.0
 margin_right = 1808.0
-margin_bottom = 546.0
+margin_bottom = 510.0
 
 [node name="Label" type="Label" parent="Settings/Panel/ScrollContainer/VBoxContainer/MusicVolume"]
 margin_right = 902.0
@@ -279,9 +281,9 @@ tick_count = 100
 ticks_on_borders = true
 
 [node name="SoundEffectsVolume" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer"]
-margin_top = 550.0
+margin_top = 510.0
 margin_right = 1808.0
-margin_bottom = 602.0
+margin_bottom = 562.0
 
 [node name="Label" type="Label" parent="Settings/Panel/ScrollContainer/VBoxContainer/SoundEffectsVolume"]
 margin_right = 902.0
@@ -305,9 +307,9 @@ tick_count = 100
 ticks_on_borders = true
 
 [node name="MenuSounds" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer"]
-margin_top = 606.0
+margin_top = 562.0
 margin_right = 1808.0
-margin_bottom = 658.0
+margin_bottom = 614.0
 
 [node name="Label" type="Label" parent="Settings/Panel/ScrollContainer/VBoxContainer/MenuSounds"]
 margin_right = 902.0
@@ -322,7 +324,7 @@ margin_left = 906.0
 margin_right = 1808.0
 margin_bottom = 52.0
 focus_neighbour_top = NodePath("../../SoundEffectsVolume/SfxSlider")
-focus_neighbour_bottom = NodePath("../../ResetToDefault")
+focus_neighbour_bottom = NodePath("../../AudioResetToDefault")
 size_flags_horizontal = 3
 size_flags_vertical = 3
 min_value = -60.0
@@ -331,20 +333,20 @@ tick_count = 100
 ticks_on_borders = true
 
 [node name="AudioResetToDefault" type="Button" parent="Settings/Panel/ScrollContainer/VBoxContainer"]
-margin_top = 662.0
+margin_top = 614.0
 margin_right = 1808.0
-margin_bottom = 704.0
+margin_bottom = 656.0
 focus_neighbour_top = NodePath("../MenuSounds/MenuSlider")
-focus_neighbour_bottom = NodePath("../../..")
+focus_neighbour_bottom = NodePath("../ControlMode/OptionButton")
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 5 )
 custom_constants/hseparation = 0
 text = "Reset to Default"
 
 [node name="ControlsLabel" type="Label" parent="Settings/Panel/ScrollContainer/VBoxContainer"]
-margin_top = 708.0
+margin_top = 656.0
 margin_right = 1808.0
-margin_bottom = 760.0
+margin_bottom = 708.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 1 )
 text = "Controls"
@@ -352,9 +354,9 @@ align = 1
 valign = 1
 
 [node name="ControlMode" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer"]
-margin_top = 764.0
+margin_top = 708.0
 margin_right = 1808.0
-margin_bottom = 816.0
+margin_bottom = 760.0
 
 [node name="Label" type="Label" parent="Settings/Panel/ScrollContainer/VBoxContainer/ControlMode"]
 margin_right = 902.0
@@ -368,8 +370,8 @@ valign = 1
 margin_left = 906.0
 margin_right = 1808.0
 margin_bottom = 52.0
-focus_neighbour_top = NodePath("../../../../../SettingsCategories")
-focus_neighbour_bottom = NodePath("../../PlayerTabs")
+focus_neighbour_top = NodePath("../../AudioResetToDefault")
+focus_neighbour_bottom = NodePath("../../ResetAllBindingsToDefault")
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 3 )
 text = "Player 1 Exclusive Control"
@@ -378,9 +380,9 @@ items = [ "Player 1 Exclusive Control", null, false, 0, null, "2-Player Simultan
 selected = 0
 
 [node name="BindingsLabel" type="Label" parent="Settings/Panel/ScrollContainer/VBoxContainer"]
-margin_top = 820.0
+margin_top = 760.0
 margin_right = 1808.0
-margin_bottom = 872.0
+margin_bottom = 812.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 1 )
 text = "Bindings"
@@ -388,11 +390,11 @@ align = 1
 valign = 1
 
 [node name="ResetAllBindingsToDefault" type="Button" parent="Settings/Panel/ScrollContainer/VBoxContainer"]
-margin_top = 876.0
+margin_top = 812.0
 margin_right = 1808.0
-margin_bottom = 918.0
-focus_neighbour_top = NodePath("../Block/Button")
-focus_neighbour_bottom = NodePath("../../../../../SettingsCategories")
+margin_bottom = 854.0
+focus_neighbour_top = NodePath("../ControlMode/OptionButton")
+focus_neighbour_bottom = NodePath("../KBControls/Up/Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 5 )
@@ -400,9 +402,9 @@ custom_constants/hseparation = 0
 text = "Reset All Bindings to Default"
 
 [node name="KBControls" type="VBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer"]
-margin_top = 922.0
+margin_top = 854.0
 margin_right = 1808.0
-margin_bottom = 1484.0
+margin_bottom = 1416.0
 custom_constants/separation = 0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -433,7 +435,7 @@ valign = 1
 margin_left = 906.0
 margin_right = 1808.0
 margin_bottom = 52.0
-focus_neighbour_top = NodePath("../../../PlayerTabs")
+focus_neighbour_top = NodePath("../../../ResetAllBindingsToDefault")
 focus_neighbour_bottom = NodePath("../../Down/Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -637,7 +639,7 @@ margin_top = 520.0
 margin_right = 1808.0
 margin_bottom = 562.0
 focus_neighbour_top = NodePath("../Block/Button")
-focus_neighbour_bottom = NodePath("../../../../../SettingsCategories")
+focus_neighbour_bottom = NodePath("../../P1ControllerControls/Up/Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 5 )
@@ -645,9 +647,9 @@ custom_constants/hseparation = 0
 text = "Reset to Default"
 
 [node name="P1ControllerControls" type="VBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer"]
-margin_top = 1488.0
+margin_top = 1416.0
 margin_right = 1808.0
-margin_bottom = 2050.0
+margin_bottom = 1978.0
 custom_constants/separation = 0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -678,7 +680,7 @@ valign = 1
 margin_left = 906.0
 margin_right = 1808.0
 margin_bottom = 52.0
-focus_neighbour_top = NodePath("../../../../../../SettingsCategories")
+focus_neighbour_top = NodePath("../../../KBControls/ResetToDefault")
 focus_neighbour_bottom = NodePath("../../Down/Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -870,7 +872,7 @@ valign = 1
 margin_left = 906.0
 margin_right = 1808.0
 margin_bottom = 52.0
-focus_neighbour_top = NodePath("../../../KBControls/HeavyKick/Button")
+focus_neighbour_top = NodePath("../../HeavyKick/Button")
 focus_neighbour_bottom = NodePath("../../ResetToDefault")
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -882,7 +884,7 @@ margin_top = 520.0
 margin_right = 1808.0
 margin_bottom = 562.0
 focus_neighbour_top = NodePath("../Block/Button")
-focus_neighbour_bottom = NodePath("../../../../../SettingsCategories")
+focus_neighbour_bottom = NodePath("../../P2ControllerControls/Up/Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 5 )
@@ -890,9 +892,9 @@ custom_constants/hseparation = 0
 text = "Reset to Default"
 
 [node name="P2ControllerControls" type="VBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer"]
-margin_top = 2054.0
+margin_top = 1978.0
 margin_right = 1808.0
-margin_bottom = 2616.0
+margin_bottom = 2540.0
 custom_constants/separation = 0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -923,7 +925,7 @@ valign = 1
 margin_left = 906.0
 margin_right = 1808.0
 margin_bottom = 52.0
-focus_neighbour_top = NodePath("../../../PlayerTabs")
+focus_neighbour_top = NodePath("../../../P1ControllerControls/ResetToDefault")
 focus_neighbour_bottom = NodePath("../../Down/Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
