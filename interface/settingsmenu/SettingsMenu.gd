@@ -54,29 +54,6 @@ onready var button_to_change = null
 
 # Set up settings menu.
 func _ready():
-	# Now, you must be asking yourself: "Why is the code below even here? It's
-	# not even doing anything meaningful for the user!" Well, right now, it's
-	# to help me figure out how I (Brandon/Dionamus) should implement changing
-	# the player input bindings in the settings menu and changing which player
-	# is using keyboard controls.
-	#
-	# Thankfully, the code you see here will be gone one day.
-	print(InputMap.get_action_list("kb_up")[0].as_text())
-	print(InputMap.get_action_list("p1_up")[0].get_class())
-	print(InputMap.get_action_list("p1_up").size())
-	var i = 0
-	while i <= InputMap.get_action_list("p1_up").size() - 1:
-		if InputMap.get_action_list("p1_up")[i].get_class() == InputMap.get_action_list("kb_up")[0].get_class()\
-		and InputMap.get_action_list("p1_up")[i].scancode == InputMap.get_action_list("kb_up")[0].scancode:
-			print("Objects match.") # At least the class and scancode do.
-			break
-	var j = 0
-	while j <= InputMap.get_action_list("p1_up").size() - 1:
-		if InputMap.get_action_list("p1_up")[j].get_class() == "InputEventKey":
-			print(InputMap.get_action_list("p1_up")[j])
-			print(InputMap.get_action_list("p1_up").size())
-			break
-	
 	# Ready the settings with their respective values from the config (or
 	# whatever was setup by the config).
 	resolution.selected = Settings.settings["video"]["resolution_box"]
@@ -94,7 +71,13 @@ func _ready():
 	
 	resolution.grab_focus()
 
-func _input(event):
+func _unhandled_input(event):
+	# Fixes a bug where trying to rebind an action to the bottom face button
+	# (e.g.A on an Xbox controller or X on a Playstation controller) presses 
+	# the binding button again, without assigning the new action. This
+	# variable is set to false at the end of the funciton.
+	get_tree().get_root().handle_input_locally = true
+	
 	# Take input for changing bindings.
 	if can_change_key:
 		# For the keyboard.
@@ -202,6 +185,11 @@ func _input(event):
 					button_to_change = null
 					action_string = ""
 					can_change_key = false
+	
+	# Fixes a bug where trying to rebind an action to the bottom face button (e.g.
+	# A on an Xbox controller or X on a Playstation controller) presses the button
+	# again, without assigning the new action
+	get_tree().get_root().handle_input_locally = false
 
 # Switches resolution.
 func _on_ResolutionOptions_item_selected(ID):
