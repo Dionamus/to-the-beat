@@ -70,8 +70,8 @@
 
 * ~~Add "Start Game" button.~~ (For right now, it only loads into a match.)
   * ~~Program it.~~
-* ~~Add "Options" button.~~
-  * Program it (after OptionsMenu.tscn has been made).
+* ~~Add "Settings" button.~~
+  * Program it (after SettingsMenu.tscn has been made).
 * ~~Add "Quit to Desktop" button.~~
   * ~~Program it.~~
 * ~~Get controller controls working.~~
@@ -149,11 +149,11 @@
       the character select screen). Both players have control over pausing, but
       only the player who paused the game has control over the pause menu.).
     * Add the character select screen as an exception to the control mode.
-  * Add bindings list.
+  * ~~Add bindings list.~~
     * ~~Add lables and buttons.~~
     * ~~Have the buttons get their text from the InputMap.~~
-    * Get the rebinding functionality working.
-* Get controls working.
+    * ~~Get the rebinding functionality working.~~
+* ~~Get controls working.~~
 * Style it.
 
 ### ControlSwap.tscn (not yet added)
