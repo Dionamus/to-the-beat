@@ -18,6 +18,7 @@ font_data = ExtResource( 9 )
 
 [node name="Stage" type="Node"]
 script = ExtResource( 1 )
+bpm = 128
 
 [node name="ControlCharacter" parent="." instance=ExtResource( 2 )]
 player_number = 0
@@ -152,6 +153,7 @@ __meta__ = {
 }
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource( 10 )]
+pause_mode = 2
 visible = false
 
 [node name="WinMenu" parent="CanvasLayer" instance=ExtResource( 11 )]

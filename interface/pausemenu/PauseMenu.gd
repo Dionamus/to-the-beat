@@ -1,4 +1,4 @@
-extends CenterContainer
+extends Control
 
 # Unpause the game when either player presses the pause button.
 func _unhandled_input(_event):
@@ -10,7 +10,7 @@ func _unhandled_input(_event):
 			get_tree().paused = false
 		else:
 			show()
-			$LabelAndButtons/ResumeGameButton.grab_focus()
+			$Menu/LabelAndButtons/ResumeGameButton.grab_focus()
 			get_tree().paused = true
 
 # Hide the pause menu and unpause the game when ResumeGameButton is pressed.
@@ -20,21 +20,31 @@ func _on_ResumeGameButton_pressed():
 
 # Currently not implemented.
 func _on_OptionsButton_pressed():
-	pass # Replace with function body.
+	$Menu.visible = false
+	$SettingsMenu.visible = true
+	$SettingsMenu/Settings/Panel/ScrollContainer/VBoxContainer/Resolution/ResolutionOptions.grab_focus()
 
 # Currently not implemented.
 func _on_QuitToCharacterSelectButton_pressed():
 	pass # Replace with function body.
 
+func _on_QuitToMainMenuButton_pressed():
+	var error = get_tree().change_scene("res://interface/mainmenu/MainMenu.tscn")
+	match error:
+		ERR_CANT_OPEN:
+			printerr("Cannot open the scene to the main menu.")
+		ERR_CANT_CREATE:
+			printerr("Cannot instantiate the stage.")
+
 # Hides the pause menu and asks if the user wants to quit to the desktop.
 func _on_QuitToDesktopButton_pressed():
-	$LabelAndButtons.visible = false
-	$QuitConfirmation.visible = true
-	$QuitConfirmation/LabelAndButtons/YesNoButtonContainer/YesButton.grab_focus()
+	$Menu/LabelAndButtons.visible = false
+	$Menu/QuitConfirmation.visible = true
+	$Menu/QuitConfirmation/LabelAndButtons/YesNoButtonContainer/YesButton.grab_focus()
 
 # If NoButton is pressed, QuitConfirmation disappears and PauseMenu's
 # label and buttons reappear.
 func _on_QuitConfirmation_no_quit():
-	$QuitConfirmation.visible = false
-	$LabelAndButtons.visible = true
-	$LabelAndButtons/ResumeGameButton.grab_focus()
+	$Menu/QuitConfirmation.visible = false
+	$Menu/LabelAndButtons.visible = true
+	$Menu/LabelAndButtons/ResumeGameButton.grab_focus()

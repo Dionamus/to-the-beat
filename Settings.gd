@@ -3,8 +3,8 @@ extends Node
 const CONFIG_SAVE_PATH = "res://config.cfg"
 enum {PLAYER_1_EXCLUSIVE, TWO_PLAYER_SIMULTANEOUS, TWO_PLAYER_INDIVIDUAL}
 
-var config_file = ConfigFile.new()
-var default_settings = {
+onready var config_file = ConfigFile.new()
+onready var default_settings = {
 	"video": {
 		"resolution": "Native Resolution",
 		"resolution_box": 0,
@@ -54,7 +54,16 @@ var default_settings = {
 	}
 }
 
-var settings = {
+onready var default_ui_controls = {
+	"ui_accept": InputMap.get_action_list("ui_accept"),
+	"ui_cancel": InputMap.get_action_list("ui_cancel"),
+	"ui_up": InputMap.get_action_list("ui_up"),
+	"ui_down": InputMap.get_action_list("ui_down"),
+	"ui_left": InputMap.get_action_list("ui_left"),
+	"ui_right": InputMap.get_action_list("ui_right")
+}
+
+onready var settings = {
 	"video": {
 		"resolution": "Native Resolution",
 		"resolution_box": 0,
@@ -102,6 +111,15 @@ var settings = {
 	"other": {
 		"control_mode": PLAYER_1_EXCLUSIVE,
 	}
+}
+
+onready var ui_controls = {
+	"ui_accept": InputMap.get_action_list("ui_accept"),
+	"ui_cancel": InputMap.get_action_list("ui_cancel"),
+	"ui_up": InputMap.get_action_list("ui_up"),
+	"ui_down": InputMap.get_action_list("ui_down"),
+	"ui_left": InputMap.get_action_list("ui_left"),
+	"ui_right": InputMap.get_action_list("ui_right")
 }
 
 # Called when the node enters the scene tree for the first time.
@@ -139,6 +157,7 @@ func load_settings():
 			set_video_setting()
 			set_audio_settings()
 			set_controls()
+			set_control_mode()
 		# Any other error.
 		_:
 			print("An error ocurred, please send the followimg error code to support: " + str(error))
@@ -233,7 +252,6 @@ func set_audio_settings():
 		AudioServer.set_bus_volume_db(0, master_volume)
 		settings["audio"]["master"] = master_volume
 		config_file.set_value("audio", "master", master_volume)
-		config_file.save(CONFIG_SAVE_PATH)
 	else:
 		AudioServer.set_bus_volume_db(0, settings["audio"]["master"])
 	
@@ -245,7 +263,6 @@ func set_audio_settings():
 		AudioServer.set_bus_volume_db(1, music_volume)
 		settings["audio"]["music"] = music_volume
 		config_file.set_value("audio", "music", music_volume)
-		config_file.save(CONFIG_SAVE_PATH)
 	else:
 		AudioServer.set_bus_volume_db(1, settings["audio"]["music"])
 	
@@ -257,7 +274,6 @@ func set_audio_settings():
 		AudioServer.set_bus_volume_db(2, sfx_volume)
 		settings["audio"]["sfx"] = sfx_volume
 		config_file.set_value("audio", "sfx", sfx_volume)
-		config_file.save(CONFIG_SAVE_PATH)
 	else:
 		AudioServer.set_bus_volume_db(2, settings["audio"]["sfx"])
 	
@@ -269,28 +285,109 @@ func set_audio_settings():
 		AudioServer.set_bus_volume_db(3, menu_sfx_volume)
 		settings["audio"]["menu_sfx"] = menu_sfx_volume
 		config_file.set_value("audio", "menu_sfx", menu_sfx_volume)
-		config_file.save(CONFIG_SAVE_PATH)
 	else:
 		AudioServer.set_bus_volume_db(3, settings["audio"]["menu_sfx"])
+	
+	config_file.save(CONFIG_SAVE_PATH)
 
 # Set up the controls and validate the config.
 func set_controls():
 	for input in settings["input"].keys():
-		# Check the input is an InputEventAction. Otherwise, revert to default.
-		if !(settings["input"][input] is InputEventAction):
-			settings["input"][input] = default_settings["input"][input]
-			ProjectSettings.set_setting("input/" + input, default_settings["input"][input])
-			config_file.set_value("input", input, default_settings["input"][input])
-			config_file.save(CONFIG_SAVE_PATH)
-		# Check if the keyboard bindings are InputEventKeys, and if they have 
+		# Check the inputs are InputEvents. Otherwise, revert to default.
+		for i in range(0, settings["input"][input].size() - 1):
+			if !(settings["input"][input][i] is InputEvent):
+				settings["input"][input] = default_settings["input"][input]
+				break
+		
+		# Check if the keyboard bindings are InputEventKeys and if they have 
 		# only one binding. Otherwise, revert to default
-		elif input.match("kb_*") and (settings["input"][input].size() != 1 or\
-			(!(settings["input"][input][0] is InputEventKey)\
+		if input.match("kb_*") and (settings["input"][input].size() != 1\
+			or (!(settings["input"][input][0] is InputEventKey)\
 			and settings["input"][input].size() == 1)):
 				settings["input"][input] = default_settings["input"][input]
-				ProjectSettings.set_setting("input/" + input, default_settings["input"][input])
-				config_file.set_value("input", input, default_settings["input"][input])
-				config_file.save(CONFIG_SAVE_PATH)
-		# No problems.
-		else:
-			ProjectSettings.set_setting("input/" + input, settings["input"][input])
+		
+		# Check if Player 1's bindings have only one joystick button and motion,
+		# and zero or one keys (in the case of a keyboard player) contained in
+		# them. Likewise, check if the device is set to 0. Otherwise, revert to
+		# default.
+		elif input.match("p1_*"):
+			var keys = 0
+			var buttons = 0
+			var joystick_motions = 0
+			for i in range(0, settings["input"][input].size() - 1):
+				if settings["input"][input][i] is InputEventKey:
+					keys += 1
+					# Check if Player 2 doesn't also have keyboard bindings.
+					# Revert to default if so.
+					for j in range(0, settings["input"]["p2" + input.lstrip("p1")].size() - 1):
+						if settings["input"]["p2" + input.lstrip("p1")][j] is InputEventKey:
+							settings["input"]["p2" + input.lstrip("p1")] = default_settings["input"][input.lstrip("p1")]
+				elif settings["input"][input][i] is InputEventJoypadButton:
+					buttons += 1
+					if settings["input"][input][i].device != 0:
+						settings["input"][input] = default_settings["input"][input]
+				elif settings["input"][input][i] is InputEventJoypadMotion:
+					joystick_motions += 1
+					if settings["input"][input][i].device != 0:
+						settings["input"][input] = default_settings["input"][input]
+				
+			if buttons != 1 or joystick_motions != 1 or keys != 0 or keys != 1:
+				settings["input"][input] = default_settings["input"][input]
+		
+		# Check if Player 2's bindings have only one joystick button and motion,
+		# and zero or one keys (in the case of a keyboard player) contained in
+		# them. Likewise, check if the device is set to 1. Otherwise, revert to
+		# default.
+		elif input.match("p2_*"):
+			var keys = 0
+			var buttons = 0
+			var joystick_motions = 0
+			for i in range(0, settings["input"][input].size() - 1):
+				if settings["input"][input][i] is InputEventKey:
+					keys += 1
+				elif settings["input"][input][i] is InputEventJoypadButton:
+					buttons += 1
+					if settings["input"][input][i].device != 1:
+						settings["input"][input] = default_settings["input"][input]
+				elif settings["input"][input][i] is InputEventJoypadMotion:
+					joystick_motions += 1
+					if settings["input"][input][i].device != 1:
+						settings["input"][input] = default_settings["input"][input]
+				
+			if buttons != 1 or joystick_motions != 1 or keys != 0 or keys != 1:
+				settings["input"][input] = default_settings["input"][input]
+		
+		# Apply changes if any.
+		ProjectSettings.set_setting("input/" + input, settings["input"][input])
+		config_file.set_value("input", input, settings["input"][input])
+	
+	config_file.save(CONFIG_SAVE_PATH)
+
+# Set up the menu control mode and validate the config.
+func set_control_mode():
+	# Validate the config.
+	if !(settings["other"]["control_mode"] is int)\
+		or settings["other"]["control_mode"] < PLAYER_1_EXCLUSIVE\
+		or settings["other"]["control_mode"] > TWO_PLAYER_INDIVIDUAL:
+			settings["other"]["control_mode"] = PLAYER_1_EXCLUSIVE
+			config_file.set_value("other", "control_mode", settings["other"]["control_mode"])
+			config_file.save(CONFIG_SAVE_PATH)
+			for input in ui_controls.keys():
+				ui_controls[input] = default_ui_controls[input]
+				ProjectSettings.set_setting("input/" + input, ui_controls[input])
+	# Player 1 controls all menus.
+	if settings["other"]["control_mode"] == PLAYER_1_EXCLUSIVE:
+		for input in ui_controls.keys():
+			for i in range(0, ui_controls[input].size() - 1):
+				if ui_controls[input][i] is InputEventJoypadButton\
+					or ui_controls[input][i] is InputEventJoypadMotion:
+						ui_controls[input][i].device = 0
+						ProjectSettings.set_setting("input/" + input, ui_controls[input])
+	# Both players control the cursor in all menus.
+	elif settings["other"]["control_mode"] == TWO_PLAYER_SIMULTANEOUS:
+		for input in ui_controls.keys():
+			for i in range(0, ui_controls[input].size() - 1):
+				if ui_controls[input][i] is InputEventJoypadButton\
+					or ui_controls[input][i] is InputEventJoypadMotion:
+						ui_controls[input][i].device = -1
+						ProjectSettings.set_setting("input/" + input, ui_controls[input])
