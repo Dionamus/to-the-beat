@@ -71,7 +71,7 @@
 * ~~Add "Start Game" button.~~ (For right now, it only loads into a match.)
   * ~~Program it.~~
 * ~~Add "Settings" button.~~
-  * Program it (after SettingsMenu.tscn has been made).
+  * ~~Program it (after SettingsMenu.tscn has been made).~~
 * ~~Add "Quit to Desktop" button.~~
   * ~~Program it.~~
 * ~~Get controller controls working.~~
@@ -81,8 +81,8 @@
 
 * ~~Add "Resume Game" button.~~
   * ~~Program it.~~
-* ~~Add "Options" button.~~
-  * Program it (after OptionsMenu.tscn has been made).
+* ~~Add "Settings" button.~~
+  * ~~Program it (after OptionsMenu.tscn has been made).~~
 * ~~Add "Quit to Character Select" button.~~
   * Program it (after CharacterSelect.tscn has been made).
 * ~~Add "Quit to Main Menu" button.~~
