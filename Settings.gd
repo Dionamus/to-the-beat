@@ -298,11 +298,63 @@ func set_controls():
 			if !(settings["input"][input][i] is InputEvent):
 				settings["input"][input] = default_settings["input"][input]
 				break
+		
 		# Check if the keyboard bindings are InputEventKeys and if they have 
 		# only one binding. Otherwise, revert to default
 		if input.match("kb_*") and (settings["input"][input].size() != 1\
 			or (!(settings["input"][input][0] is InputEventKey)\
 			and settings["input"][input].size() == 1)):
+				settings["input"][input] = default_settings["input"][input]
+		
+		# Check if Player 1's bindings have only one joystick button and motion,
+		# and zero or one keys (in the case of a keyboard player) contained in
+		# them. Likewise, check if the device is set to 0. Otherwise, revert to
+		# default.
+		elif input.match("p1_*"):
+			var keys = 0
+			var buttons = 0
+			var joystick_motions = 0
+			for i in range(0, settings["input"][input].size() - 1):
+				if settings["input"][input][i] is InputEventKey:
+					keys += 1
+					# Check if Player 2 doesn't also have keyboard bindings.
+					# Revert to default if so.
+					for j in range(0, settings["input"]["p2" + input.lstrip("p1")].size() - 1):
+						if settings["input"]["p2" + input.lstrip("p1")][j] is InputEventKey:
+							settings["input"]["p2" + input.lstrip("p1")] = default_settings["input"][input.lstrip("p1")]
+				elif settings["input"][input][i] is InputEventJoypadButton:
+					buttons += 1
+					if settings["input"][input][i].device != 0:
+						settings["input"][input] = default_settings["input"][input]
+				elif settings["input"][input][i] is InputEventJoypadMotion:
+					joystick_motions += 1
+					if settings["input"][input][i].device != 0:
+						settings["input"][input] = default_settings["input"][input]
+				
+			if buttons != 1 or joystick_motions != 1 or keys != 0 or keys != 1:
+				settings["input"][input] = default_settings["input"][input]
+		
+		# Check if Player 2's bindings have only one joystick button and motion,
+		# and zero or one keys (in the case of a keyboard player) contained in
+		# them. Likewise, check if the device is set to 1. Otherwise, revert to
+		# default.
+		elif input.match("p2_*"):
+			var keys = 0
+			var buttons = 0
+			var joystick_motions = 0
+			for i in range(0, settings["input"][input].size() - 1):
+				if settings["input"][input][i] is InputEventKey:
+					keys += 1
+				elif settings["input"][input][i] is InputEventJoypadButton:
+					buttons += 1
+					if settings["input"][input][i].device != 1:
+						settings["input"][input] = default_settings["input"][input]
+				elif settings["input"][input][i] is InputEventJoypadMotion:
+					joystick_motions += 1
+					if settings["input"][input][i].device != 1:
+						settings["input"][input] = default_settings["input"][input]
+				
+			if buttons != 1 or joystick_motions != 1 or keys != 0 or keys != 1:
 				settings["input"][input] = default_settings["input"][input]
 		
 		# Apply changes if any.
@@ -339,7 +391,3 @@ func set_control_mode():
 					or ui_controls[input][i] is InputEventJoypadMotion:
 						ui_controls[input][i].device = -1
 						ProjectSettings.set_setting("input/" + input, ui_controls[input])
-	
-	print("Control mode: " + str(settings["other"]["control_mode"]))
-	var device = InputMap.get_action_list("ui_accept")[3].device
-	print("Device: " + str(device))

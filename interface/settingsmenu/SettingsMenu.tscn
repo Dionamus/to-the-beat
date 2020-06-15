@@ -1,18 +1,14 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://interface/settingsmenu/SettingsMenu.gd" type="Script" id=1]
 [ext_resource path="res://interface/Roboto-Bold.ttf" type="DynamicFontData" id=2]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=2]
 size = 44
 font_data = ExtResource( 2 )
 
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.129412, 0.129412, 0.129412, 1 )
-
-[sub_resource type="DynamicFont" id=3]
-size = 30
-font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=4]
 size = 30
@@ -21,6 +17,12 @@ font_data = ExtResource( 2 )
 [sub_resource type="DynamicFont" id=5]
 size = 30
 font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 30
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxEmpty" id=6]
 
 [node name="SettingsMenu" type="MarginContainer"]
 anchor_right = 1.0
@@ -45,7 +47,7 @@ margin_bottom = 1030.0
 [node name="SettingsLabel" type="Label" parent="Settings"]
 margin_right = 1820.0
 margin_bottom = 52.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Settings"
 align = 1
 valign = 1
@@ -53,10 +55,10 @@ valign = 1
 [node name="Panel" type="Panel" parent="Settings"]
 margin_top = 56.0
 margin_right = 1820.0
-margin_bottom = 980.0
+margin_bottom = 927.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_styles/panel = SubResource( 2 )
+custom_styles/panel = SubResource( 3 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Settings/Panel"]
 anchor_right = 1.0
@@ -78,7 +80,7 @@ custom_constants/separation = 0
 margin_right = 1808.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Video"
 align = 1
 valign = 1
@@ -92,7 +94,7 @@ margin_bottom = 104.0
 margin_right = 902.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Resolution"
 valign = 1
 
@@ -103,7 +105,7 @@ margin_bottom = 52.0
 focus_neighbour_top = NodePath("../../../..")
 focus_neighbour_bottom = NodePath("../../FramerateLimit/FramerateOptions")
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "Native Resolution"
 align = 2
 items = [ "Native Resolution", null, false, 0, null, "1920x1080", null, false, 1, null, "1280x720", null, false, 2, null ]
@@ -118,7 +120,7 @@ margin_bottom = 156.0
 margin_right = 902.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Framerate Limit"
 valign = 1
 
@@ -129,7 +131,7 @@ margin_bottom = 52.0
 focus_neighbour_top = NodePath("../../Resolution/ResolutionOptions")
 focus_neighbour_bottom = NodePath("../../Vsync/VsyncCheckBox")
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "None"
 align = 2
 items = [ "None", null, false, 0, null, "30", null, false, 1, null, "60", null, false, 2, null, "120", null, false, 3, null, "144", null, false, 4, null, "200", null, false, 5, null, "240", null, false, 6, null ]
@@ -144,7 +146,7 @@ margin_bottom = 208.0
 margin_right = 1668.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Vsync"
 valign = 1
 
@@ -154,7 +156,7 @@ margin_right = 1808.0
 margin_bottom = 52.0
 focus_neighbour_top = NodePath("../../FramerateLimit/FramerateOptions")
 focus_neighbour_bottom = NodePath("../../Fullscreen/FullscreenCheckbox")
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 pressed = true
 text = "Enabled"
 
@@ -167,7 +169,7 @@ margin_bottom = 260.0
 margin_right = 1668.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Fullscreen"
 valign = 1
 
@@ -177,7 +179,7 @@ margin_right = 1808.0
 margin_bottom = 52.0
 focus_neighbour_top = NodePath("../../Vsync/VsyncCheckBox")
 focus_neighbour_bottom = NodePath("../../Borderless/BorderlessCheckBox")
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 pressed = true
 text = "Enabled"
 
@@ -190,7 +192,7 @@ margin_bottom = 312.0
 margin_right = 1668.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Borderless"
 valign = 1
 
@@ -200,7 +202,7 @@ margin_right = 1808.0
 margin_bottom = 52.0
 focus_neighbour_top = NodePath("../../Fullscreen/FullscreenCheckbox")
 focus_neighbour_bottom = NodePath("../../VideoResetToDefault")
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 pressed = true
 text = "Enabled"
 
@@ -211,7 +213,7 @@ margin_bottom = 354.0
 focus_neighbour_top = NodePath("../Borderless/BorderlessCheckBox")
 focus_neighbour_bottom = NodePath("../MasterVolume/MasterSlider")
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 1 )
 custom_constants/hseparation = 0
 text = "Reset to Default"
 __meta__ = {
@@ -223,7 +225,7 @@ margin_top = 354.0
 margin_right = 1808.0
 margin_bottom = 406.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Audio"
 align = 1
 valign = 1
@@ -237,7 +239,7 @@ margin_bottom = 458.0
 margin_right = 902.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Master"
 valign = 1
 
@@ -263,7 +265,7 @@ margin_bottom = 510.0
 margin_right = 902.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Music"
 valign = 1
 
@@ -289,7 +291,7 @@ margin_bottom = 562.0
 margin_right = 902.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Sound Effects"
 valign = 1
 
@@ -315,7 +317,7 @@ margin_bottom = 614.0
 margin_right = 902.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Menu Sounds"
 valign = 1
 
@@ -339,7 +341,7 @@ margin_bottom = 656.0
 focus_neighbour_top = NodePath("../MenuSounds/MenuSlider")
 focus_neighbour_bottom = NodePath("../ControlMode/OptionButton")
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 1 )
 custom_constants/hseparation = 0
 text = "Reset to Default"
 
@@ -348,7 +350,7 @@ margin_top = 656.0
 margin_right = 1808.0
 margin_bottom = 708.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Controls"
 align = 1
 valign = 1
@@ -362,7 +364,7 @@ margin_bottom = 760.0
 margin_right = 902.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Control Mode"
 valign = 1
 
@@ -373,7 +375,7 @@ margin_bottom = 52.0
 focus_neighbour_top = NodePath("../../AudioResetToDefault")
 focus_neighbour_bottom = NodePath("../../ResetAllBindingsToDefault")
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "Player 1 Exclusive Control"
 align = 2
 items = [ "Player 1 Exclusive Control", null, false, 0, null, "2-Player Simultaneous Control", null, false, 1, null ]
@@ -384,7 +386,7 @@ margin_top = 760.0
 margin_right = 1808.0
 margin_bottom = 812.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Bindings"
 align = 1
 valign = 1
@@ -397,7 +399,7 @@ focus_neighbour_top = NodePath("../ControlMode/OptionButton")
 focus_neighbour_bottom = NodePath("../KBControls/Up/Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 1 )
 custom_constants/hseparation = 0
 text = "Reset All Bindings to Default"
 
@@ -414,7 +416,7 @@ __meta__ = {
 margin_right = 1808.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Keyboard"
 valign = 1
 
@@ -427,7 +429,7 @@ margin_bottom = 104.0
 margin_right = 902.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Up"
 valign = 1
 
@@ -439,7 +441,7 @@ focus_neighbour_top = NodePath("../../../ResetAllBindingsToDefault")
 focus_neighbour_bottom = NodePath("../../Down/Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 1 )
 text = "Up Arrow"
 
 [node name="Down" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer/KBControls"]
@@ -451,7 +453,7 @@ margin_bottom = 156.0
 margin_right = 902.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Down"
 valign = 1
 
@@ -463,7 +465,7 @@ focus_neighbour_top = NodePath("../../Up/Button")
 focus_neighbour_bottom = NodePath("../../Left/Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 1 )
 text = "Down Arrow"
 
 [node name="Left" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer/KBControls"]
@@ -475,7 +477,7 @@ margin_bottom = 208.0
 margin_right = 902.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Left"
 valign = 1
 
@@ -487,7 +489,7 @@ focus_neighbour_top = NodePath("../../Down/Button")
 focus_neighbour_bottom = NodePath("../../Right/Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 1 )
 text = "Left Arrow"
 
 [node name="Right" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer/KBControls"]
@@ -499,7 +501,7 @@ margin_bottom = 260.0
 margin_right = 902.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Right"
 valign = 1
 
@@ -511,7 +513,7 @@ focus_neighbour_top = NodePath("../../Left/Button")
 focus_neighbour_bottom = NodePath("../../LightPunch/Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 1 )
 text = "Right Arrow"
 
 [node name="LightPunch" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer/KBControls"]
@@ -523,7 +525,7 @@ margin_bottom = 312.0
 margin_right = 902.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Light Punch"
 valign = 1
 
@@ -535,7 +537,7 @@ focus_neighbour_top = NodePath("../../Right/Button")
 focus_neighbour_bottom = NodePath("../../HeavyPunch/Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 1 )
 text = "Q"
 
 [node name="HeavyPunch" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer/KBControls"]
@@ -547,7 +549,7 @@ margin_bottom = 364.0
 margin_right = 902.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Heavy Punch"
 valign = 1
 
@@ -559,7 +561,7 @@ focus_neighbour_top = NodePath("../../LightPunch/Button")
 focus_neighbour_bottom = NodePath("../../LightKick/Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 1 )
 text = "W"
 
 [node name="LightKick" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer/KBControls"]
@@ -571,7 +573,7 @@ margin_bottom = 416.0
 margin_right = 902.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Light Kick"
 valign = 1
 
@@ -583,7 +585,7 @@ focus_neighbour_top = NodePath("../../HeavyPunch/Button")
 focus_neighbour_bottom = NodePath("../../HeavyKick/Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 1 )
 text = "E"
 
 [node name="HeavyKick" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer/KBControls"]
@@ -595,7 +597,7 @@ margin_bottom = 468.0
 margin_right = 902.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Heavy Kick"
 valign = 1
 
@@ -607,7 +609,7 @@ focus_neighbour_top = NodePath("../../LightKick/Button")
 focus_neighbour_bottom = NodePath("../../Block/Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 1 )
 text = "R"
 
 [node name="Block" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer/KBControls"]
@@ -619,7 +621,7 @@ margin_bottom = 520.0
 margin_right = 902.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Block"
 valign = 1
 
@@ -631,7 +633,7 @@ focus_neighbour_top = NodePath("../../HeavyKick/Button")
 focus_neighbour_bottom = NodePath("../../ResetToDefault")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 1 )
 text = "Shift"
 
 [node name="ResetToDefault" type="Button" parent="Settings/Panel/ScrollContainer/VBoxContainer/KBControls"]
@@ -642,7 +644,7 @@ focus_neighbour_top = NodePath("../Block/Button")
 focus_neighbour_bottom = NodePath("../../P1ControllerControls/Up/Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 1 )
 custom_constants/hseparation = 0
 text = "Reset to Default"
 
@@ -659,7 +661,7 @@ __meta__ = {
 margin_right = 1808.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Player 1 Controller"
 valign = 1
 
@@ -672,7 +674,7 @@ margin_bottom = 104.0
 margin_right = 902.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Up"
 valign = 1
 
@@ -684,7 +686,7 @@ focus_neighbour_top = NodePath("../../../KBControls/ResetToDefault")
 focus_neighbour_bottom = NodePath("../../Down/Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 1 )
 text = "D-Pad Up"
 
 [node name="Down" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls"]
@@ -696,7 +698,7 @@ margin_bottom = 156.0
 margin_right = 902.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Down"
 valign = 1
 
@@ -708,7 +710,7 @@ focus_neighbour_top = NodePath("../../Up/Button")
 focus_neighbour_bottom = NodePath("../../Left/Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 1 )
 text = "D-Pad Down"
 
 [node name="Left" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls"]
@@ -720,7 +722,7 @@ margin_bottom = 208.0
 margin_right = 902.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Left"
 valign = 1
 
@@ -732,7 +734,7 @@ focus_neighbour_top = NodePath("../../Down/Button")
 focus_neighbour_bottom = NodePath("../../Right/Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 1 )
 text = "D-Pad Left"
 
 [node name="Right" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls"]
@@ -744,7 +746,7 @@ margin_bottom = 260.0
 margin_right = 902.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Right"
 valign = 1
 
@@ -756,7 +758,7 @@ focus_neighbour_top = NodePath("../../Left/Button")
 focus_neighbour_bottom = NodePath("../../LightPunch/Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 1 )
 text = "D-Pad Right"
 
 [node name="LightPunch" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls"]
@@ -768,7 +770,7 @@ margin_bottom = 312.0
 margin_right = 902.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Light Punch"
 valign = 1
 
@@ -780,7 +782,7 @@ focus_neighbour_top = NodePath("../../Right/Button")
 focus_neighbour_bottom = NodePath("../../HeavyPunch/Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 1 )
 text = "X/Square"
 
 [node name="HeavyPunch" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls"]
@@ -792,7 +794,7 @@ margin_bottom = 364.0
 margin_right = 902.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Heavy Punch"
 valign = 1
 
@@ -804,7 +806,7 @@ focus_neighbour_top = NodePath("../../LightPunch/Button")
 focus_neighbour_bottom = NodePath("../../LightKick/Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 1 )
 text = "Y/Triangle"
 
 [node name="LightKick" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls"]
@@ -816,7 +818,7 @@ margin_bottom = 416.0
 margin_right = 902.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Light Kick"
 valign = 1
 
@@ -828,7 +830,7 @@ focus_neighbour_top = NodePath("../../HeavyPunch/Button")
 focus_neighbour_bottom = NodePath("../../HeavyKick/Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 1 )
 text = "A/X"
 
 [node name="HeavyKick" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls"]
@@ -840,7 +842,7 @@ margin_bottom = 468.0
 margin_right = 902.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Heavy Kick"
 valign = 1
 
@@ -852,7 +854,7 @@ focus_neighbour_top = NodePath("../../LightKick/Button")
 focus_neighbour_bottom = NodePath("../../Block/Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 1 )
 text = "B/Circle"
 
 [node name="Block" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls"]
@@ -864,7 +866,7 @@ margin_bottom = 520.0
 margin_right = 902.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Block"
 valign = 1
 
@@ -876,7 +878,7 @@ focus_neighbour_top = NodePath("../../HeavyKick/Button")
 focus_neighbour_bottom = NodePath("../../ResetToDefault")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 1 )
 text = "Right Trigger/R2"
 
 [node name="ResetToDefault" type="Button" parent="Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls"]
@@ -887,7 +889,7 @@ focus_neighbour_top = NodePath("../Block/Button")
 focus_neighbour_bottom = NodePath("../../P2ControllerControls/Up/Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 1 )
 custom_constants/hseparation = 0
 text = "Reset to Default"
 
@@ -904,7 +906,7 @@ __meta__ = {
 margin_right = 1808.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Player 2 Controller"
 valign = 1
 
@@ -917,7 +919,7 @@ margin_bottom = 104.0
 margin_right = 902.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Up"
 valign = 1
 
@@ -929,7 +931,7 @@ focus_neighbour_top = NodePath("../../../P1ControllerControls/ResetToDefault")
 focus_neighbour_bottom = NodePath("../../Down/Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 1 )
 text = "D-Pad Up"
 
 [node name="Down" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls"]
@@ -941,7 +943,7 @@ margin_bottom = 156.0
 margin_right = 902.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Down"
 valign = 1
 
@@ -953,7 +955,7 @@ focus_neighbour_top = NodePath("../../Up/Button")
 focus_neighbour_bottom = NodePath("../../Left/Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 1 )
 text = "D-Pad Down"
 
 [node name="Left" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls"]
@@ -965,7 +967,7 @@ margin_bottom = 208.0
 margin_right = 902.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Left"
 valign = 1
 
@@ -977,7 +979,7 @@ focus_neighbour_top = NodePath("../../Down/Button")
 focus_neighbour_bottom = NodePath("../../Right/Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 1 )
 text = "D-Pad Left"
 
 [node name="Right" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls"]
@@ -989,7 +991,7 @@ margin_bottom = 260.0
 margin_right = 902.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Right"
 valign = 1
 
@@ -1001,7 +1003,7 @@ focus_neighbour_top = NodePath("../../Left/Button")
 focus_neighbour_bottom = NodePath("../../LightPunch/Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 1 )
 text = "D-Pad Right"
 
 [node name="LightPunch" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls"]
@@ -1013,7 +1015,7 @@ margin_bottom = 312.0
 margin_right = 902.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Light Punch"
 valign = 1
 
@@ -1025,7 +1027,7 @@ focus_neighbour_top = NodePath("../../Right/Button")
 focus_neighbour_bottom = NodePath("../../HeavyPunch/Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 1 )
 text = "X/Square"
 
 [node name="HeavyPunch" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls"]
@@ -1037,7 +1039,7 @@ margin_bottom = 364.0
 margin_right = 902.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Heavy Punch"
 valign = 1
 
@@ -1049,7 +1051,7 @@ focus_neighbour_top = NodePath("../../LightPunch/Button")
 focus_neighbour_bottom = NodePath("../../LightKick/Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 1 )
 text = "Y/Triangle"
 
 [node name="LightKick" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls"]
@@ -1061,7 +1063,7 @@ margin_bottom = 416.0
 margin_right = 902.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Light Kick"
 valign = 1
 
@@ -1073,7 +1075,7 @@ focus_neighbour_top = NodePath("../../HeavyPunch/Button")
 focus_neighbour_bottom = NodePath("../../HeavyKick/Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 1 )
 text = "A/X"
 
 [node name="HeavyKick" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls"]
@@ -1085,7 +1087,7 @@ margin_bottom = 468.0
 margin_right = 902.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Heavy Kick"
 valign = 1
 
@@ -1097,7 +1099,7 @@ focus_neighbour_top = NodePath("../../LightKick/Button")
 focus_neighbour_bottom = NodePath("../../Block/Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 1 )
 text = "B/Circle"
 
 [node name="Block" type="HBoxContainer" parent="Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls"]
@@ -1109,7 +1111,7 @@ margin_bottom = 520.0
 margin_right = 902.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Block"
 valign = 1
 
@@ -1121,7 +1123,7 @@ focus_neighbour_top = NodePath("../../HeavyKick/Button")
 focus_neighbour_bottom = NodePath("../../ResetToDefault")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 1 )
 text = "Right Trigger/R2"
 
 [node name="ResetToDefault" type="Button" parent="Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls"]
@@ -1132,9 +1134,30 @@ focus_neighbour_top = NodePath("../Block/Button")
 focus_neighbour_bottom = NodePath("../../../../../SettingsCategories")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 1 )
 custom_constants/hseparation = 0
 text = "Reset to Default"
+
+[node name="HSeparator" type="HSeparator" parent="Settings"]
+margin_top = 931.0
+margin_right = 1820.0
+margin_bottom = 934.0
+custom_styles/separator = SubResource( 6 )
+custom_constants/separation = 3
+
+[node name="BackButton" type="Button" parent="Settings"]
+margin_top = 938.0
+margin_right = 1820.0
+margin_bottom = 980.0
+focus_neighbour_top = NodePath("../Borderless/BorderlessCheckBox")
+focus_neighbour_bottom = NodePath("../MasterVolume/MasterSlider")
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+custom_constants/hseparation = 0
+text = "Back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="item_selected" from="Settings/Panel/ScrollContainer/VBoxContainer/Resolution/ResolutionOptions" to="." method="_on_ResolutionOptions_item_selected"]
 [connection signal="item_selected" from="Settings/Panel/ScrollContainer/VBoxContainer/FramerateLimit/FramerateOptions" to="." method="_on_FramerateOptions_item_selected"]
 [connection signal="toggled" from="Settings/Panel/ScrollContainer/VBoxContainer/Vsync/VsyncCheckBox" to="." method="_on_VsyncCheckBox_toggled"]
@@ -1178,3 +1201,4 @@ text = "Reset to Default"
 [connection signal="pressed" from="Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls/HeavyKick/Button" to="." method="_on_P2_HeavyKick_Button_pressed"]
 [connection signal="pressed" from="Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls/Block/Button" to="." method="_on_P2_Block_Button_pressed"]
 [connection signal="pressed" from="Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls/ResetToDefault" to="." method="_on_P2_ResetToDefault_pressed"]
+[connection signal="pressed" from="Settings/BackButton" to="." method="_on_BackButton_pressed"]

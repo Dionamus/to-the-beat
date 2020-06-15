@@ -1,5 +1,8 @@
 extends MarginContainer
 
+export(NodePath) var previous_menu
+export(NodePath) var previous_focus
+
 # Shortening node paths to variables.
 onready var resolution = $Settings/Panel/ScrollContainer/VBoxContainer/Resolution/ResolutionOptions
 onready var framerate = $Settings/Panel/ScrollContainer/VBoxContainer/FramerateLimit/FramerateOptions
@@ -563,3 +566,8 @@ func _on_P2_Block_Button_pressed():
 	p2_block.text = "Press a key to rebind..."
 	button_to_change = p2_block
 	can_change_key = true
+
+func _on_BackButton_pressed():
+	visible = false
+	get_node(previous_menu).visible = true
+	get_node(previous_focus).grab_focus()
