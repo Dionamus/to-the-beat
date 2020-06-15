@@ -74,7 +74,7 @@ func _ready():
 	
 	resolution.grab_focus()
 
-func _unhandled_input(event):
+func _input(event):
 	# Fixes a bug where trying to rebind an action to the bottom face button
 	# (e.g.A on an Xbox controller or X on a Playstation controller) presses 
 	# the binding button again, without assigning the new action. This
@@ -208,10 +208,10 @@ func _on_ResolutionOptions_item_selected(ID):
 		var resolution_width = OS.get_screen_size(0).x
 		var resolution_height = OS.get_screen_size(0).y
 		if result\
-			and result.strings[1] <= resolution_width\
-			and result.strings[2] <= resolution_height:
-					resolution_width = result.strings[1]
-					resolution_height = result.strings[2]
+			and float(result.strings[1]) <= resolution_width\
+			and float(result.strings[2]) <= resolution_height:
+					resolution_width = float(result.strings[1])
+					resolution_height = float(result.strings[2])
 					OS.window_size = Vector2(resolution_width, resolution_height)
 					get_tree().get_root().size = Vector2(resolution_width, resolution_height)
 		else:
