@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sprite_red_rectangle_idle_03.png-3742de83616af1ac8df6d7ee30964901.stex"
+path="res://.import/sprite_red_rectangle.png-f79dae7ace2c34a50f0d1de1bbde008a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://characters/base/idle-animations/sprite_red_rectangle_idle_03.png"
-dest_files=[ "res://.import/sprite_red_rectangle_idle_03.png-3742de83616af1ac8df6d7ee30964901.stex" ]
+source_file="res://characters/base/idle-animations/sprite_red_rectangle.png"
+dest_files=[ "res://.import/sprite_red_rectangle.png-f79dae7ace2c34a50f0d1de1bbde008a.stex" ]
 
 [params]
 
