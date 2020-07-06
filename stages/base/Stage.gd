@@ -138,7 +138,7 @@ func _unhandled_input(_event):
 					player1.grid_number += 1
 					set_position(player1, player1.grid_number)
 					player1.is_allowed_input = false
-		if Input.is_action_just_pressed("p1_front_punch"):
+		if Input.is_action_just_pressed("p1_light_punch"):
 			if player1.grid_number == player2.grid_number - 1\
 			or player1.grid_number == player2.grid_number + 1:
 				if (tempo_control.frame <= end_frame\
@@ -150,7 +150,7 @@ func _unhandled_input(_event):
 			else:
 				# This will change in a future update
 				pass
-		if Input.is_action_just_pressed("p1_back_punch"):
+		if Input.is_action_just_pressed("p1_heavy_punch"):
 			if player1.grid_number == player2.grid_number - 1\
 			or player1.grid_number == player2.grid_number + 1:
 				if (tempo_control.frame <= end_frame\
@@ -162,7 +162,7 @@ func _unhandled_input(_event):
 			else:
 				# This will change in a future update
 				pass
-		if Input.is_action_just_pressed("p1_front_kick"):
+		if Input.is_action_just_pressed("p1_light_kick"):
 			if player1.grid_number == player2.grid_number - 1\
 			or player1.grid_number == player2.grid_number + 1:
 				if (tempo_control.frame <= end_frame\
@@ -174,7 +174,7 @@ func _unhandled_input(_event):
 			else:
 				# This will change in a future update
 				pass
-		if Input.is_action_just_pressed("p1_rear_kick"):
+		if Input.is_action_just_pressed("p1_heavy_kick"):
 			if player1.grid_number == player2.grid_number - 1\
 			or player1.grid_number == player2.grid_number + 1:
 				if (tempo_control.frame <= end_frame\
@@ -210,7 +210,7 @@ func _unhandled_input(_event):
 					player2.grid_number += 1
 					set_position(player2, player2.grid_number)
 					player2.is_allowed_input = false
-		if Input.is_action_just_pressed("p2_front_punch"):
+		if Input.is_action_just_pressed("p2_light_punch"):
 			if player2.grid_number == player1.grid_number - 1\
 			or player2.grid_number == player1.grid_number + 1:
 				if (tempo_control.frame <= end_frame\
@@ -222,7 +222,7 @@ func _unhandled_input(_event):
 			else:
 				# This will change in a future update
 				pass
-		if Input.is_action_just_pressed("p2_back_punch"):
+		if Input.is_action_just_pressed("p2_heavy_punch"):
 			if player2.grid_number == player1.grid_number - 1\
 			or player2.grid_number == player1.grid_number + 1:
 				if (tempo_control.frame <= end_frame\
@@ -234,7 +234,7 @@ func _unhandled_input(_event):
 			else:
 				# This will change in a future update
 				pass
-		if Input.is_action_just_pressed("p2_front_kick"):
+		if Input.is_action_just_pressed("p2_light_kick"):
 			if player2.grid_number == player1.grid_number - 1\
 			or player2.grid_number == player1.grid_number + 1:
 				if (tempo_control.frame <= end_frame\
@@ -246,7 +246,7 @@ func _unhandled_input(_event):
 			else:
 				# This will change in a future update
 				pass
-		if Input.is_action_just_pressed("p2_rear_kick"):
+		if Input.is_action_just_pressed("p2_heavy_kick"):
 			if player2.grid_number == player1.grid_number - 1\
 			or player2.grid_number == player1.grid_number + 1:
 				if (tempo_control.frame <= end_frame\
