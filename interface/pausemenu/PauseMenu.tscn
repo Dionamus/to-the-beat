@@ -48,22 +48,26 @@ valign = 1
 margin_top = 56.0
 margin_right = 380.0
 margin_bottom = 114.0
-focus_neighbour_bottom = NodePath("../QuitToMainMenuButton")
+focus_neighbour_bottom = NodePath("../OptionsButton")
 custom_fonts/font = SubResource( 2 )
 text = "Resume Game"
 
-[node name="OptionsButton" type="Button" parent="Menu/LabelAndButtons"]
+[node name="SettingsButton" type="Button" parent="Menu/LabelAndButtons"]
 margin_top = 118.0
 margin_right = 380.0
 margin_bottom = 176.0
+focus_neighbour_top = NodePath("../ResumeGameButton")
+focus_neighbour_bottom = NodePath("../QuitToCharacterSelectButton")
 custom_fonts/font = SubResource( 2 )
-text = "Options"
+text = "Settings"
 
 [node name="QuitToCharacterSelectButton" type="Button" parent="Menu/LabelAndButtons"]
 visible = false
 margin_top = 118.0
 margin_right = 488.0
 margin_bottom = 176.0
+focus_neighbour_top = NodePath("../OptionsButton")
+focus_neighbour_bottom = NodePath("../QuitToMainMenuButton")
 custom_fonts/font = SubResource( 2 )
 text = "Quit to Character Select"
 
@@ -79,6 +83,7 @@ margin_top = 242.0
 margin_right = 380.0
 margin_bottom = 300.0
 focus_neighbour_top = NodePath("../QuitToMainMenuButton")
+focus_neighbour_bottom = NodePath("../ResumeGameButton")
 custom_fonts/font = SubResource( 2 )
 text = "Quit to Desktop"
 
@@ -96,7 +101,7 @@ visible = false
 previous_menu = NodePath("../Menu")
 previous_focus = NodePath("../Menu/LabelAndButtons/ResumeGameButton")
 [connection signal="pressed" from="Menu/LabelAndButtons/ResumeGameButton" to="." method="_on_ResumeGameButton_pressed"]
-[connection signal="pressed" from="Menu/LabelAndButtons/OptionsButton" to="." method="_on_OptionsButton_pressed"]
+[connection signal="pressed" from="Menu/LabelAndButtons/SettingsButton" to="." method="_on_SettingsButton_pressed"]
 [connection signal="pressed" from="Menu/LabelAndButtons/QuitToCharacterSelectButton" to="." method="_on_QuitToCharacterSelectButton_pressed"]
 [connection signal="pressed" from="Menu/LabelAndButtons/QuitToMainMenuButton" to="." method="_on_QuitToMainMenuButton_pressed"]
 [connection signal="pressed" from="Menu/LabelAndButtons/QuitToDesktopButton" to="." method="_on_QuitToDesktopButton_pressed"]

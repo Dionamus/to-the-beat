@@ -19,7 +19,7 @@ func _on_ResumeGameButton_pressed():
 	get_tree().paused = false
 
 # Currently not implemented.
-func _on_OptionsButton_pressed():
+func _on_SettingsButton_pressed():
 	$Menu.visible = false
 	$SettingsMenu.visible = true
 	$SettingsMenu/Settings/Panel/ScrollContainer/VBoxContainer/Resolution/ResolutionOptions.grab_focus()
