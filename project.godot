@@ -29,10 +29,6 @@ mix_rate=48000
 
 Settings="*res://Settings.gd"
 
-[debug]
-
-settings/stdout/verbose_stdout=true
-
 [display]
 
 window/size/width=1920
