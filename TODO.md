@@ -154,6 +154,7 @@
     * ~~Have the buttons get their text from the InputMap.~~
     * ~~Get the rebinding functionality working.~~
 * ~~Get controls working.~~
+* ~~Get config validation working correctly.~~
 * Style it.
 
 ### ControlSwap.tscn (not yet added)
