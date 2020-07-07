@@ -157,9 +157,9 @@
 * ~~Get config validation working correctly.~~
 * Style it.
 
-### ControlSwap.tscn (not yet added)
+### DeviceSwap.tscn
 
-* Add the UI.
+* ~~Add the (basic) UI.~~
 * Add the functionality.
 
 ### CharacterSelect.tscn (not yet added)
