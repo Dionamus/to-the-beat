@@ -4,11 +4,19 @@ extends Control
 func _ready():
 	$Menu/LabelAndButtons/StartGameButton.grab_focus()
 
-# When the "Start Game" button is pressed, change the scene to the main stage.
-# In a future update, this will be replaced by the character select
-# screen.
+# Start the game with one player.
+# FIXME: Load the character select screen once it has been implemented.
 func _on_StartGameButton_pressed():
 	var error = get_tree().change_scene("res://stages/base/Stage.tscn")
+	match error:
+		ERR_CANT_OPEN:
+			printerr("Cannot open the scene to the stage.")
+		ERR_CANT_CREATE:
+			printerr("Cannot instantiate the stage.")
+
+# Start the game with two players.
+func _on_VersusButton_pressed():
+	var error = get_tree().change_scene("res://interface/deviceswap/DeviceSwap.tscn")
 	match error:
 		ERR_CANT_OPEN:
 			printerr("Cannot open the scene to the stage.")

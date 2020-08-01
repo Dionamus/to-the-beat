@@ -30,9 +30,9 @@ __meta__ = {
 
 [node name="LabelAndButtons" type="VBoxContainer" parent="Menu"]
 margin_left = 799.0
-margin_top = 421.0
+margin_top = 390.0
 margin_right = 1120.0
-margin_bottom = 659.0
+margin_bottom = 690.0
 
 [node name="TitleLabel" type="Label" parent="Menu/LabelAndButtons"]
 margin_right = 321.0
@@ -51,19 +51,28 @@ focus_neighbour_bottom = NodePath("../SettingsButton")
 custom_fonts/font = SubResource( 2 )
 text = "Start Game"
 
-[node name="SettingsButton" type="Button" parent="Menu/LabelAndButtons"]
+[node name="VersusButton" type="Button" parent="Menu/LabelAndButtons"]
 margin_top = 118.0
 margin_right = 321.0
 margin_bottom = 176.0
+focus_neighbour_top = NodePath("../QuitToDesktopButton")
+focus_neighbour_bottom = NodePath("../SettingsButton")
+custom_fonts/font = SubResource( 2 )
+text = "Versus"
+
+[node name="SettingsButton" type="Button" parent="Menu/LabelAndButtons"]
+margin_top = 180.0
+margin_right = 321.0
+margin_bottom = 238.0
 focus_neighbour_top = NodePath("../StartGameButton")
 focus_neighbour_bottom = NodePath("../QuitToDesktopButton")
 custom_fonts/font = SubResource( 2 )
 text = "Settings"
 
 [node name="QuitToDesktopButton" type="Button" parent="Menu/LabelAndButtons"]
-margin_top = 180.0
+margin_top = 242.0
 margin_right = 321.0
-margin_bottom = 238.0
+margin_bottom = 300.0
 focus_neighbour_top = NodePath("../SettingsButton")
 focus_neighbour_bottom = NodePath("../StartGameButton")
 custom_fonts/font = SubResource( 2 )
@@ -83,6 +92,7 @@ visible = false
 previous_menu = NodePath("../Menu")
 previous_focus = NodePath("../Menu/LabelAndButtons/SettingsButton")
 [connection signal="pressed" from="Menu/LabelAndButtons/StartGameButton" to="." method="_on_StartGameButton_pressed"]
+[connection signal="pressed" from="Menu/LabelAndButtons/VersusButton" to="." method="_on_VersusButton_pressed"]
 [connection signal="pressed" from="Menu/LabelAndButtons/SettingsButton" to="." method="_on_SettingsButton_pressed"]
 [connection signal="pressed" from="Menu/LabelAndButtons/QuitToDesktopButton" to="." method="_on_QuitToDesktopButton_pressed"]
 [connection signal="no_quit" from="Menu/QuitConfirmation" to="Menu" method="_on_QuitConfirmation_no_quit"]

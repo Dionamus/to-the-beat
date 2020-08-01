@@ -160,7 +160,9 @@
 ### DeviceSwap.tscn
 
 * ~~Add the (basic) UI.~~
-* Add the functionality.
+* ~~Add the functionality.~~
+* ~~Add it to the main menu.~~
+* Style it.
 
 ### CharacterSelect.tscn (not yet added)
 

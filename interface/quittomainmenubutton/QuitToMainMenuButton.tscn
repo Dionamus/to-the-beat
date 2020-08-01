@@ -13,4 +13,7 @@ margin_bottom = 58.0
 custom_fonts/font = SubResource( 1 )
 text = "Quit to Main Menu"
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="." to="." method="_on_QuitToMainMenuButton_pressed"]
