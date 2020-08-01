@@ -55,37 +55,45 @@ onready var is_stunned = false
 
 onready var is_allowed_input = true
 
+
 func _ready():
 	reset_hp()
+
 
 # Sets the speed of the animations by bpm.
 func set_speed_of_animation_by_BPM(bpm):
 	var new_fps = bpm * default_animation_factor
 	$AnimatedSprite.frames.set_animation_speed("idle", new_fps)
 
+
 # After the character is defeated (or a game begins), restore their HP.
 func reset_hp():
 	hitpoints = max_hitpoints
+
 
 # Not implemented in this scene.
 func _on_Character_win_round():
 	# Play a win round animation.
 	pass
 
+
 # Not implemented in this scene.
 func _on_Character_lose_round():
 	# Play a lose round animation.
 	pass
+
 
 # Not implemented in this scene.
 func _on_Character_lose_game():
 	# Play a lose game animation
 	pass
 
+
 # Not implemented in this scene.
 func _on_Character_win_game():
 	# Play a victory animation.
 	pass
+
 
 # When the character gets hit, deal the amount of damage done and subtract it 
 # from their hitpoints. If they are at or below 0 hitpoints, signal that they
@@ -95,6 +103,7 @@ func _on_Character_is_hit(damage):
 	if hitpoints <= 0:
 		hitpoints = 0
 		emit_signal("lose_round")
+
 
 # When the player hits an opponent, deal the damage to the opponent.
 func _on_Character_hits(damage):
