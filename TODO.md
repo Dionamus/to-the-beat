@@ -52,7 +52,7 @@
   * ~~And their wins.~~
   * ~~And the time of the game.~~
 
-### Character.tscn (COMPLETE (for the capstone))
+### Character.tscn
 
 * ~~Create sprite for player character.~~
 * ~~Make sure players don't go out of bounds on the stage.~~ (The grid prevents
@@ -63,6 +63,7 @@
   * ~~Heavy punch.~~
   * ~~Light kick.~~
   * ~~Heavy kick.~~
+  * More combos.
 
 ## Additional stuff
 
@@ -75,7 +76,6 @@
 * ~~Add "Quit to Desktop" button.~~
   * ~~Program it.~~
 * ~~Get controller controls working.~~
-* Style it.
 
 ### PauseMenu.tscn
 
@@ -92,7 +92,6 @@
 * ~~Add "Quit to Desktop" button.~~
   * ~~Program it.~~
 * ~~Get the controller controls working.~~
-* Style it.
 
 ### WinMenu.tscn
 
@@ -106,7 +105,6 @@
 * ~~Add quit to desktop button.~~
   * ~~Program it.~~
 * ~~Get the controller controls working.~~
-* Style it.
 
 ### QuitConfirmation.tscn
 
@@ -115,7 +113,6 @@
 * ~~Add "No" button.~~
   * ~~Program it.~~
 * ~~Get the controller controls working.~~
-* Style it.
 
 ### SettingsMenu.tscn
 
@@ -155,14 +152,12 @@
     * ~~Get the rebinding functionality working.~~
 * ~~Get controls working.~~
 * ~~Get config validation working correctly.~~
-* Style it.
 
 ### DeviceSwap.tscn
 
 * ~~Add the (basic) UI.~~
 * ~~Add the functionality.~~
 * ~~Add it to the main menu.~~
-* Style it.
 
 ### CharacterSelect.tscn (not yet added)
 
@@ -172,16 +167,14 @@
 * Add character roster (with only the red rectangle).
 * Get controls working for both players.
 * Make it to where after both players have selected their characters, prompt
-  the players to start the game (whoever gets to start the game depends on the
-  Menu Control Mode).
-* Style it.
+  the players to go to the stage select screen (whoever gets to do so depends
+  on the Menu Control Mode).
 
 ### StageSelect.tscn (not yet added)
 
 * Add stage list.
 * Add stage preview.
 * Get controller controls working.
-* Style it.
 
 ### MusicSelect.tscn (not yet added)
 
@@ -190,4 +183,15 @@
   it really matters since matches are 99 seconds long), places to buy/listen (e.g.
   Spotify, iTunes, Bandcamp, Deezer, Beatport, YouTube, etc.)).
 * Get controller controls working.
-* Style it.
+
+## Menu Styling Checklist
+
+* MainMenu.tscn
+* PauseMenu.tscn
+* WinMenu.tscn
+* QuitConfirmation.tscn
+* SettingsMenu.tscn
+* DeviceSwap.tscn
+* CharacterSelect.tscn
+* StageSelect.tscn
+* MusicSelect.tscn
