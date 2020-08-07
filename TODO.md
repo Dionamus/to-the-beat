@@ -195,3 +195,30 @@
 * CharacterSelect.tscn
 * StageSelect.tscn
 * MusicSelect.tscn
+
+## Reformatting
+
+Adhere to this guide: <https://www.gdquest.com/docs/guidelines/best-practices/godot-gdscript/>
+
+* ~~Leave 2 blanks between functions.~~
+* Signals should be named in past tense and below the `extend` keyword of every
+  script.
+* Prefix pseudo-private variables with an `_`.
+* Rank variables in this order: enums, constants, exported, public,
+  pseudo-private, onready. Separate these types with a blank line.
+* Use static types where applicable for better type hinting with autocompletion,
+  and use type inference when possible (except when `Variant`s are desirable).
+* Write docstrings.
+* Create a `src` folder and put the scripts and scenes in them. Name the folders
+  inside them in `PascalCase` and update references when changed.
+* Create an `assets` folder and move all assets to there.
+  * Create a `fonts` folder and move the fonts in there. Do not rename the
+    fonts.
+  * Create a `stagebackgrounds` folder and move the single stage background in
+    there.
+  * Move the music folder into the `assets` folder.
+  * Create a `characterspritesheets` folder and move the character spritesheets
+    in there.
+  * Create a `hud` folder and move all HUD assets to there.
+  * Update all references when changed.
+* Get rid of the (p1_|p2_)one_win assets. The `one_win` assets are used instead.
