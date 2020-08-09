@@ -253,4 +253,4 @@ Adhere to this guide: <https://www.gdquest.com/docs/guidelines/best-practices/go
   * ~~Create a `interface` folder and move all HUD assets to there.~~
   * ~~Update all references when changed.~~
 * ~~Get rid of the (p1_|p2_)one_win assets. The `one_win` assets are used instead.~~
-* Fix bug related to reformatting if needed.
+* ~~Fix bug related to reformatting if needed.~~
