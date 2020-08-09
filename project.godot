@@ -8,15 +8,20 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Area2D",
+"class": "Character",
+"language": "GDScript",
+"path": "res://src/Character.gd"
+} ]
 _global_script_class_icons={
-
+"Character": ""
 }
 
 [application]
 
 config/name="To the Beat"
-run/main_scene="res://interface/mainmenu/MainMenu.tscn"
+run/main_scene="res://src/MainMenu.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="To the Beat"
 config/icon="res://icon.png"
@@ -27,7 +32,7 @@ mix_rate=48000
 
 [autoload]
 
-Settings="*res://Settings.gd"
+Settings="*res://src/Settings.gd"
 
 [display]
 

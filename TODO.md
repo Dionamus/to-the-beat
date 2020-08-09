@@ -196,6 +196,16 @@
 * StageSelect.tscn
 * MusicSelect.tscn
 
+## SharedVariables.gd (not yet added)
+
+* Add `inputs` and `inputs_snake` from the scripts they are contained in.
+* Add information that will be used in the stage once submitted.
+  * Song information.
+    * Title.
+    * Tempo.
+  * Stage background
+  * Characters.
+
 ## Reformatting
 
 Adhere to this guide: <https://www.gdquest.com/docs/guidelines/best-practices/godot-gdscript/>
@@ -203,11 +213,33 @@ Adhere to this guide: <https://www.gdquest.com/docs/guidelines/best-practices/go
 * ~~Leave 2 blanks between functions.~~
 * Signals should be named in past tense and below the `extend` keyword of every
   script.
-* Prefix pseudo-private variables with an `_`.
-* Rank variables in this order: enums, constants, exported, public,
-  pseudo-private, onready. Separate these types with a blank line.
-* Use static types where applicable for better type hinting with autocompletion,
-  and use type inference when possible (except when `Variant`s are desirable).
+* ~~Prefix pseudo-private variables with `_`.~~
+  * ~~In `Stage.gd`.~~
+  * ~~In `Character.gd`.~~
+  * ~~In `SettingsMenu.gd`.~~
+  * ~~In `Settings.gd`.~~
+  * ~~In `DeviceSwap.gd`.~~
+* ~~Rank variables in this order: enums, constants, exported, public,
+  pseudo-private, onready. Separate these types with a blank line.~~
+  * ~~In `Stage.gd`.~~
+  * ~~In `FollowCamera.gd`.~~
+  * ~~In `Character.gd`.~~
+  * ~~In `SettingsMenu.gd`.~~
+  * ~~In `Settings.gd`.~~
+  * ~~In `DeviceSwap.gd`.~~
+* ~~Use static types where applicable for better type hinting with autocompletion,
+  and use type inference when possible (except when `Variant`s are desirable).~~
+  * ~~In `Stage.gd`.~~
+  * ~~In `FollowCamera.gd`.~~
+  * ~~In `Character.gd`.~~
+  * ~~In `SettingsMenu.gd`.~~
+  * ~~In `Settings.gd`.~~
+  * ~~In `DeviceSwap.gd`.~~
+  * ~~In `MainMenu.gd`.~~
+  * ~~In `PauseMenu.gd`.~~
+  * ~~In `QuitConfirm.gd`.~~
+  * ~~In `QuitToMainMenuButton.gd`.~~
+  * ~~In `WinMenu.gd`.~~
 * Write docstrings.
 * Create a `src` folder and put the scripts and scenes in them. Name the folders
   inside them in `PascalCase` and update references when changed.
@@ -221,4 +253,4 @@ Adhere to this guide: <https://www.gdquest.com/docs/guidelines/best-practices/go
     in there.
   * Create a `hud` folder and move all HUD assets to there.
   * Update all references when changed.
-* Get rid of the (p1_|p2_)one_win assets. The `one_win` assets are used instead.
+* ~~Get rid of the (p1_|p2_)one_win assets. The `one_win` assets are used instead.~~

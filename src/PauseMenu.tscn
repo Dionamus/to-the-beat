@@ -1,0 +1,108 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://src/PauseMenu.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/Roboto-Bold.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://src/QuitToMainMenuButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/QuitConfirmation.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/SettingsMenu.tscn" type="PackedScene" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 44
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 44
+font_data = ExtResource( 2 )
+
+[node name="PauseMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Menu" type="CenterContainer" parent="."]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelAndButtons" type="VBoxContainer" parent="Menu"]
+margin_left = 770.0
+margin_top = 390.0
+margin_right = 1150.0
+margin_bottom = 690.0
+
+[node name="GamePausedLabel" type="Label" parent="Menu/LabelAndButtons"]
+margin_right = 380.0
+margin_bottom = 52.0
+custom_fonts/font = SubResource( 1 )
+text = "Game Paused"
+align = 1
+valign = 1
+
+[node name="ResumeGameButton" type="Button" parent="Menu/LabelAndButtons"]
+margin_top = 56.0
+margin_right = 380.0
+margin_bottom = 114.0
+focus_neighbour_bottom = NodePath("../OptionsButton")
+custom_fonts/font = SubResource( 2 )
+text = "Resume Game"
+
+[node name="SettingsButton" type="Button" parent="Menu/LabelAndButtons"]
+margin_top = 118.0
+margin_right = 380.0
+margin_bottom = 176.0
+focus_neighbour_top = NodePath("../ResumeGameButton")
+focus_neighbour_bottom = NodePath("../QuitToCharacterSelectButton")
+custom_fonts/font = SubResource( 2 )
+text = "Settings"
+
+[node name="QuitToCharacterSelectButton" type="Button" parent="Menu/LabelAndButtons"]
+visible = false
+margin_top = 118.0
+margin_right = 488.0
+margin_bottom = 176.0
+focus_neighbour_top = NodePath("../OptionsButton")
+focus_neighbour_bottom = NodePath("../QuitToMainMenuButton")
+custom_fonts/font = SubResource( 2 )
+text = "Quit to Character Select"
+
+[node name="QuitToMainMenuButton" parent="Menu/LabelAndButtons" instance=ExtResource( 3 )]
+margin_top = 180.0
+margin_bottom = 238.0
+focus_neighbour_top = NodePath("../ResumeGameButton")
+focus_neighbour_bottom = NodePath("../QuitToDesktopButton")
+script = null
+
+[node name="QuitToDesktopButton" type="Button" parent="Menu/LabelAndButtons"]
+margin_top = 242.0
+margin_right = 380.0
+margin_bottom = 300.0
+focus_neighbour_top = NodePath("../QuitToMainMenuButton")
+focus_neighbour_bottom = NodePath("../ResumeGameButton")
+custom_fonts/font = SubResource( 2 )
+text = "Quit to Desktop"
+
+[node name="QuitConfirmation" parent="Menu" instance=ExtResource( 4 )]
+visible = false
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 560.0
+margin_top = 483.0
+margin_right = 1360.0
+margin_bottom = 597.0
+
+[node name="SettingsMenu" parent="." instance=ExtResource( 5 )]
+visible = false
+previous_menu = NodePath("../Menu")
+previous_focus = NodePath("../Menu/LabelAndButtons/ResumeGameButton")
+[connection signal="pressed" from="Menu/LabelAndButtons/ResumeGameButton" to="." method="_on_ResumeGameButton_pressed"]
+[connection signal="pressed" from="Menu/LabelAndButtons/SettingsButton" to="." method="_on_SettingsButton_pressed"]
+[connection signal="pressed" from="Menu/LabelAndButtons/QuitToCharacterSelectButton" to="." method="_on_QuitToCharacterSelectButton_pressed"]
+[connection signal="pressed" from="Menu/LabelAndButtons/QuitToMainMenuButton" to="." method="_on_QuitToMainMenuButton_pressed"]
+[connection signal="pressed" from="Menu/LabelAndButtons/QuitToDesktopButton" to="." method="_on_QuitToDesktopButton_pressed"]
+[connection signal="did_not_quit" from="Menu/QuitConfirmation" to="." method="_on_QuitConfirmation_did_not_quit"]

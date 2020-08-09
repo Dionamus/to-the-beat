@@ -1,0 +1,76 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://src/WinMenu.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/Roboto-Bold.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://src/QuitToMainMenuButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/QuitConfirmation.tscn" type="PackedScene" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 44
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 44
+font_data = ExtResource( 2 )
+
+[node name="WinMenu" type="CenterContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WinLabelAndButtons" type="VBoxContainer" parent="."]
+margin_left = 770.0
+margin_top = 421.0
+margin_right = 1150.0
+margin_bottom = 659.0
+
+[node name="WinLabel" type="Label" parent="WinLabelAndButtons"]
+margin_right = 380.0
+margin_bottom = 52.0
+custom_fonts/font = SubResource( 1 )
+text = "Player x wins!"
+align = 1
+valign = 1
+
+[node name="RematchButton" type="Button" parent="WinLabelAndButtons"]
+margin_top = 56.0
+margin_right = 380.0
+margin_bottom = 114.0
+custom_fonts/font = SubResource( 2 )
+text = "Rematch"
+
+[node name="CharacterSelectButton" type="Button" parent="WinLabelAndButtons"]
+visible = false
+margin_top = 118.0
+margin_right = 344.0
+margin_bottom = 176.0
+custom_fonts/font = SubResource( 2 )
+text = "Character Select"
+
+[node name="QuitToMainMenuButton" parent="WinLabelAndButtons" instance=ExtResource( 3 )]
+margin_top = 118.0
+margin_bottom = 176.0
+focus_neighbour_bottom = NodePath("../QuitToDesktop")
+
+[node name="QuitToDesktop" type="Button" parent="WinLabelAndButtons"]
+margin_top = 180.0
+margin_right = 380.0
+margin_bottom = 238.0
+focus_neighbour_top = NodePath("../QuitToMainMenuButton")
+custom_fonts/font = SubResource( 2 )
+text = "Quit to Desktop"
+
+[node name="QuitConfirmation" parent="." instance=ExtResource( 4 )]
+visible = false
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 560.0
+margin_top = 483.0
+margin_right = 1360.0
+margin_bottom = 597.0
+[connection signal="pressed" from="WinLabelAndButtons/RematchButton" to="." method="_on_RematchButton_pressed"]
+[connection signal="pressed" from="WinLabelAndButtons/QuitToDesktop" to="." method="_on_QuitToDesktop_pressed"]
+[connection signal="did_not_quit" from="QuitConfirmation" to="." method="_on_QuitConfirmation_did_not_quit"]
