@@ -6,7 +6,7 @@ func _on_QuitToMainMenuButton_pressed() -> void:
 	for input in Settings.settings["input"].keys():
 		ProjectSettings.set_setting("input/" + input, Settings.settings["input"][input])
 
-	var error = get_tree().change_scene("res://interface/mainmenu/MainMenu.tscn")
+	var error = get_tree().change_scene("res://src/MainMenu.tscn")
 	match error:
 		ERR_CANT_OPEN:
 			printerr("Cannot open the scene to the main menu.")

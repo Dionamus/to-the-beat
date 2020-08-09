@@ -9,7 +9,7 @@ func _ready() -> void:
 # Start the game with one player.
 # FIXME: Load the character select screen once it has been implemented.
 func _on_StartGameButton_pressed() -> void:
-	var error = get_tree().change_scene("res://stages/base/Stage.tscn")
+	var error = get_tree().change_scene("res://src/Stage.tscn")
 	match error:
 		ERR_CANT_OPEN:
 			printerr("Cannot open the scene to the stage.")
@@ -19,7 +19,7 @@ func _on_StartGameButton_pressed() -> void:
 
 # Start the game with two players.
 func _on_VersusButton_pressed() -> void:
-	var error = get_tree().change_scene("res://interface/deviceswap/DeviceSwap.tscn")
+	var error = get_tree().change_scene("res://src/DeviceSwap.tscn")
 	match error:
 		ERR_CANT_OPEN:
 			printerr("Cannot open the scene to the stage.")

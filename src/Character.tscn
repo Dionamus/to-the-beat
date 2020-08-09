@@ -143,7 +143,7 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 31 )
 animation = "idle"
-frame = 18
+frame = 21
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -151,7 +151,7 @@ visible = false
 shape = SubResource( 32 )
 [connection signal="hits" from="." to="." method="_on_Character_hits" binds= [ 0 ]]
 [connection signal="is_hit" from="." to="." method="_on_Character_is_hit"]
-[connection signal="lose_game" from="." to="." method="_on_Character_lose_game"]
-[connection signal="lose_round" from="." to="." method="_on_Character_lose_round"]
-[connection signal="win_game" from="." to="." method="_on_Character_win_game"]
-[connection signal="win_round" from="." to="." method="_on_Character_win_round"]
+[connection signal="lost_game" from="." to="." method="_on_Character_lost_game"]
+[connection signal="lost_round" from="." to="." method="_on_Character_lost_round"]
+[connection signal="won_game" from="." to="." method="_on_Character_won_game"]
+[connection signal="won_round" from="." to="." method="_on_Character_won_round"]

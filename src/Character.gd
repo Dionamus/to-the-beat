@@ -103,7 +103,7 @@ func _on_Character_is_hit(damage: int) -> void:
 	hitpoints -= damage
 	if hitpoints <= 0:
 		hitpoints = 0
-		emit_signal("lose_round")
+		emit_signal("lost_round")
 
 
 # When the player hits an opponent, deal the damage to the opponent.

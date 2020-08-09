@@ -36,7 +36,7 @@ onready var _p1_controller_controls := $Settings/Panel/ScrollContainer/VBoxConta
 onready var _p1_up := $Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls/Up/Button
 onready var _p1_down := $Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls/Down/Button
 onready var _p1_left := $Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls/Left/Button
-onready var _p1_right := $Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls/Up/Button
+onready var _p1_right := $Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls/Right/Button
 onready var _p1_light_punch := $Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls/LightPunch/Button
 onready var _p1_heavy_punch := $Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls/HeavyPunch/Button
 onready var _p1_light_kick := $Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls/LightKick/Button
@@ -73,9 +73,9 @@ func _ready() -> void:
 	_sfx_volume.value = AudioServer.get_bus_volume_db(2)
 	_menu_volume.value = AudioServer.get_bus_volume_db(3)
 	_control_mode.selected = Settings.settings["other"]["control_mode"]
-
+	
 	mark_bindings()
-
+	
 	_resolution.grab_focus()
 
 
@@ -85,7 +85,7 @@ func _input(event: InputEvent) -> void:
 	# the binding button again, without assigning the new action. This
 	# variable is set to false at the end of the funciton.
 	get_tree().get_root().handle_input_locally = true
-
+	
 	# Take input for changing bindings.
 	if _can_change_key:
 		# For the keyboard.
@@ -96,7 +96,7 @@ func _input(event: InputEvent) -> void:
 					mark_bindings("kb")
 					_action_string = ""
 					_can_change_key = false
-
+				
 				# Go through with the rebind if the key is not F11 or F12.
 				elif event.scancode != KEY_F11 or event.scancode != KEY_F12:
 					# Delete the previous binding
@@ -104,20 +104,20 @@ func _input(event: InputEvent) -> void:
 						InputMap.action_erase_event(
 							_action_string, InputMap.get_action_list(_action_string)[0]
 						)
-
+					
 					# Check if the new binding was assigned elsewhere.
 					for i in inputs_snake:
 						if InputMap.action_has_event("kb_" + i, event):
 							InputMap.action_erase_event("kb_" + i, event)
-
+					
 					# Add the new binding.
 					InputMap.action_add_event(_action_string, event)
-
+					
 					mark_bindings("kb")
 					_button_to_change = null
 					_action_string = ""
 					_can_change_key = false
-
+		
 		# For Player 1.
 		if _action_string.match("p1_*"):
 			# Cancel the rebind from the keyboard.
@@ -132,7 +132,7 @@ func _input(event: InputEvent) -> void:
 					_button_to_change = null
 					_action_string = ""
 					_can_change_key = false
-
+					
 			if event is InputEventJoypadButton:
 				if event.device == 0:
 					# Cancel the rebind from P1's controller
@@ -146,9 +146,9 @@ func _input(event: InputEvent) -> void:
 						_button_to_change = null
 						_action_string = ""
 						_can_change_key = false
-
+					
 					# Go through with the rebind.
-
+					
 					# Delete the previous binding.
 					if ! InputMap.get_action_list(_action_string).empty():
 						for i in range(0, InputMap.get_action_list(_action_string).size() - 1):
@@ -156,20 +156,20 @@ func _input(event: InputEvent) -> void:
 								InputMap.action_erase_event(
 									_action_string, InputMap.get_action_list(_action_string)[i]
 								)
-
+					
 					# Check if the new binding was assigned elsewhere.
 					for i in inputs_snake:
 						if InputMap.action_has_event("p1_" + i, event):
 							InputMap.action_erase_event("p1_" + i, event)
-
+					
 					# Add the new binding.
 					InputMap.action_add_event(_action_string, event)
-
+					
 					mark_bindings("p1")
 					_button_to_change = null
 					_action_string = ""
 					_can_change_key = false
-
+		
 		# For Player 2.
 		if _action_string.match("p2_*"):
 			# Cancel the rebind.
@@ -180,7 +180,7 @@ func _input(event: InputEvent) -> void:
 				_button_to_change = null
 				_action_string = ""
 				_can_change_key = false
-
+			
 			# Go through with the rebind.
 			if event is InputEventJoypadButton:
 				if event.device == 1:
@@ -191,20 +191,26 @@ func _input(event: InputEvent) -> void:
 								InputMap.action_erase_event(
 									_action_string, InputMap.get_action_list(_action_string)[i]
 								)
-
+					
 					# Check if the new binding was assigned elsewhere.
 					for i in inputs_snake:
 						if InputMap.action_has_event("p2_" + i, event):
 							InputMap.action_erase_event("p2_" + i, event)
-
+					
 					# Add the new binding.
 					InputMap.action_add_event(_action_string, event)
-
+				
 					mark_bindings("p2")
 					_button_to_change = null
 					_action_string = ""
 					_can_change_key = false
-
+	
+	else:
+		if event.button_index == JOY_START:
+			visible = false
+			get_node(previous_menu).visible = true
+			get_node(previous_focus).grab_focus()
+	
 	# Fixes a bug where trying to rebind an action to the bottom face button (e.g.
 	# A on an Xbox controller or X on a Playstation controller) presses the button
 	# again, without assigning the new action
@@ -238,7 +244,7 @@ func _on_ResolutionOptions_item_selected(ID: int) -> void:
 			get_tree().get_root().size = OS.get_screen_size(0)
 			ID = 0
 			_resolution.selected = ID
-
+	
 	Settings.settings["video"]["_resolution"] = _resolution.get_item_text(ID)
 	Settings.settings["video"]["resolution_box"] = ID
 	Settings.save_settings()
@@ -279,23 +285,23 @@ func _on_BorderlessCheckBox_toggled(button_pressed: bool) -> void:
 
 # Resets video settings to their default settings.
 func _on_Video_ResetToDefault_pressed() -> void:
-	for video_setting in Settings.settings["video"].keys():
+	for video_setting in Settings.settings["video"]:
 		Settings.settings["video"][video_setting] = Settings.default_settings["video"][video_setting]
 	Settings.save_settings()
-
+	
 	OS.window_size = OS.get_screen_size(0)
 	get_tree().get_root().size = OS.get_screen_size(0)
 	_resolution.selected = Settings.default_settings["video"]["resolution_box"]
-
+	
 	Engine.target_fps = Settings.default_settings["video"]["framerate_limit"]
 	_framerate.selected = Settings.default_settings["video"]["framerate_limit_box"]
-
+	
 	_vsync.pressed = Settings.default_settings["video"]["vsync"]
 	OS.vsync_enabled = Settings.default_settings["video"]["vsync"]
-
+	
 	_fullscreen.pressed = Settings.default_settings["video"]["fullscreen"]
 	OS.window_fullscreen = Settings.default_settings["video"]["fullscreen"]
-
+	
 	_borderless.pressed = Settings.default_settings["video"]["borderless"]
 	OS.window_borderless = Settings.default_settings["video"]["borderless"]
 
@@ -405,7 +411,7 @@ func _on_ResetAllBindingsToDefault_pressed() -> void:
 		Settings.settings["input"][input] = Settings.default_settings["input"][input]
 		ProjectSettings.set("input/" + input, Settings.default_settings["input"][input])
 	Settings.save_settings()
-
+	
 	mark_bindings()
 
 
@@ -416,7 +422,7 @@ func _on_KB_ResetToDefault_pressed() -> void:
 			Settings.settings["input"][input] = Settings.default_settings["input"][input]
 			ProjectSettings.set("input/" + input, Settings.default_settings["input"][input])
 	Settings.save_settings()
-
+	
 	mark_bindings("kb")
 
 
@@ -427,7 +433,7 @@ func _on_P1_ResetToDefault_pressed() -> void:
 			Settings.settings["input"][input] = Settings.default_settings["input"][input]
 			ProjectSettings.set("input/" + input, Settings.default_settings["input"][input])
 	Settings.save_settings()
-
+	
 	mark_bindings("p1")
 
 
@@ -438,7 +444,7 @@ func _on_P2_ResetToDefault_pressed() -> void:
 			Settings.settings["input"][input] = Settings.default_settings["input"][input]
 			ProjectSettings.set("input/" + input, Settings.default_settings["input"][input])
 	Settings.save_settings()
-
+	
 	mark_bindings("p2")
 
 

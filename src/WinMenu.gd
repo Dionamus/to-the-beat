@@ -18,4 +18,3 @@ func _on_QuitConfirmation_did_not_quit():
 # Starts a new match.
 func _on_RematchButton_pressed():
 	get_tree().reload_current_scene()
-	pass  # Replace with function body.

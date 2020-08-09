@@ -443,14 +443,14 @@ func _on_Player2_won_round() -> void:
 # to have player 2 win the round.
 func _on_Player1_lost_round() -> void:
 	_player1.losses += 1
-	_on_Player2_won_round()
+	_player2.emit_signal("won_round")
 
 
 # When player 2 loses a round, increment their losses and call the method
 # to have player 1 win the round.
 func _on_Player2_lost_round() -> void:
 	_player2.losses += 1
-	_on_Player1_won_round()
+	_player1.emit_signal("won_round")
 
 
 # When the post-win timer times out, if the neither of the players haven't won a

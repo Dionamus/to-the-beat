@@ -32,15 +32,6 @@ func _on_QuitToCharacterSelectButton_pressed() -> void:
 	pass  # Replace with function body.
 
 
-func _on_QuitToMainMenuButton_pressed() -> void:
-	var error = get_tree().change_scene("res://interface/mainmenu/MainMenu.tscn")
-	match error:
-		ERR_CANT_OPEN:
-			printerr("Cannot open the scene to the main menu.")
-		ERR_CANT_CREATE:
-			printerr("Cannot instantiate the stage.")
-
-
 # Hides the pause menu and asks if the user wants to quit to the desktop.
 func _on_QuitToDesktopButton_pressed() -> void:
 	$Menu/LabelAndButtons.visible = false

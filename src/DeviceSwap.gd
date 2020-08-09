@@ -58,7 +58,7 @@ func _input(event: InputEvent) -> void:
 							"input/" + input, Settings.settings["input"][input]
 						)
 
-					var error = get_tree().change_scene("res://interface/mainmenu/MainMenu.tscn")
+					var error = get_tree().change_scene("res://src/MainMenu.tscn")
 					match error:
 						ERR_CANT_OPEN:
 							printerr("Cannot open the scene to the main menu.")
@@ -67,7 +67,7 @@ func _input(event: InputEvent) -> void:
 				# Enter the main stage. (FIXME: Enter the character selection
 				# menu once it has been implemented.)
 				elif _ready_button.visible and event.scancode == KEY_ENTER:
-					var error = get_tree().change_scene("res://stages/base/Stage.tscn")
+					var error = get_tree().change_scene("res://src/Stage.tscn")
 					match error:
 						ERR_CANT_OPEN:
 							printerr("Cannot open the scene to the stage.")
@@ -105,7 +105,7 @@ func _input(event: InputEvent) -> void:
 							)
 
 						var error = get_tree().change_scene(
-							"res://interface/mainmenu/MainMenu.tscn"
+							"res://src/MainMenu.tscn"
 						)
 						match error:
 							ERR_CANT_OPEN:
@@ -115,7 +115,7 @@ func _input(event: InputEvent) -> void:
 					# Enter the main stage. (FIXME: Enter the character selection
 					# menu once it has been implemented.)
 					elif _ready_button.visible and event.button_index == JOY_START:
-						var error = get_tree().change_scene("res://stages/base/Stage.tscn")
+						var error = get_tree().change_scene("res://src/Stage.tscn")
 						match error:
 							ERR_CANT_OPEN:
 								printerr("Cannot open the scene to the stage.")
@@ -162,7 +162,7 @@ func _input(event: InputEvent) -> void:
 								)
 
 							var error = get_tree().change_scene(
-								"res://interface/mainmenu/MainMenu.tscn"
+								"res://src/MainMenu.tscn"
 							)
 							match error:
 								ERR_CANT_OPEN:
@@ -172,7 +172,7 @@ func _input(event: InputEvent) -> void:
 						# Enter the main stage. (FIXME: Enter the character selection
 						# menu once it has been implemented.)
 						elif _ready_button.visible and event.button_index == JOY_START:
-							var error = get_tree().change_scene("res://stages/base/Stage.tscn")
+							var error = get_tree().change_scene("res://src/Stage.tscn")
 							match error:
 								ERR_CANT_OPEN:
 									printerr("Cannot open the scene to the main menu.")
@@ -240,7 +240,7 @@ func _on_InputTimer_timeout() -> void:
 
 
 func _on_ReadyButton_pressed() -> void:
-	var error = get_tree().change_scene("res://stages/base/Stage.tscn")
+	var error = get_tree().change_scene("res://src/Stage.tscn")
 	match error:
 		ERR_CANT_OPEN:
 			printerr("Cannot open the scene to the stage.")
@@ -249,7 +249,7 @@ func _on_ReadyButton_pressed() -> void:
 
 
 func _on_BackButton_pressed() -> void:
-	var error = get_tree().change_scene("res://interface/mainmenu/MainMenu.tscn")
+	var error = get_tree().change_scene("res://src/MainMenu.tscn")
 	match error:
 		ERR_CANT_OPEN:
 			printerr("Cannot open the scene to the main menu.")

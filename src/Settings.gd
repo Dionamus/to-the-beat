@@ -68,7 +68,7 @@ onready var ui_controls = {
 	"ui_right": InputMap.get_action_list("ui_right")
 }
 
-onready var _default_settings = {
+onready var default_settings = {
 	"video":
 	{
 		"resolution": "Native Resolution",
@@ -138,9 +138,9 @@ func _ready() -> void:
 
 # Initialize the default settings.
 func first_time_setup() -> void:
-	for section in _default_settings.keys():
-		for key in _default_settings[section]:
-			config_file.set_value(section, key, _default_settings[section][key])
+	for section in default_settings.keys():
+		for key in default_settings[section]:
+			config_file.set_value(section, key, default_settings[section][key])
 	config_file.save(CONFIG_SAVE_PATH)
 
 
@@ -162,7 +162,7 @@ func load_settings() -> void:
 				for key in settings[section]:
 					# Add new entry if it doesn't exist.
 					if ! config_file.has_section_key(section, key):
-						config_file.set_value(section, key, _default_settings[section][key])
+						config_file.set_value(section, key, default_settings[section][key])
 						config_file.save(CONFIG_SAVE_PATH)
 					settings[section][key] = config_file.get_value(section, key)
 
@@ -201,12 +201,12 @@ func set_video_setting() -> void:
 		else:
 			OS.window_size = OS.get_screen_size(0)
 			get_tree().get_root().size = OS.get_screen_size(0)
-			resolution = _default_settings["video"]["resolution"]
+			resolution = default_settings["video"]["resolution"]
 			settings["video"]["resolution"] = resolution
-			settings["video"]["resolution_box"] = _default_settings["video"]["resolution_box"]
+			settings["video"]["resolution_box"] = default_settings["video"]["resolution_box"]
 			config_file.set_value("video", "resolution", resolution)
 			config_file.set_value(
-				"video", "resolution_box", _default_settings["video"]["resolution_box"]
+				"video", "resolution_box", default_settings["video"]["resolution_box"]
 			)
 			config_file.save(CONFIG_SAVE_PATH)
 
@@ -214,12 +214,12 @@ func set_video_setting() -> void:
 	var framerate = settings["video"]["framerate_limit"]
 	# Validate the config. Set back to default if not valid.
 	if ! (framerate is int) or framerate < 0:
-		framerate = _default_settings["video"]["framerate"]
+		framerate = default_settings["video"]["framerate"]
 		Engine.target_fps = framerate
 		settings["video"]["framerate"] = framerate
-		settings["video"]["framerate_box"] = _default_settings["video"]["framerate_box"]
+		settings["video"]["framerate_box"] = default_settings["video"]["framerate_box"]
 		config_file.set_value("video", "framerate", framerate)
-		config_file.set_value("video", "framerate_box", _default_settings["video"]["framerate_box"])
+		config_file.set_value("video", "framerate_box", default_settings["video"]["framerate_box"])
 		config_file.save(CONFIG_SAVE_PATH)
 	else:
 		Engine.target_fps = framerate
@@ -228,7 +228,7 @@ func set_video_setting() -> void:
 	var vsync = settings["video"]["vsync"]
 	# Validate the config. Set back to default if not valid.
 	if ! (vsync is bool):
-		vsync = _default_settings["video"]["vsync"]
+		vsync = default_settings["video"]["vsync"]
 		OS.vsync_enabled = vsync
 		settings["video"]["vsync"] = vsync
 		config_file.set_value("video", "vsync", vsync)
@@ -240,7 +240,7 @@ func set_video_setting() -> void:
 	var fullscreen = settings["video"]["fullscreen"]
 	# Validate the config. Set back to default if not valid.
 	if ! (fullscreen is bool):
-		fullscreen = _default_settings["video"]["fullscreen"]
+		fullscreen = default_settings["video"]["fullscreen"]
 		OS.window_fullscreen = fullscreen
 		settings["video"]["fullscreen"] = fullscreen
 		config_file.set_value("video", "fullscreen", fullscreen)
@@ -252,7 +252,7 @@ func set_video_setting() -> void:
 	var borderless = settings["video"]["borderless"]
 	# Validate the config. Set back to default if not valid.
 	if ! (borderless is bool):
-		borderless = _default_settings["video"]["borderless"]
+		borderless = default_settings["video"]["borderless"]
 		OS.window_borderless = borderless
 		settings["video"]["borderless"] = borderless
 		config_file.set_value("video", "borderless", borderless)
@@ -266,7 +266,7 @@ func set_audio_settings() -> void:
 	var master_volume = settings["audio"]["master"]
 	# Validate the config. Set back to default if not valid.
 	if ! (master_volume is float):
-		master_volume = _default_settings["audio"]["master"]
+		master_volume = default_settings["audio"]["master"]
 		AudioServer.set_bus_volume_db(0, master_volume)
 		settings["audio"]["master"] = master_volume
 		config_file.set_value("audio", "master", master_volume)
@@ -277,7 +277,7 @@ func set_audio_settings() -> void:
 	var music_volume = settings["audio"]["music"]
 	# Validate the config. Set back to default if not valid.
 	if ! (music_volume is float):
-		music_volume = _default_settings["audio"]["music"]
+		music_volume = default_settings["audio"]["music"]
 		AudioServer.set_bus_volume_db(1, music_volume)
 		settings["audio"]["music"] = music_volume
 		config_file.set_value("audio", "music", music_volume)
@@ -288,7 +288,7 @@ func set_audio_settings() -> void:
 	var sfx_volume = settings["audio"]["sfx"]
 	# Validate the config. Set back to default if not valid.
 	if ! (sfx_volume is float):
-		sfx_volume = _default_settings["audio"]["sfx"]
+		sfx_volume = default_settings["audio"]["sfx"]
 		AudioServer.set_bus_volume_db(2, sfx_volume)
 		settings["audio"]["sfx"] = sfx_volume
 		config_file.set_value("audio", "sfx", sfx_volume)
@@ -299,7 +299,7 @@ func set_audio_settings() -> void:
 	var menu_sfx_volume = settings["audio"]["menu_sfx"]
 	# Validate the config. Set back to default if not valid.
 	if ! (menu_sfx_volume is float):
-		menu_sfx_volume = _default_settings["audio"]["menu_sfx"]
+		menu_sfx_volume = default_settings["audio"]["menu_sfx"]
 		AudioServer.set_bus_volume_db(3, menu_sfx_volume)
 		settings["audio"]["menu_sfx"] = menu_sfx_volume
 		config_file.set_value("audio", "menu_sfx", menu_sfx_volume)
@@ -315,7 +315,7 @@ func set_controls() -> void:
 		# Check the inputs are InputEvents. Otherwise, revert to default.
 		for i in range(0, settings["input"][input].size() - 1):
 			if ! (settings["input"][input][i] is InputEvent):
-				settings["input"][input] = _default_settings["input"][input]
+				settings["input"][input] = default_settings["input"][input]
 				break
 
 		# Check if the keyboard bindings are InputEventKeys and if they have 
@@ -330,7 +330,7 @@ func set_controls() -> void:
 				)
 			)
 		):
-			settings["input"][input] = _default_settings["input"][input]
+			settings["input"][input] = default_settings["input"][input]
 
 		# Check if Player 1's bindings have only one joystick button and motion,
 		# and zero or one keys (in the case of a keyboard player) contained in
@@ -347,20 +347,20 @@ func set_controls() -> void:
 					# Revert to default if so.
 					for j in range(0, settings["input"]["p2" + input.lstrip("p1")].size() - 1):
 						if settings["input"]["p2" + input.lstrip("p1")][j] is InputEventKey:
-							settings["input"]["p2" + input.lstrip("p1")] = _default_settings["input"][input.lstrip(
+							settings["input"]["p2" + input.lstrip("p1")] = default_settings["input"][input.lstrip(
 								"p1"
 							)]
 				elif settings["input"][input][i] is InputEventJoypadButton:
 					buttons += 1
 					if settings["input"][input][i].device != 0:
-						settings["input"][input] = _default_settings["input"][input]
+						settings["input"][input] = default_settings["input"][input]
 				elif settings["input"][input][i] is InputEventJoypadMotion:
 					joystick_motions += 1
 					if settings["input"][input][i].device != 0:
-						settings["input"][input] = _default_settings["input"][input]
+						settings["input"][input] = default_settings["input"][input]
 
 			if buttons != 1 or joystick_motions != 1 or keys != 0 or keys != 1:
-				settings["input"][input] = _default_settings["input"][input]
+				settings["input"][input] = default_settings["input"][input]
 
 		# Check if Player 2's bindings have only one joystick button and motion,
 		# and zero or one keys (in the case of a keyboard player) contained in
@@ -376,14 +376,14 @@ func set_controls() -> void:
 				elif settings["input"][input][i] is InputEventJoypadButton:
 					buttons += 1
 					if settings["input"][input][i].device != 1:
-						settings["input"][input] = _default_settings["input"][input]
+						settings["input"][input] = default_settings["input"][input]
 				elif settings["input"][input][i] is InputEventJoypadMotion:
 					joystick_motions += 1
 					if settings["input"][input][i].device != 1:
-						settings["input"][input] = _default_settings["input"][input]
+						settings["input"][input] = default_settings["input"][input]
 
 			if buttons != 1 or joystick_motions != 1 or keys != 0 or keys != 1:
-				settings["input"][input] = _default_settings["input"][input]
+				settings["input"][input] = default_settings["input"][input]
 
 		# Apply changes if any.
 		ProjectSettings.set_setting("input/" + input, settings["input"][input])
