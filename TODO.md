@@ -20,6 +20,9 @@
 * ~~Add `StartTimerLabel` and interface it with the Stage's script.~~
 * ~~Add `PostWinTimer` and interafaces it with the Stage's script.~~
 * ~~Fix the 4-button, 2-hit round win exploit (it previously was a game win exploit).~~
+* Move combat logic to the `Character` class.
+* Downscale the `Character`s to original scale (with x and y values equal to 1).
+* Downscale the background along with the `Character`s' new scale.
 
 ### Debug.tscn (COMPLETE)
 
@@ -64,6 +67,9 @@
   * ~~Light kick.~~
   * ~~Heavy kick.~~
   * More combos.
+* Implement hitbox.
+* Implement state machine.
+* Move combat logic from the `Stage` class.
 
 ## Additional stuff
 
@@ -206,7 +212,7 @@
   * Stage background
   * Characters.
 
-## Reformatting
+## Reformatting (COMPLETE)
 
 Adhere to this guide: <https://www.gdquest.com/docs/guidelines/best-practices/godot-gdscript/>
 
@@ -240,7 +246,19 @@ Adhere to this guide: <https://www.gdquest.com/docs/guidelines/best-practices/go
   * ~~In `QuitConfirm.gd`.~~
   * ~~In `QuitToMainMenuButton.gd`.~~
   * ~~In `WinMenu.gd`.~~
-* Write docstrings.
+* Write or improve docstrings.
+  * ~~In `Character.gd`.~~
+  * ~~In `Debug.gd`.~~
+  * ~~In `DeviceSwap.gd`.~~
+  * ~~In `FollowCamera.gd`.~~
+  * ~~In `MainMenu.gd`.~~
+  * ~~In `PauseMenu.gd`.~~
+  * ~~In `QuitConfirmation.gd`.~~
+  * ~~In `QuitToMainMenuButton.gd`.~~
+  * ~~In `Settings.gd`.~~
+  * ~~In `SettingsMenu.gd`.~~
+  * ~~In `Stage.gd`.~~
+  * ~~In `WinMenu.gd`.~~
 * ~~Create a `src` folder and put the scripts and scenes in them.~~
 * ~~Create an `assets` folder and move all assets to there.~~
   * ~~Create a `fonts` folder and move the fonts in there. Do not rename the
@@ -253,4 +271,4 @@ Adhere to this guide: <https://www.gdquest.com/docs/guidelines/best-practices/go
   * ~~Create a `interface` folder and move all HUD assets to there.~~
   * ~~Update all references when changed.~~
 * ~~Get rid of the (p1_|p2_)one_win assets. The `one_win` assets are used instead.~~
-* ~~Fix bug related to reformatting if needed.~~
+* ~~Fix bugs related to reformatting if needed.~~

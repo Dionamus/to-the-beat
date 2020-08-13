@@ -1,9 +1,12 @@
+# A menu that gives Skullgirls-like controller swapping.
 extends Control
 
-# The inputs in snake case
+# The inputs in snake case.
 const inputs_snake = [
 	"up", "down", "left", "right", "light_punch", "heavy_punch", "light_kick", "heavy_kick", "block"
 ]
+
+# Shortening NodePaths to variables.
 
 onready var _player1 := $VBoxContainer/Players/Player1
 onready var _player2 := $VBoxContainer/Players/Player2
@@ -15,8 +18,8 @@ onready var _ready_button := $VBoxContainer/ReadyButton
 
 # This is used to prevent devices from swapping from one end column to another
 # (i.e. swapping from player 1 to player 2), instead of swapping to adjacent
-# columns (i.e. from player 1 to devices, or from player 2 to devices). This is
-# functionality is facilitated with a timer
+# columns (i.e. from player 1 to devices, or from player 2 to devices). This
+# functionality is facilitated with a timer.
 onready var _input_allowed := true
 
 
@@ -104,9 +107,7 @@ func _input(event: InputEvent) -> void:
 								"input/" + input, Settings.settings["input"][input]
 							)
 
-						var error = get_tree().change_scene(
-							"res://src/MainMenu.tscn"
-						)
+						var error = get_tree().change_scene("res://src/MainMenu.tscn")
 						match error:
 							ERR_CANT_OPEN:
 								printerr("Cannot open the scene to the main menu.")
@@ -161,9 +162,7 @@ func _input(event: InputEvent) -> void:
 									"input/" + input, Settings.settings["input"][input]
 								)
 
-							var error = get_tree().change_scene(
-								"res://src/MainMenu.tscn"
-							)
+							var error = get_tree().change_scene("res://src/MainMenu.tscn")
 							match error:
 								ERR_CANT_OPEN:
 									printerr("Cannot open the scene to the main menu.")
@@ -188,11 +187,15 @@ func _input(event: InputEvent) -> void:
 			$InputTimer.start()
 
 
+# Reparents `device` to `column`.
 func move_device_to_column(device: Node, column: Node) -> void:
 	device.get_parent().remove_child(device)
 	column.add_child(device)
 
 
+# Changes the `device` number the designated player (denoted by
+# `player_prefix`). The `player_prefix` may be `"p1_"` for player 1, or `"p2_"'
+# for player 2.
 func change_device_number(player_prefix: String, device: int) -> void:
 	for input in inputs_snake:
 		for j in InputMap.get_action_list(player_prefix + input):
@@ -203,6 +206,8 @@ func change_device_number(player_prefix: String, device: int) -> void:
 				InputMap.action_add_event(player_prefix + input, input_to_change)
 
 
+# Assigns the keyboard to the designated player (denoted by `player_prefix`).
+# The `player_prefix` may be `"p1_"` for player 1, or `"p2_"' for player 2.
 func assign_keyboard_to_player(player_prefix: String) -> void:
 	if player_prefix == "p1_":
 		# Unassign the keyboard from player 2 if it is assigned to them.
@@ -235,10 +240,12 @@ func assign_keyboard_to_player(player_prefix: String) -> void:
 				InputMap.action_add_event("p2_" + input, InputMap.get_action_list("kb_" + input)[0])
 
 
+# Allows input on timeout.
 func _on_InputTimer_timeout() -> void:
 	_input_allowed = true
 
 
+# Starts the game.
 func _on_ReadyButton_pressed() -> void:
 	var error = get_tree().change_scene("res://src/Stage.tscn")
 	match error:
@@ -248,6 +255,7 @@ func _on_ReadyButton_pressed() -> void:
 			printerr("Cannot instantiate the stage.")
 
 
+# Goes back to the prevoius menu.
 func _on_BackButton_pressed() -> void:
 	var error = get_tree().change_scene("res://src/MainMenu.tscn")
 	match error:

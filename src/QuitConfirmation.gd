@@ -1,5 +1,7 @@
+# A quit confirmation prompt.
 extends CenterContainer
 
+# Emitted when the "No" buttons is pressed.
 signal did_not_quit
 
 
@@ -8,6 +10,6 @@ func _on_YesButton_pressed() -> void:
 	get_tree().quit()
 
 
-# When NoButton is pressed, emit a signal that the button has been pressed.
+# Emit the `"did_not_quit"` signal.
 func _on_NoButton_pressed() -> void:
 	emit_signal("did_not_quit")

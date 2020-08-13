@@ -1,10 +1,31 @@
+# A settings configuration backend that initializes the default settings 
+# for first-time setup (or if there is a missing config file), and validates
+# the config if improperly configured.
 extends Node
 
+# The control mode.
+#
+# `PLAYER_1_EXCLUSIVE`: Player 1 has control of pausing and all menus except
+# the character select screen and selecting devices from `DeviceSwap`.
+# 
+# `TWO_PLAYER_SIMULTANEOUS`: Both players players control pausing and
+# navigating the cursor in the menus simultaneously. (This does not apply in
+# the character select screen and selecting devices from `DeviceSwap`.)
+#
+# `TWO_PLAYER_INDIVIDUAL`: Both players get their own cursor for navigating
+# menus when not in a game. They must be on the same UI element to confirm the
+# selection (this does not happen in the character select screen or
+# `DeviceSwap`). Both players have control over pausing, but only the player
+# who paused the game has control over the pause menu.).
 enum { PLAYER_1_EXCLUSIVE, TWO_PLAYER_SIMULTANEOUS, TWO_PLAYER_INDIVIDUAL }
+
+# The config path.
 const CONFIG_SAVE_PATH = "res://config.cfg"
 
+# The config file.
 onready var config_file = ConfigFile.new()
 
+# The settings in use.
 onready var settings = {
 	"video":
 	{
@@ -59,6 +80,7 @@ onready var settings = {
 	}
 }
 
+# The UI controls in use.
 onready var ui_controls = {
 	"ui_accept": InputMap.get_action_list("ui_accept"),
 	"ui_cancel": InputMap.get_action_list("ui_cancel"),
@@ -68,6 +90,7 @@ onready var ui_controls = {
 	"ui_right": InputMap.get_action_list("ui_right")
 }
 
+# The default settings.
 onready var default_settings = {
 	"video":
 	{
@@ -122,6 +145,7 @@ onready var default_settings = {
 	}
 }
 
+# The default UI controls.
 onready var _default_ui_controls = {
 	"ui_accept": InputMap.get_action_list("ui_accept"),
 	"ui_cancel": InputMap.get_action_list("ui_cancel"),
@@ -131,7 +155,7 @@ onready var _default_ui_controls = {
 	"ui_right": InputMap.get_action_list("ui_right")
 }
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
 	load_settings()
 
@@ -144,6 +168,7 @@ func first_time_setup() -> void:
 	config_file.save(CONFIG_SAVE_PATH)
 
 
+# Saves the settings.
 func save_settings() -> void:
 	for section in settings.keys():
 		for key in settings[section]:
@@ -152,6 +177,7 @@ func save_settings() -> void:
 	config_file.save(CONFIG_SAVE_PATH)
 
 
+# Loads the settings.
 func load_settings() -> void:
 	var error = config_file.load(CONFIG_SAVE_PATH)
 	match error:
@@ -177,6 +203,7 @@ func load_settings() -> void:
 			)
 
 
+# Sets the video settings and validates the config.
 func set_video_setting() -> void:
 	# Parse the resolution string.
 	var resolution = settings["video"]["resolution"]
@@ -261,6 +288,7 @@ func set_video_setting() -> void:
 		OS.window_borderless = borderless
 
 
+# Sets the audio settings and validates the config.
 func set_audio_settings() -> void:
 	# Set up the master volume.
 	var master_volume = settings["audio"]["master"]
@@ -309,7 +337,7 @@ func set_audio_settings() -> void:
 	config_file.save(CONFIG_SAVE_PATH)
 
 
-# Set up the controls and validate the config.
+# Sets up the controls and validates the config.
 func set_controls() -> void:
 	for input in settings["input"].keys():
 		# Check the inputs are InputEvents. Otherwise, revert to default.
@@ -392,7 +420,7 @@ func set_controls() -> void:
 	config_file.save(CONFIG_SAVE_PATH)
 
 
-# Set up the menu control mode and validate the config.
+# Sets up the menu control mode and validates the config.
 func set_control_mode() -> void:
 	# Validate the config.
 	if (

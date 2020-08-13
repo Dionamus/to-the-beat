@@ -1,7 +1,7 @@
+# The game's main menu.
 extends Control
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$Menu/LabelAndButtons/StartGameButton.grab_focus()
 
@@ -27,23 +27,21 @@ func _on_VersusButton_pressed() -> void:
 			printerr("Cannot instantiate the stage.")
 
 
-# Show the SettingsMenu when the SettingsButton is pressed.
+# Show the SettingsMenu.
 func _on_SettingsButton_pressed() -> void:
 	$Menu.visible = false
 	$SettingsMenu.visible = true
 	$SettingsMenu/Settings/Panel/ScrollContainer/VBoxContainer/Resolution/ResolutionOptions.grab_focus()
 
 
-# When the "Quit to Desktop" button is pressed, hide the main menu and 
-# show the quit confirmation.
+# Hide the main menu and prompt for the quit confirmation.
 func _on_QuitToDesktopButton_pressed() -> void:
 	$Menu/LabelAndButtons.visible = false
 	$Menu/QuitConfirmation.visible = true
 	$Menu/QuitConfirmation/LabelAndButtons/YesNoButtonContainer/YesButton.grab_focus()
 
 
-# When the "No" button is pressed in the quit confirmation, hide the quit
-# confirmation and show the main menu.
+# Hide the quit confirmation and show the main menu.
 func _on_QuitConfirmation_did_not_quit() -> void:
 	$Menu/QuitConfirmation.visible = false
 	$Menu/LabelAndButtons.visible = true

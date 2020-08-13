@@ -1,3 +1,4 @@
+# A pause menu.
 extends Control
 
 
@@ -14,13 +15,13 @@ func _unhandled_input(_event: InputEvent) -> void:
 			get_tree().paused = true
 
 
-# Hide the pause menu and unpause the game when ResumeGameButton is pressed.
+# Hide the pause menu and unpause the game..
 func _on_ResumeGameButton_pressed() -> void:
 	hide()
 	get_tree().paused = false
 
 
-# Currently not implemented.
+# Show the settings menu.
 func _on_SettingsButton_pressed() -> void:
 	$Menu.visible = false
 	$SettingsMenu.visible = true
@@ -39,8 +40,7 @@ func _on_QuitToDesktopButton_pressed() -> void:
 	$Menu/QuitConfirmation/LabelAndButtons/YesNoButtonContainer/YesButton.grab_focus()
 
 
-# If NoButton is pressed, QuitConfirmation disappears and PauseMenu's
-# label and buttons reappear.
+# Hides the quit confirmation and shows the pause menu.
 func _on_QuitConfirmation_did_not_quit() -> void:
 	$Menu/QuitConfirmation.visible = false
 	$Menu/LabelAndButtons.visible = true

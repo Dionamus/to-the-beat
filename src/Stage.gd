@@ -1,3 +1,4 @@
+# The scene where the main game takes place.
 extends Node
 
 # The start frame for the tempo timing.
@@ -16,11 +17,13 @@ export (int) var bpm := 120
 # errors in the debugger. -Brandon Hawkins
 
 # Preload images for the win counters.
+
 onready var _no_wins := preload("res://assets/interface/no_wins.png")
 onready var _one_win := preload("res://assets/interface/one_win.png")
 onready var _two_wins := preload("res://assets/interface/two_wins.png")
 
 # HUD variables
+
 onready var _p1_HP_bar := $CanvasLayer/HUD/HBoxContainer/Player1Container/Player1HP
 onready var _p1_name := $CanvasLayer/HUD/HBoxContainer/Player1Container/P1NameAndWins/Player1Name
 onready var _p1_wins := $CanvasLayer/HUD/HBoxContainer/Player1Container/P1NameAndWins/Player1Wins
@@ -31,15 +34,21 @@ onready var _timer_label := $CanvasLayer/HUD/HBoxContainer/GameTimerContainer/Ga
 onready var _win_round_label := $CanvasLayer/WinMenu/WinLabelAndButtons/WinLabel
 
 # Used for controling the flow of the game.
+
+# If true, the stage input doesn't run for the rest of the game.
 onready var _is_game_over := false
+
+# If true, the stage input doesn't run until a new round begins.
 onready var _is_input_allowed := false
 
 onready var _tween := $Tween
 
 # Used for synchronizing the animations of the player characters.
+
 onready var _tempo_control := $ControlCharacter/AnimatedSprite
 
 # Player variables
+
 onready var _player1 := $PlayersAndCam/Player1
 onready var _player1_animation := $PlayersAndCam/Player1/AnimatedSprite
 
@@ -331,14 +340,12 @@ func _process(_delta: float) -> void:
 	$CanvasLayer/Debug/Tempo.text = "Tempo " + str(bpm) + " BPM"
 
 
-# Sets the position of the player characters.
-# main_player is the player that is being controlled, the grid number is the 
-# grid_number that the position is being set to.
-func set_position(main_player: Character, grid_number: int) -> void:
+# Positions `player` to `grid_number`.
+func set_position(player: Character, grid_number: int) -> void:
 	_tween.interpolate_property(
-		main_player,
+		player,
 		"position",
-		main_player.position,
+		player.position,
 		get_node("Position" + str(grid_number)).position,
 		.2,
 		Tween.TRANS_LINEAR,
@@ -347,8 +354,7 @@ func set_position(main_player: Character, grid_number: int) -> void:
 	_tween.start()
 
 
-# When the StartTimer times out, show the Character classes, play their sprites,
-# allow input, play the music, then start the game timer.
+# Plays animations and starts game logic on timeout.
 func _on_StartTimer_timeout() -> void:
 	_player1.show()
 	_player1_animation.playing = true
@@ -367,10 +373,7 @@ func _on_StartTimer_timeout() -> void:
 	$GameTimer.start()
 
 
-# If the game ends before either player defeats the other, disable input, set
-# _is_game_over to true, and if either player has more HP than the other, show
-# the win menu with the label showing that the winning player won the game.
-# If they tie, show that they tie.
+# Disables the input and determines the winner of the game.
 func _on_GameTimer_timeout() -> void:
 	_is_game_over = true
 	_is_input_allowed = false
@@ -385,12 +388,7 @@ func _on_GameTimer_timeout() -> void:
 		_win_round_label.text = "Tie! No one wins!"
 
 
-# When player 1 wins a round, increment their wins. If they have 1 win,
-# show that they have won a round, pause the game timer and input, reset their
-# HP, and begin a countdown for the next round. If they have two wins, show
-# that they have won two rounds, set _is_game_over to true and _is_input_allowed
-# to false, stop the game timer and show the win menu with the lable showing
-# that player 1 has won the round.
+# Gives `_player1` a win, and readies the next round.
 func _on_Player1_won_round() -> void:
 	_player1.wins += 1
 	if _player1.wins == 1:
@@ -411,12 +409,7 @@ func _on_Player1_won_round() -> void:
 		_win_round_label.text = "Player 1 wins!"
 
 
-# When player 2 wins a round, increment their wins. If they have 1 win,
-# show that they have won a round, pause the game timer and input, reset their
-# HP, and begin a countdown for the next round. If they have two wins, show
-# that they have won two rounds, set _is_game_over to true and _is_input_allowed
-# to false, stop the game timer and show the win menu with the lable showing
-# that player 2 has won the round.
+# Gives `_player2` a win, and readies the next round.
 func _on_Player2_won_round() -> void:
 	_player2.wins += 1
 	if _player2.wins == 1:
@@ -439,24 +432,19 @@ func _on_Player2_won_round() -> void:
 		_win_round_label.text = "Player 2 wins!"
 
 
-# When player 1 loses a round, increment their losses and call the method
-# to have player 2 win the round.
+# Increments `_player1`'s losses and makes `_player2` win the game
 func _on_Player1_lost_round() -> void:
 	_player1.losses += 1
 	_player2.emit_signal("won_round")
 
 
-# When player 2 loses a round, increment their losses and call the method
-# to have player 1 win the round.
+# Increments `_player2`'s losses and makes `_player1` win the game
 func _on_Player2_lost_round() -> void:
 	_player2.losses += 1
 	_player1.emit_signal("won_round")
 
 
-# When the post-win timer times out, if the neither of the players haven't won a
-# game yet, unpause the game timer, hide the start timer label (which is used
-# for showing the time remaining before a new round starts with the post-win
-# timer), enable input, and reset the players' hitpoints (.
+# Readies the next round after timeout.
 func _on_PostWinTimer_timeout() -> void:
 	if _player1.wins != 2 or _player2.wins != 2:
 		$GameTimer.paused = false
