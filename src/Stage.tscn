@@ -2,7 +2,7 @@
 
 [ext_resource path="res://src/Stage.gd" type="Script" id=1]
 [ext_resource path="res://src/ControlCharacter.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/stagebackgrounds/basebg.png" type="Texture" id=3]
+[ext_resource path="res://assets/stagebackgrounds/base_bg.png" type="Texture" id=3]
 [ext_resource path="res://src/FollowCamera.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/Character.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/music/kick_test.ogg" type="AudioStream" id=6]
@@ -40,75 +40,76 @@ one_shot = true
 [node name="StageBackground" type="Sprite" parent="."]
 texture = ExtResource( 3 )
 centered = false
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="PlayersAndCam" type="Node" parent="."]
 
 [node name="FollowCamera" parent="PlayersAndCam" instance=ExtResource( 4 )]
 limit_left = 0
 limit_top = 0
-limit_right = 3600
-limit_bottom = 2025
+limit_right = 360
+limit_bottom = 203
 editor_draw_limits = true
 
 [node name="Player1" parent="PlayersAndCam" instance=ExtResource( 5 )]
-position = Vector2( 200, 1510 )
-scale = Vector2( 10, 10 )
+position = Vector2( 20, 150 )
 
 [node name="Player2" parent="PlayersAndCam" instance=ExtResource( 5 )]
 modulate = Color( 0.0431373, 0.913725, 0.894118, 1 )
-position = Vector2( 3400, 1510 )
-scale = Vector2( 10, 10 )
+position = Vector2( 340, 150 )
 
 [node name="Position0" type="Position2D" parent="."]
-position = Vector2( 200, 1510 )
+position = Vector2( 20, 150 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="Position1" type="Position2D" parent="."]
-position = Vector2( 600, 1510 )
+position = Vector2( 60, 150 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="Position2" type="Position2D" parent="."]
-position = Vector2( 1000, 1510 )
+position = Vector2( 100, 150 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="Position3" type="Position2D" parent="."]
-position = Vector2( 1400, 1510 )
+position = Vector2( 140, 150 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="Position4" type="Position2D" parent="."]
-position = Vector2( 1800, 1510 )
+position = Vector2( 180, 150 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="Position5" type="Position2D" parent="."]
-position = Vector2( 2200, 1510 )
+position = Vector2( 220, 150 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="Position6" type="Position2D" parent="."]
-position = Vector2( 2600, 1510 )
+position = Vector2( 260, 150 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="Position7" type="Position2D" parent="."]
-position = Vector2( 3000, 1510 )
+position = Vector2( 300, 150 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="Position8" type="Position2D" parent="."]
-position = Vector2( 3400, 1510 )
+position = Vector2( 340, 150 )
 __meta__ = {
 "_edit_lock_": true
 }

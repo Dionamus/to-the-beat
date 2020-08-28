@@ -224,10 +224,11 @@ func _input(event: InputEvent) -> void:
 					_can_change_key = false
 
 	else:
-		if event.button_index == JOY_START:
-			visible = false
-			get_node(previous_menu).visible = true
-			get_node(previous_focus).grab_focus()
+		if event is InputEventJoypadButton:
+			if event.button_index == JOY_START:
+				visible = false
+				get_node(previous_menu).visible = true
+				get_node(previous_focus).grab_focus()
 
 	# Fixes a bug where trying to rebind an action to the bottom face button (e.g.
 	# A on an Xbox controller or X on a Playstation controller) presses the button
@@ -263,7 +264,7 @@ func _on_ResolutionOptions_item_selected(ID: int) -> void:
 			ID = 0
 			_resolution.selected = ID
 
-	Settings.settings["video"]["_resolution"] = _resolution.get_item_text(ID)
+	Settings.settings["video"]["resolution"] = _resolution.get_item_text(ID)
 	Settings.settings["video"]["resolution_box"] = ID
 	Settings.save_settings()
 
