@@ -52,6 +52,8 @@ limit_top = 0
 limit_right = 360
 limit_bottom = 203
 editor_draw_limits = true
+zoom_offset = 0.1
+debug_mode = true
 
 [node name="Player1" parent="PlayersAndCam" instance=ExtResource( 5 )]
 position = Vector2( 20, 150 )
