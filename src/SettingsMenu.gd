@@ -59,6 +59,11 @@ onready var _p2_light_kick := $Settings/Panel/ScrollContainer/VBoxContainer/P2Co
 onready var _p2_heavy_kick := $Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls/HeavyKick/Button
 onready var _p2_block := $Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls/Block/Button
 
+# Fixes a bug where if a player is assigning a binding to the right face
+# button (B on Xbox, Circle on Playstaion), the settings menu will go back
+# to the previous menu too quickly.
+onready var going_back_allowed := false
+
 # For changing bindings.
 
 # If `true`, allows a binding to be changed.
@@ -97,7 +102,7 @@ func _input(event: InputEvent) -> void:
 	# the binding button again, without assigning the new action. This
 	# variable is set to false at the end of the funciton.
 	get_tree().get_root().handle_input_locally = true
-
+	
 	# Take input for changing bindings.
 	if _can_change_key:
 		# For the keyboard.
@@ -108,6 +113,7 @@ func _input(event: InputEvent) -> void:
 					mark_bindings("kb")
 					_action_string = ""
 					_can_change_key = false
+					$Timer.start()
 
 				# Go through with the rebind if the key is not F11 or F12.
 				elif event.scancode != KEY_F11 or event.scancode != KEY_F12:
@@ -129,9 +135,10 @@ func _input(event: InputEvent) -> void:
 					_button_to_change = null
 					_action_string = ""
 					_can_change_key = false
+					$Timer.start()
 
 		# For Player 1.
-		if _action_string.match("p1_*"):
+		elif _action_string.match("p1_*"):
 			# Cancel the rebind from the keyboard.
 			if event is InputEventKey:
 				if event.scancode == KEY_ESCAPE:
@@ -144,6 +151,7 @@ func _input(event: InputEvent) -> void:
 					_button_to_change = null
 					_action_string = ""
 					_can_change_key = false
+					$Timer.start()
 
 			if event is InputEventJoypadButton:
 				if event.device == 0:
@@ -158,6 +166,7 @@ func _input(event: InputEvent) -> void:
 						_button_to_change = null
 						_action_string = ""
 						_can_change_key = false
+						$Timer.start()
 
 					# Go through with the rebind.
 
@@ -184,21 +193,38 @@ func _input(event: InputEvent) -> void:
 					_button_to_change = null
 					_action_string = ""
 					_can_change_key = false
+					$Timer.start()
 
 		# For Player 2.
-		if _action_string.match("p2_*"):
-			# Cancel the rebind.
-			if event.scancode == KEY_ESCAPE or event.button_index == JOY_START:
-				for action in range(0, InputMap.get_action_list(_action_string).size() - 1):
-					if InputMap.get_action_list(_action_string)[action] is InputEventJoypadButton:
-						_button_to_change.text = InputMap.get_action_list(_action_string)[action].as_text()
-				_button_to_change = null
-				_action_string = ""
-				_can_change_key = false
+		elif _action_string.match("p2_*"):
+			# Cancel the rebind through the keyboard.
+			if event is InputEventKey:
+				if event.scancode == KEY_ESCAPE:
+					for action in range(0, InputMap.get_action_list(_action_string).size() - 1):
+						if InputMap.get_action_list(_action_string)[action] is InputEventJoypadButton:
+							_button_to_change.text = InputMap.get_action_list(_action_string)[action].as_text()
+					_button_to_change = null
+					_action_string = ""
+					_can_change_key = false
+					$Timer.start()
 
-			# Go through with the rebind.
 			if event is InputEventJoypadButton:
 				if event.device == 1:
+					# Cancel the rebind from P2's controller
+					if event.button_index == JOY_START:
+						for action in range(0, InputMap.get_action_list(_action_string).size() - 1):
+							if (
+								InputMap.get_action_list(_action_string)[action]
+								is InputEventJoypadButton
+							):
+								_button_to_change.text = InputMap.get_action_list(_action_string)[action].as_text()
+						_button_to_change = null
+						_action_string = ""
+						_can_change_key = false
+						$Timer.start()
+					
+					# Go through with the rebind.
+					
 					# Delete the previous binding.
 					if ! InputMap.get_action_list(_action_string).empty():
 						for i in range(0, InputMap.get_action_list(_action_string).size() - 1):
@@ -222,10 +248,21 @@ func _input(event: InputEvent) -> void:
 					_button_to_change = null
 					_action_string = ""
 					_can_change_key = false
+					$Timer.start()
 
 	else:
-		if event is InputEventJoypadButton:
-			if event.button_index == JOY_START:
+		if event is InputEventJoypadButton and going_back_allowed:
+			if (
+				Settings.settings["other"]["control_mode"] == Settings.PLAYER_1_EXCLUSIVE and
+				event.device == 0 and event.button_index == JOY_XBOX_B
+			):
+				visible = false
+				get_node(previous_menu).visible = true
+				get_node(previous_focus).grab_focus()
+			elif (
+				Settings.settings["other"]["control_mode"] != Settings.PLAYER_1_EXCLUSIVE and
+				event.button_index == JOY_XBOX_B
+			):
 				visible = false
 				get_node(previous_menu).visible = true
 				get_node(previous_focus).grab_focus()
@@ -373,6 +410,7 @@ func _on_ControlMode_OptionButton_item_selected(ID) -> void:
 
 # Marks the text of the binding buttons with the bindings they have.
 func mark_bindings(device = null) -> void:
+#	breakpoint
 	var k = 0
 
 	if device == null or device == "kb":
@@ -390,10 +428,7 @@ func mark_bindings(device = null) -> void:
 		# Set the text for player 1's controls
 		for input in inputs:
 			while l <= InputMap.get_action_list("p1_" + inputs_snake[k]).size() - 1:
-				if (
-					InputMap.get_action_list("p1_" + inputs_snake[k])[l].get_class()
-					== "InputEventJoypadButton"
-				):
+				if InputMap.get_action_list("p1_" + inputs_snake[k])[l] is InputEventJoypadButton:
 					get_node("Settings/Panel/ScrollContainer/VBoxContainer/P1ControllerControls/" + input + "/Button").text = Input.get_joy_button_string(
 						InputMap.get_action_list("p1_" + inputs_snake[k])[l].button_index
 					)
@@ -409,10 +444,7 @@ func mark_bindings(device = null) -> void:
 		# Set the text for player 2's controls
 		for input in inputs:
 			while l <= InputMap.get_action_list("p2_" + inputs_snake[k]).size() - 1:
-				if (
-					InputMap.get_action_list("p2_" + inputs_snake[k])[l].get_class()
-					== "InputEventJoypadButton"
-				):
+				if InputMap.get_action_list("p2_" + inputs_snake[k])[l] is InputEventJoypadButton:
 					get_node("Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls/" + input + "/Button").text = Input.get_joy_button_string(
 						InputMap.get_action_list("p2_" + inputs_snake[k])[l].button_index
 					)
@@ -430,6 +462,7 @@ func _on_ResetAllBindingsToDefault_pressed() -> void:
 	for input in Settings.settings["input"].keys():
 		Settings.settings["input"][input] = Settings.default_settings["input"][input]
 		ProjectSettings.set("input/" + input, Settings.default_settings["input"][input])
+	ProjectSettings.save()
 	Settings.save_settings()
 
 	mark_bindings()
@@ -437,10 +470,12 @@ func _on_ResetAllBindingsToDefault_pressed() -> void:
 
 # Resets default keyboard bindings to their default settings.
 func _on_KB_ResetToDefault_pressed() -> void:
+	breakpoint
 	for input in Settings.settings["input"].keys():
 		if input.match("kb_*"):
 			Settings.settings["input"][input] = Settings.default_settings["input"][input]
 			ProjectSettings.set("input/" + input, Settings.default_settings["input"][input])
+	ProjectSettings.save()
 	Settings.save_settings()
 
 	mark_bindings("kb")
@@ -452,6 +487,7 @@ func _on_P1_ResetToDefault_pressed() -> void:
 		if input.match("p1_*"):
 			Settings.settings["input"][input] = Settings.default_settings["input"][input]
 			ProjectSettings.set("input/" + input, Settings.default_settings["input"][input])
+	ProjectSettings.save()
 	Settings.save_settings()
 
 	mark_bindings("p1")
@@ -463,6 +499,7 @@ func _on_P2_ResetToDefault_pressed() -> void:
 		if input.match("p2_*"):
 			Settings.settings["input"][input] = Settings.default_settings["input"][input]
 			ProjectSettings.set("input/" + input, Settings.default_settings["input"][input])
+	ProjectSettings.save()
 	Settings.save_settings()
 
 	mark_bindings("p2")
@@ -689,3 +726,7 @@ func _on_BackButton_pressed() -> void:
 	visible = false
 	get_node(previous_menu).visible = true
 	get_node(previous_focus).grab_focus()
+
+
+func _on_Timer_timeout():
+	going_back_allowed = true

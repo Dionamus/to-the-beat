@@ -1158,6 +1158,10 @@ text = "Back"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
 [connection signal="item_selected" from="Settings/Panel/ScrollContainer/VBoxContainer/Resolution/ResolutionOptions" to="." method="_on_ResolutionOptions_item_selected"]
 [connection signal="item_selected" from="Settings/Panel/ScrollContainer/VBoxContainer/FramerateLimit/FramerateOptions" to="." method="_on_FramerateOptions_item_selected"]
 [connection signal="toggled" from="Settings/Panel/ScrollContainer/VBoxContainer/Vsync/VsyncCheckBox" to="." method="_on_VsyncCheckBox_toggled"]
@@ -1202,3 +1206,4 @@ __meta__ = {
 [connection signal="pressed" from="Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls/Block/Button" to="." method="_on_P2_Block_Button_pressed"]
 [connection signal="pressed" from="Settings/Panel/ScrollContainer/VBoxContainer/P2ControllerControls/ResetToDefault" to="." method="_on_P2_ResetToDefault_pressed"]
 [connection signal="pressed" from="Settings/BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
