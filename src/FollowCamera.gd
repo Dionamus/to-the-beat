@@ -6,7 +6,7 @@
 # Credit: GDQuest on YouTube
 extends Camera2D
 
-export (float, 0.1, 0.5) var zoom_offset := 0.2
+export (float, 0.02, 0.5) var zoom_offset := 0.02
 
 # If `true`, the debug rectangle that contains the sibling Nodes will be drawn.
 export var debug_mode := false
@@ -25,6 +25,9 @@ onready var _sibling_count := 0
 
 # An array of Nodes that are also parented with this Node's parent.
 onready var _siblings = []
+
+# The furthest the camera can zoom in.
+const lowest_zoom_in := 0.085
 
 func _ready() -> void:
 	viewport_rect = get_viewport_rect()
@@ -59,11 +62,14 @@ func calculate_center(rect: Rect2) -> Vector2:
 # Calculates the camera's zoom.
 func calculate_zoom(rect: Rect2, viewport_size: Vector2) -> Vector2:
 	var zoom_in = max(
-			max(0.002, rect.size.x / viewport_size.x + zoom_offset),
-			max(0.002, rect.size.y / viewport_size.y + zoom_offset)
+			max(lowest_zoom_in, rect.size.x / viewport_size.x + zoom_offset),
+			max(lowest_zoom_in, rect.size.y / viewport_size.y + zoom_offset)
 		)
-	var zoom_out = max(limit_right / viewport_size.x, limit_bottom / viewport_size.y)
+	var zoom_out = max(
+			limit_right / viewport_size.x, limit_bottom / viewport_size.y
+		)
 	var new_zoom = min(zoom_in, zoom_out)
+
 	return Vector2(new_zoom, new_zoom)
 
 
