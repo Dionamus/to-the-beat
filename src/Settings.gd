@@ -434,6 +434,7 @@ func set_control_mode() -> void:
 		for input in ui_controls.keys():
 			ui_controls[input] = _default_ui_controls[input]
 			ProjectSettings.set_setting("input/" + input, ui_controls[input])
+	
 	# Player 1 controls all menus.
 	if settings["other"]["control_mode"] == PLAYER_1_EXCLUSIVE:
 		for input in ui_controls.keys():
@@ -444,6 +445,7 @@ func set_control_mode() -> void:
 				):
 					ui_controls[input][i].device = 0
 					ProjectSettings.set_setting("input/" + input, ui_controls[input])
+	
 	# Both players control the cursor in all menus.
 	elif settings["other"]["control_mode"] == TWO_PLAYER_SIMULTANEOUS:
 		for input in ui_controls.keys():

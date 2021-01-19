@@ -314,28 +314,19 @@ func _on_FramerateOptions_item_selected(ID: int) -> void:
 
 # Toggles Vsync.
 func _on_VsyncCheckBox_toggled(button_pressed: bool) -> void:
-	if button_pressed:
-		OS.vsync_enabled = true
-	else:
-		OS.vsync_enabled = false
+	OS.vsync_enabled = button_pressed
 	Settings.save_settings()
 
 
 # Toggles fullscreen.
 func _on_FullscreenCheckbox_toggled(button_pressed: bool) -> void:
-	if button_pressed:
-		OS.window_fullscreen = true
-	else:
-		OS.window_fullscreen = false
+	OS.window_fullscreen = button_pressed
 	Settings.save_settings()
 
 
 # Toggles borderless window.
 func _on_BorderlessCheckBox_toggled(button_pressed: bool) -> void:
-	if button_pressed:
-		OS.window_borderless = true
-	else:
-		OS.window_borderless = false
+	OS.window_borderless = button_pressed
 	Settings.save_settings()
 
 
@@ -404,13 +395,12 @@ func _on_Audio_ResetToDefault_pressed() -> void:
 # Sets the menu control mode.
 func _on_ControlMode_OptionButton_item_selected(ID) -> void:
 	Settings.settings["other"]["control_mode"] = ID
-	Settings.save_settings()
 	Settings.set_control_mode()
+	Settings.save_settings()
 
 
 # Marks the text of the binding buttons with the bindings they have.
 func mark_bindings(device = null) -> void:
-#	breakpoint
 	var k = 0
 
 	if device == null or device == "kb":
@@ -456,12 +446,22 @@ func mark_bindings(device = null) -> void:
 			k += 1
 		k = 0
 
+# FIXME: Have the following four functions reset their respective bindings to
+# default.
+
+# Bug diagnosis:
+# When the bindings get changed, the config file and `ProjectSettings` don't
+# update, but the `InputMap` does (as shown in `_input()`). Clicking the buttons
+# that are supposed reset the bindings sets the (unchanged) bindings in the
+# config file and project settings back to their defaults, but the InputMap
+# doesn't update along with the `ProjectSettings`.
 
 # Resets all bindings to their default settings.
 func _on_ResetAllBindingsToDefault_pressed() -> void:
 	for input in Settings.settings["input"].keys():
 		Settings.settings["input"][input] = Settings.default_settings["input"][input]
-		ProjectSettings.set("input/" + input, Settings.default_settings["input"][input])
+		ProjectSettings.set_setting("input/" + input, Settings.default_settings["input"][input])
+	
 	ProjectSettings.save()
 	Settings.save_settings()
 
@@ -470,37 +470,45 @@ func _on_ResetAllBindingsToDefault_pressed() -> void:
 
 # Resets default keyboard bindings to their default settings.
 func _on_KB_ResetToDefault_pressed() -> void:
-	breakpoint
-	for input in Settings.settings["input"].keys():
-		if input.match("kb_*"):
-			Settings.settings["input"][input] = Settings.default_settings["input"][input]
-			ProjectSettings.set("input/" + input, Settings.default_settings["input"][input])
-	ProjectSettings.save()
+	print("KB up before: \n" + str(Settings.settings["input"]["kb_up"][0].scancode))
+	print(str(ProjectSettings.get_setting("input/kb_up")[0].scancode))
+	print(str(InputMap.get_action_list("kb_up")[0].scancode))
+	
+	for input in inputs_snake:
+		Settings.settings["input"]["kb_" + input] = Settings.default_settings["input"]["kb_" + input]
+		ProjectSettings.set_setting("input/kb_" + input, Settings.default_settings["input"]["kb_" + input])
+	
 	Settings.save_settings()
+	ProjectSettings.save()
+	InputMap.load_from_globals()
+	
+	print("KB up before after: \n" + str(Settings.settings["input"]["kb_up"][0].scancode))
+	print(str(ProjectSettings.get_setting("input/kb_up")[0].scancode))
+	print(str(InputMap.get_action_list("kb_up")[0].scancode))
 
 	mark_bindings("kb")
 
 
 # Resets Player 1's bindings back to their default settings.
 func _on_P1_ResetToDefault_pressed() -> void:
-	for input in Settings.settings["input"].keys():
-		if input.match("p1_*"):
-			Settings.settings["input"][input] = Settings.default_settings["input"][input]
-			ProjectSettings.set("input/" + input, Settings.default_settings["input"][input])
-	ProjectSettings.save()
+	for input in inputs_snake:
+		Settings.settings["input"]["p1_" + input] = Settings.default_settings["input"]["p1_" + input]
+		ProjectSettings.set_setting("input/p1_" + input, Settings.default_settings["input"]["p1_" + input])
+	
 	Settings.save_settings()
+	ProjectSettings.save()
 
 	mark_bindings("p1")
 
 
 # Resets Player 2's bindings back to their default settings.
 func _on_P2_ResetToDefault_pressed() -> void:
-	for input in Settings.settings["input"].keys():
-		if input.match("p2_*"):
-			Settings.settings["input"][input] = Settings.default_settings["input"][input]
-			ProjectSettings.set("input/" + input, Settings.default_settings["input"][input])
-	ProjectSettings.save()
+	for input in inputs_snake:
+		Settings.settings["input"]["p2_" + input] = Settings.default_settings["input"]["p2_" + input]
+		ProjectSettings.set("input/p2_" + input, Settings.default_settings["input"]["p2_" + input])
+	
 	Settings.save_settings()
+	ProjectSettings.save()
 
 	mark_bindings("p2")
 

@@ -9,13 +9,43 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Button",
+"class": "BindingButton",
+"language": "GDScript",
+"path": "res://src/BindingButton.gd"
+}, {
+"base": "VBoxContainer",
+"class": "BindingGroup",
+"language": "GDScript",
+"path": "res://src/BindingGroup.gd"
+}, {
+"base": "HBoxContainer",
+"class": "BindingItem",
+"language": "GDScript",
+"path": "res://src/BindingItem.gd"
+}, {
+"base": "VBoxContainer",
+"class": "BindingUI",
+"language": "GDScript",
+"path": "res://src/BindingUI.gd"
+}, {
 "base": "Area2D",
 "class": "Character",
 "language": "GDScript",
 "path": "res://src/Character.gd"
+}, {
+"base": "Button",
+"class": "ResetToDefaultButton",
+"language": "GDScript",
+"path": "res://src/ResetToDefaultButton.gd"
 } ]
 _global_script_class_icons={
-"Character": ""
+"BindingButton": "",
+"BindingGroup": "",
+"BindingItem": "",
+"BindingUI": "",
+"Character": "",
+"ResetToDefaultButton": ""
 }
 
 [application]
@@ -33,6 +63,8 @@ mix_rate=48000
 [autoload]
 
 Settings="*res://src/Settings.gd"
+Devices="*res://src/Devices.gd"
+Actions="*res://src/Actions.gd"
 
 [display]
 

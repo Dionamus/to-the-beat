@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/BindingButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/fonts/Roboto-Bold.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://src/BindingItem.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 44
+font_data = ExtResource( 2 )
+
+[node name="BindingItem" type="HBoxContainer"]
+anchor_right = 1.0
+margin_bottom = 52.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="BindingLabel" type="Label" parent="."]
+margin_right = 958.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = "Up"
+valign = 1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="BindingButton" parent="." instance=ExtResource( 1 )]
+anchor_right = 0.0
+margin_left = 962.0
+margin_right = 1920.0
+margin_bottom = 52.0
