@@ -91,6 +91,7 @@ margin_bottom = 597.0
 visible = false
 previous_menu = NodePath("../Menu")
 previous_focus = NodePath("../Menu/LabelAndButtons/SettingsButton")
+
 [connection signal="pressed" from="Menu/LabelAndButtons/StartGameButton" to="." method="_on_StartGameButton_pressed"]
 [connection signal="pressed" from="Menu/LabelAndButtons/VersusButton" to="." method="_on_VersusButton_pressed"]
 [connection signal="pressed" from="Menu/LabelAndButtons/SettingsButton" to="." method="_on_SettingsButton_pressed"]

@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/stagebackgrounds/base_bg.png" type="Texture" id=3]
 [ext_resource path="res://src/FollowCamera.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/Character.tscn" type="PackedScene" id=5]
-[ext_resource path="res://assets/music/kick_test.ogg" type="AudioStream" id=6]
+[ext_resource path="res://assets/audio/sfx/kick_test.ogg" type="AudioStream" id=6]
 [ext_resource path="res://src/HUD.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/Debug.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/fonts/Roboto-Regular.ttf" type="DynamicFontData" id=9]
@@ -119,7 +119,6 @@ __meta__ = {
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
-bus = "music"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -167,6 +166,7 @@ margin_left = -960.0
 margin_top = -540.0
 margin_right = 960.0
 margin_bottom = 540.0
+
 [connection signal="timeout" from="GameTimer" to="." method="_on_GameTimer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
 [connection signal="timeout" from="PostWinTimer" to="." method="_on_PostWinTimer_timeout"]

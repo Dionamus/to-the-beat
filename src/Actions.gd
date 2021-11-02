@@ -1,3 +1,4 @@
+tool
 extends Node
 
 const full = ["Up", "Down", "Left", "Right", "Light Punch", "Heavy Punch",

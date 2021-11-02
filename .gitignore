@@ -17,3 +17,7 @@ config.cfg
 
 # Local History for Visual Studio Code
 .history/
+runtest.sh
+
+# To the Beat ignores
+example

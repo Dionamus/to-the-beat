@@ -8,13 +8,13 @@
 size = 44
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=2]
 size = 30
 font_data = ExtResource( 1 )
 
 [node name="BindingUI" type="VBoxContainer"]
-margin_right = 40.0
-margin_bottom = 40.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false,
@@ -22,7 +22,7 @@ __meta__ = {
 }
 
 [node name="Header" type="Label" parent="."]
-margin_right = 395.0
+margin_right = 1920.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 1 )
@@ -35,17 +35,21 @@ __meta__ = {
 
 [node name="ResetToDefaultButton" type="Button" parent="."]
 margin_top = 56.0
-margin_right = 395.0
+margin_right = 1920.0
 margin_bottom = 98.0
 focus_neighbour_top = NodePath("../ControlMode/OptionButton")
 focus_neighbour_bottom = NodePath("../KBControls/Up/Button")
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 2 )
 custom_constants/hseparation = 0
-text = "Reset All Bindings to Default"
+text = "Reset all bindings to default."
 script = ExtResource( 2 )
 __meta__ = {
 "_editor_description_": ""
 }
 device = "All"
+
+[connection signal="pressed" from="Keyboard/ResetToDefaultButton" to="Keyboard/ResetToDefaultButton" method="_on_ResetToDefaultButton_pressed"]
+[connection signal="pressed" from="Player 1/ResetToDefaultButton" to="Player 1/ResetToDefaultButton" method="_on_ResetToDefaultButton_pressed"]
+[connection signal="pressed" from="Player 2/ResetToDefaultButton" to="Player 2/ResetToDefaultButton" method="_on_ResetToDefaultButton_pressed"]

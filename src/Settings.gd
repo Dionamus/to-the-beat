@@ -173,7 +173,6 @@ func save_settings() -> void:
 	for section in settings.keys():
 		for key in settings[section]:
 			config_file.set_value(section, key, settings[section][key])
-
 	config_file.save(CONFIG_SAVE_PATH)
 
 

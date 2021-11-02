@@ -1,0 +1,75 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/SelfBuildingItemList.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/fonts/BigLabel.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/characters/portraits/portrait_red_rectangle.png" type="Texture" id=3]
+
+[node name="CharacterSelect" type="VBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 32
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="CharacterPreview" type="HBoxContainer" parent="."]
+margin_right = 1920.0
+margin_bottom = 524.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Player1" type="VBoxContainer" parent="CharacterPreview"]
+margin_right = 958.0
+margin_bottom = 524.0
+size_flags_horizontal = 3
+custom_constants/separation = 50
+
+[node name="Preview" type="TextureRect" parent="CharacterPreview/Player1"]
+margin_right = 958.0
+margin_bottom = 422.0
+size_flags_vertical = 3
+texture = ExtResource( 3 )
+stretch_mode = 6
+
+[node name="Name" type="Label" parent="CharacterPreview/Player1"]
+margin_top = 472.0
+margin_right = 958.0
+margin_bottom = 524.0
+custom_fonts/font = ExtResource( 2 )
+text = "Player 1"
+align = 1
+valign = 1
+
+[node name="Player2" type="VBoxContainer" parent="CharacterPreview"]
+margin_left = 962.0
+margin_right = 1920.0
+margin_bottom = 524.0
+size_flags_horizontal = 3
+custom_constants/separation = 50
+
+[node name="Preview" type="TextureRect" parent="CharacterPreview/Player2"]
+margin_right = 958.0
+margin_bottom = 422.0
+size_flags_vertical = 3
+texture = ExtResource( 3 )
+stretch_mode = 6
+
+[node name="Name" type="Label" parent="CharacterPreview/Player2"]
+margin_top = 472.0
+margin_right = 958.0
+margin_bottom = 524.0
+custom_fonts/font = ExtResource( 2 )
+text = "Player 2"
+align = 1
+valign = 1
+
+[node name="Roster" parent="." instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 556.0
+margin_right = 1920.0
+margin_bottom = 1080.0
+custom_constants/vseparation = 20
+custom_constants/hseparation = 15

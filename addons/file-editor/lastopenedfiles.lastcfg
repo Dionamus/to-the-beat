@@ -1,0 +1,6 @@
+[Opened]
+
+translation.csv="res://addons/file-editor/file.samples/translation.csv"
+sample.bbs="res://addons/file-editor/file.samples/sample.bbs"
+sample.cfg="res://addons/file-editor/file.samples/sample.cfg"
+sample.ini="res://addons/file-editor/file.samples/sample.ini"
