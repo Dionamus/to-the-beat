@@ -4,8 +4,7 @@ A fighting game with tempo-based input.
 
 ---
 
-This project is currently in development. There is not a working build just
-yet, as the main controls have not been implemented.
+This project has been abandoned. I don't want to deal with demands for an ever growing roster amd burn myself out more than I already am.
 
 ## Features
 
